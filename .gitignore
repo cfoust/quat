@@ -1,4 +1,5 @@
-.idea/**
-frameworks/**
-linux-build/**
-publish/**
+app/.idea/**
+app/frameworks/**
+app/linux-build/**
+app/publish/**
+**.pyc

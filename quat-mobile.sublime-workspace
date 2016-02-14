@@ -1,0 +1,662 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cu",
+				"current_threshhold"
+			],
+			[
+				"ste",
+				"step_size"
+			],
+			[
+				"fr",
+				"frequencies"
+			],
+			[
+				"su",
+				"successor_frequency"
+			],
+			[
+				"fre",
+				"frequency"
+			],
+			[
+				"map",
+				"map_reader"
+			],
+			[
+				"sol",
+				"solution"
+			],
+			[
+				"make",
+				"makeandcd"
+			],
+			[
+				"curren",
+				"currentDist"
+			],
+			[
+				"curr",
+				"current"
+			],
+			[
+				"block",
+				"block_header"
+			],
+			[
+				"best",
+				"bestDist"
+			],
+			[
+				"curre",
+				"currentDist"
+			],
+			[
+				"size",
+				"size_status"
+			],
+			[
+				"int",
+				"int_handle"
+			],
+			[
+				"ala",
+				"alarm_handle"
+			],
+			[
+				"langu",
+				"languageCode"
+			],
+			[
+				"font_",
+				"font_size"
+			],
+			[
+				"lett",
+				"letterIndex"
+			],
+			[
+				"le",
+				"letterIndex"
+			],
+			[
+				"id",
+				"letterIndex"
+			],
+			[
+				"font",
+				"font_total"
+			],
+			[
+				"off",
+				"offsetMajor"
+			],
+			[
+				"let",
+				"letterObj"
+			],
+			[
+				"heigh",
+				"totalHeight"
+			],
+			[
+				"add",
+				"addChild"
+			],
+			[
+				"colo",
+				"colorBackground"
+			],
+			[
+				"free",
+				"freelist"
+			],
+			[
+				"print",
+				"printlist"
+			],
+			[
+				"file",
+				"file_size"
+			],
+			[
+				"pret",
+				"prettyDate"
+			],
+			[
+				"status",
+				"statusChanged"
+			],
+			[
+				"stau",
+				"statusChanged"
+			],
+			[
+				"ap",
+				"app-router"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": ".gitignore",
+			"settings":
+			{
+				"buffer_size": 71,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					""
+				],
+				[
+					"Packages/C++/C++ Single File.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C++/C++ Single File.sublime-build",
+				""
+			]
+		],
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 117.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add..."
+			],
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git in",
+				"Git: Init"
+			],
+			[
+				"git",
+				"Git: Init"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/caleb/Developer/quat-mobile"
+	],
+	"file_history":
+	[
+		"/home/caleb/.jwmrc",
+		"/home/caleb/Developer/words/test2",
+		"/home/caleb/Developer/words/test",
+		"/home/caleb/Developer/words/puzzles.txt",
+		"/home/caleb/Developer/words/test2.map",
+		"/home/caleb/Developer/math340/.gitignore",
+		"/home/caleb/Developer/cs354/p5/tests/Makefile",
+		"/home/caleb/Developer/cs354/p5/Makefile",
+		"/home/caleb/Developer/cs354/p5/tests/coalesce2.c",
+		"/home/caleb/Developer/cs354/p5/freetests.c",
+		"/home/caleb/Developer/cs354/p5/tests/free3.c",
+		"/home/caleb/acpiformat.py",
+		"/home/caleb/Developer/cs354/p5/mem.c",
+		"/home/caleb/Developer/cs577/test.py",
+		"/home/caleb/Developer/cs577/mul.py",
+		"/home/caleb/Developer/raecode.py",
+		"/home/caleb/BITWISE/d1.txt",
+		"/home/caleb/.bashrc",
+		"/home/caleb/Downloads/fixed.js",
+		"/home/caleb/.config/sublime-text-3/Packages/User/CS 4.7 build.sublime-build",
+		"/home/caleb/Developer/GLS/glsldap/composer.json",
+		"/home/caleb/Developer/GLS/glszfs/composer.json",
+		"/home/caleb/Developer/GLS/torpedo/src/classes/Cacher.php",
+		"/home/caleb/Developer/GLS/torpedo/src/routes/eventhandlers.php",
+		"/home/caleb/Developer/GLS/torpedo/composer.json",
+		"/home/caleb/Developer/cs354/p4/intdate.c",
+		"/home/caleb/Developer/python/proto/proto/languages/ru/starling.py",
+		"/home/caleb/Developer/python/proto/proto/languages/ru/sdict.py",
+		"/home/caleb/Developer/python/proto/proto/languages/ru/ruktionary.py",
+		"/home/caleb/Developer/python/proto/proto/languages/ru/deck.py",
+		"/home/caleb/Developer/python/proto/proto/exporters/toapkg.py",
+		"/home/caleb/Developer/python/proto/proto/builder.py",
+		"/home/caleb/Developer/python/proto/de.py",
+		"/home/caleb/Developer/python/proto/ru.py",
+		"/home/caleb/Developer/python/proto/proto/fields/basic.py",
+		"/home/caleb/Developer/python/proto/.gitignore",
+		"/home/caleb/Developer/python/proto/proto/languages/ru/wikiinfo.py",
+		"/home/caleb/Developer/python/proto/proto/butils.py",
+		"/home/caleb/Developer/python/proto/README.md",
+		"/home/caleb/Developer/python/proto/proto/fields/conwiktion.py",
+		"/home/caleb/Developer/python/proto/proto/fields/forvocate.py",
+		"/home/caleb/Developer/python/proto/proto/importers/fromcsv.py",
+		"/home/caleb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/caleb/Developer/hoofers/hoofers.p",
+		"/home/caleb/Developer/cocos2d-x-3.8.1/QUAT/.gitignore",
+		"/home/caleb/diary/untitled",
+		"/home/caleb/Developer/cocos2d-x-3.8.1/QUAT/frameworks/cocos2d-html5/template/src/myApp.js",
+		"/home/caleb/Developer/cocos2d-x-3.8.1/QUAT/src/app.js",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/jobs-page.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/main-page.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/utils.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/not-found.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/table.css",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/pages/cyto-app.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/index.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/.gitignore",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/jobs.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/home.html",
+		"/home/caleb/Developer/cyto/cyto/modules/cyto-web/src/main/resources/bundle/proto-element.html",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/component/file/GenericFileConverter.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/component/file/FileConsumer.java",
+		"/home/caleb/Developer/cyto/generate.txt",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/component/log/LogEndpoint.java",
+		"/home/caleb/Developer/cyto/simple-service/src/main/java/com/example/Main.java",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/etc/cyto.xml",
+		"/home/caleb/Developer/cyto/cyto/minions/cytom-fcs/src/main/resources/bundle/fcs.py",
+		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-log.properties",
+		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-client-log.properties",
+		"/home/caleb/.tmux.conf",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/system/org/apache/activemq/activemq-karaf/5.10.0/activemq-karaf-5.10.0-activemq.xml",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/deploy/asd.xml",
+		"/home/caleb/Developer/cyto/cyto/install.sh",
+		"/home/caleb/Developer/cyto/cyto/.git/config",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/bundles/cytom-fcs/10c1c97b15861949c07700feb51c3261",
+		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/system/org/apache/activemq/activemq-karaf/5.10.0/activemq-karaf-5.10.0.jar",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecResultConverter.java",
+		"/home/caleb/.jwmrc-groups",
+		"/usr/share/xsessions/jwm.desktop",
+		"/home/caleb/.jwm/jwm-groups.xml",
+		"/home/caleb/.jwm/jwm-groups-defaults.xml",
+		"/home/caleb/.jwm/.jwm-groups",
+		"/etc/jwm/system.jwmrc",
+		"/home/caleb/.config/openbox/lubuntu-rc.xml",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecResult.java",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecProducer.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/Component.java",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecEndpoint.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/impl/DefaultComponent.java",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecCommandExecutor.java",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/bin/servicemix",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/Processor.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/model/ProcessorDefinition.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/builder/RouteBuilder.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/model/RouteDefinition.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/RoutesBuilder.java",
+		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/builder/PredicateBuilder.java",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/scripts/fcs.py",
+		"/home/caleb/Developer/cyto/camel/components/camel-exec/pom.xml",
+		"/home/caleb/Developer/cyto/camel/components/pom.xml",
+		"/home/caleb/Developer/cyto/cyto-base/.gitignore",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/input/test/asdasdasdasdsd.txt",
+		"/home/caleb/Developer/cyto/io.singularity.fcs/pom.xml",
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/deploy/fcstest.xml",
+		"/home/caleb/Downloads/240_51_flu.fcs",
+		"/etc/bashrc",
+		"/home/caleb/Developer/cyto/myArtifactId/src/main/java/com/mycompany/MyBookService.java"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/home/caleb/Developer/GLS/torpedo",
+			"/home/caleb/Developer/python/proto",
+			"/home/caleb/Developer/python/proto/proto",
+			"/home/caleb/Developer/cocos2d-x-3.8.1/QUAT",
+			"/home/caleb/Developer/cyto/cyto",
+			"/home/caleb/Developer/cyto/apache-servicemix-5.4.0",
+			"/home/caleb/Developer/cyto/camel",
+			"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/component/file",
+			"/home/caleb/Developer/cyto",
+			"/home/caleb/Developer/cyto/apache-servicemix-5.4.0",
+			"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel",
+			"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"dell\\t",
+			"bake",
+			"equation",
+			"2",
+			"key=",
+			"exec:exec:",
+			"exec:",
+			"<Program label=\"Terminal\">\n         lxterminal --command=tmux\n      </Program>",
+			"setup",
+			"interruptStruct",
+			"ConwayTwittey",
+			"JaredFromSubway",
+			"BillCosby",
+			"DRY",
+			"alarm(ALARM_SECS);",
+			">\n",
+			"JaredFromSubway",
+			"now",
+			"v02",
+			"302",
+			"GLSAuth",
+			"vcs",
+			"torpedobase",
+			"self.ph",
+			"clearForWord",
+			"start % 255",
+			"var ",
+			"128",
+			"offset",
+			"letterPool",
+			"num",
+			"70 *",
+			"child",
+			"90",
+			"this.drawNode",
+			"yellowBackground",
+			"helloLabel",
+			"Hello World",
+			"bullet",
+			"256",
+			"argv[1]",
+			",",
+			"'",
+			"- ",
+			"material",
+			"title",
+			"margin",
+			"35",
+			"Something is here",
+			"SO",
+			"style=\"width: 50%; height: 150px; position: relative; float: left;\"",
+			"main-page",
+			"200",
+			"position: relative; ",
+			"float: left;",
+			"position: relative;",
+			"<div style=\"width: 50%; height: 200px; position: relative; float: left;\"> SOmething is here</div>\n    <div style=\"width: 50%; height: 200px; position: relative; float: left;\"> SOmething is here</div>",
+			"150",
+			"button",
+			"paper-button",
+			"]]",
+			"[[",
+			"jobs-list",
+			">\n",
+			"jobs-page",
+			"right",
+			"statusChanged",
+			"created",
+			");\n",
+			"hover",
+			"event",
+			"polymer",
+			"jobs-page",
+			"padding-top: 20px;",
+			"padding-",
+			"margin-",
+			"/cyto/",
+			"main-page",
+			"paper-toolbar",
+			"paper-material",
+			"app-router",
+			"\">\n",
+			"div",
+			">\n",
+			"\">\n",
+			"main-page",
+			"dom-element",
+			">\n",
+			"proto-element",
+			"66",
+			"paper-material",
+			"\">\n",
+			"paper-menu",
+			"paper-header-panel",
+			"paper-input",
+			"cyto.CytoBundleActivator",
+			"jsonFormatted",
+			"TRACE",
+			"INFO",
+			"WARNING",
+			"datasinks/cytod-orient",
+			"apache",
+			"/\n",
+			"broker",
+			"getLogger()",
+			"log",
+			"scope = \"log\"",
+			"setBody",
+			"setBody(",
+			"org.apache.commons.configuration",
+			"osgi.wiring.package",
+			"org.osgi.wiring",
+			"commons-configuration",
+			"amq-broker",
+			"broker",
+			"Active",
+			"Title",
+			"Text",
+			"nomove",
+			"noborder",
+			"Class",
+			"C-A-1",
+			"W-",
+			"com.mycompany",
+			"createEndpoint",
+			"setCommandExecutor",
+			"commandExecutor",
+			"com.mycompany"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": ".gitignore",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 71,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								71,
+								71
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 186.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 199.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "quat-mobile.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 259.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
