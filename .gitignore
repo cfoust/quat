@@ -3,3 +3,6 @@ app/frameworks/**
 app/linux-build/**
 app/publish/**
 **.pyc
+
+data/words.js
+app/src/words.js

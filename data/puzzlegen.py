@@ -1,14 +1,25 @@
 #!/usr/bin/python
+
+"""This script takes an input file in which each word is separated by a line and
+its (integer) relative frequency is a space away from the word.
+
+As an example:
+	word 0\n
+is a valid line in the input file.
+
+The input file 'words' comes from a parsing run of Google Ngram I did some time
+ago and the 'words.map' is the baked word map for it. Since computing the map 
+is somewhat computationally intensive, we just commit the map as line-by-line
+changes in 'words' will result in a predictable line change in 'words.map'."""
+
 import csv, random, os, math
 
 # The file containing words and their frequencies (separated by a space)
-WORD_FILE = 'test'
+WORD_FILE = 'words'
 
 # Check to make sure it exists
 if not os.path.exists(WORD_FILE):
 	print "Word file %s does not exist." % WORD_FILE
-
-
 
 words = {}
 
@@ -75,57 +86,81 @@ else:
 	# Restore the map from the file
 	with open(MAP_FILE, 'rb') as map_file:
 		map_reader = csv.reader(map_file, delimiter='\t')
+
 		for row in map_reader:
+			# The successors are joined by just a comma
 			succ = row[2].split(',')
+
+			# If we don't have any successors, keep the array empty
 			if len(succ) == 1 and succ[0] == '':
 				succ = []
 
+			# Convert the frequency back to an int
 			freq = int(row[1])
 
-
+			# Restore the row to the words dict
 			words[row[0]] = (succ,freq)
-
-
 
 print "Number of words: %d." % len(words)
 
+"""Solves a pair of four-letter words indicated by start and finish.
+
+Returns an array of steps (including the start and end words) or an array with
+no elements if no solution exists."""
 def solve(start,finish):
+	# We copy the map of words and add some parameters for BFS
 	measures = {}
 	for word in words:
 		data = words[word]
+
 		measures[word] = {
 			'distance': -1,
 			'predecessor': 'nil',
 			'frequency': data[1]
 		}
 
+	# This is our queue
 	queue = []
 	queue.append(start)
 
 	while len(queue) > 0:
 		word = queue.pop(0)
 
+		# If we've hit the goal, backtrace the solution
 		if word == finish:
 			solution = []
 
+			# Add the last word first
 			current = word
 			solution.append(word)
+
+			# Go backwards through the predecessors until we hit the start word
 			while current != start:
 				solution.append(measures[current]['predecessor'])
 				current = measures[current]['predecessor']
-				
+			
+			# Reverse the solution to get it in the proper order
 			solution.reverse()
+
+			# Return it
 			return solution
 
+		# Otherwise, let's look at the successors of this word
 		for adjacent in words[word][0]:
-			if adjacent == '':
-				print words[word][0]
-				exit()
+
+			# If the successor node is undiscovered
 			if measures[adjacent]['distance'] == -1:
+
+				# Increase its distance based on the current node
 				measures[adjacent]['distance'] = measures[word]['distance'] + 1
+				# Set its predecessor
 				measures[adjacent]['predecessor'] = word
+
+				# Add it to the queue
 				queue.append(adjacent)
 
+	# Return no solution; this is only reached if there is no path between
+	# the nodes
 	return []
 
 # Get the 'easiness' of a word, which is a number that reflects how
@@ -151,7 +186,9 @@ def easiness(word):
 
 	return int(value * pow(10,steps-1))
 
-puzzles = open('puzzles.txt','wb+')
+"""This function returns a word with an integer difficulty higher than difficulty.
+
+It keeps trying until it finds one."""
 def getWordOver(difficulty):
 	key = random.choice(words.keys())
 
@@ -163,25 +200,47 @@ def getWordOver(difficulty):
 			word = words[key]
 	return key
 
-def generate(bottomChoice):
-	first = getWordOver(bottomChoice)
-	second = getWordOver(bottomChoice)
+"""Generates a puzzle with a certain starting and ending difficulty.
+
+'Difficulty' is the inverse of what you would think: lower numbers mean that
+a puzzle is more difficult and higher numbers mean it is easier."""
+def generate(difficulty):
+	first = getWordOver(difficulty)
+	second = getWordOver(difficulty)
+
+	while first == second:
+		second = getWordOver(difficulty)
 
 	return (first,second,solve(first,second))
 
+# Open a handle to the output JS file
+puzzles = open('words.js','wb+')
+
+# Number of problems to generate
 problems = 1000
+difficulty = 5200
+
+puzzles.write('QUAT_PROBLEMS=[')
+i = 0
 while True:
-	problem = generate(5200)
+	# Attempt to generate a puzzle
+	problem = generate(difficulty)
+
+	# Pull out the individual parts
 	first = problem[0]
 	second = problem[1]
 	solution = problem[2]
 	
+	# If we didn't get a solution, try again and don't count it
 	if len(solution) == 0 or not solution:
 		continue
 
-
-	puzzles.write(first + ' ' + second + ' ' + str(len(solution)) + '\n')
+	i += 1
 	problems -= 1
+
+	array = """["%s","%s",%d],""" % (first, second, len(solution))
+	puzzles.write(array)
 
 	if problems == 0:
 		break
+puzzles.write(']')

@@ -192,7 +192,7 @@ var BackgroundLayer = cc.Layer.extend({
             letterPool.push(letterLabel);
         }
         
-        var word = "LAKE".split("");
+        var word = QUAT_PROBLEMS[0][0].split("");
         var mainWord = [];
         for (var j = 0; j < 4; j++) {
             var letterLabel = new cc.LabelTTF(word[j], "Arial", font_size);
