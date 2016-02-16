@@ -213,6 +213,8 @@ def generate(difficulty):
 
 	return (first,second,solve(first,second))
 
+## The following generates the puzzles
+
 # Open a handle to the output JS file
 puzzles = open('words.js','wb+')
 
@@ -244,3 +246,9 @@ while True:
 	if problems == 0:
 		break
 puzzles.write(']')
+
+## Now we write out the dictionary
+puzzles.write('\nQUAT_DICT={')
+for word in words:
+	puzzles.write("%s:1," % word)
+puzzles.write('}')

@@ -12,6 +12,7 @@
 
     "jsList" : [
         "src/words.js",
+        "src/model.js",
         "src/resource.js",
         "src/app.js"
     ]
