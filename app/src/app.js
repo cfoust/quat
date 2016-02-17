@@ -193,16 +193,16 @@ var WordNode = cc.Node.extend({
 by maintaining a bunch of WordLayers that correspond to what the user has
 entered.*/
 var SolutionLayer = cc.Layer.extend({
-    ctor:function () {
+    ctor: function(width, height) {
         this._super();
 
-        var size = cc.winSize, // The bounds of the window
+        var size = {width: width, height: height}, // The bounds of the window
             fourths = size.width / 4; // A fourth of the width for regions
 
         this.size = size;
 
         // Size of the font for every letter
-        var font_size = 80;
+        var font_size = size.width * 0.18;
 
         // Space on top and bottom of each letter (vertical)
         var font_gap = 10;
@@ -211,9 +211,6 @@ var SolutionLayer = cc.Layer.extend({
 
         // We calculate how many letters can fit on the screen with our params
         var letterPoolCount = Math.ceil(size.height / font_total) + 1;
-
-        // Total height of all the letters in the alphabet
-        var totalHeight = 26 * font_total;
 
         // Create a pool because we only need so many (enough to fill the screen)
         var letterPool = [];
@@ -234,28 +231,10 @@ var SolutionLayer = cc.Layer.extend({
         // Create a word to display the goal word
         var goalWord = new WordNode(font_size, fourths);
         goalWord.x = fourths / 2;
-        goalWord.y = 50;
+        goalWord.y = font_size / 2;
         goalWord.setColor(cc.color(0,255,0,255));
         this.addChild(goalWord);
         this.goalWord = goalWord;
-
-
-        // var word = letterPool[0];
-        // word.x = fourths / 2;
-        // word.y = size.height / 2;
-        // word.setVisible(true);
-        // word.changeWord("FART");
-        // var word = QUAT_PROBLEMS[0][0].split("");
-        // var mainWord = [];
-        // for (var j = 0; j < 4; j++) {
-        //     var letterLabel = new cc.LabelTTF(word[j], "Arial", font_size);
-        //     // position the label on the center of the screen
-        //     letterLabel.x = (j * fourths) + (fourths / 2);
-        //     letterLabel.y = size.height / 2;
-        //     // add the label as a child to this layer
-        //     this.addChild(letterLabel, 5);
-        //     mainWord.push(letterLabel);
-        // }
 
         return true;
     },
@@ -299,6 +278,7 @@ var BackgroundLayer = cc.Layer.extend({
 
         var colorBackground = new cc.LayerColor(cc.color(92,94,90,255));
 
+        this.colorBackground = colorBackground;
         this.addChild(colorBackground);
 
         return true;
@@ -306,18 +286,76 @@ var BackgroundLayer = cc.Layer.extend({
 });
 
 var PuzzleScene = cc.Scene.extend({
-    onEnter:function () {
+    ctor: function(windowWidth, windowHeight) {
         this._super();
 
+        this.windowWidth = windowWidth;
+        this.windowHeight = windowHeight;
+
+        return true;
+    },
+
+    /**
+     * Calculates the size of the playing area based on the real resolution.
+     *
+     * Essentially, we can just fill the rest of the canvas up with the
+     * background.
+     * 
+     * @return {Object} Object with 'width', 'height', 'x', and 'y'.
+     */
+    calculateSize: function() {
+        var w = this.windowWidth,
+            h = this.windowHeight,
+            cWidth = 0, // The calculated width
+            cHeight = h, // The calculated height (alwa)ys h)
+            cX = 0, // The calculated X
+            cY = 0; // The calculated Y (always 0)
+
+        var NICE_WIDTH = 300;
+
+        // Case 1: Landscape (and square) orientation
+        if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
+            cWidth = Math.min(w, NICE_WIDTH);
+            cX = (w / 2) - (cWidth / 2);
+        // Case 2: Portrait orientation
+        } else {
+            cWidth = w;
+            cX = 0;
+        }
+
+        return {
+            width: cWidth,
+            height: cHeight,
+            x: cX,
+            y: cY
+        };
+    },
+
+    onEnter: function() {
+        this._super();
+
+        // Initialize the model and get a new puzzle
         var quatGame = new QuatModel();
         quatGame.newPuzzle();
 
+        // Initialize our layers
         var backgroundLayer = new BackgroundLayer(),
-            solutionLayer = new SolutionLayer();
+            solutionSize = this.calculateSize(),
+            solutionLayer = new SolutionLayer(solutionSize.width, 
+                                              solutionSize.height);
 
+        solutionLayer.x = solutionSize.x;
+        solutionLayer.y = solutionSize.y;
+
+        // Add each layer to this rendering target
         this.addChild(backgroundLayer);
         this.addChild(solutionLayer);
 
+        // Have them be accessible from other methods (propogate)
+        this.backgroundLayer = backgroundLayer;
+        this.solutionLayer = solutionLayer;
+
+        // Update the solution layer's current status and goal
         solutionLayer.updateSolution(quatGame.getCurrentSteps());
         solutionLayer.updateGoal(quatGame.getGoal());
     }
