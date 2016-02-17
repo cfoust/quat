@@ -138,34 +138,68 @@ var ChooseLetterLayer = cc.Layer.extend({
     }
 });
 
-
-var BackgroundLayer = cc.Layer.extend({
-    ctor:function () {
-        //////////////////////////////
-        // 1. super init first
+var WordNode = cc.Node.extend({
+    /**
+     * Creates a WordNode with the given font size.
+     * @param  {number} fontSize The size of the font to be initialized.
+     * @param  {number} fontGap The distance between each letter.
+     */
+    ctor: function (fontSize, fontGap) {
         this._super();
 
-        var colorBackground = new cc.LayerColor(cc.color(92,94,90,255));
+        // Store these for later
+        this.fontSize = fontSize;
+        this.fontGap = fontGap;
 
-        this.addChild(colorBackground);
+        // Create a pool of labels we can use to draw this word
+        var rowPool = []
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
 
-        var size = cc.winSize,
-            // A fourth of the width for regions
-            fourths = size.width / 4;
+            // Set them to be hidden
+            letterLabel.x = (j * this.fontGap);
+            letterLabel.y = 0;
 
-        // Node we use to draw regions
-        var drawNode = cc.DrawNode.create();
-        this.addChild(drawNode,1);
-        drawNode.clear();
+            // Add it as a child to this layer
+            this.addChild(letterLabel);
 
-        // Colors in the different regions
-        for (var i = 0; i<4; i++) {
-            var start = i * fourths;
-            var val = 255 - (start % 255);
-            drawNode.drawRect(new cc.Point(start,0), new cc.Point(start+fourths,size.height),
-                cc.color(val,0,0,255), 0.2, cc.color(val,0,0,255) );
+            rowPool.push(letterLabel);
         }
+        this.rowPool = rowPool;
 
+        return true;
+    },
+
+    /**
+     * Replaces the text of this word with a given word.
+     * @param  {[type]} word [description]
+     */
+    changeWord: function(word) {
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.rowPool[j];
+            letterLabel.string = word[j].toUpperCase();
+        }
+    },
+
+    setColor: function(color) {
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.rowPool[j];
+            letterLabel.setFontFillColor(color);
+        }
+    }
+});
+
+/* This layer displays the current solution (that is not necessarily solved)
+by maintaining a bunch of WordLayers that correspond to what the user has
+entered.*/
+var SolutionLayer = cc.Layer.extend({
+    ctor:function () {
+        this._super();
+
+        var size = cc.winSize, // The bounds of the window
+            fourths = size.width / 4; // A fourth of the width for regions
+
+        this.size = size;
 
         // Size of the font for every letter
         var font_size = 80;
@@ -181,38 +215,111 @@ var BackgroundLayer = cc.Layer.extend({
         // Total height of all the letters in the alphabet
         var totalHeight = 26 * font_total;
 
-        // Create a pool because we only need so many
+        // Create a pool because we only need so many (enough to fill the screen)
         var letterPool = [];
         for (var i = 0; i < letterPoolCount; i++) {
-            // Initialize the label
-            var letterLabel = new cc.LabelTTF("A", "Arial", font_size);
-            letterLabel.x = -100;
-            letterLabel.y = -100;
-            this.addChild(letterLabel);
-            letterPool.push(letterLabel);
+            // There are four in each row
+            var word = new WordNode(font_size, fourths);
+
+            word.setVisible(false);
+            word.x = fourths / 2;
+
+            this.addChild(word);
+            letterPool.push(word);
         }
-        
-        var word = QUAT_PROBLEMS[0][0].split("");
-        var mainWord = [];
-        for (var j = 0; j < 4; j++) {
-            var letterLabel = new cc.LabelTTF(word[j], "Arial", font_size);
-            // position the label on the center of the screen
-            letterLabel.x = (j * fourths) + (fourths / 2);
-            letterLabel.y = size.height / 2;
-            // add the label as a child to this layer
-            this.addChild(letterLabel, 5);
-            mainWord.push(letterLabel);
+
+        // Allow us to access it from other functions
+        this.letterPool = letterPool;
+
+        // Create a word to display the goal word
+        var goalWord = new WordNode(font_size, fourths);
+        goalWord.x = fourths / 2;
+        goalWord.y = 50;
+        goalWord.setColor(cc.color(0,255,0,255));
+        this.addChild(goalWord);
+        this.goalWord = goalWord;
+
+
+        // var word = letterPool[0];
+        // word.x = fourths / 2;
+        // word.y = size.height / 2;
+        // word.setVisible(true);
+        // word.changeWord("FART");
+        // var word = QUAT_PROBLEMS[0][0].split("");
+        // var mainWord = [];
+        // for (var j = 0; j < 4; j++) {
+        //     var letterLabel = new cc.LabelTTF(word[j], "Arial", font_size);
+        //     // position the label on the center of the screen
+        //     letterLabel.x = (j * fourths) + (fourths / 2);
+        //     letterLabel.y = size.height / 2;
+        //     // add the label as a child to this layer
+        //     this.addChild(letterLabel, 5);
+        //     mainWord.push(letterLabel);
+        // }
+
+        return true;
+    },
+    /**
+     * Updates the view with a given solution.
+     * @param  {Array} solution Array of four-letter words (strings).
+     */
+    updateSolution: function(solution) {
+        // To filter out bad solutions
+        if (solution.length < 1) {
+            return;
         }
+
+        // Have to do this so we don't mess up the original array
+        var reversed = solution.slice().reverse();
+
+        // Hide all of the words
+        for (var i = 0; i < this.letterPool.length; i++) {
+            var word = this.letterPool[i];
+            word.setVisible(false);
+        }
+
+        for (var i = 0; i < reversed.length; i++) {
+            var word = this.letterPool[i];
+            word.y = (this.size.height / 2) + (i * 100);
+            word.changeWord(reversed[i]);
+            word.setVisible(true);
+        }
+
+    },
+
+    updateGoal: function(goal) {
+        var word = this.goalWord;
+        word.changeWord(goal);
+    }
+});
+
+var BackgroundLayer = cc.Layer.extend({
+    ctor:function () {
+        this._super();
+
+        var colorBackground = new cc.LayerColor(cc.color(92,94,90,255));
+
+        this.addChild(colorBackground);
 
         return true;
     }
 });
 
-var HelloWorldScene = cc.Scene.extend({
+var PuzzleScene = cc.Scene.extend({
     onEnter:function () {
         this._super();
-        var layer = new BackgroundLayer();
-        this.addChild(layer);
+
+        var quatGame = new QuatModel();
+        quatGame.newPuzzle();
+
+        var backgroundLayer = new BackgroundLayer(),
+            solutionLayer = new SolutionLayer();
+
+        this.addChild(backgroundLayer);
+        this.addChild(solutionLayer);
+
+        solutionLayer.updateSolution(quatGame.getCurrentSteps());
+        solutionLayer.updateGoal(quatGame.getGoal());
     }
 });
 

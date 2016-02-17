@@ -15,7 +15,6 @@ class QuatModel {
 	newPuzzle() {
 		// Generate a random key
 		var key = Math.floor(Math.random() * this.problems.length);
-		console.log(key);
 		var puzzle = this.problems[key];
 
 		// The current steps shown on the 'board'
@@ -34,6 +33,10 @@ class QuatModel {
 	 */
 	getCurrentWord() {
 		return this.currentSteps[this.currentSteps.length - 1];
+	}
+
+	getGoal() {
+		return this.goal;
 	}
 
 	/**
