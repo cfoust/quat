@@ -1,35 +1,104 @@
-var ChooseLetterLayer = cc.Layer.extend({
-    setCurrent: function(word) {
-        this.word = word.split("");
-        this.mainWord = [];
-    },
-    ctor:function (font_size, font_gap) {
-        //////////////////////////////
-        // 1. super init first
+
+/* A conglomeration of four labels we use to display a word. */
+var WordNode = cc.Node.extend({
+    /**
+     * Creates a WordNode with the given font size.
+     * @param  {number} fontSize The size of the font to be initialized.
+     * @param  {number} fontGap The distance between each letter.
+     */
+    ctor: function (fontSize, fontGap) {
         this._super();
 
-        var size = cc.winSize,
-            // A fourth of the width for regions
-            fourths = size.width / 4;
+        // Store these for later
+        this.fontSize = fontSize;
+        this.fontGap = fontGap;
 
-        var font_total = (font_size + font_gap * 2);
+        // Create a pool of labels we can use to draw this word
+        var rowPool = []
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
+
+            // Set them to be hidden
+            letterLabel.x = (j * this.fontGap);
+            letterLabel.y = 0;
+
+            // Add it as a child to this layer
+            this.addChild(letterLabel);
+
+            rowPool.push(letterLabel);
+        }
+        this.rowPool = rowPool;
+
+        return true;
+    },
+
+    /**
+     * Replaces the text of this word with a given word.
+     * @param  {[type]} word [description]
+     */
+    changeWord: function(word) {
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.rowPool[j];
+            letterLabel.string = word[j].toUpperCase();
+        }
+    },
+
+    setColor: function(color) {
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.rowPool[j];
+            letterLabel.setFontFillColor(color);
+        }
+    }
+});
+
+/* Layer for letting the user choose a new letter for a given one in
+   the current word. */
+var ChooseLetterLayer = cc.Layer.extend({
+    ctor:function (width, height, fontSize) {
+        this._super();
+        var fontGap = 10;
+        var fontTotal = (fontSize + fontGap * 2);
 
         // We calculate how many letters can fit on the screen with our params
-        var letterPoolCount = Math.ceil(size.height / font_total) + 1;
+        var letterPoolCount = Math.ceil(height / fontSize) + 1;
+        console.log(letterPoolCount);
 
         // Total height of all the letters in the alphabet
-        var totalHeight = 26 * font_total;
+        var totalHeight = 26 * fontTotal;
 
         // Create a pool because we only need so many
         var letterPool = [];
         for (var i = 0; i < letterPoolCount; i++) {
             // Initialize the label
-            var letterLabel = new cc.LabelTTF("A", "Arial", font_size);
-            letterLabel.x = -100;
-            letterLabel.y = -100;
+            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
+            letterLabel.x = (width / 2);
+            letterLabel.y = (fontTotal / 2) + fontSize + (i * fontSize);
+            // letterLabel.y = (fontTotal / 2) + (i * fontSize);
+            letterLabel.zIndex = 1;
             this.addChild(letterLabel);
             letterPool.push(letterLabel);
         }
+        this.letterPool = letterPool;
+
+        // Add a background behind the letter selector
+        var colorBackground = new cc.LayerColor(cc.color(133,150,83,255));
+
+        // Make it the same dimensions as the selector
+        colorBackground.width = width;
+        colorBackground.height = height;
+
+        // Place it above the goal word
+        colorBackground.y = (fontTotal / 2) + fontSize / 2;
+
+        // Make it so the letters sit above it
+        colorBackground.zIndex = 0;
+
+
+        this.colorBackground = colorBackground;
+        this.addChild(colorBackground);
+
+
+        return true;
         
 
         var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -135,65 +204,30 @@ var ChooseLetterLayer = cc.Layer.extend({
         },colorBackground);
 
         return true;
+    },
+
+    setBaseLetter: function(letter) {
+        letter = letter.toUpperCase();
+        var uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var index = letter.charCodeAt(0) - 65;
+
+        for (var i = 0; i < this.letterPool.length; i++) {
+            var letterLabel = this.letterPool[i];
+            var newIndex = (index - i) % uppercase.length;
+            if (newIndex < 0) {
+                newIndex += uppercase.length;
+            }
+            letterLabel.string = uppercase[newIndex];
+        }
     }
 });
 
-var WordNode = cc.Node.extend({
-    /**
-     * Creates a WordNode with the given font size.
-     * @param  {number} fontSize The size of the font to be initialized.
-     * @param  {number} fontGap The distance between each letter.
-     */
-    ctor: function (fontSize, fontGap) {
-        this._super();
-
-        // Store these for later
-        this.fontSize = fontSize;
-        this.fontGap = fontGap;
-
-        // Create a pool of labels we can use to draw this word
-        var rowPool = []
-        for (var j = 0; j < 4; j++) {
-            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
-
-            // Set them to be hidden
-            letterLabel.x = (j * this.fontGap);
-            letterLabel.y = 0;
-
-            // Add it as a child to this layer
-            this.addChild(letterLabel);
-
-            rowPool.push(letterLabel);
-        }
-        this.rowPool = rowPool;
-
-        return true;
-    },
-
-    /**
-     * Replaces the text of this word with a given word.
-     * @param  {[type]} word [description]
-     */
-    changeWord: function(word) {
-        for (var j = 0; j < 4; j++) {
-            var letterLabel = this.rowPool[j];
-            letterLabel.string = word[j].toUpperCase();
-        }
-    },
-
-    setColor: function(color) {
-        for (var j = 0; j < 4; j++) {
-            var letterLabel = this.rowPool[j];
-            letterLabel.setFontFillColor(color);
-        }
-    }
-});
 
 /* This layer displays the current solution (that is not necessarily solved)
 by maintaining a bunch of WordLayers that correspond to what the user has
 entered.*/
 var SolutionLayer = cc.Layer.extend({
-    ctor: function(width, height) {
+    ctor: function(width, height, fontSize) {
         this._super();
 
         var size = {width: width, height: height}, // The bounds of the window
@@ -202,39 +236,56 @@ var SolutionLayer = cc.Layer.extend({
         this.size = size;
 
         // Size of the font for every letter
-        var font_size = size.width * 0.18;
+        var fontSize = size.width * 0.18;
+        this.fontSize = fontSize;
 
         // Space on top and bottom of each letter (vertical)
-        var font_gap = 10;
+        var fontGap = 10;
 
-        var font_total = (font_size + font_gap * 2);
+        // The total size of every word/label
+        var fontTotal = (fontSize + fontGap * 2);
+        this.fontTotal = fontTotal;
 
-        // We calculate how many letters can fit on the screen with our params
-        var letterPoolCount = Math.ceil(size.height / font_total) + 1;
+        // We calculate how many words can fit on the screen
+        var wordPoolCount = Math.ceil(size.height / fontTotal) + 1;
 
-        // Create a pool because we only need so many (enough to fill the screen)
-        var letterPool = [];
-        for (var i = 0; i < letterPoolCount; i++) {
+        // Create a pool because we only need so many
+        var wordPool = [];
+        for (var i = 0; i < wordPoolCount; i++) {
             // There are four in each row
-            var word = new WordNode(font_size, fourths);
+            var word = new WordNode(fontSize, fourths);
 
             word.setVisible(false);
             word.x = fourths / 2;
 
             this.addChild(word);
-            letterPool.push(word);
+            wordPool.push(word);
         }
 
         // Allow us to access it from other functions
-        this.letterPool = letterPool;
+        this.wordPool = wordPool;
 
         // Create a word to display the goal word
-        var goalWord = new WordNode(font_size, fourths);
+        var goalWord = new WordNode(fontSize, fourths);
+        // Set it to be at the bottom of the screen
         goalWord.x = fourths / 2;
-        goalWord.y = font_size / 2;
-        goalWord.setColor(cc.color(0,255,0,255));
+        goalWord.y = fontTotal / 2;
+        goalWord.zIndex = 1;
+
+        goalWord.setColor(cc.color(62,33,74,255));
+        
         this.addChild(goalWord);
         this.goalWord = goalWord;
+
+        // Set up a background for the goal word
+        var goalBackground = new cc.LayerColor(cc.color(125,150,53,255));
+
+        goalBackground.height = (fontTotal / 2) + (fontSize / 2);
+        goalBackground.width = size.width;
+        goalBackground.zIndex = 0;
+
+        this.goalBackground = goalBackground;
+        this.addChild(goalBackground);
 
         return true;
     },
@@ -252,14 +303,15 @@ var SolutionLayer = cc.Layer.extend({
         var reversed = solution.slice().reverse();
 
         // Hide all of the words
-        for (var i = 0; i < this.letterPool.length; i++) {
-            var word = this.letterPool[i];
+        for (var i = 0; i < this.wordPool.length; i++) {
+            var word = this.wordPool[i];
             word.setVisible(false);
         }
 
+        // Set up a word for every word in the solution.
         for (var i = 0; i < reversed.length; i++) {
-            var word = this.letterPool[i];
-            word.y = (this.size.height / 2) + (i * 100);
+            var word = this.wordPool[i];
+            word.y = (this.fontTotal / 2) + this.fontSize + (i * this.fontSize);
             word.changeWord(reversed[i]);
             word.setVisible(true);
         }
@@ -272,11 +324,12 @@ var SolutionLayer = cc.Layer.extend({
     }
 });
 
+// Colored background layer
 var BackgroundLayer = cc.Layer.extend({
     ctor:function () {
         this._super();
 
-        var colorBackground = new cc.LayerColor(cc.color(92,94,90,255));
+        var colorBackground = new cc.LayerColor(cc.color(63,74,33,255));
 
         this.colorBackground = colorBackground;
         this.addChild(colorBackground);
@@ -341,23 +394,76 @@ var PuzzleScene = cc.Scene.extend({
         // Initialize our layers
         var backgroundLayer = new BackgroundLayer(),
             solutionSize = this.calculateSize(),
+            fontSize = solutionSize.width * 0.18,
             solutionLayer = new SolutionLayer(solutionSize.width, 
-                                              solutionSize.height);
+                                              solutionSize.height,
+                                              fontSize),
+            chooseLetterLayer = new ChooseLetterLayer(
+                                              solutionSize.width / 4,
+                                              solutionSize.height,
+                                              fontSize);
 
+        chooseLetterLayer.setBaseLetter('D');
+        chooseLetterLayer.setVisible(false);
+
+        // Sets the solution layer to have its calculated bounds
         solutionLayer.x = solutionSize.x;
         solutionLayer.y = solutionSize.y;
+
+        chooseLetterLayer.x = solutionSize.x;
+        chooseLetterLayer.y = solutionSize.y;
 
         // Add each layer to this rendering target
         this.addChild(backgroundLayer);
         this.addChild(solutionLayer);
+        this.addChild(chooseLetterLayer);
 
-        // Have them be accessible from other methods (propogate)
+        // Have them be accessible from other methods
         this.backgroundLayer = backgroundLayer;
         this.solutionLayer = solutionLayer;
+        this.chooseLetterLayer = chooseLetterLayer;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateSolution(quatGame.getCurrentSteps());
         solutionLayer.updateGoal(quatGame.getGoal());
+
+        cc.eventManager.addListener({
+            event: cc.EventListener.MOUSE,
+            onMouseMove: function(event){
+                // console.log(event);
+            },
+            onMouseUp: function(event){
+                chooseLetterLayer.setVisible(false);
+            },
+            onMouseDown: function(event){
+                var x = event._x - solutionSize.x,
+                    y = event._y - solutionSize.y,
+                    fourths = solutionSize.width / 4,
+                    loc = (x - (x % fourths)) / fourths,
+                    newX = (loc * fourths) + solutionSize.x;
+
+                chooseLetterLayer.x = newX;
+                chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[loc]);
+                chooseLetterLayer.setVisible(true);
+            },
+            onMouseScroll: function(event){
+            }
+        },this);
+
+        // Touch listener (kind of buggy, hard to test)
+        // cc.eventManager.addListener({
+        //     event: cc.EventListener.TOUCH_ONE_BY_ONE,
+        //     swallowTouches: true,
+        //     onTouchBegan: function(event){
+        //         console.log(event);
+        //     },
+        //     onTouchMoved: function(event){
+        //         console.log(event);
+        //     },
+        //     onTouchEnded: function(event){
+        //         console.log(event);
+        //     }
+        // },this);
     }
 });
 
