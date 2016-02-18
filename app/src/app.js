@@ -287,9 +287,10 @@ var SolutionLayer = cc.Layer.extend({
 
         // Create a word to display the goal word
         var goalWord = new WordNode(fontSize, fourths);
+        var panelHeight = (fontTotal / 2) + (fontSize / 2);
         // Set it to be at the bottom of the screen
         goalWord.x = fourths / 2;
-        goalWord.y = fontTotal / 2;
+        goalWord.y = panelHeight / 2;
         goalWord.zIndex = 1;
 
         goalWord.setColor(cc.color(62,33,74,255));
@@ -300,7 +301,7 @@ var SolutionLayer = cc.Layer.extend({
         // Set up a background for the goal word
         var goalBackground = new cc.LayerColor(cc.color(125,150,53,255));
 
-        goalBackground.height = (fontTotal / 2) + (fontSize / 2);
+        goalBackground.height = panelHeight;
         goalBackground.width = size.width;
         goalBackground.zIndex = 0;
 
@@ -382,7 +383,7 @@ var SolutionLayer = cc.Layer.extend({
         }
 
         // Set up a word for every word in the solution.
-        for (var i = 0; i < reversed.length; i++) {
+        for (var i = 0; i < Math.min(reversed.length, this.wordPool.length); i++) {
             var word = this.wordPool[i];
             word.y = (this.fontTotal / 2) + this.fontSize + (i * this.fontSize);
             word.changeWord(reversed[i]);
@@ -540,6 +541,7 @@ var PuzzleScene = cc.Scene.extend({
             };
         };
 
+        // Handles mouse events and transitions between states
         cc.eventManager.addListener({
             event: cc.EventListener.MOUSE,
             onMouseMove: function(event){
@@ -613,7 +615,6 @@ var PuzzleScene = cc.Scene.extend({
                         console.log(newWord + " is not a word");
                     }
                 }
-                console.log(state);
             },
             onMouseDown: function(event){
                 var coords = transpose(event),
@@ -646,11 +647,89 @@ var PuzzleScene = cc.Scene.extend({
                         state = states.CHANGING_LETTER_DRAG;
                     }
                 }
-                console.log(state);
             },
             onMouseScroll: function(event){
             }
         },this);
+
+        cc.eventManager.addListener({
+            event: cc.EventListener.KEYBOARD,
+            onKeyReleased: function(keyCode, event){
+                var key = String.fromCharCode(keyCode);
+
+                // If key is a number string
+                if (!isNaN(key)) {
+                    // It is, so convert it into a number
+                    var number = +key;
+
+                    if ((number < 1) || (number > 4)) {
+                        state = states.IDLE;
+                        chooseLetterLayer.setVisible(false);
+                        return;
+                    }
+
+                    // Shift the number down one to match the indexes of letters
+                    number -= 1;
+
+                    // Set the last
+                    lastColumn = number;
+
+                    // Let the user drag from this point on if they want
+                    state = states.CHANGING_LETTER_NODRAG;
+
+                    // Show the letter layer now
+                    chooseLetterLayer.x = (number * (solutionSize.width / 4)) + solutionSize.x;
+                    chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[number]);
+                    chooseLetterLayer.setVisible(true);
+                }
+
+                // Try to understand they key as a letter
+                var letterCode = (key.charCodeAt(0) - 65);
+
+                /* 
+                If we have a letter chooser open and the user enters a letter
+                of the alphabet.
+                */ 
+                if ((state == states.CHANGING_LETTER_NODRAG) && 
+                    (letterCode < 26) &&
+                    (letterCode >= 0)) {
+
+                    var oldWord = quatGame.getCurrentWord(),
+                        newWord = oldWord.substr(0,lastColumn) + key + oldWord.substr(lastColumn + 1);
+
+                    newWord = newWord.toLowerCase();
+
+                    var result = quatGame.addWord(newWord);
+                    if (result) {
+                        if (quatGame.atGoal()) {
+                            quatGame.newPuzzle();
+                            solutionLayer.updateGoal(quatGame.getGoal());
+                        }
+                        solutionLayer.updateSolution(quatGame.getCurrentSteps());
+                    } else {
+                        console.log(newWord + " is not a word");
+                    }
+
+                    chooseLetterLayer.setVisible(false);
+                    state = states.IDLE;
+                }
+                // If the user enters a backspace while the letter chooser
+                // is shown, hide the letter chooser
+                else if ((state == states.CHANGING_LETTER_NODRAG) &&
+                         (keyCode == 8)) {
+                    chooseLetterLayer.setVisible(false);
+                    state = states.IDLE;
+                }
+                // If the user enters a backspace while idle, see if we
+                // can remove one of the last words
+                else if ((state == states.IDLE) &&
+                         (keyCode == 8)) {
+                    quatGame.goBack();
+                    solutionLayer.updateSolution(quatGame.getCurrentSteps());
+                }
+
+            }
+        }, this);
 
         // Touch listener (kind of buggy, hard to test)
         // cc.eventManager.addListener({
