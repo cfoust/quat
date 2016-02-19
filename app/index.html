@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title>QUAT</title>
     <link rel="icon" type="image/GIF" href="res/favicon.ico"/>
-    <meta name="viewport" content="width=480, initial-scale=1">
+    <!-- <meta name="viewport" content="width=480, initial-scale=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <html manifest="quat.manifest">
     <meta name="full-screen" content="yes"/>
     <meta name="screen-orientation" content="portrait"/>
     <meta name="x5-fullscreen" content="true"/>
@@ -23,7 +26,7 @@
 <body style="padding:0; margin: 0; background: #000;">
 <!-- <script src="res/loading.js"></script> -->
 <script src="src/words.js"></script>
-<canvas id="gameCanvas" width="750" height="1334"></canvas>
+<canvas id="gameCanvas"></canvas>
 <script src="frameworks/cocos2d-html5/CCBoot.js"></script>
 <script cocos src="main.js"></script>
 </body>

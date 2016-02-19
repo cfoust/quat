@@ -62,7 +62,6 @@ var ChooseLetterLayer = cc.Layer.extend({
 
         // We calculate how many letters can fit on the screen with our params
         var letterPoolCount = Math.ceil(height / fontSize) + 1;
-        console.log(letterPoolCount);
 
         // Total height of all the letters in the alphabet
         var totalHeight = 26 * fontTotal;
@@ -536,119 +535,158 @@ var PuzzleScene = cc.Scene.extend({
          */
         var transpose = function(event) {
             return {
-                x: event._x - solutionSize.x,
-                y: event._y - solutionSize.y
+                x: event.getLocationX() - solutionSize.x,
+                y: event.getLocationY() - solutionSize.y
             };
+        };
+
+        var inputMoved = function(x,y) {
+            if (state == states.CHOOSING_LETTER) {
+                var currentLetter = solutionLayer.pointInCurrentWord(x,y);
+
+                // In other words, the mouse moved out of the original area
+                // And not into another letter
+                if (currentLetter === false) {
+                    var currentColumn = solutionLayer.pointInColumn(x,y);
+
+                    // If the user stayed within the current column
+                    if (currentColumn == lastColumn) {
+                        var offset = y - lastMouseDown.y;
+                        state = states.CHANGING_LETTER_DRAG;
+                        chooseLetterLayer.setOffset(offset);
+
+                    // Otherwise close everything out
+                    } else {
+                        state = states.IDLE;
+                        chooseLetterLayer.setVisible(false);
+                        return;
+                    }
+                } else {
+                    chooseLetterLayer.x = (currentLetter * (solutionSize.width / 4)) + solutionSize.x;
+                    chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[currentLetter]);
+                    lastColumn = currentLetter;
+                }
+            }
+            else if (state == states.CHANGING_LETTER_DRAG) {
+                var offset = y - lastMouseDown.y;
+                // var offset = y - lastMouseDown.y;
+                chooseLetterLayer.setOffset(offset);
+            }
+        };
+
+        var inputDone = function(x,y) {
+            if (state == states.CHOOSING_LETTER) {
+                chooseLetterLayer.setVisible(false);
+                state = states.IDLE;
+            }
+            else if (state == states.CHANGING_LETTER_DRAG) {
+                var currentLetter = solutionLayer.pointInCurrentWord(x,y);
+                var currentColumn = solutionLayer.pointInColumn(x,y);
+
+                // console.log(currentLetter  + " " + currentColumn);
+                if ((currentLetter === false) && (currentColumn !== false)) {
+                    chooseLetterLayer.setBaseLetter(chooseLetterLayer.getBaseLetter());
+                    state = states.CHANGING_LETTER_NODRAG;
+                }
+            }
+            else if (state == states.CHANGING_LETTER_NODRAG) {
+                state = states.IDLE;
+                chooseLetterLayer.setVisible(false);
+
+                var oldWord = quatGame.getCurrentWord(),
+                    newWord = oldWord.substr(0,lastColumn) + chooseLetterLayer.getBaseLetter() + oldWord.substr(lastColumn + 1);
+
+                newWord = newWord.toLowerCase();
+
+                var result = quatGame.addWord(newWord);
+                if (result) {
+                    if (quatGame.atGoal()) {
+                        quatGame.newPuzzle();
+                        solutionLayer.updateGoal(quatGame.getGoal());
+                    }
+                    solutionLayer.updateSolution(quatGame.getCurrentSteps());
+                } else {
+                    console.log(newWord + " is not a word");
+                }
+            }
+        };
+
+        var inputBegan = function(x,y) {
+            lastMouseDown = {x: x, y: y};
+
+            if (state == states.IDLE) {
+
+                // Check to see if this is a click in the current word
+                var currentLetter = solutionLayer.pointInCurrentWord(x,y);
+                if (currentLetter !== false) {
+                    chooseLetterLayer.x = (currentLetter * (solutionSize.width / 4)) + solutionSize.x;
+                    chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[currentLetter]);
+                    chooseLetterLayer.setVisible(true);
+                    lastColumn = currentLetter;
+                    state = states.CHOOSING_LETTER;
+                }
+            }
+            else if (state == states.CHANGING_LETTER_NODRAG) {
+                var currentColumn = solutionLayer.pointInColumn(x,y);
+
+                if ((currentColumn === false) || (currentColumn != lastColumn)) {
+                    chooseLetterLayer.setVisible(false);
+                    state = states.IDLE;
+                } 
+                else if (y >= solutionLayer.topOfCurrentWord()){
+                    state = states.CHANGING_LETTER_DRAG;
+                }
+            }
         };
 
         // Handles mouse events and transitions between states
         cc.eventManager.addListener({
             event: cc.EventListener.MOUSE,
             onMouseMove: function(event){
-                var coords = transpose(event),
-                    x = coords.x,
-                    y = coords.y;
+                var coords = transpose(event);
                 
-                if (state == states.CHOOSING_LETTER) {
-                    var currentLetter = solutionLayer.pointInCurrentWord(x,y);
-
-                    // In other words, the mouse moved out of the original area
-                    // And not into another letter
-                    if (currentLetter === false) {
-                        var currentColumn = solutionLayer.pointInColumn(x,y);
-
-                        // If the user stayed within the current column
-                        if (currentColumn == lastColumn) {
-                            var offset = y - lastMouseDown.y;
-                            state = states.CHANGING_LETTER_DRAG;
-                            chooseLetterLayer.setOffset(offset);
-
-                        // Otherwise close everything out
-                        } else {
-                            state = states.IDLE;
-                            chooseLetterLayer.setVisible(false);
-                            return;
-                        }
-                    } else {
-                        chooseLetterLayer.x = (currentLetter * (solutionSize.width / 4)) + solutionSize.x;
-                        chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[currentLetter]);
-                        lastColumn = currentLetter;
-                    }
-                }
-                else if (state == states.CHANGING_LETTER_DRAG) {
-                    var offset = y - solutionLayer.bottomOfCurrentWord();
-                    // var offset = y - lastMouseDown.y;
-                    chooseLetterLayer.setOffset(offset);
-                }
+                inputMoved(coords.x, coords.y);
             },
             onMouseUp: function(event){
-                var coords = transpose(event),
-                    x = coords.x,
-                    y = coords.y;
-
-                if (state == states.CHOOSING_LETTER) {
-                    chooseLetterLayer.setVisible(false);
-                    state = states.IDLE;
-                }
-                else if (state == states.CHANGING_LETTER_DRAG) {
-                    var currentLetter = solutionLayer.pointInCurrentWord(x,y);
-                    var currentColumn = solutionLayer.pointInColumn(x,y);
-
-                    if ((currentLetter === false) && (currentColumn !== false)) {
-                        chooseLetterLayer.setBaseLetter(chooseLetterLayer.getBaseLetter());
-                        state = states.CHANGING_LETTER_NODRAG;
-                    }
-                }
-                else if (state == states.CHANGING_LETTER_NODRAG) {
-                    state = states.IDLE;
-                    chooseLetterLayer.setVisible(false);
-
-                    var oldWord = quatGame.getCurrentWord(),
-                        newWord = oldWord.substr(0,lastColumn) + chooseLetterLayer.getBaseLetter() + oldWord.substr(lastColumn + 1);
-
-                    newWord = newWord.toLowerCase();
-
-                    var result = quatGame.addWord(newWord);
-                    if (result) {
-                        solutionLayer.updateSolution(quatGame.getCurrentSteps());
-                    } else {
-                        console.log(newWord + " is not a word");
-                    }
-                }
+                var coords = transpose(event);
+                inputDone(coords.x, coords.y);
             },
             onMouseDown: function(event){
-                var coords = transpose(event),
-                    x = coords.x,
-                    y = coords.y;
-
-                lastMouseDown = {x: x, y: y};
-
-                if (state == states.IDLE) {
-
-                    // Check to see if this is a click in the current word
-                    var currentLetter = solutionLayer.pointInCurrentWord(x,y);
-                    if (currentLetter !== false) {
-                        chooseLetterLayer.x = (currentLetter * (solutionSize.width / 4)) + solutionSize.x;
-                        chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[currentLetter]);
-                        chooseLetterLayer.setVisible(true);
-                        lastColumn = currentLetter;
-                        state = states.CHOOSING_LETTER;
-                    }
-                }
-                else if (state == states.CHANGING_LETTER_NODRAG) {
-                    var currentColumn = solutionLayer.pointInColumn(x,y);
-
-                    if ((currentColumn === false) || (currentColumn != lastColumn)) {
-                        chooseLetterLayer.setVisible(false);
-                        state = states.IDLE;
-                    } 
-                    else if (y >= solutionLayer.topOfCurrentWord()){
-                        console.log("Changing to drag from down");
-                        state = states.CHANGING_LETTER_DRAG;
-                    }
-                }
+                var coords = transpose(event);
+                inputBegan(coords.x, coords.y);
             },
             onMouseScroll: function(event){
+            }
+        },this);
+
+        // Touch listener (kind of buggy, hard to test)
+        var trackingTouch = false;
+        cc.eventManager.addListener({
+            event: cc.EventListener.TOUCH_ONE_BY_ONE,
+            swallowTouches: true,
+            onTouchBegan: function(event) {
+                if (trackingTouch) {
+                    return false;
+                } else {
+                    trackingTouch = true;
+                }
+                
+                var coords = transpose(event);
+                inputBegan(coords.x, coords.y);
+
+                return true;
+            },
+            onTouchMoved: function(event){
+                var coords = transpose(event);
+                inputMoved(coords.x, coords.y);
+                return true;
+            },
+            onTouchEnded: function(event){
+
+                var coords = transpose(event);
+                inputDone(coords.x, coords.y);
+                trackingTouch = false;
+                return true;
             }
         },this);
 
@@ -681,6 +719,7 @@ var PuzzleScene = cc.Scene.extend({
                     chooseLetterLayer.x = (number * (solutionSize.width / 4)) + solutionSize.x;
                     chooseLetterLayer.setBaseLetter(quatGame.getCurrentWord()[number]);
                     chooseLetterLayer.setVisible(true);
+                    return;
                 }
 
                 // Try to understand they key as a letter
@@ -731,20 +770,7 @@ var PuzzleScene = cc.Scene.extend({
             }
         }, this);
 
-        // Touch listener (kind of buggy, hard to test)
-        // cc.eventManager.addListener({
-        //     event: cc.EventListener.TOUCH_ONE_BY_ONE,
-        //     swallowTouches: true,
-        //     onTouchBegan: function(event){
-        //         console.log(event);
-        //     },
-        //     onTouchMoved: function(event){
-        //         console.log(event);
-        //     },
-        //     onTouchEnded: function(event){
-        //         console.log(event);
-        //     }
-        // },this);
+        
     }
 });
 

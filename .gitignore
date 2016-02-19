@@ -2,6 +2,7 @@ app/.idea/**
 app/frameworks/**
 app/linux-build/**
 app/publish/**
+app/CMakeLists.txt
 **.pyc
 
 data/words.js

@@ -51,7 +51,7 @@ class QuatModel {
 	 * Delete the most recent step in the solution.
 	 */
 	goBack() {
-		if (this.currentSteps.length >= 1) {
+		if (this.currentSteps.length > 1) {
 			// Slice off the last step in the array
 			this.currentSteps = this.currentSteps.slice(0,-1);
 		}
