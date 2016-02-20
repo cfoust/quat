@@ -13,9 +13,13 @@
     "jsList" : [
         "src/words.js",
         "src/model.js",
+
         "src/solver/WordNode.js",
         "src/solver/ChooseLetterLayer.js",
         "src/solver/BackgroundLayer.js",
+        "src/solver/StateController.js",
+        "src/solver/TouchInputManager.js",
+        "src/solver/KeyboardInputManager.js",
         "src/solver/SolutionLayer.js",
         "src/solver/PuzzleScene.js"
     ]
