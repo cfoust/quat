@@ -9,6 +9,7 @@ quat.solver.TouchInputManager = function(puzzleScene) {
 	// Grab all the references to things we need from puzzleScene
 	this.quatGame = puzzleScene.quatGame;
     this.solutionLayer = puzzleScene.solutionLayer;
+    this.solutionSize = puzzleScene.solutionSize;
     this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
     this.sc = puzzleScene.stateController;
 
@@ -20,6 +21,9 @@ quat.solver.TouchInputManager = function(puzzleScene) {
 
     // Records the previous y offset of the last drag action
     this.previousOffset = 0;
+
+    this.gestureThreshold = this.solutionSize.width * 0.03;
+    this.distanceThreshold = this.solutionSize.width * 0.61;
 }
 
 quat.solver.TouchInputManager.prototype.inputBegan = function(x, y) {
@@ -32,6 +36,8 @@ quat.solver.TouchInputManager.prototype.inputBegan = function(x, y) {
         if (currentLetter !== false) {
             this.lastColumn = currentLetter;
             this.sc.CHOOSING_LETTER(currentLetter);
+        } else if (y > this.solutionLayer.topOfCurrentWord()) {
+            this.sc.GESTURING();
         }
     }
     else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
@@ -91,6 +97,40 @@ quat.solver.TouchInputManager.prototype.inputMoved = function(x, y) {
         var offset = y - this.lastMouseDown.y;
         this.chooseLetterLayer.setOffset(offset);
     }
+    else if (this.sc.state == this.sc.states.GESTURING) {
+        var xDelta = x -this.lastMouseDown.x,
+            yDelta = y - this.lastMouseDown.y,
+            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
+            angle = Math.atan2(yDelta, xDelta);
+        
+        if (((Math.PI - Math.abs(angle)) <= 0.30) &&
+            (distance > this.gestureThreshold)) {
+            this.sc.ERASING_WORD();
+        }
+    }
+    else if (this.sc.state == this.sc.states.ERASING_WORD) {
+        var xDelta = x -this.lastMouseDown.x,
+            yDelta = y - this.lastMouseDown.y,
+            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
+            angle = Math.atan2(yDelta, xDelta);
+
+        if ((Math.PI - Math.abs(angle)) <= 0.30) {
+            if (distance > this.distanceThreshold) {
+                this.quatGame.goBack();
+                this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
+                this.lastMouseDown = {x: x, y: y};
+                this.sc.GESTURING();
+            } 
+            else {
+                var percent = (this.distanceThreshold - distance) / this.distanceThreshold;
+                percent = percent * 255;
+                this.solutionLayer.setCurrentOpacity(percent);
+            }
+        } else {
+            this.solutionLayer.setCurrentOpacity(255);
+            this.sc.GESTURING();
+        }
+    }
 };
 
 quat.solver.TouchInputManager.prototype.finishWord = function() {
@@ -147,6 +187,8 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
          */
         } else if ((currentLetter === this.lastColumn) && (currentColumn == this.lastColumn)) {
             this.finishWord();
+        } else {
+            this.sc.CHANGING_LETTER_NODRAG();
         }
     }
     /*
@@ -154,5 +196,12 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
      */
     else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
         this.finishWord();   
+    }
+    else if (this.sc.state == this.sc.states.GESTURING) {
+        this.sc.IDLE();
+    }
+    else if (this.sc.state == this.sc.states.ERASING_WORD) {
+        this.solutionLayer.setCurrentOpacity(255);
+        this.sc.IDLE();
     }
 };

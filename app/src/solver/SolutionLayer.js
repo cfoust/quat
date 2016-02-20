@@ -64,9 +64,15 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         goalBackground.zIndex = 0;
 
         this.goalBackground = goalBackground;
+
         this.addChild(goalBackground);
 
         return true;
+    },
+
+    
+    setCurrentOpacity: function(opacity) {
+        this.wordPool[0].setOpacity(opacity);
     },
 
     /**
@@ -113,10 +119,18 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         return loc;
     },
 
+    /**
+     * Returns the y position of the bottom of the current word.
+     * @return {number} The y position of the bottom of the current word.
+     */
     bottomOfCurrentWord: function() {
         return (this.fontTotal / 2) + (this.fontSize / 2);
     },
 
+    /**
+     * Returns the y position of the top of the current word.
+     * @return {number} The y position of the top of the current word.
+     */
     topOfCurrentWord: function() {
         return this.bottomOfCurrentWord() + this.fontSize;
     },
@@ -145,11 +159,16 @@ quat.solver.SolutionLayer = cc.Layer.extend({
             var word = this.wordPool[i];
             word.y = (this.fontTotal / 2) + this.fontSize + (i * this.fontSize);
             word.changeWord(reversed[i]);
+            word.setOpacity(255);
             word.setVisible(true);
         }
 
     },
 
+    /**
+     * Change the word that's shown as the goal word.
+     * @param  {String} goal Goal word the user is looking to reach.
+     */
     updateGoal: function(goal) {
         var word = this.goalWord;
         word.changeWord(goal);

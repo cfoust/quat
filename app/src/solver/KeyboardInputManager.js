@@ -29,8 +29,6 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	    	return;
 	    }
 
-	    console.log(number);
-
 	    // Shift the number down one to match the indexes of letters
 	    number -= 1;
 
@@ -84,6 +82,8 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	else if ((this.sc.state == this.sc.states.IDLE) &&
 	         (keyCode == 8)) {
 	    this.quatGame.goBack();
-	    this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
+	    this.sc.IDLE();
 	}
+
+	// todo: enable arrow key support for manipulating letter chooser
 };

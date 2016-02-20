@@ -220,9 +220,9 @@ puzzles = open('words.js','wb+')
 
 # Number of problems to generate
 problems = 1000
-difficulty = 5200
-
-puzzles.write('QUAT_PROBLEMS=[')
+difficulty = 4000
+puzzles.write('var quat = quat || {};\n')
+puzzles.write('quat.puzzles=[')
 i = 0
 while True:
 	# Attempt to generate a puzzle
@@ -234,7 +234,7 @@ while True:
 	solution = problem[2]
 	
 	# If we didn't get a solution, try again and don't count it
-	if len(solution) == 0 or not solution:
+	if len(solution) == 0 or not solution or len(solution) < 6:
 		continue
 
 	i += 1
@@ -248,7 +248,7 @@ while True:
 puzzles.write(']')
 
 ## Now we write out the dictionary
-puzzles.write('\nQUAT_DICT={')
+puzzles.write('\nquat.dictionary={')
 for word in words:
 	puzzles.write("%s:1," % word)
 puzzles.write('}')

@@ -35,6 +35,15 @@ quat.solver.StateController = function(puzzleScene) {
         enter it into the solution or drag again.
          */
         CHANGING_LETTER_NODRAG: 3,
+        /*
+        The user started dragging in the solution space outside of the current
+        word.
+         */
+        GESTURING: 4,
+        /*
+        The user has started swiping to the left to erase a word.
+         */
+        ERASING_WORD: 5
     };
 
 
@@ -50,7 +59,7 @@ quat.solver.StateController.prototype.IDLE = function() {
 		(this.state == this.states.CHOOSING_LETTER)) {
 		this.chooseLetterLayer.setVisible(false);
 	}
-
+    this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
 	this.state = this.states.IDLE;
 };
 
@@ -70,4 +79,12 @@ quat.solver.StateController.prototype.CHANGING_LETTER_DRAG = function() {
 
 quat.solver.StateController.prototype.CHANGING_LETTER_NODRAG = function() {
 	this.state = this.states.CHANGING_LETTER_NODRAG;
+};
+
+quat.solver.StateController.prototype.GESTURING = function() {
+    this.state = this.states.GESTURING;
+};
+
+quat.solver.StateController.prototype.ERASING_WORD = function() {
+    this.state = this.states.ERASING_WORD;
 };

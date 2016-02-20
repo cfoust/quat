@@ -51,7 +51,7 @@ quat.solver.PuzzleScene = cc.Scene.extend({
         this._super();
 
         // Initialize the model and get a new puzzle
-        var quatGame = new QuatModel();
+        var quatGame = new quat.GameInfo();
         this.quatGame = quatGame;
         quatGame.newPuzzle();
 

@@ -50,5 +50,12 @@ quat.solver.WordNode = cc.Node.extend({
             var letterLabel = this.rowPool[j];
             letterLabel.setFontFillColor(color);
         }
+    },
+
+    setOpacity: function(opacity) {
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.rowPool[j];
+            letterLabel.setOpacity(opacity);
+        }
     }
 });
