@@ -77,6 +77,18 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	         (keyCode == 8)) {
 	    this.sc.IDLE();
 	}
+	// If user enters up on the arrow pad while the 
+	// letter chooser is shown, scroll up
+	else if ((this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) &&
+	         (keyCode == 38)) {
+	    this.chooseLetterLayer.shiftDelta(1);
+	}
+	// If user enters down on the arrow pad while the 
+	// letter chooser is shown, scroll down
+	else if ((this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) &&
+	         (keyCode == 40)) {
+	    this.chooseLetterLayer.shiftDelta(-1);
+	}
 	// If the user enters a backspace while idle, see if we
 	// can remove one of the last words
 	else if ((this.sc.state == this.sc.states.IDLE) &&
