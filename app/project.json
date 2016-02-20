@@ -13,7 +13,10 @@
     "jsList" : [
         "src/words.js",
         "src/model.js",
-        "src/resource.js",
-        "src/app.js"
+        "src/solver/WordNode.js",
+        "src/solver/ChooseLetterLayer.js",
+        "src/solver/BackgroundLayer.js",
+        "src/solver/SolutionLayer.js",
+        "src/solver/PuzzleScene.js"
     ]
 }

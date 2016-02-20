@@ -17,10 +17,6 @@ cc.game.onStart = function(){
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
     
-    //load resources
-    cc.LoaderScene.preload(g_resources, function () {
-        // We pass on the window width and height for resolution independence
-        cc.director.runScene(new PuzzleScene(w,h));
-    }, this);
+    cc.director.runScene(new quat.solver.PuzzleScene(w,h));
 };
 cc.game.run();
