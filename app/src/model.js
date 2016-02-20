@@ -80,7 +80,7 @@ class QuatModel {
 				differences++;
 			}
 		}
-
+	
 		if (differences != 1) {
 			return false;
 		}

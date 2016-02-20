@@ -51,13 +51,13 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         goalWord.y = panelHeight / 2;
         goalWord.zIndex = 1;
 
-        goalWord.setColor(cc.color(62,33,74,255));
+        goalWord.setColor(cc.color(0,0,128,255));
         
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
         // Set up a background for the goal word
-        var goalBackground = new cc.LayerColor(cc.color(125,150,53,255));
+        var goalBackground = new cc.LayerColor(cc.color(0,191,255,255));
 
         goalBackground.height = panelHeight;
         goalBackground.width = size.width;

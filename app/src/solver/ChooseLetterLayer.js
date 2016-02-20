@@ -23,6 +23,7 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
             var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
             letterLabel.x = (width / 2);
             letterLabel.y = (fontTotal / 2) + fontSize + (i * fontSize);
+			letterLabel.setColor(cc.color(176,196,222,255));
             // letterLabel.y = (fontTotal / 2) + (i * fontSize);
             letterLabel.zIndex = 1;
             this.addChild(letterLabel);
@@ -31,7 +32,7 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
         this.letterPool = letterPool;
 
         // Add a background behind the letter selector
-        var colorBackground = new cc.LayerColor(cc.color(133,150,83,255));
+        var colorBackground = new cc.LayerColor(cc.color(25,25,112,255));
 
         // Make it the same dimensions as the selector
         colorBackground.width = width;
@@ -188,5 +189,14 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
             newIndex += this.uppercase.length;
         }
         this.redrawFromLetter(this.uppercase[newIndex]);
-    }
+    },
+	
+	shift: function(delta) {
+		var newIndex = this.baseLetterIndex + delta;
+		newIndex %= this.uppercase.length;
+        if (newIndex < 0) {
+            newIndex += this.uppercase.length;
+        }
+		this.setBaseLetter(this.uppercase[newIndex]);
+	}
 });
