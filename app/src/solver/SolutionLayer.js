@@ -97,6 +97,11 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         var fourths = this.size.width / 4,
             loc = (x - (x % fourths)) / fourths;
 
+        // Handles edge case where loc can be 4 if the border falls on a pixel
+        if (loc >= 4) {
+            return false;
+        }
+
         return loc;
     },
 
