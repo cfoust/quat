@@ -147,17 +147,10 @@ quat.solver.TouchInputManager.prototype.inputMoved = function(x, y) {
             angle = Math.atan2(yDelta, xDelta);
 
         if ((Math.PI - Math.abs(angle)) <= 0.30) {
-            if (distance > this.distanceThreshold) {
-                this.quatGame.goBack();
-                this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
-                this.lastMouseDown = {x: x, y: y};
-                this.sc.GESTURING();
-            } 
-            else {
-                var percent = (this.distanceThreshold - distance) / this.distanceThreshold;
-                percent = percent * 255;
-                this.solutionLayer.setCurrentOpacity(percent);
-            }
+            var percent = (this.distanceThreshold - distance) / this.distanceThreshold;
+            percent = Math.min((percent * 255) + 30, 255);
+
+            this.solutionLayer.setCurrentOpacity(percent);
         } else {
             this.solutionLayer.setCurrentOpacity(255);
             this.sc.GESTURING();
@@ -244,7 +237,19 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
         this.sc.IDLE();
     }
     else if (this.sc.state == this.sc.states.ERASING_WORD) {
-        this.solutionLayer.setCurrentOpacity(255);
+        var xDelta = x -this.lastMouseDown.x,
+            yDelta = y - this.lastMouseDown.y,
+            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
+            angle = Math.atan2(yDelta, xDelta);
+
+        if (((Math.PI - Math.abs(angle)) <= 0.30) && 
+            (distance > this.distanceThreshold)) {
+            this.quatGame.goBack();
+            this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
+        } else {
+            this.solutionLayer.setCurrentOpacity(255);
+            
+        }
         this.sc.IDLE();
     }
 };
