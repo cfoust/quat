@@ -16,6 +16,8 @@ quat.solver.TouchInputManager = function(puzzleScene) {
     // Used to track the last column the user had clicked in
     this.lastColumn = -1;
 
+    this.lastLetter = "";
+
     // Records the last location the user started touching or clicking
     this.lastMouseDown = {};
 
@@ -40,13 +42,42 @@ quat.solver.TouchInputManager.prototype.inputBegan = function(x, y) {
             this.sc.GESTURING();
         }
     }
-    else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
-        var currentColumn = this.solutionLayer.pointInColumn(x,y);
+    else if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
+        var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
+            currentColumn = this.solutionLayer.pointInColumn(x,y);
 
-        if ((currentColumn === false) || (currentColumn != this.lastColumn)) {
+        /*
+        If we have the letter chooser open and the user clicks on another 
+        letter in the current word.
+         */
+        if ((currentLetter !== false) && (currentColumn != this.lastColumn)) {
+            this.lastColumn = currentLetter;
+            this.sc.CHOOSING_LETTER(currentLetter);
+        }
+        else if (currentColumn == this.lastColumn) {
+            // Get the letter at this point on the letter chooser
+            this.lastColumn = currentColumn;
+            this.lastLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord());
+            this.sc.CHANGING_LETTER_DRAG();
+        }
+        else {
+            this.sc.IDLE();
+        }
+    }
+    else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
+        var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
+            currentColumn = this.solutionLayer.pointInColumn(x,y);
+
+        if ((currentColumn != this.lastColumn) && (currentLetter !== false)) {
+            this.lastColumn = currentLetter;
+            this.sc.CHOOSING_LETTER(currentLetter);
+        }
+        else if ((currentLetter === false) && (currentColumn != this.lastColumn)) {
             this.sc.IDLE();
         }
         else {
+            // Get the letter at this point on the letter chooser
+            this.lastLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord());
         	this.sc.CHANGING_LETTER_DRAG();
         }
     }
@@ -104,7 +135,8 @@ quat.solver.TouchInputManager.prototype.inputMoved = function(x, y) {
             angle = Math.atan2(yDelta, xDelta);
         
         if (((Math.PI - Math.abs(angle)) <= 0.30) &&
-            (distance > this.gestureThreshold)) {
+            (distance > this.gestureThreshold) &&
+            (this.quatGame.getCurrentSteps().length > 1)) {
             this.sc.ERASING_WORD();
         }
     }
@@ -159,21 +191,31 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
 	The user slid along the current word to bring up the letter choosers, but
 	never dragged upwards to start changing a letter. We just hide the chooser.
 	 */
-    if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
-    	this.sc.IDLE();
-    }
+    // if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
+    // 	this.sc.IDLE();
+    // }
     /*
     The user stopped dragging after starting to move the letter chooser.
      */
-    else if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
-        var currentLetter = this.solutionLayer.pointInCurrentWord(x,y);
-        var currentColumn = this.solutionLayer.pointInColumn(x,y);
+    if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
+        var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
+            currentChooserLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord()),
+            currentColumn = this.solutionLayer.pointInColumn(x,y);
 
+        /*
+        The user tapped on a letter in the letter chooser. Let's select that letter.
+         */
+        if ((currentLetter === false) && 
+                 (currentColumn !== false) &&
+                 (currentChooserLetter == this.lastLetter)) {
+            this.chooseLetterLayer.setBaseLetter(this.lastLetter);
+            this.sc.CHANGING_LETTER_NODRAG();
+        }
         /*
         The user stopped dragging outside of a letter, so we keep the letter
         chooser up and let them keep manipulating it.
          */
-        if ((currentLetter === false) && (currentColumn !== false)) {
+        else if ((currentLetter === false) && (currentColumn !== false)) {
         	// Resets the base letter to the current letter. 
         	// This looks nonsensical, but it's a problem of method naming more
         	// than anything. The getBaseLetter() method returns the CURRENT
@@ -181,11 +223,12 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
         	// offset.
             this.chooseLetterLayer.setBaseLetter(this.chooseLetterLayer.getBaseLetter());
             this.sc.CHANGING_LETTER_NODRAG();
+        }
         /*
         The user stopped dragging or touched inside a letter after selecting a 
         letter with the letter chooser, so we enter their choice.
          */
-        } else if ((currentLetter === this.lastColumn) && (currentColumn == this.lastColumn)) {
+        else if ((currentLetter === this.lastColumn) && (currentColumn == this.lastColumn)) {
             this.finishWord();
         } else {
             this.sc.CHANGING_LETTER_NODRAG();

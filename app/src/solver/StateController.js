@@ -50,6 +50,16 @@ quat.solver.StateController = function(puzzleScene) {
     // Sets the current state to IDLE
     this.state = this.states.IDLE;
 
+    // Setting this to true prints every state change
+    this.developer = false;
+
+    this.setState = function(state) {
+        if (this.developer) {
+            console.log(this.state + "->" + state);
+        }
+        this.state = state;
+    };
+
     // Records the previous y offset of the last drag action
     this.previousOffset = 0;
 }
@@ -60,7 +70,7 @@ quat.solver.StateController.prototype.IDLE = function() {
 		this.chooseLetterLayer.setVisible(false);
 	}
     this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
-	this.state = this.states.IDLE;
+	this.setState(this.states.IDLE);
 };
 
 quat.solver.StateController.prototype.CHOOSING_LETTER = function(column) {
@@ -69,22 +79,22 @@ quat.solver.StateController.prototype.CHOOSING_LETTER = function(column) {
     this.chooseLetterLayer.setBaseLetter(this.quatGame.getCurrentWord()[column]);
     this.chooseLetterLayer.setVisible(true);
 
-	this.state = this.states.CHOOSING_LETTER;
+	this.setState(this.states.CHOOSING_LETTER);
 };
 
 
 quat.solver.StateController.prototype.CHANGING_LETTER_DRAG = function() {
-	this.state = this.states.CHANGING_LETTER_DRAG;
+	this.setState(this.states.CHANGING_LETTER_DRAG);
 };
 
 quat.solver.StateController.prototype.CHANGING_LETTER_NODRAG = function() {
-	this.state = this.states.CHANGING_LETTER_NODRAG;
+	this.setState(this.states.CHANGING_LETTER_NODRAG);
 };
 
 quat.solver.StateController.prototype.GESTURING = function() {
-    this.state = this.states.GESTURING;
+    this.setState(this.states.GESTURING);
 };
 
 quat.solver.StateController.prototype.ERASING_WORD = function() {
-    this.state = this.states.ERASING_WORD;
+    this.setState(this.states.ERASING_WORD);
 };
