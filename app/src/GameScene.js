@@ -31,7 +31,7 @@ quat.GameScene = cc.Scene.extend({
         this.stateController = new quat.GameStateController(this);
 
         // Initialize the input manager for touches/clicks
-        var touchInputManager = new quat.TouchInputManager(this, this.puzzleLayer.solutionSize.width);
+        var touchInputManager = new quat.GameTouchInputManager(this, this.puzzleLayer.solutionSize.width);
         this.touchInputManager = touchInputManager;
 
         // Touch listener

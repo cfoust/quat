@@ -94,7 +94,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.stateController = stateController;
 
         // Initialize the input manager for touches/clicks
-        var touchInputManager = new quat.solver.TouchInputManager(this);
+        var touchInputManager = new quat.solver.SolverTouchInputManager(this);
         this.touchInputManager = touchInputManager;
 
         // Initialize the input manager for key presses
