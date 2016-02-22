@@ -2,16 +2,17 @@ var quat = quat || {};
 quat.solver = quat.solver || {};
 
 /**
- * Handles coordinate-based inputs for the PuzzleScene class. Transitions
+ * Handles coordinate-based inputs for the puzzleLayer class. Transitions
  * from state to state and manipulates the game based on user input.
  */
-quat.solver.TouchInputManager = function(puzzleScene) {
-	// Grab all the references to things we need from puzzleScene
-	this.quatGame = puzzleScene.quatGame;
-    this.solutionLayer = puzzleScene.solutionLayer;
-    this.solutionSize = puzzleScene.solutionSize;
-    this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
-    this.sc = puzzleScene.stateController;
+quat.solver.TouchInputManager = function(puzzleLayer) {
+	// Grab all the references to things we need from puzzleLayer
+	this.quatGame = puzzleLayer.quatGame;
+    this.puzzleLayer = puzzleLayer; 
+    this.solutionLayer = puzzleLayer.solutionLayer;
+    this.solutionSize = puzzleLayer.solutionSize;
+    this.chooseLetterLayer = puzzleLayer.chooseLetterLayer;
+    this.sc = puzzleLayer.stateController;
 
     // Used to track the last column the user had clicked in
     this.lastColumn = -1;
@@ -26,6 +27,22 @@ quat.solver.TouchInputManager = function(puzzleScene) {
 
     this.gestureThreshold = this.solutionSize.width * 0.03;
     this.distanceThreshold = this.solutionSize.width * 0.61;
+
+    /**
+     * Calculates the angle and distance of from the last mouse down to the
+     * given point.
+     * @param  {number} x x coordinate
+     * @param  {number} y y coordinate
+     * @return {Object} Object with 'angle' and 'distance' fields.
+     */
+    this.calculateVector = function(x,y) {
+        var xDelta = x -this.lastMouseDown.x,
+            yDelta = y - this.lastMouseDown.y,
+            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
+            angle = Math.atan2(yDelta, xDelta);
+
+        return {distance: distance, angle: angle};
+    }
 }
 
 quat.solver.TouchInputManager.prototype.inputBegan = function(x, y) {
@@ -129,11 +146,11 @@ quat.solver.TouchInputManager.prototype.inputMoved = function(x, y) {
         this.chooseLetterLayer.setOffset(offset);
     }
     else if (this.sc.state == this.sc.states.GESTURING) {
-        var xDelta = x -this.lastMouseDown.x,
-            yDelta = y - this.lastMouseDown.y,
-            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
-            angle = Math.atan2(yDelta, xDelta);
+        var vector = this.calculateVector(x,y),
+            angle = vector.angle,
+            distance = vector.distance;
         
+        // The user is dragging from right to left
         if (((Math.PI - Math.abs(angle)) <= 0.30) &&
             (distance > this.gestureThreshold) &&
             (this.quatGame.getCurrentSteps().length > 1)) {
@@ -141,18 +158,20 @@ quat.solver.TouchInputManager.prototype.inputMoved = function(x, y) {
         }
     }
     else if (this.sc.state == this.sc.states.ERASING_WORD) {
-        var xDelta = x -this.lastMouseDown.x,
-            yDelta = y - this.lastMouseDown.y,
-            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
-            angle = Math.atan2(yDelta, xDelta);
+        var vector = this.calculateVector(x,y),
+            angle = vector.angle,
+            distance = vector.distance;
 
+        // The user is dragging and has maintained the strict right-to-left
+        // angle. They have to stay within 0.3 radians the whole time
         if ((Math.PI - Math.abs(angle)) <= 0.30) {
             var percent = (this.distanceThreshold - distance) / this.distanceThreshold;
-            percent = Math.min((percent * 255) + 30, 255);
 
-            this.solutionLayer.setCurrentOpacity(percent);
+            percent = Math.min((percent * 255) + 30, 255);
+            this.solutionLayer.setCurrentWordOpacity(percent);
+        // Looks like they decided otherwise, stop tracking this touch
         } else {
-            this.solutionLayer.setCurrentOpacity(255);
+            this.solutionLayer.setCurrentWordOpacity(255);
             this.sc.GESTURING();
         }
     }
@@ -237,17 +256,16 @@ quat.solver.TouchInputManager.prototype.inputDone = function(x, y) {
         this.sc.IDLE();
     }
     else if (this.sc.state == this.sc.states.ERASING_WORD) {
-        var xDelta = x -this.lastMouseDown.x,
-            yDelta = y - this.lastMouseDown.y,
-            distance = Math.sqrt(Math.pow(xDelta,2) + Math.pow(yDelta,2)),
-            angle = Math.atan2(yDelta, xDelta);
+        var vector = this.calculateVector(x,y),
+            angle = vector.angle,
+            distance = vector.distance;
 
         if (((Math.PI - Math.abs(angle)) <= 0.30) && 
             (distance > this.distanceThreshold)) {
             this.quatGame.goBack();
             this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
         } else {
-            this.solutionLayer.setCurrentOpacity(255);
+            this.solutionLayer.setCurrentWordOpacity(255);
             
         }
         this.sc.IDLE();

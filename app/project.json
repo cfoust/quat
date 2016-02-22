@@ -16,11 +16,15 @@
 
         "src/solver/WordNode.js",
         "src/solver/ChooseLetterLayer.js",
-        "src/solver/BackgroundLayer.js",
-        "src/solver/StateController.js",
+        "src/solver/SolverStateController.js",
         "src/solver/TouchInputManager.js",
         "src/solver/KeyboardInputManager.js",
         "src/solver/SolutionLayer.js",
-        "src/solver/PuzzleScene.js"
+        "src/solver/PuzzleLayer.js",
+
+        "src/BackgroundLayer.js",
+        "src/TouchInputManager.js",
+        "src/GameStateController.js",
+        "src/GameScene.js"
     ]
 }

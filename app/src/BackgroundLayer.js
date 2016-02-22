@@ -1,8 +1,7 @@
 var quat = quat || {};
-quat.solver = quat.solver || {};
 
 // Colored background layer
-quat.solver.BackgroundLayer = cc.Layer.extend({
+quat.BackgroundLayer = cc.Layer.extend({
     ctor:function () {
         this._super();
 

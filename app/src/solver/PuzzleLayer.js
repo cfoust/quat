@@ -1,7 +1,7 @@
 var quat = quat || {};
 quat.solver = quat.solver || {};
 
-quat.solver.PuzzleScene = cc.Scene.extend({
+quat.solver.PuzzleLayer = cc.Layer.extend({
     ctor: function(windowWidth, windowHeight) {
         this._super();
 
@@ -56,8 +56,7 @@ quat.solver.PuzzleScene = cc.Scene.extend({
         quatGame.newPuzzle();
 
         // Initialize our layers
-        var backgroundLayer = new quat.solver.BackgroundLayer(),
-            solutionSize = this.calculateSize(),
+        var solutionSize = this.calculateSize(),
             fontSize = solutionSize.width * 0.18,
             solutionLayer = new quat.solver.SolutionLayer(solutionSize.width, 
                                               solutionSize.height,
@@ -78,12 +77,10 @@ quat.solver.PuzzleScene = cc.Scene.extend({
         chooseLetterLayer.y = solutionSize.y;
 
         // Add each layer to this rendering target
-        this.addChild(backgroundLayer);
         this.addChild(solutionLayer);
         this.addChild(chooseLetterLayer);
 
         // Have them be accessible from other methods
-        this.backgroundLayer = backgroundLayer;
         this.solutionLayer = solutionLayer;
         this.chooseLetterLayer = chooseLetterLayer;
         this.solutionSize = solutionSize;
@@ -93,7 +90,7 @@ quat.solver.PuzzleScene = cc.Scene.extend({
         solutionLayer.updateGoal(quatGame.getGoal());
 
         // Initialize the state controller for GUI state handling
-        var stateController = new quat.solver.StateController(this);
+        var stateController = new quat.solver.SolverStateController(this);
         this.stateController = stateController;
 
         // Initialize the input manager for touches/clicks
@@ -123,7 +120,7 @@ quat.solver.PuzzleScene = cc.Scene.extend({
         var trackingTouch = false;
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
-            swallowTouches: true,
+            swallowTouches: false,
             onTouchBegan: function(event) {
                 if (trackingTouch) {
                     return false;
@@ -156,8 +153,12 @@ quat.solver.PuzzleScene = cc.Scene.extend({
                 keyInputManager.inputKeycode(keyCode);
             }
         }, this);
+    },
 
-        
+    setOpacity: function(opacity) {
+        this.solutionLayer.setOpacity(opacity);
+        this.solutionLayer.setOpacity(opacity);
+        this.chooseLetterLayer.setOpacity(opacity);
     }
 });
 

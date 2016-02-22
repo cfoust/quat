@@ -2,6 +2,7 @@ app/.idea/**
 app/frameworks/**
 app/linux-build/**
 app/publish/**
+app/simulator/**
 app/CMakeLists.txt
 **.pyc
 

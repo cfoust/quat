@@ -17,6 +17,6 @@ cc.game.onStart = function(){
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
     
-    cc.director.runScene(new quat.solver.PuzzleScene(w,h));
+    cc.director.runScene(new quat.GameScene(w,h));
 };
 cc.game.run();

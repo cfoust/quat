@@ -71,8 +71,19 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     },
 
     
-    setCurrentOpacity: function(opacity) {
+    setCurrentWordOpacity: function(opacity) {
         this.wordPool[0].setOpacity(opacity);
+    },
+
+    setOpacity: function(opacity) {
+        // Change all of the words
+        for (var i = 0; i < this.wordPool.length; i++) {
+            var word = this.wordPool[i];
+            word.setOpacity(opacity);
+        }
+
+        this.goalBackground.setOpacity(opacity);
+        this.goalWord.setOpacity(opacity);
     },
 
     /**

@@ -4,7 +4,7 @@ quat.solver = quat.solver || {};
 /**
  * Handles all transitions between states.
  */
-quat.solver.StateController = function(puzzleScene) {
+quat.solver.SolverStateController = function(puzzleScene) {
 	// Grab all the references to things we need from puzzleScene
 	this.quatGame = puzzleScene.quatGame;
 	this.backgroundLayer = puzzleScene.backgroundLayer;
@@ -43,7 +43,11 @@ quat.solver.StateController = function(puzzleScene) {
         /*
         The user has started swiping to the left to erase a word.
          */
-        ERASING_WORD: 5
+        ERASING_WORD: 5,
+        /*
+        The user has started swiping to the right to get to the main menu.
+         */
+        SWIPING_TO_MENU: 6
     };
 
 
@@ -53,9 +57,15 @@ quat.solver.StateController = function(puzzleScene) {
     // Setting this to true prints every state change
     this.developer = false;
 
+    var states = this.states;
+    var stateToText = function(state) {
+        var keys = Object.keys(states);
+        return keys[state];
+    }
+
     this.setState = function(state) {
         if (this.developer) {
-            console.log(this.state + "->" + state);
+            console.log(stateToText(this.state) + "->" + stateToText(state));
         }
         this.state = state;
     };
@@ -64,7 +74,7 @@ quat.solver.StateController = function(puzzleScene) {
     this.previousOffset = 0;
 }
 
-quat.solver.StateController.prototype.IDLE = function() {
+quat.solver.SolverStateController.prototype.IDLE = function() {
 	if ((this.state == this.states.CHANGING_LETTER_NODRAG) ||
 		(this.state == this.states.CHOOSING_LETTER)) {
 		this.chooseLetterLayer.setVisible(false);
@@ -73,7 +83,7 @@ quat.solver.StateController.prototype.IDLE = function() {
 	this.setState(this.states.IDLE);
 };
 
-quat.solver.StateController.prototype.CHOOSING_LETTER = function(column) {
+quat.solver.SolverStateController.prototype.CHOOSING_LETTER = function(column) {
 	// Move the letter chooser to its proper location
 	this.chooseLetterLayer.x = (column * (this.solutionSize.width / 4)) + this.solutionSize.x;
     this.chooseLetterLayer.setBaseLetter(this.quatGame.getCurrentWord()[column]);
@@ -83,18 +93,22 @@ quat.solver.StateController.prototype.CHOOSING_LETTER = function(column) {
 };
 
 
-quat.solver.StateController.prototype.CHANGING_LETTER_DRAG = function() {
+quat.solver.SolverStateController.prototype.CHANGING_LETTER_DRAG = function() {
 	this.setState(this.states.CHANGING_LETTER_DRAG);
 };
 
-quat.solver.StateController.prototype.CHANGING_LETTER_NODRAG = function() {
+quat.solver.SolverStateController.prototype.CHANGING_LETTER_NODRAG = function() {
 	this.setState(this.states.CHANGING_LETTER_NODRAG);
 };
 
-quat.solver.StateController.prototype.GESTURING = function() {
+quat.solver.SolverStateController.prototype.GESTURING = function() {
     this.setState(this.states.GESTURING);
 };
 
-quat.solver.StateController.prototype.ERASING_WORD = function() {
+quat.solver.SolverStateController.prototype.ERASING_WORD = function() {
     this.setState(this.states.ERASING_WORD);
+};
+
+quat.solver.SolverStateController.prototype.SWIPING_TO_MENU = function() {
+    this.setState(this.states.SWIPING_TO_MENU);
 };
