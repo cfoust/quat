@@ -37,6 +37,7 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
             if ((Math.abs(angle) <= 0.30) &&
                 (distance > this.gestureThreshold)) {
                 this.sc.SWIPING_TO_MENU();
+
             }
         }
         else if (this.sc.state == this.sc.states.SWIPING_TO_MENU) {

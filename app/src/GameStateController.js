@@ -22,6 +22,8 @@ quat.GameStateController = quat.StateController.extend({
     },
 
     init: function(gameScene) {
+        this._super();
+        
         this.puzzleScene = gameScene.puzzleScene;
     }
 });
