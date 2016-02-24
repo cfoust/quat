@@ -8,63 +8,63 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     ctor: function(width, height, fontSize) {
         this._super();
 
-        var size = {width: width, height: height}, // The bounds of the window
-            fourths = size.width / 4; // A fourth of the width for regions
+        var size = {width: width, height: height},
+            fourths = width / 4,
+            panelHeight = fontSize + (width * .09); // The bounds of the window
 
         this.size = size;
-
-        // Size of the font for every letter
-        var fontSize = size.width * 0.18;
         this.fontSize = fontSize;
+        this.panelHeight = panelHeight;
 
-        // Space on top and bottom of each letter (vertical)
-        var fontGap = 10;
-
-        // The total size of every word/label
-        var fontTotal = (fontSize + fontGap * 2);
-        this.fontTotal = fontTotal;
-
-        // We calculate how many words can fit on the screen
-        var wordPoolCount = Math.ceil(size.height / fontTotal) + 1;
-
-        // Create a pool because we only need so many
-        var wordPool = [];
-        for (var i = 0; i < wordPoolCount; i++) {
-            // There are four in each row
-            var word = new quat.solver.WordNode(fontSize, fourths);
-
-            word.setVisible(false);
-            word.x = fourths / 2;
-
-            this.addChild(word);
-            wordPool.push(word);
-        }
+        var currentWord = new quat.solver.WordNode(fontSize, fourths);
+        currentWord.x = fourths / 2;
+        currentWord.y = panelHeight + (fontSize / 2);
+        this.addChild(currentWord);
 
         // Allow us to access it from other functions
-        this.wordPool = wordPool;
+        this.currentWord = currentWord;
 
         // Create a word to display the goal word
         var goalWord = new quat.solver.WordNode(fontSize, fourths);
-        var panelHeight = (fontTotal / 2) + (fontSize / 2);
-        // Set it to be at the bottom of the screen
         goalWord.x = fourths / 2;
-        goalWord.y = panelHeight / 2;
+        goalWord.y = panelHeight * 0.6;
         goalWord.zIndex = 1;
-
         goalWord.setColor(cc.color(0,0,128,255));
-        
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
+        // Create a word to display the steps count
+        var smallFontSize = panelHeight * 0.20,
+            smallFontY = panelHeight * 0.17;
+        var stepsWord = new cc.LabelTTF("", "Ubuntu", smallFontSize);
+        // stepsWord.setAnchorPoint(new cc.Point(0,0.5));
+        // stepsWord.x = (fourths * .23);
+        stepsWord.x = width / 2;
+        stepsWord.y = smallFontY;
+        stepsWord.zIndex = 1;
+        stepsWord.string = "STEPS: 0 PAR: 0";
+        stepsWord.setColor(cc.color(0,0,128,255));
+        this.addChild(stepsWord);
+        this.stepsWord = stepsWord;
+
+
+        // Create a word to display the par count
+        // var parWord = new cc.LabelTTF("", "Ubuntu", panelHeight * 0.20, null, cc.TEXT_ALIGNMENT_RIGHT);
+        // parWord.setAnchorPoint(new cc.Point(1,0.5));
+        // parWord.x = width * 0.93;
+        // parWord.y = smallFontY;
+        // parWord.zIndex = 1;
+        // parWord.string = "PAR: 0";
+        // parWord.setColor(cc.color(0,0,128,255));
+        // this.addChild(parWord);
+        // this.parWord = parWord;
+
         // Set up a background for the goal word
         var goalBackground = new cc.LayerColor(cc.color(0,191,255,255));
-
         goalBackground.height = panelHeight;
         goalBackground.width = size.width;
         goalBackground.zIndex = 0;
-
         this.goalBackground = goalBackground;
-
         this.addChild(goalBackground);
 
         return true;
@@ -72,18 +72,15 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
     
     setCurrentWordOpacity: function(opacity) {
+        return;
         this.wordPool[0].setOpacity(opacity);
     },
 
     setOpacity: function(opacity) {
-        // Change all of the words
-        for (var i = 0; i < this.wordPool.length; i++) {
-            var word = this.wordPool[i];
-            word.setOpacity(opacity);
-        }
 
         this.goalBackground.setOpacity(opacity);
         this.goalWord.setOpacity(opacity);
+        this.currentWord.setOpacity(opacity);
     },
 
     /**
@@ -94,7 +91,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
      * @return {number or boolean} 
      */
     pointInCurrentWord: function(x,y) {
-        var wordY1 = (this.fontTotal / 2) + (this.fontSize / 2),
+        var wordY1 = this.panelHeight,
             wordY2 = wordY1 + (this.fontSize);
 
         // Ensure the point is in the current word
@@ -124,7 +121,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
      * @return {number or boolean} 
      */
     pointInColumn: function(x,y) {
-        var wordY1 = (this.fontTotal / 2) + (this.fontSize / 2);
+        var wordY1 = this.panelHeight;
         if ((x < 0) || (x > this.size.width) || (y < wordY1)) {
             return false;
         }
@@ -140,7 +137,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
      * @return {number} The y position of the bottom of the current word.
      */
     bottomOfCurrentWord: function() {
-        return (this.fontTotal / 2) + (this.fontSize / 2);
+        return this.panelHeight;
     },
 
     /**
@@ -151,42 +148,12 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         return this.bottomOfCurrentWord() + this.fontSize;
     },
 
-    /**
-     * Updates the view with a given solution.
-     * @param  {Array} solution Array of four-letter words (strings).
-     */
-    updateSolution: function(solution) {
-        // To filter out bad solutions
-        if (solution.length < 1) {
-            return;
-        }
+    updateFromModel: function(model) {
+        this.currentWord.changeWord(model.getCurrentWord());
+        this.goalWord.changeWord(model.getGoal());
 
-        // Have to do this so we don't mess up the original array
-        var reversed = solution.slice().reverse();
-
-        // Hide all of the words
-        for (var i = 0; i < this.wordPool.length; i++) {
-            var word = this.wordPool[i];
-            word.setVisible(false);
-        }
-
-        // Set up a word for every word in the solution.
-        for (var i = 0; i < Math.min(reversed.length, this.wordPool.length); i++) {
-            var word = this.wordPool[i];
-            word.y = (this.fontTotal / 2) + this.fontSize + (i * this.fontSize);
-            word.changeWord(reversed[i]);
-            word.setOpacity(255);
-            word.setVisible(true);
-        }
-
-    },
-
-    /**
-     * Change the word that's shown as the goal word.
-     * @param  {String} goal Goal word the user is looking to reach.
-     */
-    updateGoal: function(goal) {
-        var word = this.goalWord;
-        word.changeWord(goal);
+        var steps = (model.getCurrentSteps().length - 1),
+            par = model.getPar();
+        this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
     }
 });

@@ -7,24 +7,18 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
     ctor:function (width, height, fontSize) {
         this._super();
         this.fontSize = fontSize;
-        var fontGap = 10;
-        var fontTotal = (fontSize + fontGap * 2);
 
         // We calculate how many letters can fit on the screen with our params
         var letterPoolCount = Math.ceil(height / fontSize) + 1;
-
-        // Total height of all the letters in the alphabet
-        var totalHeight = 26 * fontTotal;
 
         // Create a pool because we only need so many
         var letterPool = [];
         for (var i = 0; i < letterPoolCount; i++) {
             // Initialize the label
-            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
+            var letterLabel = new cc.LabelTTF("A", "Ubuntu", fontSize);
             letterLabel.x = (width / 2);
-            letterLabel.y = (fontTotal / 2) + fontSize + (i * fontSize);
+            letterLabel.y = (fontSize / 2) + (i * fontSize);
 			letterLabel.setColor(cc.color(176,196,222,255));
-            // letterLabel.y = (fontTotal / 2) + (i * fontSize);
             letterLabel.zIndex = 1;
             this.addChild(letterLabel);
             letterPool.push(letterLabel);
@@ -37,9 +31,8 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
         // Make it the same dimensions as the selector
         colorBackground.width = width;
         colorBackground.height = height;
-
-        // Place it above the goal word
-        colorBackground.y = (fontTotal / 2) + fontSize / 2;
+        colorBackground.x = 0;
+        colorBackground.y = 0;
 
         // Make it so the letters sit above it
         colorBackground.zIndex = 0;

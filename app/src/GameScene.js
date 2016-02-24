@@ -20,14 +20,6 @@ quat.GameScene = cc.Scene.extend({
         this.puzzleLayer = new quat.solver.PuzzleLayer(this.windowWidth, this.windowHeight);
         this.addChild(this.puzzleLayer);
 
-        // Create the MENU word
-        var menuWord = new cc.LabelTTF("MENU", "Arial", this.puzzleLayer.solutionLayer.fontSize);
-        menuWord.x = this.windowWidth / 2;
-        menuWord.y = this.windowHeight / 2;
-        menuWord.setOpacity(0);
-        this.addChild(menuWord);
-        this.menuWord = menuWord;
-
         this.stateController = new quat.GameStateController(this);
 
         // Initialize the input manager for touches/clicks

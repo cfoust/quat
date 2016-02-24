@@ -15,6 +15,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.solutionLayer = puzzleLayer.solutionLayer;
         this.solutionSize = puzzleLayer.solutionSize;
         this.chooseLetterLayer = puzzleLayer.chooseLetterLayer;
+        this.textIndicatorLayer = puzzleLayer.textIndicatorLayer;
         this.sc = puzzleLayer.stateController;
 
         // Used to track the last column the user had clicked in
@@ -172,11 +173,14 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         if (result) {
             if (this.quatGame.atGoal()) {
                 this.quatGame.newPuzzle();
-                this.solutionLayer.updateGoal(this.quatGame.getGoal());
             }
-            this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
+            this.solutionLayer.updateFromModel(this.quatGame);
         } else {
-            console.log(newWord + " is not a word");
+            if (newWord == oldWord) {
+                this.textIndicatorLayer.longIn("CANNOT CHANGE TO SAME WORD");
+            } else {
+                this.textIndicatorLayer.longIn(newWord.toUpperCase() + " IS NOT A WORD");
+            }
         }
     },
 
@@ -243,7 +247,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             if (((Math.PI - Math.abs(angle)) <= 0.30) && 
                 (distance > this.distanceThreshold)) {
                 this.quatGame.goBack();
-                this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
+                this.solutionLayer.updateFromModel(this.quatGame);
             } else {
                 this.solutionLayer.setCurrentWordOpacity(255);
                 

@@ -16,14 +16,18 @@
         "src/StateController.js",
 
         "src/words.js",
-        "src/model.js",
+        "src/GameInfo.js",
 
-        "src/solver/WordNode.js",
-        "src/solver/ChooseLetterLayer.js",
         "src/solver/SolverStateController.js",
+        
         "src/solver/SolverTouchInputManager.js",
         "src/solver/KeyboardInputManager.js",
+        
+        "src/solver/WordNode.js",
+        "src/solver/ChooseLetterLayer.js",
+        "src/solver/TextIndicatorLayer.js",
         "src/solver/SolutionLayer.js",
+
         "src/solver/PuzzleLayer.js",
 
         "src/BackgroundLayer.js",

@@ -18,7 +18,7 @@ quat.solver.WordNode = cc.Node.extend({
         // Create a pool of labels we can use to draw this word
         var rowPool = []
         for (var j = 0; j < 4; j++) {
-            var letterLabel = new cc.LabelTTF("A", "Arial", fontSize);
+            var letterLabel = new cc.LabelTTF("A", "Ubuntu", fontSize);
 
             // Set them to be hidden
             letterLabel.x = (j * this.fontGap);

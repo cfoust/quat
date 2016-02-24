@@ -11,6 +11,7 @@ quat.solver.KeyboardInputManager = function(puzzleScene) {
     this.solutionLayer = puzzleScene.solutionLayer;
     this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
     this.sc = puzzleScene.stateController;
+    this.textIndicatorLayer = puzzleScene.textIndicatorLayer;
 
     // Used to track the last column the user had clicked in
     this.lastColumn = -1;
@@ -62,11 +63,15 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	    if (result) {
 	        if (this.quatGame.atGoal()) {
 	            this.quatGame.newPuzzle();
-	            this.solutionLayer.updateGoal(this.quatGame.getGoal());
 	        }
-	        this.solutionLayer.updateSolution(this.quatGame.getCurrentSteps());
-	    } else {
-	        console.log(newWord + " is not a word");
+	        this.solutionLayer.updateFromModel(this.quatGame);
+	    } 
+	    else {
+	    	if (newWord == oldWord) {
+	    		this.textIndicatorLayer.longIn("CANNOT CHANGE TO SAME WORD");
+	    	} else {
+	    		this.textIndicatorLayer.longIn(newWord.toUpperCase() + " IS NOT A WORD");
+	    	}
 	    }
 
 	    this.sc.IDLE();

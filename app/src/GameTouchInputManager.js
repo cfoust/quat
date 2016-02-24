@@ -53,9 +53,6 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
 
                 // Put it into the range 0-255
                 percent *= 255;
-                
-                // Set the menu word's opacity
-                this.menuWord.setOpacity(Math.min(255 - percent, 255));
 
                 // Normalize the puzzle layer's opacity
                 percent = Math.min(percent + 30, 255);
@@ -63,7 +60,6 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 this.puzzleLayer.setOpacity(percent);
             // Looks like they decided otherwise, stop tracking this touch
             } else {
-                this.menuWord.setOpacity(0);
                 this.puzzleLayer.setOpacity(255);
                 this.sc.GESTURING();
             }

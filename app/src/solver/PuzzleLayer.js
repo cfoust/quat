@@ -57,6 +57,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
 
         // Initialize our layers
         var solutionSize = this.calculateSize(),
+            // fontSize = solutionSize.width * 0.18,
             fontSize = solutionSize.width * 0.18,
             solutionLayer = new quat.solver.SolutionLayer(solutionSize.width, 
                                               solutionSize.height,
@@ -64,7 +65,14 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
             chooseLetterLayer = new quat.solver.ChooseLetterLayer(
                                               solutionSize.width / 4,
                                               solutionSize.height,
-                                              fontSize);
+                                              fontSize),
+            textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize,
+                                              solutionSize,
+                                              this.windowWidth,
+                                              this.windowHeight);
+        textIndicatorLayer.x = 0;
+        textIndicatorLayer.y = 0;
+        textIndicatorLayer.zIndex = 1;
 
         chooseLetterLayer.setBaseLetter('D');
         chooseLetterLayer.setVisible(false);
@@ -72,22 +80,26 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         // Sets the solution layer to have its calculated bounds
         solutionLayer.x = solutionSize.x;
         solutionLayer.y = solutionSize.y;
+        solutionLayer.zIndex = 2;
 
         chooseLetterLayer.x = solutionSize.x;
-        chooseLetterLayer.y = solutionSize.y;
+        chooseLetterLayer.y = solutionLayer.panelHeight;
+        chooseLetterLayer.zIndex = 3;
+
 
         // Add each layer to this rendering target
         this.addChild(solutionLayer);
         this.addChild(chooseLetterLayer);
+        this.addChild(textIndicatorLayer);
 
         // Have them be accessible from other methods
         this.solutionLayer = solutionLayer;
         this.chooseLetterLayer = chooseLetterLayer;
+        this.textIndicatorLayer = textIndicatorLayer;
         this.solutionSize = solutionSize;
 
         // Update the solution layer's current status and goal
-        solutionLayer.updateSolution(quatGame.getCurrentSteps());
-        solutionLayer.updateGoal(quatGame.getGoal());
+        solutionLayer.updateFromModel(quatGame);
 
         // Initialize the state controller for GUI state handling
         var stateController = new quat.solver.SolverStateController(this);
@@ -153,12 +165,13 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
                 keyInputManager.inputKeycode(keyCode);
             }
         }, this);
+
     },
 
     setOpacity: function(opacity) {
         this.solutionLayer.setOpacity(opacity);
-        this.solutionLayer.setOpacity(opacity);
         this.chooseLetterLayer.setOpacity(opacity);
+        this.textIndicatorLayer.setOpacity(opacity);
     }
 });
 
