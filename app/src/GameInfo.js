@@ -41,7 +41,7 @@ quat.GameInfo = Class.extend({
 	},
 
 	getPar: function() {
-		return this.stepsToBeat - 2;
+		return this.stepsToBeat - 1;
 	},
 
 	/**

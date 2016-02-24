@@ -81,6 +81,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.goalBackground.setOpacity(opacity);
         this.goalWord.setOpacity(opacity);
         this.currentWord.setOpacity(opacity);
+        this.stepsWord.setOpacity(opacity);
     },
 
     /**

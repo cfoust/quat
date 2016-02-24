@@ -20,6 +20,25 @@ quat.GameScene = cc.Scene.extend({
         this.puzzleLayer = new quat.solver.PuzzleLayer(this.windowWidth, this.windowHeight);
         this.addChild(this.puzzleLayer);
 
+        var fontSize = this.puzzleLayer.solutionLayer.fontSize,
+            smallFontSize = fontSize * .5;
+
+        // Create the MENU word
+        var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);
+        titleWord.x = this.windowWidth / 2;
+        titleWord.y = this.windowHeight / 2;
+        titleWord.setOpacity(0);
+        this.addChild(titleWord);
+        this.titleWord = titleWord;
+
+        // Create the release word
+        var subtextWord = new cc.LabelTTF("RELEASE", "Ubuntu", smallFontSize);
+        subtextWord.x = this.windowWidth / 2;
+        subtextWord.y = (this.windowHeight * .48) - smallFontSize;
+        subtextWord.setOpacity(0);
+        this.addChild(subtextWord);
+        this.subtextWord = subtextWord;
+
         this.stateController = new quat.GameStateController(this);
 
         // Initialize the input manager for touches/clicks

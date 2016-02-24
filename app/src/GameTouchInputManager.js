@@ -10,7 +10,8 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
 
         this.gameScene = gameScene; 
         this.puzzleLayer = gameScene.puzzleLayer;
-        this.menuWord = gameScene.menuWord;
+        this.titleWord = gameScene.titleWord;
+        this.subtextWord = gameScene.subtextWord
         this.sc = gameScene.stateController;
 
         this.gestureThreshold = baseWidth * 0.03;
@@ -37,7 +38,8 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
             if ((Math.abs(angle) <= 0.30) &&
                 (distance > this.gestureThreshold)) {
                 this.sc.SWIPING_TO_MENU();
-
+                this.titleWord.setOpacity(0);
+                this.subtextWord.setOpacity(0);
             }
         }
         else if (this.sc.state == this.sc.states.SWIPING_TO_MENU) {
@@ -53,6 +55,17 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
 
                 // Put it into the range 0-255
                 percent *= 255;
+                
+                // Set the menu word's opacity
+                var titleOpacity = Math.min(255 - percent, 255);
+                this.titleWord.setOpacity(titleOpacity);
+                this.subtextWord.setOpacity(titleOpacity);
+
+                if (distance >= this.distanceThreshold) {
+                    this.subtextWord.string = "RELEASE";
+                } else {
+                    this.subtextWord.string = "KEEP DRAGGING";
+                }
 
                 // Normalize the puzzle layer's opacity
                 percent = Math.min(percent + 30, 255);
@@ -60,6 +73,8 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 this.puzzleLayer.setOpacity(percent);
             // Looks like they decided otherwise, stop tracking this touch
             } else {
+                this.titleWord.setOpacity(0);
+                this.subtextWord.setOpacity(0);
                 this.puzzleLayer.setOpacity(255);
                 this.sc.GESTURING();
             }
@@ -72,7 +87,8 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
         }
         else if (this.sc.state == this.sc.states.SWIPING_TO_MENU) {
             this.puzzleLayer.setOpacity(255);
-            this.menuWord.setOpacity(0);
+            this.titleWord.setOpacity(0);
+            this.subtextWord.setOpacity(0);
             this.sc.IDLE();
         }
     }
