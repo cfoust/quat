@@ -30,9 +30,8 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
                                               gameBounds.height,
                                               fontSize),
             textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize,
-                                              gameBounds,
-                                              this.windowWidth,
-                                              this.windowHeight);
+                                              gameBounds);
+
         textIndicatorLayer.x = 0;
         textIndicatorLayer.y = 0;
         textIndicatorLayer.zIndex = 1;
