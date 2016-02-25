@@ -1,12 +1,5 @@
 var quat = quat || {};
 
-/*
-You'll notice that this is remarkably similar to the SolverStateController.
-
-They are very similar in implementation, but right now I don't know what method
-of JavaScript class inheritance I want to use.
- */
-
 quat.GameStateController = quat.StateController.extend({
     states: {
         /*
@@ -16,14 +9,25 @@ quat.GameStateController = quat.StateController.extend({
 
         GESTURING: null,
         /*
-        The user has started swiping to the right to get to the main menu.
+        The user has started swiping to the right to get to another menu.
          */
-        SWIPING_TO_MENU: null
-    },
+        SWIPING_RIGHT: null
+    }
+});
 
-    init: function(gameScene) {
-        this._super();
-        
-        this.puzzleScene = gameScene.puzzleScene;
+quat.ScreenStateController = quat.StateController.extend({
+    states: {
+        /*
+        When the user is playing the vanilla game.
+         */
+        GAME: null,
+        /*
+        When the user is at the main menu.
+         */
+        MAIN_MENU: null,
+        /*
+        When the user is choosing a theme.
+         */
+        LOOK: null
     }
 });

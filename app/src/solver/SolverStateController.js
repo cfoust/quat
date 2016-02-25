@@ -10,7 +10,7 @@ quat.solver.SolverStateController = function(puzzleScene) {
 	this.backgroundLayer = puzzleScene.backgroundLayer;
     this.solutionLayer = puzzleScene.solutionLayer;
     this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
-    this.solutionSize = puzzleScene.solutionSize;
+    this.gameBounds = puzzleScene.gameBounds;
 
     // The enumeration of all possible states for the solver GUI.
     this.states = {
@@ -85,7 +85,7 @@ quat.solver.SolverStateController.prototype.IDLE = function() {
 
 quat.solver.SolverStateController.prototype.CHOOSING_LETTER = function(column) {
 	// Move the letter chooser to its proper location
-	this.chooseLetterLayer.x = (column * (this.solutionSize.width / 4)) + this.solutionSize.x;
+	this.chooseLetterLayer.x = (column * (this.gameBounds.width / 4)) + this.gameBounds.x;
     this.chooseLetterLayer.setBaseLetter(this.quatGame.getCurrentWord()[column]);
     this.chooseLetterLayer.setVisible(true);
 

@@ -2,49 +2,13 @@ var quat = quat || {};
 quat.solver = quat.solver || {};
 
 quat.solver.PuzzleLayer = cc.Layer.extend({
-    ctor: function(windowWidth, windowHeight) {
+    ctor: function(gameBounds, fontSize) {
         this._super();
 
-        this.windowWidth = windowWidth;
-        this.windowHeight = windowHeight;
+        this.gameBounds = gameBounds;
+        this.fontSize = fontSize;
 
         return true;
-    },
-
-    /**
-     * Calculates the size of the playing area based on the real resolution.
-     *
-     * Essentially, we can just fill the rest of the canvas up with the
-     * background.
-     * 
-     * @return {Object} Object with 'width', 'height', 'x', and 'y'.
-     */
-    calculateSize: function() {
-        var w = this.windowWidth,
-            h = this.windowHeight,
-            cWidth = 0, // The calculated width
-            cHeight = h, // The calculated height (always h)
-            cX = 0, // The calculated X
-            cY = 0; // The calculated Y (always 0)
-
-        var NICE_WIDTH = 300;
-
-        // Case 1: Landscape (and square) orientation
-        if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
-            cWidth = Math.min(w, NICE_WIDTH);
-            cX = (w / 2) - (cWidth / 2);
-        // Case 2: Portrait orientation
-        } else {
-            cWidth = w;
-            cX = 0;
-        }
-
-        return {
-            width: cWidth,
-            height: cHeight,
-            x: cX,
-            y: cY
-        };
     },
 
     onEnter: function() {
@@ -56,33 +20,31 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         quatGame.newPuzzle();
 
         // Initialize our layers
-        var solutionSize = this.calculateSize(),
-            // fontSize = solutionSize.width * 0.18,
-            fontSize = solutionSize.width * 0.18,
-            solutionLayer = new quat.solver.SolutionLayer(solutionSize.width, 
-                                              solutionSize.height,
+        var gameBounds = this.gameBounds,
+            fontSize = this.fontSize,
+            solutionLayer = new quat.solver.SolutionLayer(gameBounds.width, 
+                                              gameBounds.height,
                                               fontSize),
             chooseLetterLayer = new quat.solver.ChooseLetterLayer(
-                                              solutionSize.width / 4,
-                                              solutionSize.height,
+                                              gameBounds.width / 4,
+                                              gameBounds.height,
                                               fontSize),
             textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize,
-                                              solutionSize,
+                                              gameBounds,
                                               this.windowWidth,
                                               this.windowHeight);
         textIndicatorLayer.x = 0;
         textIndicatorLayer.y = 0;
         textIndicatorLayer.zIndex = 1;
 
-        chooseLetterLayer.setBaseLetter('D');
         chooseLetterLayer.setVisible(false);
 
         // Sets the solution layer to have its calculated bounds
-        solutionLayer.x = solutionSize.x;
-        solutionLayer.y = solutionSize.y;
+        solutionLayer.x = gameBounds.x;
+        solutionLayer.y = gameBounds.y;
         solutionLayer.zIndex = 2;
 
-        chooseLetterLayer.x = solutionSize.x;
+        chooseLetterLayer.x = gameBounds.x;
         chooseLetterLayer.y = solutionLayer.panelHeight;
         chooseLetterLayer.zIndex = 3;
 
@@ -96,7 +58,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.solutionLayer = solutionLayer;
         this.chooseLetterLayer = chooseLetterLayer;
         this.textIndicatorLayer = textIndicatorLayer;
-        this.solutionSize = solutionSize;
+        this.gameBounds = gameBounds;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
@@ -123,8 +85,8 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
          */
         var transpose = function(event) {
             return {
-                x: event.getLocationX() - solutionSize.x,
-                y: event.getLocationY() - solutionSize.y
+                x: event.getLocationX() - gameBounds.x,
+                y: event.getLocationY() - gameBounds.y
             };
         };
 

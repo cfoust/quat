@@ -3,7 +3,7 @@ quat.solver = quat.solver || {};
 
 
 quat.solver.TextIndicatorLayer = cc.Layer.extend({
-    ctor:function (fontSize, solutionSize, windowWidth, windowHeight) {
+    ctor:function (fontSize, gameBounds, windowWidth, windowHeight) {
         this._super();
 
         // "BAKE->HATE\nYOU: 5\nPAR: 5\nSCORE:\n200"
@@ -12,7 +12,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
         var textLabel = new cc.LabelTTF("", "Ubuntu", fontSize*.6, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = windowWidth / 2;
         textLabel.y = windowHeight / 2;
-        textLabel.boundingWidth = solutionSize.width;
+        textLabel.boundingWidth = gameBounds.width;
 
         this.textLabel = textLabel;
         this.addChild(textLabel);

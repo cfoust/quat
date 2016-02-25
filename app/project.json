@@ -19,16 +19,15 @@
         "src/GameInfo.js",
 
         "src/solver/SolverStateController.js",
-        
         "src/solver/SolverTouchInputManager.js",
         "src/solver/KeyboardInputManager.js",
-        
         "src/solver/WordNode.js",
         "src/solver/ChooseLetterLayer.js",
         "src/solver/TextIndicatorLayer.js",
         "src/solver/SolutionLayer.js",
-
         "src/solver/PuzzleLayer.js",
+
+        "src/menu/MenuLayer.js",
 
         "src/BackgroundLayer.js",
         "src/GameTouchInputManager.js",

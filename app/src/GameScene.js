@@ -9,19 +9,64 @@ quat.GameScene = cc.Scene.extend({
 
         return true;
     },
+
+    /**
+     * Calculates the size of the playing area based on the real resolution.
+     *
+     * Essentially, we can just fill the rest of the canvas up with the
+     * background.
+     * 
+     * @return {Object} Object with 'width', 'height', 'x', and 'y'.
+     */
+    calculateSize: function() {
+        var w = this.windowWidth,
+            h = this.windowHeight,
+            cWidth = 0, // The calculated width
+            cHeight = h, // The calculated height (always h)
+            cX = 0, // The calculated X
+            cY = 0; // The calculated Y (always 0)
+
+        var NICE_WIDTH = 300;
+
+        // Case 1: Landscape (and square) orientation
+        if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
+            cWidth = Math.min(w, NICE_WIDTH);
+            cX = (w / 2) - (cWidth / 2);
+        // Case 2: Portrait orientation
+        } else {
+            cWidth = w;
+            cX = 0;
+        }
+
+        return {
+            width: cWidth,
+            height: cHeight,
+            x: cX,
+            y: cY
+        };
+    },
+
     onEnter: function() {
         this._super();
+
+        // Generate the bounds used by all internal layers
+        var gameBounds = this.calculateSize();
 
         // Add the universal background layer
         this.backgroundLayer = new quat.BackgroundLayer();
         this.addChild(this.backgroundLayer);
 
-        // Create a reference to the puzzle scene
-        this.puzzleLayer = new quat.solver.PuzzleLayer(this.windowWidth, this.windowHeight);
+        // Calculate the global font sizes
+        var fontSize = gameBounds.width * 0.18,
+            smallFontSize = fontSize * .5;
+
+        // Create a reference to the puzzle layer
+        this.puzzleLayer = new quat.solver.PuzzleLayer(gameBounds, fontSize);
         this.addChild(this.puzzleLayer);
 
-        var fontSize = this.puzzleLayer.solutionLayer.fontSize,
-            smallFontSize = fontSize * .5;
+        // Create a reference to the puzzle layer
+        this.menuLayer = new quat.menu.MenuLayer(gameBounds, fontSize);
+        this.addChild(this.menuLayer);
 
         // Create the MENU word
         var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);
@@ -39,10 +84,14 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(subtextWord);
         this.subtextWord = subtextWord;
 
-        this.stateController = new quat.GameStateController(this);
+        // Handles states related to the capturing of game-wide gestures
+        this.GSC = new quat.GameStateController(this);
+        // Handles the state of the UI as a whole (like whether the user is
+        // in a menu or playing)
+        this.SSC = new quat.ScreenStateController(this);
 
         // Initialize the input manager for touches/clicks
-        var touchInputManager = new quat.GameTouchInputManager(this, this.puzzleLayer.solutionSize.width);
+        var touchInputManager = new quat.GameTouchInputManager(this, gameBounds.width);
         this.touchInputManager = touchInputManager;
 
         // Touch listener

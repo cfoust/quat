@@ -13,7 +13,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.quatGame = puzzleLayer.quatGame;
         this.puzzleLayer = puzzleLayer; 
         this.solutionLayer = puzzleLayer.solutionLayer;
-        this.solutionSize = puzzleLayer.solutionSize;
+        this.gameBounds = puzzleLayer.gameBounds;
         this.chooseLetterLayer = puzzleLayer.chooseLetterLayer;
         this.textIndicatorLayer = puzzleLayer.textIndicatorLayer;
         this.sc = puzzleLayer.stateController;
@@ -26,8 +26,8 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         // Records the previous y offset of the last drag action
         this.previousOffset = 0;
 
-        this.gestureThreshold = this.solutionSize.width * 0.03;
-        this.distanceThreshold = this.solutionSize.width * 0.61;
+        this.gestureThreshold = this.gameBounds.width * 0.03;
+        this.distanceThreshold = this.gameBounds.width * 0.61;
     },
 
     began: function(x, y) {
