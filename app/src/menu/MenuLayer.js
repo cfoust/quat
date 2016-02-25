@@ -77,6 +77,18 @@ quat.menu.MenuLayer = cc.Layer.extend({
     	for (var i = 0; i < this.buttons.length; i++) {
     		this.buttons[i].setOpacity(opacity);
     	}
+    },
+
+    setVisible: function(visibile) {
+    	this._super(visibile);
+
+    	if (!this.buttons) {
+    		return;
+    	}
+    	
+    	for (var i = 0; i < this.buttons.length; i++) {
+    		this.buttons[i].setVisible(visibile);
+    	}
     }
 });
 

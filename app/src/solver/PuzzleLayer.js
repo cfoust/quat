@@ -90,11 +90,16 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         };
 
         // Touch listener
-        var trackingTouch = false;
+        var trackingTouch = false,
+            layer = this;
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: false,
             onTouchBegan: function(event) {
+                if (!layer.isVisible()) {
+                    return false;
+                }
+
                 if (trackingTouch) {
                     return false;
                 } else {

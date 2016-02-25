@@ -53,6 +53,10 @@ quat.menu.Button = cc.Layer.extend({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: false,
             onTouchBegan: function(event) {
+                if (!button.isVisible()) {
+                    return false;
+                }
+
                 if (!contains(event)) {
                     return true;
                 }

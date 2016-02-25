@@ -91,6 +91,7 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 this.titleWord.setOpacity(0);
                 this.subtextWord.setOpacity(0);
                 this.puzzleLayer.setOpacity(255);
+                this.menuLayer.setOpacity(255);
                 this.GSC.GESTURING();
             }
         }
