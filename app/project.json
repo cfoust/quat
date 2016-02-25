@@ -27,6 +27,7 @@
         "src/solver/SolutionLayer.js",
         "src/solver/PuzzleLayer.js",
 
+        "src/menu/MenuButton.js",
         "src/menu/MenuLayer.js",
 
         "src/BackgroundLayer.js",

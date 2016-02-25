@@ -57,7 +57,8 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(this.backgroundLayer);
 
         // Calculate the global font sizes
-        var fontSize = gameBounds.width * 0.18,
+        // var fontSize = gameBounds.width * 0.18,
+        var fontSize = gameBounds.width * 0.15,
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer
@@ -66,6 +67,7 @@ quat.GameScene = cc.Scene.extend({
 
         // Create a reference to the puzzle layer
         this.menuLayer = new quat.menu.MenuLayer(gameBounds, fontSize);
+        this.menuLayer.setVisible(false);
         this.addChild(this.menuLayer);
 
         // Create the MENU word
