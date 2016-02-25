@@ -172,13 +172,19 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         var result = this.quatGame.addWord(newWord);
         if (result) {
             if (this.quatGame.atGoal()) {
+                var par = this.quatGame.getPar(),
+                    steps = this.quatGame.getCurrentSteps().length - 1,
+                    points = this.quatGame.pointsAdded;
+                if (par == steps) {
+                    this.textIndicatorLayer.longIn("MADE PAR!\n+" + points.toString());
+                } else {
+                    this.textIndicatorLayer.longIn("+" +  + points.toString());
+                }
                 this.quatGame.newPuzzle();
             }
             this.solutionLayer.updateFromModel(this.quatGame);
         } else {
-            if (newWord == oldWord) {
-                this.textIndicatorLayer.longIn("CANNOT CHANGE TO SAME WORD");
-            } else {
+            if (newWord != oldWord) {
                 this.textIndicatorLayer.longIn(newWord.toUpperCase() + " IS NOT A WORD");
             }
         }

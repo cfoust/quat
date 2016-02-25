@@ -11,6 +11,8 @@ quat.GameInfo = Class.extend({
 		// Pulls from the global references to quat puzzles and 
 		this.puzzles = quat.puzzles;
 		this.dictionary = quat.dictionary;
+
+		this.points = 0;
 	},
 	newPuzzle: function() {
 		// Generate a random key
@@ -91,6 +93,13 @@ quat.GameInfo = Class.extend({
 		}
 
 		this.currentSteps.push(word);
+
+		if (this.atGoal()) {
+			var points = (this.getPar() == this.currentSteps.length - 1) ? this.getPar() * 2 : this.getPar();
+			this.pointsAdded = points;
+			this.points += points;
+		}
+
 		return true;
 	},
 
