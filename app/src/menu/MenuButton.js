@@ -14,7 +14,35 @@ quat.menu.Button = cc.Layer.extend({
         return true;
     },
 
-    
+    applyTheme: function(theme) {
+        this.textLabel.setColor(theme.colors.text);
+        this.background.setColor(theme.colors.darkForeground);
+        this.defaultColor = theme.colors.darkForeground;
+        this.selectedColor = theme.colors.lightForeground;
+    },
+
+    _selected: false,
+    selected: function(selected) {
+        if (selected) {
+            this.background.setColor(this.selectedColor);
+        } else {
+            this.background.setColor(this.defaultColor);
+        }
+        this._selected = selected;
+    },
+
+    isSelected: function() {
+        return this._selected;
+    },
+
+    _enabled: true,
+    enabled: function(enabled) {
+        this._enabled = enabled;
+    },
+
+    isEnabled: function() {
+        return this._enabled;
+    },
 
     onEnter: function() {
         this._super();
@@ -30,11 +58,11 @@ quat.menu.Button = cc.Layer.extend({
         this.textLabel = textLabel;
         this.addChild(textLabel);
 
-        var defaultColor = cc.color(0,0,128,255),
-            selectedColor = cc.color(0,191,255,255);
+        this.defaultColor = cc.color(0,0,128,255),
+        this.selectedColor = cc.color(0,191,255,255);
         
         // The button's background
-        var background = new cc.LayerColor(defaultColor);
+        var background = new cc.LayerColor(this.defaultColor);
         background.width = this.width;
         background.height = this.height;
         background.zIndex = 1;
@@ -53,7 +81,7 @@ quat.menu.Button = cc.Layer.extend({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: false,
             onTouchBegan: function(event) {
-                if (!button.isVisible()) {
+                if (!button.isVisible() || !button.isEnabled()) {
                     return false;
                 }
 
@@ -66,8 +94,7 @@ quat.menu.Button = cc.Layer.extend({
                 } else {
                     trackingTouch = true;
                 }
-
-                button.background.setColor(selectedColor);
+                button.selected(true);
 
                 return true;
             },
@@ -75,18 +102,18 @@ quat.menu.Button = cc.Layer.extend({
                 var insideThis = contains(event);
                 if (trackingTouch && !insideThis) {
                     trackingTouch = false;
-                    button.background.setColor(defaultColor);
+                    button.selected(false);
                 }
                 else if (!trackingTouch && insideThis) {
                     trackingTouch = true;
-                    button.background.setColor(selectedColor);
+                    button.selected(true);
                 }
             },
             onTouchEnded: function(event){
                 if (contains(event)) {
                     button.callback();
                 }
-                button.background.setColor(defaultColor);
+                button.selected(false);
                 trackingTouch = false;
                 return true;
             }

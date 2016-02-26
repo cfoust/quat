@@ -24,7 +24,8 @@ quat.solver.WordNode = cc.Node.extend({
             letterLabel.x = (j * this.fontGap);
             letterLabel.y = 0;
 
-			letterLabel.setColor(cc.color(176,196,222,255));
+            // letterLabel.setColor(cc.color(176,196,222,255));
+			letterLabel.setColor(cc.color(255,255,255,255));
             // Add it as a child to this layer
             this.addChild(letterLabel);
 

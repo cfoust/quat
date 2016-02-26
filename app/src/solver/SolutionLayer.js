@@ -5,6 +5,18 @@ quat.solver = quat.solver || {};
 by maintaining a bunch of WordLayers that correspond to what the user has
 entered.*/
 quat.solver.SolutionLayer = cc.Layer.extend({
+
+    applyTheme: function(theme) {
+        var textColor = theme.colors.text;
+        this.currentWord.setColor(textColor);
+        this.goalWord.setColor(theme.colors.darkForeground);
+        
+        this.stepsWord.setColor(theme.colors.darkForeground);
+        
+
+        this.goalBackground.setColor(theme.colors.lightForeground);
+    },
+
     ctor: function(width, height, fontSize) {
         this._super();
 
@@ -29,7 +41,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         goalWord.x = fourths / 2;
         goalWord.y = panelHeight * 0.6;
         goalWord.zIndex = 1;
-        goalWord.setColor(cc.color(0,0,128,255));
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
@@ -43,21 +54,8 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         stepsWord.y = smallFontY;
         stepsWord.zIndex = 1;
         stepsWord.string = "STEPS: 0 PAR: 0";
-        stepsWord.setColor(cc.color(0,0,128,255));
         this.addChild(stepsWord);
         this.stepsWord = stepsWord;
-
-
-        // Create a word to display the par count
-        // var parWord = new cc.LabelTTF("", "Ubuntu", panelHeight * 0.20, null, cc.TEXT_ALIGNMENT_RIGHT);
-        // parWord.setAnchorPoint(new cc.Point(1,0.5));
-        // parWord.x = width * 0.93;
-        // parWord.y = smallFontY;
-        // parWord.zIndex = 1;
-        // parWord.string = "PAR: 0";
-        // parWord.setColor(cc.color(0,0,128,255));
-        // this.addChild(parWord);
-        // this.parWord = parWord;
 
         // Set up a background for the goal word
         var goalBackground = new cc.LayerColor(cc.color(0,191,255,255));
@@ -69,6 +67,8 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
         return true;
     },
+
+
 
     
     setCurrentWordOpacity: function(opacity) {
@@ -150,11 +150,13 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     },
 
     updateFromModel: function(model) {
-        this.currentWord.changeWord(model.getCurrentWord());
-        this.goalWord.changeWord(model.getGoal());
+        var puzzle = model.getPuzzle();
 
-        var steps = (model.getCurrentSteps().length - 1),
-            par = model.getPar();
+        this.currentWord.changeWord(puzzle.getCurrentWord());
+        this.goalWord.changeWord(puzzle.getGoal());
+
+        var steps = (puzzle.getSteps().length - 1),
+            par = puzzle.getPar();
         this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
     }
 });

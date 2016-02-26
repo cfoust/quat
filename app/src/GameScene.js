@@ -1,5 +1,7 @@
 var quat = quat || {};
 
+var setTheme = null;
+
 quat.GameScene = cc.Scene.extend({
     ctor: function(windowWidth, windowHeight) {
         this._super();
@@ -46,8 +48,29 @@ quat.GameScene = cc.Scene.extend({
         };
     },
 
+    applyTheme: function(theme) {
+        var textColor = theme.colors.text;
+
+        this.titleWord.setColor(textColor);
+        this.subtextWord.setColor(textColor);
+
+        this.backgroundLayer.applyTheme(theme);
+        this.puzzleLayer.applyTheme(theme);
+        this.menuLayer.applyTheme(theme);
+    },
+
     onEnter: function() {
         this._super();
+
+        // Holds the entire model for the game
+        var gameState = new quat.Game();
+        if (gameState.canLoadFromLocal()) {
+            gameState.loadFromLocal();
+        } else {
+            gameState.reset();
+            gameState.newPuzzle();
+        }
+        this.gameState = gameState;
 
         // Generate the bounds used by all internal layers
         var gameBounds = this.calculateSize();
@@ -62,13 +85,13 @@ quat.GameScene = cc.Scene.extend({
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer
-        this.puzzleLayer = new quat.solver.PuzzleLayer(gameBounds, fontSize);
+        this.puzzleLayer = new quat.solver.PuzzleLayer(this, gameBounds, fontSize, gameState);
         this.addChild(this.puzzleLayer);
 
         // Create a reference to the puzzle layer
-        this.menuLayer = new quat.menu.MenuLayer(gameBounds, fontSize);
-        this.menuLayer.setVisible(false);
+        this.menuLayer = new quat.menu.MenuLayer(this, gameBounds, fontSize, gameState);
         this.addChild(this.menuLayer);
+        this.menuLayer.setVisible(false);
 
         // Create the MENU word
         var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);
@@ -86,11 +109,19 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(subtextWord);
         this.subtextWord = subtextWord;
 
+        setTheme = function(self) {
+            return function(theme) {
+                self.applyTheme(self.gameState.getTheme(theme));
+            };
+        }(this);
+        this.applyTheme(gameState.getTheme('LATE'));
+
         // Handles states related to the capturing of game-wide gestures
         this.GSC = new quat.GameStateController(this);
         // Handles the state of the UI as a whole (like whether the user is
         // in a menu or playing)
         this.SSC = new quat.ScreenStateController(this);
+        this.SSC.GAME();
 
         // Initialize the input manager for touches/clicks
         var touchInputManager = new quat.GameTouchInputManager(this, gameBounds.width);

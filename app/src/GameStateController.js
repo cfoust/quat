@@ -20,14 +20,45 @@ quat.ScreenStateController = quat.StateController.extend({
         /*
         When the user is playing the vanilla game.
          */
-        GAME: null,
+        GAME: function(self) {
+            var scene = self.gameScene,
+                puzzleLayer = scene.puzzleLayer;
+
+            self.currentLayer = puzzleLayer;
+            puzzleLayer.setVisible(true);
+            scene.menuLayer.setVisible(false);
+            
+            scene.puzzleLayer.setThemeChange(false);
+        },
         /*
         When the user is at the main menu.
          */
-        MAIN_MENU: null,
-        /*
-        When the user is choosing a theme.
-         */
-        LOOK: null
+        MAIN_MENU: function(self) {
+            var scene = self.gameScene,
+                menuLayer = scene.menuLayer;
+            menuLayer.setVisible(true);
+            self.currentLayer = menuLayer;
+            scene.puzzleLayer.setVisible(false);
+
+        },
+        LOOK: function(self) {
+            var scene = self.gameScene,
+                puzzleLayer = self.gameScene.puzzleLayer;
+
+            // Set the current layer
+            self.currentLayer = puzzleLayer;
+            
+            // Make the other ones invisible
+            scene.menuLayer.setVisible(false);
+            puzzleLayer.setVisible(true);
+            
+            // Set up the puzzleLayer for LOOK changing
+            scene.puzzleLayer.setThemeChange(true);
+        },
+    },
+
+    init: function(gameScene) {
+        this._super();
+        this.gameScene = gameScene;
     }
 });

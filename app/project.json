@@ -16,7 +16,8 @@
         "src/StateController.js",
 
         "src/words.js",
-        "src/GameInfo.js",
+        "src/themes.js",
+        "src/Game.js",
 
         "src/solver/SolverStateController.js",
         "src/solver/SolverTouchInputManager.js",
@@ -24,6 +25,7 @@
         "src/solver/WordNode.js",
         "src/solver/ChooseLetterLayer.js",
         "src/solver/TextIndicatorLayer.js",
+        "src/solver/ThemeChangeLayer.js",
         "src/solver/SolutionLayer.js",
         "src/solver/PuzzleLayer.js",
 

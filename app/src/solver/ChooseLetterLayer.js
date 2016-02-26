@@ -18,7 +18,7 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
             var letterLabel = new cc.LabelTTF("A", "Ubuntu", fontSize);
             letterLabel.x = (width / 2);
             letterLabel.y = (fontSize / 2) + (i * fontSize);
-			letterLabel.setColor(cc.color(176,196,222,255));
+			// letterLabel.setColor(cc.color(176,196,222,255));
             letterLabel.zIndex = 1;
             this.addChild(letterLabel);
             letterPool.push(letterLabel);
@@ -44,6 +44,15 @@ quat.solver.ChooseLetterLayer = cc.Layer.extend({
         this.uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
         return true;
+    },
+
+    applyTheme: function(theme) {
+        this.colorBackground.setColor(theme.colors.darkForeground);
+
+        var textColor = theme.colors.text;
+        for (var i = 0; i < this.letterPool.length; i++) {
+            this.letterPool[i].setColor(textColor);
+        }
     },
 
     redrawFromLetter: function(letter) {

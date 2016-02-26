@@ -2,62 +2,78 @@ var quat = quat || {};
 quat.solver = quat.solver || {};
 
 quat.solver.PuzzleLayer = cc.Layer.extend({
-    ctor: function(gameBounds, fontSize) {
+
+    ctor: function(gameScene, gameBounds, fontSize, gameState) {
         this._super();
 
+        this.gameScene = gameScene;
         this.gameBounds = gameBounds;
         this.fontSize = fontSize;
+        this.quatGame = gameState;
 
         return true;
+    },
+
+    setThemeChange: function(set) {
+        if (set) {
+            this.touchInputManager.setEnabled(false);
+
+            var solutionLayer = this.solutionLayer;
+
+            solutionLayer.currentWord.changeWord("WORD");
+            solutionLayer.goalWord.changeWord("WORD");
+            solutionLayer.stepsWord.string = "STEPS: N PAR: N";
+            this.themeChangeLayer.setVisible(true);
+        }
+        else {
+            this.touchInputManager.setEnabled(true);
+            this.themeChangeLayer.setVisible(false);
+            this.solutionLayer.updateFromModel(this.quatGame);
+        }
     },
 
     onEnter: function() {
         this._super();
 
         // Initialize the model and get a new puzzle
-        var quatGame = new quat.GameInfo();
-        this.quatGame = quatGame;
-        quatGame.newPuzzle();
+        var quatGame = this.quatGame;
 
         // Initialize our layers
         var gameBounds = this.gameBounds,
-            fontSize = this.fontSize,
-            solutionLayer = new quat.solver.SolutionLayer(gameBounds.width, 
-                                              gameBounds.height,
-                                              fontSize),
-            chooseLetterLayer = new quat.solver.ChooseLetterLayer(
-                                              gameBounds.width / 4,
-                                              gameBounds.height,
-                                              fontSize),
-            textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize,
-                                              gameBounds);
+            fontSize = this.fontSize;
 
-        textIndicatorLayer.x = 0;
-        textIndicatorLayer.y = 0;
-        textIndicatorLayer.zIndex = 1;
-
-        chooseLetterLayer.setVisible(false);
-
-        // Sets the solution layer to have its calculated bounds
+        // Has all of the indicators about the current solution and steps
+        var solutionLayer = new quat.solver.SolutionLayer(gameBounds.width, gameBounds.height, fontSize);
         solutionLayer.x = gameBounds.x;
         solutionLayer.y = gameBounds.y;
         solutionLayer.zIndex = 2;
+        this.addChild(solutionLayer);
+        this.solutionLayer = solutionLayer;
 
+        // Allows the user to choose letters
+        var chooseLetterLayer = new quat.solver.ChooseLetterLayer(gameBounds.width / 4, gameBounds.height, fontSize);
+        this.addChild(chooseLetterLayer);
+        chooseLetterLayer.setVisible(false);
         chooseLetterLayer.x = gameBounds.x;
         chooseLetterLayer.y = solutionLayer.panelHeight;
         chooseLetterLayer.zIndex = 3;
-
-
-        // Add each layer to this rendering target
-        this.addChild(solutionLayer);
-        this.addChild(chooseLetterLayer);
-        this.addChild(textIndicatorLayer);
-
-        // Have them be accessible from other methods
-        this.solutionLayer = solutionLayer;
         this.chooseLetterLayer = chooseLetterLayer;
+
+        // Used for notifications that need the user's attention
+        var textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize, gameBounds);
+        textIndicatorLayer.x = 0;
+        textIndicatorLayer.y = 0;
+        textIndicatorLayer.zIndex = 1;
+        this.addChild(textIndicatorLayer);
         this.textIndicatorLayer = textIndicatorLayer;
-        this.gameBounds = gameBounds;
+
+        var themeChangeLayer = new quat.solver.ThemeChangeLayer(this, fontSize, gameBounds);
+        themeChangeLayer.x = 0;
+        themeChangeLayer.y = 0;
+        themeChangeLayer.zIndex = 2;
+        this.addChild(themeChangeLayer);
+        themeChangeLayer.setVisible(false);
+        this.themeChangeLayer = themeChangeLayer;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
@@ -92,6 +108,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         // Touch listener
         var trackingTouch = false,
             layer = this;
+
         cc.eventManager.addListener({
             event: cc.EventListener.TOUCH_ONE_BY_ONE,
             swallowTouches: false,
@@ -134,10 +151,18 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
 
     },
 
+    applyTheme: function(theme) {
+        this.solutionLayer.applyTheme(theme);
+        this.themeChangeLayer.applyTheme(theme);
+        this.chooseLetterLayer.applyTheme(theme);
+        this.textIndicatorLayer.applyTheme(theme);
+    },
+
     setOpacity: function(opacity) {
         this.solutionLayer.setOpacity(opacity);
         this.chooseLetterLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
+        this.themeChangeLayer.setOpacity(opacity);
     }
 });
 

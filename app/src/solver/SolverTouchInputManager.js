@@ -136,7 +136,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             // The user is dragging from right to left
             if (((Math.PI - Math.abs(angle)) <= 0.30) &&
                 (distance > this.gestureThreshold) &&
-                (this.quatGame.getCurrentSteps().length > 1)) {
+                (this.quatGame.getPuzzle().getSteps().length > 1)) {
                 this.sc.ERASING_WORD();
             }
         }
@@ -164,30 +164,28 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.sc.state = this.sc.states.IDLE;
         this.chooseLetterLayer.setVisible(false);
 
-        var oldWord = this.quatGame.getCurrentWord(),
+        var oldWord = this.quatGame.getPuzzle().getCurrentWord(),
             newWord = oldWord.substr(0,this.lastColumn) + this.chooseLetterLayer.getBaseLetter() + oldWord.substr(this.lastColumn + 1);
 
         newWord = newWord.toLowerCase();
 
-        var result = this.quatGame.addWord(newWord);
-        if (result) {
-            if (this.quatGame.atGoal()) {
-                var par = this.quatGame.getPar(),
-                    steps = this.quatGame.getCurrentSteps().length - 1,
-                    points = this.quatGame.pointsAdded;
-                if (par == steps) {
-                    this.textIndicatorLayer.longIn("MADE PAR!\n+" + points.toString());
-                } else {
-                    this.textIndicatorLayer.longIn("+" +  + points.toString());
-                }
-                this.quatGame.newPuzzle();
-            }
-            this.solutionLayer.updateFromModel(this.quatGame);
-        } else {
-            if (newWord != oldWord) {
-                this.textIndicatorLayer.longIn(newWord.toUpperCase() + " IS NOT A WORD");
-            }
+        var quatGame = this.quatGame,
+            puzzle = quatGame.getPuzzle();
+
+        puzzle.addWord(newWord);
+
+        if (puzzle.hasMessage()) {
+            var message = puzzle.consumeMessage();
+            this.textIndicatorLayer.addMessage(message.text);
         }
+
+        if (puzzle.isDone()) {
+            this.quatGame.getUser().registerPuzzle(puzzle);
+
+            this.quatGame.newPuzzle();
+        }
+
+        this.solutionLayer.updateFromModel(this.quatGame);
     },
 
     done: function(x, y) {
@@ -252,7 +250,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
             if (((Math.PI - Math.abs(angle)) <= 0.30) && 
                 (distance > this.distanceThreshold)) {
-                this.quatGame.goBack();
+                this.quatGame.getPuzzle().goBack();
                 this.solutionLayer.updateFromModel(this.quatGame);
             } else {
                 this.solutionLayer.setCurrentWordOpacity(255);

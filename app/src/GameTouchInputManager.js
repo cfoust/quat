@@ -49,7 +49,8 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 angle = vector.angle,
                 distance = vector.distance;
 
-            if (this.SSC.state == this.SSC.states.GAME) {
+            if ((this.SSC.state == this.SSC.states.GAME) || 
+               (this.SSC.state == this.SSC.states.LOOK)) {
                 this.titleWord.string = "MENU?";
             }
             else if (this.SSC.state == this.SSC.states.MAIN_MENU) {
@@ -79,19 +80,13 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 // Normalize the puzzle layer's opacity
                 percent = Math.min(percent + 30, 255);
 
-                if (this.SSC.state == this.SSC.states.GAME) {
-                    this.puzzleLayer.setOpacity(percent);
-                }
-                else if (this.SSC.state == this.SSC.states.MAIN_MENU) {
-                    this.menuLayer.setOpacity(percent);
-                }
+                this.SSC.currentLayer.setOpacity(percent);
                 
             // Looks like they decided otherwise, stop tracking this touch
             } else {
                 this.titleWord.setOpacity(0);
                 this.subtextWord.setOpacity(0);
-                this.puzzleLayer.setOpacity(255);
-                this.menuLayer.setOpacity(255);
+                this.SSC.currentLayer.setOpacity(255);
                 this.GSC.GESTURING();
             }
         }
@@ -108,16 +103,13 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
 
             if (distance >= this.distanceThreshold) {
                 if (this.SSC.state == this.SSC.states.GAME) {
-                    this.puzzleLayer.setVisible(false);
-                    this.menuLayer.setVisible(true);
-                    this.menuLayer.setOpacity(255);
                     this.SSC.MAIN_MENU();
                 }
                 else if (this.SSC.state == this.SSC.states.MAIN_MENU) {
-                    this.menuLayer.setVisible(false);
-                    this.puzzleLayer.setVisible(true);
-                    this.puzzleLayer.setOpacity(255);
                     this.SSC.GAME();
+                }
+                else if (this.SSC.state == this.SSC.states.LOOK) {
+                    this.SSC.MAIN_MENU();
                 }
             }
             this.puzzleLayer.setOpacity(255);

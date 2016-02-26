@@ -11,5 +11,9 @@ quat.BackgroundLayer = cc.Layer.extend({
         this.addChild(colorBackground);
 
         return true;
+    },
+
+    applyTheme: function(theme) {
+    	this.colorBackground.setColor(theme.colors.background);
     }
 });

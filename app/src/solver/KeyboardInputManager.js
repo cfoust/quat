@@ -54,25 +54,26 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	    (letterCode < 26) &&
 	    (letterCode >= 0)) {
 
-	    var oldWord = this.quatGame.getCurrentWord(),
+	    var puzzle = this.quatGame.getPuzzle(),
+			oldWord = puzzle.getCurrentWord(),
 	        newWord = oldWord.substr(0,this.lastColumn) + key + oldWord.substr(this.lastColumn + 1);
 
 	    newWord = newWord.toLowerCase();
 
-	    var result = this.quatGame.addWord(newWord);
-	    if (result) {
-	        if (this.quatGame.atGoal()) {
-	            this.quatGame.newPuzzle();
-	        }
-	        this.solutionLayer.updateFromModel(this.quatGame);
-	    } 
-	    else {
-	    	if (newWord == oldWord) {
-	    		this.textIndicatorLayer.longIn("CANNOT CHANGE TO SAME WORD");
-	    	} else {
-	    		this.textIndicatorLayer.longIn(newWord.toUpperCase() + " IS NOT A WORD");
-	    	}
+	    puzzle.addWord(newWord);
+
+	    if (puzzle.hasMessage()) {
+    		var message = puzzle.consumeMessage();
+    		this.textIndicatorLayer.addMessage(message.text);
+    	}
+
+	    if (puzzle.isDone()) {
+	    	this.quatGame.getUser().registerPuzzle(puzzle);
+
+	    	this.quatGame.newPuzzle();
 	    }
+
+	    this.solutionLayer.updateFromModel(this.quatGame);
 
 	    this.sc.IDLE();
 	}
@@ -98,7 +99,7 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	// can remove one of the last words
 	else if ((this.sc.state == this.sc.states.IDLE) &&
 	         (keyCode == 8)) {
-	    this.quatGame.goBack();
+	    this.quatGame.getPuzzle().goBack();
 	    this.sc.IDLE();
 	}
 

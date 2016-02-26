@@ -46,7 +46,7 @@ quat.StateController = Class.extend({
 
 	setState: function(state) {
 		if (this.developer) {
-            console.log(stateToText(this.state) + "->" + stateToText(state));
+            console.log(this.stateToText(this.state) + "->" + this.stateToText(state));
         }
 		this.state = state;
 	}

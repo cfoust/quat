@@ -2,16 +2,24 @@ var quat = quat || {};
 quat.menu = quat.menu || {};
 
 quat.menu.MenuLayer = cc.Layer.extend({
-    ctor: function(gameBounds, fontSize) {
+    ctor: function(gameScene, gameBounds, fontSize, gameState) {
         this._super();
 
+        this.gameScene = gameScene;
         this.gameBounds = gameBounds;
         this.fontSize = fontSize;
+        this.quatGame = gameState;
 
         return true;
     },
 
-    
+    applyTheme: function(theme) {
+        this.textLabel.setColor(theme.colors.text);
+
+        for (var i = 0; i < this.buttons.length; i++) {
+            this.buttons[i].applyTheme(theme);
+        }
+    },
 
     onEnter: function() {
         this._super();
@@ -30,7 +38,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
         // Describes what happens when you click each menu button
         var buttons = {
         	"LOOK": function(self) {
-        		console.log("LOOK AT THAT CUTIE");
+        		self.gameScene.SSC.LOOK();
         	},
         	"STATS": function(self) {
         		console.log("WHAT ARE YOUR STATS BRO?");
