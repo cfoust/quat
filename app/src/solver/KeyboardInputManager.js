@@ -61,6 +61,7 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	    newWord = newWord.toLowerCase();
 
 	    puzzle.addWord(newWord);
+	    this.quatGame.saveToLocal();
 
 	    if (puzzle.hasMessage()) {
     		var message = puzzle.consumeMessage();
@@ -69,8 +70,8 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 
 	    if (puzzle.isDone()) {
 	    	this.quatGame.getUser().registerPuzzle(puzzle);
-
 	    	this.quatGame.newPuzzle();
+	    	this.quatGame.getPuzzle().startTime();
 	    }
 
 	    this.solutionLayer.updateFromModel(this.quatGame);
@@ -100,6 +101,7 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	else if ((this.sc.state == this.sc.states.IDLE) &&
 	         (keyCode == 8)) {
 	    this.quatGame.getPuzzle().goBack();
+		this.quatGame.saveToLocal();
 	    this.sc.IDLE();
 	}
 

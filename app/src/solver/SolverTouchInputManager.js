@@ -181,10 +181,11 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
         if (puzzle.isDone()) {
             this.quatGame.getUser().registerPuzzle(puzzle);
-
             this.quatGame.newPuzzle();
+            this.quatGame.getPuzzle().startTime();
         }
 
+        quatGame.saveToLocal();
         this.solutionLayer.updateFromModel(this.quatGame);
     },
 
@@ -251,6 +252,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             if (((Math.PI - Math.abs(angle)) <= 0.30) && 
                 (distance > this.distanceThreshold)) {
                 this.quatGame.getPuzzle().goBack();
+                this.quatGame.saveToLocal();
                 this.solutionLayer.updateFromModel(this.quatGame);
             } else {
                 this.solutionLayer.setCurrentWordOpacity(255);

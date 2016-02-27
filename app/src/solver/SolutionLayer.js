@@ -151,7 +151,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
     updateFromModel: function(model) {
         var puzzle = model.getPuzzle();
-
+        puzzle.startTime();
         this.currentWord.changeWord(puzzle.getCurrentWord());
         this.goalWord.changeWord(puzzle.getGoal());
 

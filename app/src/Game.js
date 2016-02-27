@@ -143,11 +143,11 @@ quat.Puzzle = quat.MessageQueue.extend({
 	 */
 	startTime: function() {
 		this._state = this.states.PLAYING;
-		this._start = new Date();
+		this._startTime = new Date();
 	},
 
 	stopTime: function() {
-		var difference = new Date() - this._start;
+		var difference = new Date() - this._startTime;
 
 		if (this._totalTime) {
 			this._totalTime += difference;
@@ -160,6 +160,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this.stopTime();
 		return {
 			start: this._start,
+			steps: this._steps,
 			end: this._end,
 			par: this._par,
 			time: this._totalTime,
@@ -174,6 +175,8 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._par = obj.par;
 		this._totalTime = obj.time;
 		this._special = obj.special;
+		this._steps = obj.steps;
+		return this;
 	}
 });
 
@@ -227,6 +230,7 @@ quat.User = quat.MessageQueue.extend({
 		if (!puzzle.isDone()) {
 			return false;
 		}
+
 		var par = puzzle.getPar(),
 			points = 0;
 
@@ -324,6 +328,7 @@ quat.Game = quat.MessageQueue.extend({
 
 		this._puzzle = null;
 		this._user = null;
+		this._restored = false;
 	},
 
 	getPuzzle: function() {
@@ -343,11 +348,10 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	loadFromLocal: function() {
-		if ('quat' in localStorage) {
-			var data = localStorage['quat'];
-			this._user = new quat.User().fromObject(data.user);
-			this._puzzle = new quat.Puzzle().fromObject(data.puzzle);
-		}
+		var data = JSON.parse(localStorage['quat']);
+		this._user = new quat.User().fromObject(data.user);
+		this._puzzle = new quat.Puzzle().fromObject(data.puzzle);
+		this._restored = true;
 	},
 
 	newPuzzle: function() {
@@ -356,6 +360,8 @@ quat.Game = quat.MessageQueue.extend({
 		var puzzle = this.puzzles[key];
 
 		this._puzzle = new quat.Puzzle(puzzle[0],puzzle[1],puzzle[2], false);
+
+		this.saveToLocal();
 	},
 
 	reset: function() {
@@ -363,10 +369,15 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	saveToLocal: function() {
-		localStorage['quat'] = {
+		var obj = {
 			user: this._user.toObject(),
 			puzzle: this._puzzle.toObject()
-		};
+		}
+		localStorage['quat'] = JSON.stringify(obj);
+	},
+
+	wasRestored: function() {
+		return this._restored;
 	}
 });
 
