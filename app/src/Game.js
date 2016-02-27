@@ -130,7 +130,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 	 * Gets the number of moves the user needs to make to get par.
 	 */
 	getPar: function() {
-		return this._par - 1;
+		return this._par;
 	},
 
 	/**
@@ -290,7 +290,7 @@ quat.User = quat.MessageQueue.extend({
 		}
 
 		// If the user made par
-		if (par == puzzle.getSteps().length - 1) {
+		if (par == puzzle.getSteps().length) {
 			points = par * 2;
 			this._par += 1;
 			this._addMessage('MADE PAR!');
@@ -409,6 +409,15 @@ quat.Game = quat.MessageQueue.extend({
 
 	getPuzzle: function() {
 		return this._puzzle;
+	},
+
+	setTheme: function(name) {
+		// If the user was solving a special puzzle but chose a new theme
+		if (this._puzzle.isSpecial()) {
+			this.newPuzzle();
+		}
+
+		this._user.setTheme(name);
 	},
 
 	getTheme: function(name) {

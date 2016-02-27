@@ -84,7 +84,16 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
             // Grab a new puzzle
             this.quatGame.newPuzzle();
 
-            this.quatGame.getPuzzle().startTime();
+            puzzle = quatGame.getPuzzle();
+
+            // If the puzzle has a message it wants to be shown to the user
+            if (puzzle.hasMessage() && puzzle.isSpecial()) {
+                // Consume it and add it to the indicator
+                var message = puzzle.consumeMessage();
+                this.textIndicatorLayer.addMessage(message.text, message.special);
+            }
+
+            puzzle.startTime();
 
         }
 

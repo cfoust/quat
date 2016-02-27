@@ -91,7 +91,7 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.nextButton = nextButton;
 
         var selectCallback = function(self) {return function() {
-            self.quatGame.getUser().setTheme(self._current);
+            self.quatGame.setTheme(self._current);
             self.selectedButton.setText("SELECTED");
             self.selectedButton.selected(true);
             self.selectedButton.enabled(false);
