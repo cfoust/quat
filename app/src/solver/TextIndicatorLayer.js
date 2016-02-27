@@ -53,7 +53,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     },
 
     displayMessage: function() {
-        if ((this._messages.length == 0) || (this._animating)) {
+        if (this._messages.length == 0) {
             return;
         }
 
@@ -64,7 +64,8 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             // if they don't need to be used
             begin = cc.delayTime(0),
             end = cc.delayTime(0),
-            retry = cc.delayTime(0);
+            retry = cc.delayTime(0),
+            reset = cc.callFunc(this.resetOpacity, this);
 
         // Have to fade out the current text if it's sticky
         if (this._displayingSticky) {
@@ -79,12 +80,18 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             // we want to return to the sticky message
             this._messages.push(message);
 
+            fade = this.fadeIn;
+
             end = cc.callFunc(function(){
                 this._stickyVisible = true;
             }, this);
 
         } else {
             this._stickyVisible = false;
+
+            reset = cc.delayTime(0);
+            
+            this.stopAllActions();
         
             // Fade out the word after 5 seconds
             end = cc.sequence(
@@ -103,7 +110,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             cc.hide(),
             
             // Reset the opacity to 0
-            cc.callFunc(this.resetOpacity, this),
+            reset,
 
             // Set the text string to the new message text
             cc.callFunc(function(text) { return function(){
@@ -131,6 +138,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             }, this)
         );
 
+        // console.log("Running animation for", text);
         // Run the animation
         this.runAction(sequence);
     },
