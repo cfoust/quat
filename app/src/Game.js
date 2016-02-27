@@ -55,6 +55,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 			return false;
 		}
 
+		if (word == this.getCurrentWord()) {
+			return false;
+		}
+
 		// Push the word 
 		this._steps.push(word);
 
@@ -95,6 +99,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 	 */
 	getCurrentWord: function() {
 		return this._steps[this._steps.length - 1];
+	},
+
+	getPreviousWord: function() {
+		return this._steps[this._steps.length - 2];
 	},
 
 	/**

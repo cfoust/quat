@@ -9,11 +9,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
         this.currentWord.setColor(textColor);
+        this.prevWord.setColor(textColor);
         this.goalWord.setColor(theme.colors.darkForeground);
-        
         this.stepsWord.setColor(theme.colors.darkForeground);
-        
-
         this.goalBackground.setColor(theme.colors.lightForeground);
     },
 
@@ -28,13 +26,21 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.fontSize = fontSize;
         this.panelHeight = panelHeight;
 
+        // Used to display the current word for the user
         var currentWord = new quat.solver.WordNode(fontSize, fourths);
         currentWord.x = fourths / 2;
         currentWord.y = panelHeight + (fontSize / 2);
         this.addChild(currentWord);
-
-        // Allow us to access it from other functions
         this.currentWord = currentWord;
+
+        // Used exclusively for animating swiping backwards
+        var prevWord = new quat.solver.WordNode(fontSize, fourths);
+        prevWord.x = fourths / 2;
+        prevWord.y = panelHeight + (fontSize / 2) + fontSize;
+        prevWord.changeWord('TEST');
+        prevWord.setOpacity(0);
+        this.addChild(prevWord);
+        this.prevWord = prevWord;
 
         // Create a word to display the goal word
         var goalWord = new quat.solver.WordNode(fontSize, fourths);
@@ -72,12 +78,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
     
     setCurrentWordOpacity: function(opacity) {
-        return;
-        this.wordPool[0].setOpacity(opacity);
+        this.currentWord.setOpacity(opacity);
     },
 
     setOpacity: function(opacity) {
-
         this.goalBackground.setOpacity(opacity);
         this.goalWord.setOpacity(opacity);
         this.currentWord.setOpacity(opacity);
