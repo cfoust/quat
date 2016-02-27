@@ -179,7 +179,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
     finishWord: function() {
         // Set the state to be idle
-        this.sc.state.IDLE();
+        this.sc.IDLE();
 
         // Hide the letter chooser
         this.chooseLetterLayer.setVisible(false);
@@ -209,11 +209,11 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             // If so, take down all its stats
             this.quatGame.getUser().registerPuzzle(puzzle);
 
+            this.puzzleLayer.textIndicatorLayer.clearMessages();
+
             // Grab a new puzzle
             this.quatGame.newPuzzle();
 
-            // Start its timekeeping aspect
-            this.quatGame.getPuzzle().startTime();
         }
 
         // Dump the current game state to localstorage

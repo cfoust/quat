@@ -71,7 +71,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		return true;
 	},
 
-	init: function(start, end, par, special) {
+	init: function(start, end, par, special, specialText) {
 		this._super();
 
 		this._dict = quat.dictionary;
@@ -80,6 +80,12 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._par = par;
 		this._steps = [start];
 		this._special = special;
+		this._specialText = specialText || "";
+
+		if (special) {
+			this._addMessage(specialText.toUpperCase(), true);
+		}
+
 		this._state = this.states.NOT_STARTED;
 	},
 
@@ -173,6 +179,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 			par: this._par,
 			time: this._totalTime,
 			special: this._special,
+			specialText: this._specialText,
 			state: this._state,
 		};
 	},
@@ -183,6 +190,12 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._par = obj.par;
 		this._totalTime = obj.time;
 		this._special = obj.special;
+		this._specialText = obj.specialText;
+
+		if (this._special) {
+			this._addMessage(this._specialText.toUpperCase(), true);
+		}
+
 		this._steps = obj.steps;
 		return this;
 	}
@@ -283,6 +296,15 @@ quat.User = quat.MessageQueue.extend({
 		this._themeProgress[this._theme] = number;
 	},
 
+	getThemeProgress: function() {
+		// If the user doens't already have progress on this theme, zero it out
+		if (!(this._theme in this._themeProgress)) {
+			this._themeProgress[this._theme] = 0;
+		}
+
+		return this._themeProgress[this._theme];
+	},
+
 	/**
 	 * Turns this User instance into a json object.
 	 * @return {JSON} Key-value representation of this User instance.
@@ -371,11 +393,26 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	newPuzzle: function() {
-		// Generate a random key
-		var key = Math.floor(Math.random() * this.puzzles.length);
-		var puzzle = this.puzzles[key];
+		var special = true,
+			user = this._user,
+			theme = this.getTheme(user.getTheme()),
+			progress = user.getThemeProgress();
 
-		this._puzzle = new quat.Puzzle(puzzle[0],puzzle[1],puzzle[2], false);
+		if ((special) && (progress < theme.puzzles.length)) {
+			// Grab the special puzzle from this theme
+			var puzzle = theme.puzzles[progress];
+
+			// Increment theme progress
+			user.setThemeProgress(progress + 1);
+
+			// Initialize the puzzle object
+			this._puzzle = new quat.Puzzle(puzzle.start, puzzle.end, null, true, puzzle.text);
+		} else  {
+			// Generate a random key
+			var key = Math.floor(Math.random() * this.puzzles.length);
+			var puzzle = this.puzzles[key];
+			this._puzzle = new quat.Puzzle(puzzle[0],puzzle[1],puzzle[2], false);
+		}
 
 		this.saveToLocal();
 	},

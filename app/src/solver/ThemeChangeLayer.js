@@ -25,9 +25,15 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.puzzleLayer.solutionLayer.goalWord.changeWord(theme.name);
 
         var user = this.quatGame.getUser(),
-            enabled = user.getTheme() == themeName;
+            enabled = user.getTheme() == themeName,
+            unlocked = user.getPoints() >= theme.unlock;
 
-        this.selectedButton.setVisible(user.getPoints() >= theme.unlock);
+        if (!unlocked) {
+            this.remaining.string = ("You need " + (theme.unlock - user.getPoints()) + " more points to unlock this theme.").toUpperCase();   
+        }
+
+        this.selectedButton.setVisible(unlocked);
+        this.remaining.setVisible(!unlocked);
 
         this.selectedButton.selected(enabled);
         this.selectedButton.enabled(!enabled);
@@ -97,7 +103,12 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.addChild(selectedButton);
         this.selectedButton = selectedButton;
 
-        
+        var remaining = new cc.LabelTTF("", "Ubuntu", fontSize*.4, null, cc.TEXT_ALIGNMENT_CENTER);
+        remaining.x = gameBounds.x + (gameBounds.width / 2);
+        remaining.y = gameBounds.height - buttonHeight - ((fontSize / 2) * 1.3);
+        remaining.boundingWidth = gameBounds.width;
+        this.addChild(remaining);
+        this.remaining = remaining;
     },
 
     setVisible: function(visible) {
@@ -115,11 +126,13 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.nextButton.applyTheme(theme);
         this.prevButton.applyTheme(theme);
         this.selectedButton.applyTheme(theme);
+        this.remaining.setColor(theme.colors.text);
     },
 
     setOpacity: function(opacity) {
         this.nextButton.setOpacity(opacity);
         this.prevButton.setOpacity(opacity);
         this.selectedButton.setOpacity(opacity);
+        this.remaining.setOpacity(opacity);
     },
 });

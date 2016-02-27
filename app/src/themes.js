@@ -50,7 +50,25 @@ quat.themes = {
 			darkForeground: "#500000",
 			lightForeground: "#B40000"
 		},
-		puzzles: [],
-		unlock: 0
+		puzzles: [{
+			text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
+			start: 'went',
+			end: 'text'
+		}],
+		unlock: 20
+	},
+	"GAME": {
+		colors: {
+			background: "#8B956D",
+			text: "#414141",
+			darkForeground: "#6B7353",
+			lightForeground: "#C4CFA1"
+		},
+		puzzles: [{
+			text: "Did you ever notice how it doesn't list your points anywhere while you play? That seems like bad game design.",
+			start: 'ever',
+			end: 'play'
+		}],
+		unlock: 50
 	},
 };

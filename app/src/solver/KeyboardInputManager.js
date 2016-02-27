@@ -8,6 +8,7 @@ quat.solver = quat.solver || {};
 quat.solver.KeyboardInputManager = function(puzzleScene) {
 	// Grab all the references to things we need from puzzleScene
 	this.quatGame = puzzleScene.quatGame;
+	this.puzzleLayer = this;
     this.solutionLayer = puzzleScene.solutionLayer;
     this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
     this.sc = puzzleScene.stateController;
@@ -60,21 +61,36 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 
 	    newWord = newWord.toLowerCase();
 
-	    puzzle.addWord(newWord);
-	    this.quatGame.saveToLocal();
+	    // Grab some references to the current game and puzzle
+        var quatGame = this.quatGame;
 
-	    if (puzzle.hasMessage()) {
-    		var message = puzzle.consumeMessage();
-    		this.textIndicatorLayer.addMessage(message.text);
-    	}
+        // Attempt to add the word to the solution
+        puzzle.addWord(newWord);
+        
+        // If the puzzle has a message it wants to be shown to the user
+        if (puzzle.hasMessage()) {
+            // Consume it and add it to the indicator
+            var message = puzzle.consumeMessage();
+            this.textIndicatorLayer.addMessage(message.text);
+        }
 
-	    if (puzzle.isDone()) {
-	    	this.quatGame.getUser().registerPuzzle(puzzle);
-	    	this.quatGame.newPuzzle();
-	    	this.quatGame.getPuzzle().startTime();
-	    }
+        // Check if the puzzle is now done
+        if (puzzle.isDone()) {
+            // If so, take down all its stats
+            this.quatGame.getUser().registerPuzzle(puzzle);
 
-	    this.solutionLayer.updateFromModel(this.quatGame);
+            this.puzzleLayer.textIndicatorLayer.clearMessages();
+
+            // Grab a new puzzle
+            this.quatGame.newPuzzle();
+
+        }
+
+        // Dump the current game state to localstorage
+        quatGame.saveToLocal();
+
+        // Update the solution layer to match the new game state
+        this.solutionLayer.updateFromModel(this.quatGame);
 
 	    this.sc.IDLE();
 	}

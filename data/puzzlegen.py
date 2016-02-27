@@ -213,6 +213,9 @@ def generate(difficulty):
 
 	return (first,second,solve(first,second))
 
+print solve('went','text')
+exit()
+
 ## The following generates the puzzles
 
 # Open a handle to the output JS file

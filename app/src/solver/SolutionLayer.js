@@ -15,8 +15,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.goalBackground.setColor(theme.colors.lightForeground);
     },
 
-    ctor: function(width, height, fontSize) {
+    ctor: function(puzzleLayer, width, height, fontSize) {
         this._super();
+
+        this.puzzleLayer = puzzleLayer;
 
         var size = {width: width, height: height},
             fourths = width / 4,
@@ -155,12 +157,24 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
     updateFromModel: function(model) {
         var puzzle = model.getPuzzle();
+
         puzzle.startTime();
+
         this.currentWord.changeWord(puzzle.getCurrentWord());
         this.goalWord.changeWord(puzzle.getGoal());
 
-        var steps = (puzzle.getSteps().length - 1),
-            par = puzzle.getPar();
-        this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
+        if (puzzle.isSpecial()) {
+            if (puzzle.hasMessage()) {
+                var message = puzzle.consumeMessage();
+                this.puzzleLayer.textIndicatorLayer.addMessage(message.text, message.special);
+            }
+        } else {
+            var steps = (puzzle.getSteps().length - 1),
+                par = puzzle.getPar();
+
+            this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
+        }
+        
+        this.stepsWord.setVisible(!puzzle.isSpecial());
     }
 });

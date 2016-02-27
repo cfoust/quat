@@ -51,7 +51,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
             fontSize = this.fontSize;
 
         // Has all of the indicators about the current solution and steps
-        var solutionLayer = new quat.solver.SolutionLayer(gameBounds.width, gameBounds.height, fontSize);
+        var solutionLayer = new quat.solver.SolutionLayer(this, gameBounds.width, gameBounds.height, fontSize);
         solutionLayer.x = gameBounds.x;
         solutionLayer.y = gameBounds.y;
         solutionLayer.zIndex = 2;
