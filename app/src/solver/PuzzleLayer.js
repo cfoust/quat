@@ -15,25 +15,33 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
     },
 
     setThemeChange: function(set) {
+        this._changingTheme = set;
         if (set) {
             this.touchInputManager.setEnabled(false);
+            this.textIndicatorLayer.clearMessages();
+            this.textIndicatorLayer.addMessage('Swipe from left to right to return to the main menu.'.toUpperCase(), true);
 
             var solutionLayer = this.solutionLayer;
-
-            solutionLayer.currentWord.changeWord("WORD");
             solutionLayer.goalWord.changeWord("WORD");
-            solutionLayer.stepsWord.string = "STEPS: N PAR: N";
+            solutionLayer.currentWord.setVisible(false);
+            solutionLayer.stepsWord.setVisible(false);
             this.themeChangeLayer.setVisible(true);
         }
         else {
             this.touchInputManager.setEnabled(true);
             this.themeChangeLayer.setVisible(false);
-            this.solutionLayer.updateFromModel(this.quatGame);
+
+            var solutionLayer = this.solutionLayer;
+            solutionLayer.currentWord.setVisible(true);
+            solutionLayer.stepsWord.setVisible(true);
+            solutionLayer.updateFromModel(this.quatGame);
         }
     },
 
     onEnter: function() {
         this._super();
+
+
 
         // Initialize the model and get a new puzzle
         var quatGame = this.quatGame;
@@ -74,6 +82,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.addChild(themeChangeLayer);
         themeChangeLayer.setVisible(false);
         this.themeChangeLayer = themeChangeLayer;
+        this._changingTheme = false;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
@@ -152,6 +161,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
+
         this.solutionLayer.applyTheme(theme);
         this.themeChangeLayer.applyTheme(theme);
         this.chooseLetterLayer.applyTheme(theme);

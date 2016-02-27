@@ -50,7 +50,9 @@ quat.solver.WordNode = cc.Node.extend({
     setColor: function(color) {
         for (var j = 0; j < 4; j++) {
             var letterLabel = this.rowPool[j];
-            letterLabel.setFontFillColor(color);
+            letterLabel.setColor(color);
+            letterLabel.setVisible(false);
+            letterLabel.setVisible(true);
         }
     },
 

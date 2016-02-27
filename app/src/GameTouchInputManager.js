@@ -28,6 +28,9 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
     },
 
     moved: function(x, y) {
+        if (this.SSC.state == this.SSC.states.MAIN_MENU) {
+            return;
+        }
         /*
          The user is choosing the letter they want to change.
         */
@@ -52,9 +55,6 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
             if ((this.SSC.state == this.SSC.states.GAME) || 
                (this.SSC.state == this.SSC.states.LOOK)) {
                 this.titleWord.string = "MENU?";
-            }
-            else if (this.SSC.state == this.SSC.states.MAIN_MENU) {
-                this.titleWord.string = "GAME?";
             }
 
             // The user is dragging and has maintained the strict left-to-right
@@ -104,9 +104,6 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
             if (distance >= this.distanceThreshold) {
                 if (this.SSC.state == this.SSC.states.GAME) {
                     this.SSC.MAIN_MENU();
-                }
-                else if (this.SSC.state == this.SSC.states.MAIN_MENU) {
-                    this.SSC.GAME();
                 }
                 else if (this.SSC.state == this.SSC.states.LOOK) {
                     this.SSC.MAIN_MENU();

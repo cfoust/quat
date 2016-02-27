@@ -347,6 +347,10 @@ quat.Game = quat.MessageQueue.extend({
 		return this.themes[name];
 	},
 
+	getThemes: function() {
+		return this.themes;
+	},
+
 	getUser: function() {
 		return this._user;
 	},

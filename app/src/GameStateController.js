@@ -26,9 +26,10 @@ quat.ScreenStateController = quat.StateController.extend({
 
             self.currentLayer = puzzleLayer;
             puzzleLayer.setVisible(true);
+            puzzleLayer.textIndicatorLayer.clearMessages();
             scene.menuLayer.setVisible(false);
-            
             scene.puzzleLayer.setThemeChange(false);
+
         },
         /*
         When the user is at the main menu.
@@ -39,7 +40,7 @@ quat.ScreenStateController = quat.StateController.extend({
             menuLayer.setVisible(true);
             self.currentLayer = menuLayer;
             scene.puzzleLayer.setVisible(false);
-
+            scene.applyThemeByName(scene.gameState.getUser().getTheme());
         },
         LOOK: function(self) {
             var scene = self.gameScene,

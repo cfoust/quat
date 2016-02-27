@@ -48,6 +48,12 @@ quat.GameScene = cc.Scene.extend({
         };
     },
 
+    applyThemeByName: function(themeName) {
+        var theme = this.gameState.getTheme(themeName);
+        theme.name = themeName;
+        this.applyTheme(theme);
+    },
+
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
 
@@ -109,7 +115,8 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(subtextWord);
         this.subtextWord = subtextWord;
 
-        this.applyTheme(gameState.getTheme(gameState.getUser().getTheme()));
+        // Apply the user's theme
+        this.applyThemeByName(gameState.getUser().getTheme());
 
         // Handles states related to the capturing of game-wide gestures
         this.GSC = new quat.GameStateController(this);

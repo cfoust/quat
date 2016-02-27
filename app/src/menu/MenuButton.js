@@ -110,14 +110,18 @@ quat.menu.Button = cc.Layer.extend({
                 }
             },
             onTouchEnded: function(event){
+                button.selected(false);
                 if (contains(event)) {
                     button.callback();
                 }
-                button.selected(false);
                 trackingTouch = false;
                 return true;
             }
         },this);
+    },
+
+    setText: function(text) {
+        this.textLabel.string = text;
     },
 
     setOpacity: function(opacity) {

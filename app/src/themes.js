@@ -51,6 +51,6 @@ quat.themes = {
 			lightForeground: "#B40000"
 		},
 		puzzles: [],
-		unlock: 100
+		unlock: 0
 	},
 };
