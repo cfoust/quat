@@ -32,6 +32,10 @@ quat.stats.StatsLayer = cc.Layer.extend({
     milliToString: function(milli) {
         var str = "";
 
+        if (milli < 1000) {
+            return "0s";
+        }
+
         var second = 1000,
             minute = second * 60,
             hour = minute * 60,
@@ -80,15 +84,18 @@ quat.stats.StatsLayer = cc.Layer.extend({
             PUZZLES: function(self, game) {
                 return game.getUser().getPuzzlesPlayed();
             },
+            PARS: function(self, game) {
+                return game.getUser().getPars();
+            },
             PLAYED: function(self, game) {
                 return self.milliToString(game.getUser().getTimePlayed());
             },
             "AVG.": function(self, game) {
-                return "28s";
+                return self.milliToString(game.getUser().getAveragePuzzleTime());
             },
             "P's": function(self, game) {
-                return "3";
-            }
+                return "4";
+            },
         };
 
         var keys = Object.keys(dataPoints),

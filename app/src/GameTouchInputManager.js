@@ -108,6 +108,7 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                     this.SSC.MAIN_MENU();
                 }
             }
+            this.SSC.currentLayer.setOpacity(255);
             this.puzzleLayer.setOpacity(255);
             this.menuLayer.setOpacity(255);
             this.titleWord.setOpacity(0);

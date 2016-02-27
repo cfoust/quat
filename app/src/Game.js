@@ -225,6 +225,10 @@ quat.User = quat.MessageQueue.extend({
 		}
 	},
 
+	getPars: function() {
+		return this._pars;
+	},
+
 	/**
 	 * Get this user's number of points.
 	 * @return {number} Number of points.
@@ -241,12 +245,18 @@ quat.User = quat.MessageQueue.extend({
 		return this._timePlayed;
 	},
 
+	getAveragePuzzleTime: function() {
+		return this._averageSolveTime;
+	},
+
 	init: function() {
 		this._super();
 		this._theme = "WASH";
 		this._themeProgress = {};
 		this._timePlayed = 0;
 		this._puzzlesPlayed = 0;
+		this._pars = 0;
+		this._averageSolveTime = 0;
 		this._points = 0;
 	},
 
@@ -266,6 +276,7 @@ quat.User = quat.MessageQueue.extend({
 		// If the user made par
 		if (par == puzzle.getSteps().length - 1) {
 			points = par * 2;
+			this._par += 1;
 			this._addMessage('MADE PAR!');
 		}
 		else {
@@ -273,6 +284,7 @@ quat.User = quat.MessageQueue.extend({
 		}
 
 		this._puzzlesPlayed += 1;
+		this._averageSolveTime = (this._timePlayed + puzzle.getTime()) / this._puzzlesPlayed;
 		this._timePlayed += puzzle.getTime();
 		this.addPoints(points);
 	},
@@ -323,7 +335,9 @@ quat.User = quat.MessageQueue.extend({
 			theme: this._theme,
 			themeProgress: this._themeProgress,
 			timePlayed: this._timePlayed,
-			puzzlesPlayed: this._puzzlesPlayed
+			puzzlesPlayed: this._puzzlesPlayed,
+			pars: this._pars,
+			averageSolveTime: this._averageSolveTime
 		};
 	},
 
@@ -337,6 +351,8 @@ quat.User = quat.MessageQueue.extend({
 		this._themeProgress = obj.themeProgress;
 		this._timePlayed = obj.timePlayed;
 		this._puzzlesPlayed = obj.puzzlesPlayed;
+		this._averageSolveTime = obj.averageSolveTime;
+		this._par = obj.pars;
 		return this;
 	}
 });

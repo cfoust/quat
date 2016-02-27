@@ -213,7 +213,7 @@ def generate(difficulty):
 
 	return (first,second,solve(first,second))
 
-print solve('went','text')
+print solve('game','boys')
 exit()
 
 ## The following generates the puzzles

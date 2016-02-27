@@ -62,6 +62,8 @@ quat.ScreenStateController = quat.StateController.extend({
 
             // Set the current layer
             self.currentLayer = statsLayer;
+
+            statsLayer.updateData();
             
             // Make the other ones invisible
             scene.menuLayer.setVisible(false);
