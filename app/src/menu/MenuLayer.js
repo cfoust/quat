@@ -44,7 +44,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
         		self.gameScene.SSC.LOOK();
         	},
         	"STATS": function(self) {
-        		console.log("WHAT ARE YOUR STATS BRO?");
+        		self.gameScene.SSC.STATS();
         	},
         	"ABOUT": function(self) {
         		console.log("TELL ME MORE ABOUT HER");

@@ -63,6 +63,7 @@ quat.GameScene = cc.Scene.extend({
         this.backgroundLayer.applyTheme(theme);
         this.puzzleLayer.applyTheme(theme);
         this.menuLayer.applyTheme(theme);
+        this.statsLayer.applyTheme(theme);
     },
 
     onEnter: function() {
@@ -94,10 +95,16 @@ quat.GameScene = cc.Scene.extend({
         this.puzzleLayer = new quat.solver.PuzzleLayer(this, gameBounds, fontSize, gameState);
         this.addChild(this.puzzleLayer);
 
-        // Create a reference to the puzzle layer
+        // Create a reference to the menu layer
         this.menuLayer = new quat.menu.MenuLayer(this, gameBounds, fontSize, gameState);
         this.addChild(this.menuLayer);
         this.menuLayer.setVisible(false);
+
+
+        // Create a reference to the puzzle layer
+        this.statsLayer = new quat.stats.StatsLayer(this, gameBounds, fontSize, gameState);
+        this.addChild(this.statsLayer);
+        this.statsLayer.setVisible(false);
 
         // Create the MENU word
         var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);

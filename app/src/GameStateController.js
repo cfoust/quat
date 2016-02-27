@@ -56,6 +56,18 @@ quat.ScreenStateController = quat.StateController.extend({
             scene.puzzleLayer.setThemeChange(true);
             scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
+        STATS: function(self) {
+            var scene = self.gameScene,
+                statsLayer = self.gameScene.statsLayer;
+
+            // Set the current layer
+            self.currentLayer = statsLayer;
+            
+            // Make the other ones invisible
+            scene.menuLayer.setVisible(false);
+            statsLayer.setVisible(true);
+            statsLayer.setOpacity(255);
+        },
     },
 
     init: function(gameScene) {

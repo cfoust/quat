@@ -102,10 +102,9 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
                 distance = vector.distance;
 
             if (distance >= this.distanceThreshold) {
-                if (this.SSC.state == this.SSC.states.GAME) {
-                    this.SSC.MAIN_MENU();
-                }
-                else if (this.SSC.state == this.SSC.states.LOOK) {
+                if ((this.SSC.state == this.SSC.states.GAME) ||
+                    (this.SSC.state == this.SSC.states.LOOK) ||
+                    (this.SSC.state == this.SSC.states.STATS)) {
                     this.SSC.MAIN_MENU();
                 }
             }

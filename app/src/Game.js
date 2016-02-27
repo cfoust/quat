@@ -233,6 +233,14 @@ quat.User = quat.MessageQueue.extend({
 		return this._points;
 	},
 
+	getPuzzlesPlayed: function() {
+		return this._puzzlesPlayed;
+	},
+
+	getTimePlayed: function() {
+		return this._timePlayed;
+	},
+
 	init: function() {
 		this._super();
 		this._theme = "WASH";
