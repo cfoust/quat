@@ -214,7 +214,7 @@ quat.User = quat.MessageQueue.extend({
 
 	init: function() {
 		this._super();
-		this._theme = "NONE";
+		this._theme = "WASH";
 		this._themeProgress = {};
 		this._timePlayed = 0;
 		this._puzzlesPlayed = 0;
@@ -259,6 +259,10 @@ quat.User = quat.MessageQueue.extend({
 		else {
 			this._addMessage("TRIED TO CHANGE TO NONEXISTENT THEME " + theme);
 		}
+	},
+
+	getTheme: function() {
+		return this._theme;
 	},
 
 	/**

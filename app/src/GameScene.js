@@ -109,12 +109,7 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(subtextWord);
         this.subtextWord = subtextWord;
 
-        setTheme = function(self) {
-            return function(theme) {
-                self.applyTheme(self.gameState.getTheme(theme));
-            };
-        }(this);
-        this.applyTheme(gameState.getTheme('LATE'));
+        this.applyTheme(gameState.getTheme(gameState.getUser().getTheme()));
 
         // Handles states related to the capturing of game-wide gestures
         this.GSC = new quat.GameStateController(this);
