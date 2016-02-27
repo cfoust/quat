@@ -29,7 +29,6 @@ quat.ScreenStateController = quat.StateController.extend({
             puzzleLayer.textIndicatorLayer.clearMessages();
             scene.menuLayer.setVisible(false);
             scene.puzzleLayer.setThemeChange(false);
-
         },
         /*
         When the user is at the main menu.
@@ -55,6 +54,7 @@ quat.ScreenStateController = quat.StateController.extend({
             
             // Set up the puzzleLayer for LOOK changing
             scene.puzzleLayer.setThemeChange(true);
+            scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
     },
 

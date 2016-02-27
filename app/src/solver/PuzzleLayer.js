@@ -19,7 +19,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         if (set) {
             this.touchInputManager.setEnabled(false);
             this.textIndicatorLayer.clearMessages();
-            this.textIndicatorLayer.addMessage('Swipe from left to right to return to the main menu.'.toUpperCase(), true);
+            this.textIndicatorLayer.addMessage('Swipe from left to right to return to the main menu. Each theme comes with special puzzles.'.toUpperCase(), true);
 
             var solutionLayer = this.solutionLayer;
             solutionLayer.goalWord.changeWord("WORD");

@@ -30,6 +30,7 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.selectedButton.setVisible(user.getPoints() >= theme.unlock);
 
         this.selectedButton.selected(enabled);
+        this.selectedButton.enabled(!enabled);
 
         if (enabled) {
             this.selectedButton.setText("SELECTED");
@@ -87,6 +88,7 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
             self.quatGame.getUser().setTheme(self._current);
             self.selectedButton.setText("SELECTED");
             self.selectedButton.selected(true);
+            self.selectedButton.enabled(false);
             self.quatGame.saveToLocal();
         }}(this);
         var selectedButton = new quat.menu.Button("SELECT", this.fontSize, gameBounds.width, buttonHeight, selectCallback);

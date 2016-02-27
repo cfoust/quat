@@ -6,9 +6,6 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     ctor:function (fontSize, gameBounds) {
         this._super();
 
-        // "BAKE->HATE\nYOU: 5\nPAR: 5\nSCORE:\n200"
-        // "I JUST WISH SHE WOULD COME BACK."
-
         var textLabel = new cc.LabelTTF("", "Ubuntu", fontSize*.6, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = gameBounds.x + (gameBounds.width / 2);
         textLabel.y = gameBounds.y + (gameBounds.height / 2);
@@ -90,7 +87,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             this._stickyVisible = false;
 
             reset = cc.delayTime(0);
-            
+
             this.stopAllActions();
         
             // Fade out the word after 5 seconds
@@ -153,5 +150,6 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
         this._messages = [];
         this._displayingSticky = false;
         this.resetOpacity();
+        this.textLabel.string = "";
     },
 });

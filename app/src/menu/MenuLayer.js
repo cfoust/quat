@@ -38,6 +38,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
         // Describes what happens when you click each menu button
         var buttons = {
             "PLAY": function(self) {
+                console.log("Going to game");
                 self.gameScene.SSC.GAME();
             },
         	"LOOK": function(self) {
