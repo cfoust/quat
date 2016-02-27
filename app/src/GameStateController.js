@@ -26,9 +26,17 @@ quat.ScreenStateController = quat.StateController.extend({
 
             self.currentLayer = puzzleLayer;
             puzzleLayer.setVisible(true);
+            puzzleLayer.setThemeChange(false);
+
+            var game = scene.gameState,
+                puzzle = game.getPuzzle();
+
             puzzleLayer.textIndicatorLayer.clearMessages();
+            if (puzzle.isSpecial()) {
+                puzzleLayer.textIndicatorLayer.addMessage(puzzle.getSpecialText().toUpperCase(), true);
+            }
+            
             scene.menuLayer.setVisible(false);
-            scene.puzzleLayer.setThemeChange(false);
         },
         /*
         When the user is at the main menu.

@@ -100,6 +100,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 		return this._special;
 	},
 
+	getSpecialText: function() {
+		return this._specialText;
+	},
+
 	/**
 	 * Get the current four-letter word (the last one in the solution.)
 	 */

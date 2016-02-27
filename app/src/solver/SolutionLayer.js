@@ -164,10 +164,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.goalWord.changeWord(puzzle.getGoal());
 
         if (puzzle.isSpecial()) {
-            if (puzzle.hasMessage()) {
-                var message = puzzle.consumeMessage();
-                this.puzzleLayer.textIndicatorLayer.addMessage(message.text, message.special);
-            }
+            // if (puzzle.hasMessage()) {
+            //     var message = puzzle.consumeMessage();
+            //     this.puzzleLayer.textIndicatorLayer.addMessage(message.text, message.special);
+            // }
         } else {
             var steps = (puzzle.getSteps().length - 1),
                 par = puzzle.getPar();

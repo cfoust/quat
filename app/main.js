@@ -10,13 +10,19 @@ cc.game.onStart = function(){
     var w = window.innerWidth,
         h = window.innerHeight;
 
+    var resources = [
+        {type:"font", name:"Ubuntu", srcs:["res/Ubuntu.ttf"]},
+    ];
+
     // Setup the resolution policy and design resolution size
     cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.EXACT_FIT);
     cc.view.setFrameSize(w, h);
     
     // The game will be resized when browser size change
     cc.view.resizeWithBrowserSize(true);
-    
-    cc.director.runScene(new quat.GameScene(w,h));
+
+    cc.LoaderScene.preload(resources, function () {
+        cc.director.runScene(new quat.GameScene(w,h));
+    }, this);
 };
 cc.game.run();

@@ -40,7 +40,11 @@ quat.themes = {
 			darkForeground: "#000080",
 			lightForeground: "#00BFFF"
 		},
-		puzzles: [],
+		puzzles: [{
+			text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
+			start: 'went',
+			end: 'text'
+		}],
 		unlock: 0
 	},
 	"LATE": {
