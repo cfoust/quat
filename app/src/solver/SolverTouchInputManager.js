@@ -201,7 +201,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         if (puzzle.hasMessage()) {
             // Consume it and add it to the indicator
             var message = puzzle.consumeMessage();
-            this.textIndicatorLayer.addMessage(message.text);
+            this.textIndicatorLayer.addMessage(message.text, message.special);
         }
 
         // Check if the puzzle is now done
@@ -213,6 +213,8 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
             // Grab a new puzzle
             this.quatGame.newPuzzle();
+
+            this.quatGame.getPuzzle().startTime();
 
         }
 

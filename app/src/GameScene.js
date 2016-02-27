@@ -64,6 +64,7 @@ quat.GameScene = cc.Scene.extend({
         this.puzzleLayer.applyTheme(theme);
         this.menuLayer.applyTheme(theme);
         this.statsLayer.applyTheme(theme);
+        this.aboutLayer.applyTheme(theme);
     },
 
     onEnter: function() {

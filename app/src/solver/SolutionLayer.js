@@ -158,17 +158,14 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     updateFromModel: function(model) {
         var puzzle = model.getPuzzle();
 
-        puzzle.startTime();
+        if (puzzle.inProgress()) {
+            puzzle.startTime();
+        }
 
         this.currentWord.changeWord(puzzle.getCurrentWord());
         this.goalWord.changeWord(puzzle.getGoal());
 
-        if (puzzle.isSpecial()) {
-            // if (puzzle.hasMessage()) {
-            //     var message = puzzle.consumeMessage();
-            //     this.puzzleLayer.textIndicatorLayer.addMessage(message.text, message.special);
-            // }
-        } else {
+        if (!puzzle.isSpecial()) {
             var steps = (puzzle.getSteps().length - 1),
                 par = puzzle.getPar();
 

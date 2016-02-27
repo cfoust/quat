@@ -29,9 +29,11 @@ quat.ScreenStateController = quat.StateController.extend({
             puzzleLayer.setThemeChange(false);
 
             var game = scene.gameState,
-                puzzle = game.getPuzzle();
+                puzzle = game.getPuzzle(),
+                indicator = puzzleLayer.textIndicatorLayer;
 
-            puzzleLayer.textIndicatorLayer.clearMessages();
+            indicator.stopAllActions();
+            indicator.clearMessages();
             if (puzzle.isSpecial()) {
                 puzzleLayer.textIndicatorLayer.addMessage(puzzle.getSpecialText().toUpperCase(), true);
             }

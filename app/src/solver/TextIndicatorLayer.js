@@ -64,6 +64,8 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             retry = cc.delayTime(0),
             reset = cc.callFunc(this.resetOpacity, this);
 
+        
+
         // Have to fade out the current text if it's sticky
         if (this._displayingSticky) {
             begin = this.fadeOut;
@@ -135,13 +137,15 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             }, this)
         );
 
-        // console.log("Running animation for", text);
         // Run the animation
         this.runAction(sequence);
     },
 
     addMessage: function(text, sticky) {
         var sticky = sticky || false;
+        if (this._displayingSticky && sticky) {
+            return;
+        }
         this._messages.push({text: text, sticky: sticky});
         this.displayMessage();
     },

@@ -93,6 +93,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 		return this._state == this.states.DONE;
 	},
 
+	inProgress: function() {
+		return this._state == this.states.PLAYING;
+	},
+
 	/**
 	 * Whether or not this puzzle is special (has a special message.)
 	 */
@@ -160,6 +164,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 	 * @return {[type]} [description]
 	 */
 	startTime: function() {
+
 		this._state = this.states.PLAYING;
 		this._startTime = new Date();
 	},
@@ -195,6 +200,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._totalTime = obj.time;
 		this._special = obj.special;
 		this._specialText = obj.specialText;
+		this._state = this.states.PLAYING;
 
 		if (this._special) {
 			this._addMessage(this._specialText.toUpperCase(), true);
@@ -277,6 +283,12 @@ quat.User = quat.MessageQueue.extend({
 		var par = puzzle.getPar(),
 			points = 0;
 
+
+		// Workaround to give 20 points when the user gets a special puzzle
+		if (puzzle.isSpecial()) {
+			par = 20;
+		}
+
 		// If the user made par
 		if (par == puzzle.getSteps().length - 1) {
 			points = par * 2;
@@ -286,6 +298,8 @@ quat.User = quat.MessageQueue.extend({
 		else {
 			points = par;
 		}
+
+		puzzle.stopTime();
 
 		this._puzzlesPlayed += 1;
 		this._averageSolveTime = (this._timePlayed + puzzle.getTime()) / this._puzzlesPlayed;
@@ -421,10 +435,11 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	newPuzzle: function() {
-		var special = true,
-			user = this._user,
+		var user = this._user,
 			theme = this.getTheme(user.getTheme()),
 			progress = user.getThemeProgress();
+			random = Math.floor((Math.random() * 5) + 1),
+			special = random == 1;
 
 		if ((special) && (progress < theme.puzzles.length)) {
 			// Grab the special puzzle from this theme
