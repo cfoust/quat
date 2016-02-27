@@ -106,6 +106,11 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(this.statsLayer);
         this.statsLayer.setVisible(false);
 
+        // Create a reference to the puzzle layer
+        this.aboutLayer = new quat.about.AboutLayer(fontSize, gameBounds);
+        this.addChild(this.aboutLayer);
+        this.aboutLayer.setVisible(false);
+
         // Create the MENU word
         var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);
         titleWord.x = this.windowWidth / 2;

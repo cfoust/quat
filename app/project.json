@@ -32,6 +32,8 @@
         "src/stats/StatLayer.js",
         "src/stats/StatsLayer.js",
 
+        "src/about/AboutLayer.js",
+
         "src/menu/MenuButton.js",
         "src/menu/MenuLayer.js",
         

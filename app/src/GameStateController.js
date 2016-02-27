@@ -70,6 +70,18 @@ quat.ScreenStateController = quat.StateController.extend({
             statsLayer.setVisible(true);
             statsLayer.setOpacity(255);
         },
+        ABOUT: function(self) {
+            var scene = self.gameScene,
+                aboutLayer = self.gameScene.aboutLayer;
+
+            // Set the current layer
+            self.currentLayer = aboutLayer;
+            
+            // Make the other ones invisible
+            scene.menuLayer.setVisible(false);
+            aboutLayer.setVisible(true);
+            aboutLayer.setOpacity(255);
+        },
     },
 
     init: function(gameScene) {
