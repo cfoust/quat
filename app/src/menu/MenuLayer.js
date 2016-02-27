@@ -38,7 +38,6 @@ quat.menu.MenuLayer = cc.Layer.extend({
         // Describes what happens when you click each menu button
         var buttons = {
             "PLAY": function(self) {
-                console.log("Going to game");
                 self.gameScene.SSC.GAME();
             },
         	"LOOK": function(self) {
@@ -53,7 +52,16 @@ quat.menu.MenuLayer = cc.Layer.extend({
         };
 
         var buttonHeight = fontSize * 1.3,
-        	buttonGap = buttonHeight * 1.1;
+        	buttonGap = buttonHeight * 1.1,
+            numButtons = Object.keys(buttons).length;
+
+        // Calculate the offset needed to center all of the buttons
+        var totalHeight = fontSize + (numButtons * buttonGap);
+            offset = (((1 - (fontSize / totalHeight)) * totalHeight) - (totalHeight / 2)) / 2;
+        // I have no idea why that worked but #yolo
+
+        // Reset the offset of the QUAT label
+        textLabel.y += offset;
 
         var buttonKeys = Object.keys(buttons);
         this.buttons = [];
@@ -76,7 +84,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
 	        
 	        // Move it properly
 	        menuButton.x = gameBounds.x;
-	        menuButton.y = gameBounds.y + (gameBounds.height / 2) + (-buttonGap * i);
+	        menuButton.y = gameBounds.y + (gameBounds.height / 2) + (-buttonGap * i) + offset;
 	        this.addChild(menuButton);
 	        this.buttons.push(menuButton);
         }
