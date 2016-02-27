@@ -55,6 +55,10 @@ quat.ScreenStateController = quat.StateController.extend({
             var scene = self.gameScene,
                 puzzleLayer = self.gameScene.puzzleLayer;
 
+            var indicator = puzzleLayer.textIndicatorLayer;
+            indicator.stopAllActions();
+            indicator.clearMessages();
+
             // Set the current layer
             self.currentLayer = puzzleLayer;
             
