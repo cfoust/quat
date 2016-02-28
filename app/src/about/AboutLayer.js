@@ -28,7 +28,7 @@ quat.about.AboutLayer = cc.Layer.extend({
         this.addChild(text);
         this.text = text;
 
-        text.string = "Quat was produced by a multinational NGO with the aims of unifying the human race under a love for word puzzles. All references to intellectual property, be they real or imagined, are maintained as the rights of their creators.\n\ndev@quatga.me\n@quatgame";
+        text.string = "Quat was produced by a multinational NGO with the aims of unifying the human race under a love for word puzzles. All references to intellectual property, be they real or imagined, are maintained as the rights of their creators.\n\nThis one is for those golden afternoons in St. Germaine.\n\ndev@quatga.me\n@quatgame";
         text.string = text.string.toUpperCase();
     },
 

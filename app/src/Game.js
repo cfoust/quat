@@ -49,6 +49,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 	 * @param {string} word Four-letter word.
 	 */
 	addWord: function(word) {
+		if (word.length != 4) {
+			return;
+		}
+
 		// Check if the word exists, and if it does, add it
 		if (!(word in this._dict)) {
 			this._addMessage(word.toUpperCase() + " IS NOT A WORD");
@@ -412,12 +416,16 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	setTheme: function(name) {
+		if (this._puzzle.isSpecial()) {
+			this._user.setThemeProgress(this._user.getThemeProgress() - 1);
+		}
+
+		this._user.setTheme(name);
+
 		// If the user was solving a special puzzle but chose a new theme
 		if (this._puzzle.isSpecial()) {
 			this.newPuzzle();
 		}
-
-		this._user.setTheme(name);
 	},
 
 	getTheme: function(name) {
@@ -449,6 +457,8 @@ quat.Game = quat.MessageQueue.extend({
 			progress = user.getThemeProgress();
 			random = Math.floor((Math.random() * 5) + 1),
 			special = random == 1;
+
+		special = true;
 
 		if ((special) && (progress < theme.puzzles.length)) {
 			// Grab the special puzzle from this theme

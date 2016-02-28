@@ -27,7 +27,8 @@ quat.themes = {
 	// 			// 'text' will be automatically capitalized.
 	// 			text: 'This is the text that will be displayed in the center indicator. It wraps automatically.'
 	// 			start: '[four letter start word]',
-	// 			end: '[four letter end word]'
+	// 			end: '[four letter end word]',
+	// 			par: 0
 	// 		}
 	// 	],
 	// 	// The number of points the user has to have to unlock this theme
@@ -40,11 +41,7 @@ quat.themes = {
 			darkForeground: "#000080",
 			lightForeground: "#00BFFF"
 		},
-		puzzles: [{
-			text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
-			start: 'went',
-			end: 'text'
-		}],
+		puzzles: [],
 		unlock: 0
 	},
 	"LATE": {
@@ -54,12 +51,69 @@ quat.themes = {
 			darkForeground: "#500000",
 			lightForeground: "#B40000"
 		},
-		puzzles: [{
-			text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
-			start: 'went',
-			end: 'text'
-		}],
-		unlock: 20
+		puzzles: [
+			{
+				text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
+				start: 'went',
+				end: 'text',
+				par: 3
+			},
+			{
+				text: "\"I'm not over it. I've gotten a lot better about it, and I can pretend that I am, but seeing you just reminds me of everything.\"",
+				start: 'over',
+				end: 'that',
+				par: 6
+			},
+			{
+				text: "\"You just want me to come back.\"",
+				start: 'come',
+				end: 'back',
+				par: 6
+			},
+			{
+				text: "\"I guess I still don't understand how or why you feel the way you do. I'll just go.\"",
+				start: 'dont',
+				end: 'feel',
+				par: 5
+			},
+			{
+				text: "\"I do care about you too, I do. I feel the way I do for a lot of reasons.\"",
+				start: 'dont',
+				end: 'care',
+				par: 5
+			},
+			{
+				text: "\"All I seem to be doing is making your life so much harder.\"",
+				start: 'life',
+				end: 'hard',
+				par: 5
+			},
+			{
+				text: "\"You made me feel like that. Like I was some sort of stupid kid always getting in the way when all I was trying to do was care.\"",
+				start: 'sort',
+				end: 'care',
+				par: 5
+			},
+			{
+				text: "\"I didn't mean to get like this again.\"",
+				start: 'like',
+				end: 'this',
+				par: 5
+			},
+			{
+				text: "\"We can still be friends.\"",
+				start: 'more',
+				end: 'lies',
+				par: 6
+			},
+			{
+				text: "\"I'm sick of not being \"old enough\" for you or being a burden to you.\"",
+				start: 'sick',
+				end: 'life',
+				par: 4
+			}
+		],
+		unlock: 0
 	},
 	"GAME": {
 		colors: {
@@ -68,11 +122,25 @@ quat.themes = {
 			darkForeground: "#6B7353",
 			lightForeground: "#C4CFA1"
 		},
-		puzzles: [{
+		puzzles: [
+		{
+			text: "My thumbs hurt after the first hour, but I didn't care. I stared into that monochromatic screen the whole night.",
+			start: 'hurt',
+			end: 'care',
+			par: 4
+		},
+		{
+			text: "I ripped out the game cart and threw it across the room. I wanted to beat that damn ape.",
+			start: 'beat',
+			end: 'damn',
+			par: 6
+		},
+		{
 			text: "Did you ever notice how it doesn't list your points anywhere while you play? That seems like bad game design.",
 			start: 'ever',
-			end: 'play'
+			end: 'play',
+			par: 6
 		}],
-		unlock: 50
+		unlock: 0
 	},
 };

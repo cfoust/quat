@@ -213,7 +213,7 @@ def generate(difficulty):
 
 	return (first,second,solve(first,second))
 
-print solve('game','boys')
+print solve('wend','cust')
 exit()
 
 ## The following generates the puzzles
@@ -237,7 +237,7 @@ while True:
 	solution = problem[2]
 	
 	# If we didn't get a solution, try again and don't count it
-	if len(solution) == 0 or not solution or len(solution) < 6:
+	if len(solution) == 0 or not solution or len(solution) != 3:
 		continue
 
 	i += 1
