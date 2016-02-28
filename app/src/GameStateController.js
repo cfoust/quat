@@ -50,6 +50,7 @@ quat.ScreenStateController = quat.StateController.extend({
             self.currentLayer = menuLayer;
             scene.puzzleLayer.setVisible(false);
             scene.applyThemeByName(scene.gameState.getUser().getTheme());
+            scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
         LOOK: function(self) {
             var scene = self.gameScene,

@@ -143,4 +143,25 @@ quat.themes = {
 		}],
 		unlock: 0
 	},
+	"SNOW": {
+		colors: {
+			background: "#FFFFFF",
+			text: "#204C54",
+			// darkForeground: "#285F69",
+			darkForeground: "#36818F",
+			lightForeground: "#83C9FF"
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"BOOK": {
+		colors: {
+			background: "#FADFAF",
+			text: "#332E23",
+			darkForeground: "#CC8F00",
+			lightForeground: "#573526"
+		},
+		puzzles: [],
+		unlock: 0
+	},
 };

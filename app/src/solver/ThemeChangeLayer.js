@@ -54,6 +54,20 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         }
 
         this._current = themeName;
+        this._currentIndex = this._themes.indexOf(themeName);
+    },
+
+    
+    deltaTheme: function(delta) {
+        var newIndex = this._currentIndex + delta,
+            themes = this._themes;
+
+        newIndex %= themes.length;
+        if (newIndex < 0) {
+            newIndex += themes.length;
+        }
+
+        this.viewTheme(themes[newIndex]);
     },
 
     onEnter: function() {
@@ -64,22 +78,13 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         // Create a list of theme names
         this._themes = Object.keys(quatGame.getThemes());
         var themes = this._themes,
-            current = themes.indexOf(quatGame.getUser().getTheme()),
-            deltaTheme = function(delta) {
-                var newIndex = current + delta;
-                newIndex %= themes.length;
-                if (newIndex < 0) {
-                    newIndex += themes.length;
-                }
-                current = newIndex;
-                return themes[newIndex];
-            },
-            nextTheme = function(self, delta) {return function() {
-                self.viewTheme(delta(1));
-            };}(this, deltaTheme),
-            prevTheme = function(self, delta) {return function() {
-                self.viewTheme(delta(-1));
-            };}(this, deltaTheme);
+            current = themes.indexOf(quatGame.getUser().getTheme())
+            nextTheme = function(self) {return function() {
+                self.deltaTheme(1);
+            };}(this),
+            prevTheme = function(self) {return function() {
+                self.deltaTheme(-1);
+            };}(this);
 
         var fontSize = this.fontSize,
             gameBounds = this.gameBounds;
