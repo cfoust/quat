@@ -26,7 +26,9 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
 
         var user = this.quatGame.getUser(),
             enabled = user.getTheme() == themeName,
-            unlocked = user.getPoints() >= theme.unlock;
+            unlocked = user.getPoints() >= theme.unlock,
+            progress = user.getThemeProgressForTheme(themeName),
+            puzzles = theme.puzzles.length;
 
         if (!unlocked) {
             this.remaining.string = ("You need " + (theme.unlock - user.getPoints()) + " more points to unlock this theme.").toUpperCase();   
@@ -42,6 +44,13 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
             this.selectedButton.setText("SELECTED");
         } else {
             this.selectedButton.setText("SELECT");
+        }
+
+        if (puzzles != 0) {
+            this.progress.string = progress.toString() + "/" + puzzles.toString() + " PUZZLES SOLVED";
+            this.progress.setVisible(true);
+        } else {
+            this.progress.setVisible(false);
         }
 
         this._current = themeName;
@@ -109,6 +118,14 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         remaining.boundingWidth = gameBounds.width;
         this.addChild(remaining);
         this.remaining = remaining;
+
+        var progress = new cc.LabelTTF("", "Ubuntu", fontSize*.5, null, cc.TEXT_ALIGNMENT_CENTER);
+        progress.x = gameBounds.x + (gameBounds.width / 2);
+        progress.y = this.puzzleLayer.solutionLayer.bottomOfCurrentWord() + fontSize*.35;
+        progress.boundingWidth = gameBounds.width;
+        progress.string = "10/10 PUZZLES SOLVED";
+        this.addChild(progress);
+        this.progress = progress;
     },
 
     setVisible: function(visible) {
@@ -116,6 +133,7 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.nextButton.setVisible(visible);
         this.prevButton.setVisible(visible);
         this.selectedButton.setVisible(visible);
+        this.remaining.setVisible(visible);
 
         if (visible) {
             this.viewTheme(this.quatGame.getUser().getTheme());
@@ -127,6 +145,7 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.prevButton.applyTheme(theme);
         this.selectedButton.applyTheme(theme);
         this.remaining.setColor(theme.colors.text);
+        this.progress.setColor(theme.colors.text);
     },
 
     setOpacity: function(opacity) {
@@ -134,5 +153,6 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
         this.prevButton.setOpacity(opacity);
         this.selectedButton.setOpacity(opacity);
         this.remaining.setOpacity(opacity);
+        this.progress.setOpacity(opacity);
     },
 });

@@ -218,6 +218,8 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
             // If the puzzle has a message it wants to be shown to the user
             if (puzzle.hasMessage() && puzzle.isSpecial()) {
+                this.textIndicatorLayer.clearMessages();
+
                 // Consume it and add it to the indicator
                 var message = puzzle.consumeMessage();
                 this.textIndicatorLayer.addMessage(message.text, message.special);

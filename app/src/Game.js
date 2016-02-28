@@ -85,6 +85,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._steps = [start];
 		this._special = special;
 		this._specialText = specialText || "";
+		this._timeStarted = false;
 
 		if (special) {
 			this._addMessage(specialText.toUpperCase(), true);
@@ -163,12 +164,17 @@ quat.Puzzle = quat.MessageQueue.extend({
 		}
 	},
 
+
+	timeStarted: function() {
+		return this._timeStarted;
+	},
+
 	/**
 	 * Start the time counter that 
 	 * @return {[type]} [description]
 	 */
 	startTime: function() {
-
+		this._timeStarted = true;
 		this._state = this.states.PLAYING;
 		this._startTime = new Date();
 	},
@@ -176,6 +182,11 @@ quat.Puzzle = quat.MessageQueue.extend({
 	stopTime: function() {
 		var difference = new Date() - this._startTime;
 
+		if (isNaN(difference)) {
+			return;
+		}
+
+		this._timeStarted = false;
 		if (this._totalTime) {
 			this._totalTime += difference;
 		} else {
@@ -185,6 +196,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 
 	toObject: function() {
 		this.stopTime();
+		this.startTime();
 		return {
 			start: this._start,
 			steps: this._steps,
@@ -285,6 +297,7 @@ quat.User = quat.MessageQueue.extend({
 		}
 
 		var par = puzzle.getPar(),
+			steps = puzzle.getSteps().length,
 			points = 0;
 
 
@@ -294,9 +307,9 @@ quat.User = quat.MessageQueue.extend({
 		}
 
 		// If the user made par
-		if (par == puzzle.getSteps().length) {
+		if (par == steps) {
 			points = par * 2;
-			this._par += 1;
+			this._pars += 1;
 			this._addMessage('MADE PAR!');
 		}
 		else {
@@ -347,6 +360,14 @@ quat.User = quat.MessageQueue.extend({
 		return this._themeProgress[this._theme];
 	},
 
+	getThemeProgressForTheme: function(name) {
+		if (!(name in this._themeProgress)) {
+			return 0;
+		}
+
+		return this._themeProgress[name];
+	},
+
 	/**
 	 * Turns this User instance into a json object.
 	 * @return {JSON} Key-value representation of this User instance.
@@ -374,7 +395,7 @@ quat.User = quat.MessageQueue.extend({
 		this._timePlayed = obj.timePlayed;
 		this._puzzlesPlayed = obj.puzzlesPlayed;
 		this._averageSolveTime = obj.averageSolveTime;
-		this._par = obj.pars;
+		this._pars = obj.pars;
 		return this;
 	}
 });
@@ -416,14 +437,19 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	setTheme: function(name) {
-		if (this._puzzle.isSpecial()) {
+		// If the puzzle is special, we gotta set back their theme progress
+		// because you can't play that puzzle on the new theme
+		
+		var otherTheme = ((this._puzzle.isSpecial()) && (this._user.getTheme() != name));
+
+		if (otherTheme) {
 			this._user.setThemeProgress(this._user.getThemeProgress() - 1);
 		}
 
 		this._user.setTheme(name);
 
 		// If the user was solving a special puzzle but chose a new theme
-		if (this._puzzle.isSpecial()) {
+		if (otherTheme) {
 			this.newPuzzle();
 		}
 	},

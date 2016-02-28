@@ -151,6 +151,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     },
 
     clearMessages: function() {
+        this.stopAllActions();
         this._messages = [];
         this._displayingSticky = false;
         this.resetOpacity();

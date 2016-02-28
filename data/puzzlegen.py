@@ -213,8 +213,6 @@ def generate(difficulty):
 
 	return (first,second,solve(first,second))
 
-print solve('wend','cust')
-exit()
 
 ## The following generates the puzzles
 

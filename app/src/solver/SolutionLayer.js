@@ -158,7 +158,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     updateFromModel: function(model) {
         var puzzle = model.getPuzzle();
 
-        if (puzzle.inProgress()) {
+        if (!puzzle.timeStarted()) {
             puzzle.startTime();
         }
 
