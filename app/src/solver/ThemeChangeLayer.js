@@ -17,12 +17,13 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
     },
 
     viewTheme: function(themeName) {
-        var theme = this.quatGame.getTheme(themeName);
+        var theme = this.quatGame.getTheme(themeName),
+            solutionLayer = this.puzzleLayer.solutionLayer;
         theme.name = themeName;
 
         this.gameScene.applyTheme(theme);
         this.gameScene.applyTheme(theme);
-        this.puzzleLayer.solutionLayer.goalWord.changeWord(theme.name);
+        solutionLayer.goalWord.changeWord(theme.name);
 
         var user = this.quatGame.getUser(),
             enabled = user.getTheme() == themeName,
@@ -53,11 +54,13 @@ quat.solver.ThemeChangeLayer = cc.Layer.extend({
             this.progress.setVisible(false);
         }
 
+
         this._current = themeName;
         this._currentIndex = this._themes.indexOf(themeName);
+
+        solutionLayer.stepsWord.string = "THEME " + (this._currentIndex + 1).toString() + "/" + this._themes.length.toString();
     },
 
-    
     deltaTheme: function(delta) {
         var newIndex = this._currentIndex + delta,
             themes = this._themes;

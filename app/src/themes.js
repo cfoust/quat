@@ -19,6 +19,12 @@ quat.themes = {
 	// 		// * Background on the goal word
 	// 		// * Background on menu buttons when selected
 	// 		lightForeground: "#FFFFFF"
+	// 		// Optional parameter that sets buttons to the following colors
+	// 		// when selected:
+	// 		//  	text color: darkForeground
+	// 		//		background color: lightForeground
+	// 		// Instead of the normal behavior.
+	// 		inverseButtons: true
 	// 	},
 	// 	// List of puzzles related to this theme. These have a small chance of
 	// 	// being shown while the user is playing on this theme.
@@ -160,6 +166,27 @@ quat.themes = {
 			text: "#332E23",
 			darkForeground: "#CC8F00",
 			lightForeground: "#573526"
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"PINE": { // Maybe revisit this one's colors
+		colors: {
+			background: "#002E16",
+			text: "#147503",
+			darkForeground: "#2B1302",
+			lightForeground: "#665905"
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"DEAD": {
+		colors: {
+			background: "#000000",
+			text: "#FFFFFF",
+			darkForeground: "#000000",
+			lightForeground: "#FFFFFF",
+			inverseButtons: true
 		},
 		puzzles: [],
 		unlock: 0

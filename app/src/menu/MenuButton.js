@@ -17,15 +17,29 @@ quat.menu.Button = cc.Layer.extend({
     applyTheme: function(theme) {
         this.textLabel.setColor(theme.colors.text);
         this.background.setColor(theme.colors.darkForeground);
+        this.textColor = theme.colors.text;
         this.defaultColor = theme.colors.darkForeground;
         this.selectedColor = theme.colors.lightForeground;
+
+        if (theme.colors.inverseButtons) {
+            this._invert = true;
+        } else {
+            this._invert = false;
+        }
     },
 
     _selected: false,
     selected: function(selected) {
         if (selected) {
-            this.background.setColor(this.selectedColor);
+            if (this._invert) {
+                this.textLabel.setColor(this.defaultColor);
+                this.background.setColor(this.selectedColor);
+            } else {
+                this.textLabel.setColor(this.textColor);
+                this.background.setColor(this.selectedColor);
+            }
         } else {
+            this.textLabel.setColor(this.textColor);
             this.background.setColor(this.defaultColor);
         }
         this._selected = selected;

@@ -24,7 +24,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
             var solutionLayer = this.solutionLayer;
             solutionLayer.goalWord.changeWord("WORD");
             solutionLayer.currentWord.setVisible(false);
-            solutionLayer.stepsWord.setVisible(false);
+            solutionLayer.stepsWord.setVisible(true);
             this.themeChangeLayer.setVisible(true);
         }
         else {
