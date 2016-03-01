@@ -153,7 +153,6 @@ quat.themes = {
 		colors: {
 			background: "#FFFFFF",
 			text: "#204C54",
-			// darkForeground: "#285F69",
 			darkForeground: "#36818F",
 			lightForeground: "#83C9FF"
 		},
@@ -165,7 +164,8 @@ quat.themes = {
 			background: "#FADFAF",
 			text: "#332E23",
 			darkForeground: "#CC8F00",
-			lightForeground: "#573526"
+			lightForeground: "#573526",
+			inverseButtons: true
 		},
 		puzzles: [],
 		unlock: 0
@@ -175,7 +175,8 @@ quat.themes = {
 			background: "#002E16",
 			text: "#147503",
 			darkForeground: "#2B1302",
-			lightForeground: "#665905"
+			lightForeground: "#665905",
+			inverseButtons: true
 		},
 		puzzles: [],
 		unlock: 0
@@ -187,6 +188,47 @@ quat.themes = {
 			darkForeground: "#000000",
 			lightForeground: "#FFFFFF",
 			inverseButtons: true
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"WISH": {
+		colors: {
+			background: "#FAD6AB",
+			text: "#A08800",
+			darkForeground: "#111859",
+			lightForeground: "#BA9E00",
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"WOOD": {
+		colors: {
+			background: "#64371B",
+			text: "#E37D3E",
+			darkForeground: "#573018",
+			lightForeground: "#A35A2D",
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"SAIL": {
+		colors: {
+			background: "#171857",
+			text: "#E37D3E",
+			darkForeground: "#331C0E",
+			lightForeground: "#64371B",
+		},
+		puzzles: [],
+		unlock: 0
+	},
+	"DAYS": {
+		colors: {
+			background: "#00C1C2",
+			text: "#4F4A44",
+			contrastText: true,
+			darkForeground: "#CF9F3B",
+			lightForeground: "#CF9C19"
 		},
 		puzzles: [],
 		unlock: 0

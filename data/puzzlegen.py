@@ -214,6 +214,22 @@ def generate(difficulty):
 	return (first,second,solve(first,second))
 
 
+"""
+THRESHOLD: We assume the user knows all of the words above this frequency value.
+This is typically a small subset of the total words, even at relatively low
+numbers. It makes sense that the average person might only have a four-letter
+vocabulary of around 800. A threshold of 5000 gives this number of words.
+"""
+THRESHOLD = 5000
+
+
+freqlim = 5000
+aboveWords = [(x,words[x][1]) for x in words if words[x][1] >= freqlim]
+print len(aboveWords)
+belowWords = [(x,words[x][1]) for x in words if words[x][1] <= freqlim]
+print len(belowWords)
+exit()
+
 ## The following generates the puzzles
 
 # Open a handle to the output JS file

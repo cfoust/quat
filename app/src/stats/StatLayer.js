@@ -14,7 +14,12 @@ quat.stats.StatLayer = cc.Layer.extend({
 
     applyTheme: function(theme) {
         this.leftLabel.setColor(theme.colors.text);
-        this.rightLabel.setColor(theme.colors.darkForeground);
+        if (theme.colors.contrastText) {
+            this.rightLabel.setColor(theme.colors.text);
+        }
+        else {
+            this.rightLabel.setColor(theme.colors.darkForeground);
+        }
     },
 
     onEnter: function() {

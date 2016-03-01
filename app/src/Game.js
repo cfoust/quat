@@ -63,6 +63,8 @@ quat.Puzzle = quat.MessageQueue.extend({
 			return false;
 		}
 
+		this._moves++;
+
 		// Push the word 
 		this._steps.push(word);
 
@@ -83,6 +85,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._end = end;
 		this._par = par;
 		this._steps = [start];
+		this._moves = 0;
 		this._special = special;
 		this._specialText = specialText || "";
 		this._timeStarted = false;
@@ -161,6 +164,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		if (this._steps.length > 1) {
 			// Slice off the last step in the array
 			this._steps = this._steps.slice(0,-1);
+			this._moves++;
 		}
 	},
 
@@ -206,6 +210,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 			special: this._special,
 			specialText: this._specialText,
 			state: this._state,
+			moves: this._moves
 		};
 	},
 
@@ -216,6 +221,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._totalTime = obj.time;
 		this._special = obj.special;
 		this._specialText = obj.specialText;
+		this._moves = obj.moves;
 		this._state = this.states.PLAYING;
 
 		if (this._special) {
@@ -296,15 +302,11 @@ quat.User = quat.MessageQueue.extend({
 			return false;
 		}
 
+		puzzle.stopTime();
+		
 		var par = puzzle.getPar(),
 			steps = puzzle.getSteps().length,
 			points = 0;
-
-
-		// Workaround to give 20 points when the user gets a special puzzle
-		if (puzzle.isSpecial()) {
-			par = 20;
-		}
 
 		// If the user made par
 		if (par == steps) {
@@ -316,7 +318,6 @@ quat.User = quat.MessageQueue.extend({
 			points = par;
 		}
 
-		puzzle.stopTime();
 
 		this._puzzlesPlayed += 1;
 		this._averageSolveTime = (this._timePlayed + puzzle.getTime()) / this._puzzlesPlayed;
@@ -423,7 +424,9 @@ quat.Game = quat.MessageQueue.extend({
 			var colorKeys = Object.keys(colors);
 			for (var j = 0; j < colorKeys.length; j++) {
 				var colorKey = colorKeys[j];
-				colors[colorKey] = cc.color(colors[colorKey]);
+				if (typeof colors[colorKey] == "string") {
+					colors[colorKey] = cc.color(colors[colorKey]);
+				}
 			}
 		}
 

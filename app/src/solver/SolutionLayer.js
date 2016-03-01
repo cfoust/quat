@@ -10,8 +10,15 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         var textColor = theme.colors.text;
         this.currentWord.setColor(textColor);
         this.prevWord.setColor(textColor);
-        this.goalWord.setColor(theme.colors.darkForeground);
-        this.stepsWord.setColor(theme.colors.darkForeground);
+
+        if (theme.colors.contrastText) {
+            this.goalWord.setColor(textColor);
+            this.stepsWord.setColor(textColor);
+        } else {
+            this.goalWord.setColor(theme.colors.darkForeground);
+            this.stepsWord.setColor(theme.colors.darkForeground);
+        }
+        
         this.goalBackground.setColor(theme.colors.lightForeground);
     },
 
