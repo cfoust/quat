@@ -214,7 +214,7 @@ def generate(difficulty):
 	return (first,second,solve(first,second))
 
 
-print solve('hard','test')
+print solve('good','time')
 exit()
 
 """

@@ -47,7 +47,20 @@ quat.themes = {
 			darkForeground: "#000080",
 			lightForeground: "#00BFFF"
 		},
-		puzzles: [],
+		puzzles: [
+			{
+				text: 'Go from "bane" to "bank" by changing one letter. Tap and drag a letter to start changing it. Tap it again to choose a letter.',
+				start: 'bane',
+				end: 'bank',
+				par: 1
+			},
+			{
+				text: 'Swipe from right to left to go back a step, and left to right to go to the menu.',
+				start: 'taps',
+				end: 'tape',
+				par: 1
+			},
+		],
 		unlock: 0
 	},
 	"LATE": {
@@ -107,20 +120,21 @@ quat.themes = {
 				par: 5
 			},
 			{
+				text: "\"I'm sick of not being \"old enough\" for you or being a burden to you.\"",
+				start: 'sick',
+				end: 'life',
+				par: 4
+			},
+			{
 				text: "\"We can still be friends.\"",
 				start: 'more',
 				end: 'lies',
 				par: 6
 			},
-			{
-				text: "\"I'm sick of not being \"old enough\" for you or being a burden to you.\"",
-				start: 'sick',
-				end: 'life',
-				par: 4
-			}
 		],
 		unlock: 0
 	},
+	
 	"GAME": {
 		colors: {
 			background: "#8B956D",
@@ -129,24 +143,31 @@ quat.themes = {
 			lightForeground: "#C4CFA1"
 		},
 		puzzles: [
-		{
-			text: "My thumbs hurt after the first hour, but I didn't care. I stared into that monochromatic screen the whole night.",
-			start: 'hurt',
-			end: 'care',
-			par: 4
-		},
-		{
-			text: "I ripped out the game cart and threw it across the room. I wanted to beat that damn ape.",
-			start: 'beat',
-			end: 'damn',
-			par: 6
-		},
-		{
-			text: "Did you ever notice how it doesn't list your points anywhere while you play? That seems like bad game design.",
-			start: 'ever',
-			end: 'play',
-			par: 6
-		}],
+			{
+				text: "My thumbs hurt after the first hour, but I didn't care. I stared into that monochromatic screen the whole night.",
+				start: 'hurt',
+				end: 'care',
+				par: 4
+			},
+			{
+				text: "I ripped out the game cart and threw it across the room. I wanted to beat that darn gorilla.",
+				start: 'beat',
+				end: 'damn',
+				par: 6
+			},
+			{
+				text: "Did you ever notice how it doesn't list your points anywhere while you play? That seems like bad game design.",
+				start: 'ever',
+				end: 'play',
+				par: 6
+			},
+			{
+				text: "The world the device created was violent, comical, and fun. Life was anything but.",
+				start: 'good',
+				end: 'time',
+				par: 6
+			},
+		],
 		unlock: 0
 	},
 	"SNOW": {
@@ -156,7 +177,20 @@ quat.themes = {
 			darkForeground: "#36818F",
 			lightForeground: "#83C9FF"
 		},
-		puzzles: [],
+		puzzles: [
+			{
+				text: "It was quiet. You know the snow smell has? It's like nothing.",
+				start: 'snow',
+				end: 'like',
+				par: 8
+			},
+			{
+				text: "Water had soaked into my glove. The numbness made my grip loose around the sled's rope handles.",
+				start: 'sled',
+				end: 'time',
+				par: 6
+			},
+		],
 		unlock: 0
 	},
 	"BOOK": {

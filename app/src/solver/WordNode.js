@@ -36,6 +36,8 @@ quat.solver.WordNode = cc.Node.extend({
         return true;
     },
 
+    
+
     /**
      * Replaces the text of this word with a given word.
      * @param  {[type]} word [description]
