@@ -214,6 +214,9 @@ def generate(difficulty):
 	return (first,second,solve(first,second))
 
 
+print solve('hard','test')
+exit()
+
 """
 THRESHOLD: We assume the user knows all of the words above this frequency value.
 This is typically a small subset of the total words, even at relatively low

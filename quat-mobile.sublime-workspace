@@ -4,144 +4,516 @@
 		"selected_items":
 		[
 			[
-				"last",
-				"lastWord"
+				"text",
+				"textColor"
 			],
 			[
-				"curr",
-				"currentSteps"
+				"_cu",
+				"_currentIndex"
 			],
 			[
-				"cu",
-				"current_threshhold"
+				"new",
+				"newIndex"
 			],
 			[
-				"ste",
-				"step_size"
+				"_tim",
+				"_timeStarted"
 			],
 			[
-				"fr",
-				"frequencies"
+				"getThem",
+				"getTheme"
 			],
 			[
-				"su",
-				"successor_frequency"
+				"puz",
+				"puzzleLayer"
 			],
 			[
-				"fre",
-				"frequency"
+				"tex",
+				"textLabel"
 			],
 			[
-				"map",
-				"map_reader"
+				"_start",
+				"_startTime"
 			],
 			[
-				"sol",
-				"solution"
+				"_sp",
+				"_specialText"
 			],
 			[
-				"make",
-				"makeandcd"
+				"av",
+				"averageSolveTime"
 			],
 			[
-				"curren",
-				"currentDist"
+				"_a",
+				"_averageSolveTime"
 			],
 			[
-				"block",
-				"block_header"
+				"_pu",
+				"_puzzlesPlayed"
 			],
 			[
-				"best",
-				"bestDist"
+				"lef",
+				"leftSize"
 			],
 			[
-				"curre",
-				"currentDist"
+				"ri",
+				"rightSize"
 			],
 			[
-				"size",
-				"size_status"
+				"lf",
+				"leftSize"
 			],
 			[
-				"int",
-				"int_handle"
+				"righ",
+				"rightLabel"
 			],
 			[
-				"ala",
-				"alarm_handle"
+				"po",
+				"pointsLabel"
 			],
 			[
-				"langu",
-				"languageCode"
+				"right",
+				"rightSize"
 			],
 			[
-				"font_",
-				"font_size"
-			],
-			[
-				"lett",
-				"letterIndex"
-			],
-			[
-				"le",
-				"letterIndex"
-			],
-			[
-				"id",
-				"letterIndex"
-			],
-			[
-				"font",
-				"font_total"
-			],
-			[
-				"off",
-				"offsetMajor"
-			],
-			[
-				"let",
-				"letterObj"
-			],
-			[
-				"heigh",
-				"totalHeight"
-			],
-			[
-				"add",
-				"addChild"
+				"gam",
+				"gameBounds"
 			],
 			[
 				"colo",
 				"colorBackground"
 			],
 			[
-				"free",
-				"freelist"
+				"game",
+				"gameBounds"
 			],
 			[
-				"print",
-				"printlist"
+				"stas",
+				"statsLayer"
 			],
 			[
-				"file",
-				"file_size"
+				"puzzl",
+				"puzzleLayer"
 			],
 			[
-				"pret",
-				"prettyDate"
+				"spe",
+				"specialText"
 			],
 			[
-				"status",
-				"statusChanged"
+				"set",
+				"setThemeProgress"
 			],
 			[
-				"stau",
-				"statusChanged"
+				"pro",
+				"progress"
 			],
 			[
-				"ap",
-				"app-router"
+				"getTheme",
+				"getThemeProgress"
+			],
+			[
+				"_the",
+				"_themeProgress"
+			],
+			[
+				"move",
+				"movePercent"
+			],
+			[
+				"mov",
+				"movePercent"
+			],
+			[
+				"cur",
+				"currentWord"
+			],
+			[
+				"current",
+				"currentWord"
+			],
+			[
+				"curre",
+				"currentWord"
+			],
+			[
+				"fa",
+				"fadeOutPercent"
+			],
+			[
+				"to",
+				"totalHeight"
+			],
+			[
+				"sel",
+				"selectedButton"
+			],
+			[
+				"se",
+				"selectedButton"
+			],
+			[
+				"nex",
+				"nextTheme"
+			],
+			[
+				"pre",
+				"prevTheme"
+			],
+			[
+				"delt",
+				"deltaTheme"
+			],
+			[
+				"theme",
+				"themeName"
+			],
+			[
+				"them",
+				"themeName"
+			],
+			[
+				"sti",
+				"sticky"
+			],
+			[
+				"get",
+				"getPuzzle"
+			],
+			[
+				"_",
+				"_stickyVisible"
+			],
+			[
+				"stick",
+				"_stickyVisible"
+			],
+			[
+				"di",
+				"_displayingSticky"
+			],
+			[
+				"s",
+				"sequence"
+			],
+			[
+				"fade",
+				"fadeOut"
+			],
+			[
+				"for",
+				"foreword"
+			],
+			[
+				"_mess",
+				"_addMessage"
+			],
+			[
+				"_them",
+				"_themeProgress"
+			],
+			[
+				"is",
+				"isSelected"
+			],
+			[
+				"butt",
+				"buttonWidth"
+			],
+			[
+				"goal",
+				"goalWord"
+			],
+			[
+				"te",
+				"textColor"
+			],
+			[
+				"col",
+				"colorBackground"
+			],
+			[
+				"back",
+				"backgroundLayer"
+			],
+			[
+				"tr",
+				"trackingTouch"
+			],
+			[
+				"layer",
+				"LayerColor"
+			],
+			[
+				"r",
+				"rectContainsPoint"
+			],
+			[
+				"but",
+				"buttonGap"
+			],
+			[
+				"bu",
+				"buttonHeight"
+			],
+			[
+				"btt",
+				"buttonHeight"
+			],
+			[
+				"men",
+				"menuButton"
+			],
+			[
+				"menu",
+				"menuLayer"
+			],
+			[
+				"cu",
+				"currentSteps"
+			],
+			[
+				"getC",
+				"getCurrentSteps"
+			],
+			[
+				"ttl",
+				"titleOpacity"
+			],
+			[
+				"distance",
+				"distanceThreshold"
+			],
+			[
+				"dist",
+				"distance"
+			],
+			[
+				"steps",
+				"stepsWord"
+			],
+			[
+				"solutio",
+				"SolutionLayer"
+			],
+			[
+				"small",
+				"smallFontY"
+			],
+			[
+				"pa",
+				"panelHeight"
+			],
+			[
+				"sol",
+				"solutionLayer"
+			],
+			[
+				"curr",
+				"currentWord"
+			],
+			[
+				"short",
+				"shortSeq"
+			],
+			[
+				"sho",
+				"shortFade"
+			],
+			[
+				"wi",
+				"windowHeight"
+			],
+			[
+				"wind",
+				"windowWidth"
+			],
+			[
+				"solu",
+				"solutionSize"
+			],
+			[
+				"windoww",
+				"windowWidth"
+			],
+			[
+				"mod",
+				"modifyWidth"
+			],
+			[
+				"pu",
+				"puzzleLayer"
+			],
+			[
+				"win",
+				"windowWidth"
+			],
+			[
+				"curren",
+				"currentLetter"
+			],
+			[
+				"CHAN",
+				"CHANGING_LETTER_DRAG"
+			],
+			[
+				"la",
+				"lastColumn"
+			],
+			[
+				"las",
+				"lastColumn"
+			],
+			[
+				"last",
+				"lastLetter"
+			],
+			[
+				"dista",
+				"distanceThreshold"
+			],
+			[
+				"dis",
+				"distanceThreshold"
+			],
+			[
+				"x",
+				"xDelta"
+			],
+			[
+				"BE",
+				"SWIPE_BEGUN"
+			],
+			[
+				"lett",
+				"letterLabel"
+			],
+			[
+				"CH",
+				"CHOOSING_LETTER"
+			],
+			[
+				"key",
+				"keyInputManager"
+			],
+			[
+				"state",
+				"stateController"
+			],
+			[
+				"C",
+				"CHOOSING_LETTER"
+			],
+			[
+				"touch",
+				"touchInputManager"
+			],
+			[
+				"quat",
+				"quatGame"
+			],
+			[
+				"tra",
+				"trackingClick"
+			],
+			[
+				"getLo",
+				"getLocationX"
+			],
+			[
+				"inpu",
+				"inputDone"
+			],
+			[
+				"getL",
+				"getLocationY"
+			],
+			[
+				"ke",
+				"keyCode"
+			],
+			[
+				"bott",
+				"bottomOfCurrentWord"
+			],
+			[
+				"top",
+				"topOfCurrentWord"
+			],
+			[
+				"CHA",
+				"CHANGING_LETTER_NODRAG"
+			],
+			[
+				"choos",
+				"chooseLetterLayer"
+			],
+			[
+				"b",
+				"baseLetterIndex"
+			],
+			[
+				"setO",
+				"setOffset"
+			],
+			[
+				"off",
+				"offset"
+			],
+			[
+				"word",
+				"wordY1"
+			],
+			[
+				"wordY",
+				"wordY2"
+			],
+			[
+				"cho",
+				"chooseLetterLayer"
+			],
+			[
+				"ch",
+				"chooseLetterLayer"
+			],
+			[
+				"l",
+				"letterPool"
+			],
+			[
+				"letterPoo",
+				"letterPool"
+			],
+			[
+				"le",
+				"letterIndex"
+			],
+			[
+				"heigh",
+				"height"
+			],
+			[
+				"font",
+				"fontSize"
+			],
+			[
+				"choo",
+				"chooseLetterLayer"
+			],
+			[
+				"Ch",
+				"ChooseLetterLayer"
+			],
+			[
+				"N",
+				"NICE_WIDTH"
+			],
+			[
+				"cal",
+				"calculateSize"
+			],
+			[
+				"window",
+				"windowHeight"
 			]
 		]
 	},
@@ -151,39 +523,15 @@
 			"file": "data/puzzlegen.py",
 			"settings":
 			{
-				"buffer_size": 6561,
+				"buffer_size": 7177,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "data/dump.sh",
+			"file": ".gitignore",
 			"settings":
 			{
-				"buffer_size": 51,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/src/app.js",
-			"settings":
-			{
-				"buffer_size": 7171,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/src/model.js",
-			"settings":
-			{
-				"buffer_size": 1824,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/index.html",
-			"settings":
-			{
-				"buffer_size": 1077,
+				"buffer_size": 175,
 				"line_ending": "Unix"
 			}
 		}
@@ -227,10 +575,70 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "ins",
+		"height": 54.0,
+		"last_filter": "git status",
 		"selected_items":
 		[
+			[
+				"git status",
+				"Git: Status"
+			],
+			[
+				"git add",
+				"Git: Add All"
+			],
+			[
+				"git comm",
+				"Git: Commit"
+			],
+			[
+				"git ad",
+				"Git: Add All"
+			],
+			[
+				"it com",
+				"Git: Commit"
+			],
+			[
+				"Git add",
+				"Git: Add All"
+			],
+			[
+				"Git comm",
+				"Git: Commit"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git diff",
+				"Git: Diff All Files"
+			],
+			[
+				"git dif",
+				"Git: Diff Current File"
+			],
+			[
+				"git pull",
+				"Git: Pull"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"GIT STATUS",
+				"Git: Status"
+			],
+			[
+				"git add ",
+				"Git: Add All"
+			],
+			[
+				"gitadd",
+				"Git: Add All"
+			],
 			[
 				"ins",
 				"Package Control: Install Package"
@@ -246,22 +654,6 @@
 			[
 				"install",
 				"Package Control: Install Package"
-			],
-			[
-				"git comm",
-				"Git: Commit"
-			],
-			[
-				"git push",
-				"Git: Push"
-			],
-			[
-				"git add",
-				"Git: Add..."
-			],
-			[
-				"git status",
-				"Git: Status"
 			],
 			[
 				"git in",
@@ -300,17 +692,69 @@
 		"/home/caleb/Developer/quat-mobile",
 		"/home/caleb/Developer/quat-mobile/app",
 		"/home/caleb/Developer/quat-mobile/app/src",
-		"/home/caleb/Developer/quat-mobile/data"
+		"/home/caleb/Developer/quat-mobile/app/src/about",
+		"/home/caleb/Developer/quat-mobile/app/src/menu",
+		"/home/caleb/Developer/quat-mobile/app/src/solver",
+		"/home/caleb/Developer/quat-mobile/app/src/stats",
+		"/home/caleb/Developer/quat-mobile/data",
+		"/home/caleb/Developer/quat-mobile/data/math"
 	],
 	"file_history":
 	[
-		"/home/caleb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/caleb/Developer/quat-mobile/app/src/model.js",
+		"/home/caleb/Developer/quat-mobile/app/src/themes.js",
+		"/home/caleb/Developer/quat-mobile/app/src/GameStateController.js",
+		"/home/caleb/Developer/quat-mobile/app/src/Game.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/SolverTouchInputManager.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/KeyboardInputManager.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/SolutionLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/stats/StatLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/PuzzleLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/TextIndicatorLayer.js",
 		"/home/caleb/Developer/quat-mobile/data/words.js",
+		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuButton.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/ThemeChangeLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/stats/StatsLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/main.js",
+		"/home/caleb/Developer/quat-mobile/app/src/GameTouchInputManager.js",
+		"/home/caleb/Developer/quat-mobile/app/src/about/AboutLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/GameScene.js",
+		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuLayer.js",
 		"/home/caleb/Developer/quat-mobile/app/project.json",
-		"/home/caleb/Developer/quat-mobile/app/manifest.webapp",
-		"/home/caleb/Developer/quat-mobile/data/dump.sh",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/ChooseLetterLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/BackgroundLayer.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/SolverStateController.js",
+		"/home/caleb/Developer/quat-mobile/app/src/StateController.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/WordNode.js",
+		"/home/caleb/Developer/quat-mobile/data/puzzlegen.py",
+		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuStateController.js",
+		"/home/caleb/Developer/quat-mobile/app/src/TouchInputManager.js",
+		"/home/caleb/Developer/quat-mobile/app/src/GameInfo.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/TouchInputManager.js",
+		"/home/caleb/Developer/quat-mobile/app/index.html",
+		"/home/caleb/Developer/quat-mobile/app/simulator/html5/game.min.js",
+		"/home/caleb/Developer/quat-mobile/app/CLOSURE-COMPILATION.MD",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/StateController.js",
+		"/home/caleb/Developer/quat-mobile/app/src/model.js",
+		"/home/caleb/Developer/quat-mobile/app/COMPILATION.MD",
+		"/home/caleb/Developer/quat-mobile/app/simulator/html5/index.html",
 		"/home/caleb/Developer/quat-mobile/.gitignore",
+		"/home/caleb/Developer/quat-mobile/app/quat.js",
+		"/home/caleb/Developer/quat-mobile/app/src/quat.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/solver.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/BackgroundLayer.js",
+		"/home/caleb/Developer/math340/p1/p1.tex",
+		"/home/caleb/Developer/quat-mobile/app/src/words.js",
+		"/home/caleb/Developer/quat-mobile/app/src/solver/PuzzleScene.js",
+		"/home/caleb/Developer/quat-mobile/app/src/PuzzleScene.js",
+		"/home/caleb/Developer/quat-mobile/app/src/app.js",
+		"/home/caleb/Developer/quat-mobile/app/src/SolvingScene/WordNode.js",
+		"/home/caleb/Developer/quat-mobile/app/src/game/WordNode.js",
+		"/home/caleb/Developer/quat-mobile/app/test.html",
+		"/home/caleb/Developer/quat-mobile/app/quat.manifest",
+		"/home/caleb/Developer/quat-mobile/data/dump.sh",
+		"/home/caleb/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/caleb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/caleb/Developer/quat-mobile/app/manifest.webapp",
 		"/home/caleb/.jwmrc",
 		"/home/caleb/Developer/words/test2",
 		"/home/caleb/Developer/words/test",
@@ -384,40 +828,7 @@
 		"/home/caleb/Developer/cyto/cyto/install.sh",
 		"/home/caleb/Developer/cyto/cyto/.git/config",
 		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/bundles/cytom-fcs/10c1c97b15861949c07700feb51c3261",
-		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/system/org/apache/activemq/activemq-karaf/5.10.0/activemq-karaf-5.10.0.jar",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecResultConverter.java",
-		"/home/caleb/.jwmrc-groups",
-		"/usr/share/xsessions/jwm.desktop",
-		"/home/caleb/.jwm/jwm-groups.xml",
-		"/home/caleb/.jwm/jwm-groups-defaults.xml",
-		"/home/caleb/.jwm/.jwm-groups",
-		"/etc/jwm/system.jwmrc",
-		"/home/caleb/.config/openbox/lubuntu-rc.xml",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecResult.java",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecProducer.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/Component.java",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecEndpoint.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/impl/DefaultComponent.java",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/src/main/java/org/apache/camel/component/exec/ExecCommandExecutor.java",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/bin/servicemix",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/Processor.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/model/ProcessorDefinition.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/builder/RouteBuilder.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/model/RouteDefinition.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/impl/DefaultCamelContext.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/RoutesBuilder.java",
-		"/home/caleb/Developer/cyto/camel/camel-core/src/main/java/org/apache/camel/builder/PredicateBuilder.java",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/scripts/fcs.py",
-		"/home/caleb/Developer/cyto/camel/components/camel-exec/pom.xml",
-		"/home/caleb/Developer/cyto/camel/components/pom.xml",
-		"/home/caleb/Developer/cyto/cyto-base/.gitignore",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/input/test/asdasdasdasdsd.txt",
-		"/home/caleb/Developer/cyto/io.singularity.fcs/pom.xml",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/deploy/fcstest.xml",
-		"/home/caleb/Downloads/240_51_flu.fcs",
-		"/etc/bashrc",
-		"/home/caleb/Developer/cyto/myArtifactId/src/main/java/com/mycompany/MyBookService.java"
+		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-"
 	],
 	"find":
 	{
@@ -428,6 +839,9 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/caleb/Developer/quat-mobile/app/src",
+			"/home/caleb/Developer/quat-mobile/app/src/solver",
+			"/home/caleb/Developer/quat-mobile/app",
 			"/home/caleb/Developer/GLS/torpedo",
 			"/home/caleb/Developer/python/proto",
 			"/home/caleb/Developer/python/proto/proto",
@@ -447,134 +861,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"LAKE",
-			"bottomChoice",
-			"dell\\t",
-			"bake",
-			"equation",
-			"2",
-			"key=",
-			"exec:exec:",
-			"exec:",
-			"<Program label=\"Terminal\">\n         lxterminal --command=tmux\n      </Program>",
-			"setup",
-			"interruptStruct",
-			"ConwayTwittey",
-			"JaredFromSubway",
-			"BillCosby",
-			"DRY",
-			"alarm(ALARM_SECS);",
-			">\n",
-			"JaredFromSubway",
-			"now",
-			"v02",
-			"302",
-			"GLSAuth",
-			"vcs",
-			"torpedobase",
-			"self.ph",
-			"clearForWord",
-			"start % 255",
-			"var ",
-			"128",
-			"offset",
-			"letterPool",
-			"num",
-			"70 *",
-			"child",
-			"90",
-			"this.drawNode",
-			"yellowBackground",
-			"helloLabel",
-			"Hello World",
-			"bullet",
-			"256",
-			"argv[1]",
-			",",
-			"'",
-			"- ",
-			"material",
-			"title",
-			"margin",
-			"35",
-			"Something is here",
-			"SO",
-			"style=\"width: 50%; height: 150px; position: relative; float: left;\"",
-			"main-page",
-			"200",
-			"position: relative; ",
-			"float: left;",
-			"position: relative;",
-			"<div style=\"width: 50%; height: 200px; position: relative; float: left;\"> SOmething is here</div>\n    <div style=\"width: 50%; height: 200px; position: relative; float: left;\"> SOmething is here</div>",
-			"150",
-			"button",
-			"paper-button",
-			"]]",
-			"[[",
-			"jobs-list",
-			">\n",
-			"jobs-page",
-			"right",
-			"statusChanged",
-			"created",
-			");\n",
-			"hover",
-			"event",
-			"polymer",
-			"jobs-page",
-			"padding-top: 20px;",
-			"padding-",
-			"margin-",
-			"/cyto/",
-			"main-page",
-			"paper-toolbar",
-			"paper-material",
-			"app-router",
-			"\">\n",
-			"div",
-			">\n",
-			"\">\n",
-			"main-page",
-			"dom-element",
-			">\n",
-			"proto-element",
-			"66",
-			"paper-material",
-			"\">\n",
-			"paper-menu",
-			"paper-header-panel",
-			"paper-input",
-			"cyto.CytoBundleActivator",
-			"jsonFormatted",
-			"TRACE",
-			"INFO",
-			"WARNING",
-			"datasinks/cytod-orient",
-			"apache",
-			"/\n",
-			"broker",
-			"getLogger()",
-			"log",
-			"scope = \"log\"",
-			"setBody",
-			"setBody(",
-			"org.apache.commons.configuration",
-			"osgi.wiring.package",
-			"org.osgi.wiring",
-			"commons-configuration",
-			"amq-broker",
-			"broker",
-			"Active",
-			"Title",
-			"Text",
-			"nomove",
-			"noborder",
-			"Class",
-			"C-A-1",
-			"W-",
-			"com.mycompany",
-			"createEndpoint",
-			"setCommandExecutor"
+			"aboveWords",
+			"PINE",
+			"console",
+			"fontSize*.4",
+			"remaining",
+			"event\\s",
+			"startTime()",
+			"clearMessages",
+			"statsLayer",
+			"StatsLayer",
+			"statsLayer",
+			"textLabel",
+			"stats",
+			"minute",
+			"points",
+			"POINTS",
+			"points",
+			"puzzles",
+			"PUZZLES",
+			"puzzles",
+			"points",
+			"stat",
+			"Stat",
+			"stat",
+			"Stat",
+			"stat",
+			"leftSize",
+			"fontSize",
+			"fontSize ",
+			"pointsLabel",
+			"textLabel",
+			"menuLayer",
+			"menu",
+			"textLabel",
+			"this.",
+			"this.solutionLayer",
+			"currentWord",
+			"quat",
+			"this.",
+			"this.quatGame",
+			"0.001",
+			"cc.sequence()",
+			"epilogue",
+			"foreword",
+			"prequel",
+			"fadeIn",
+			"quatGame",
+			"var",
+			"\n-		",
+			"-	",
+			"var",
+			"\n-		",
+			"-	",
+			"var",
+			"\n-		",
+			"-",
+			"newPuzzle",
+			"_steps",
+			"new Date() - this._start",
+			".currentSteps",
+			"applyTheme",
+			"nextButton",
+			"applyTheme",
+			"textIndicatorLayer",
+			"gameBounds.width / 2",
+			"prevButton",
+			"nextButton",
+			"this.solutionLayer",
+			"this.",
+			"menuLayer",
+			"puzzleLayer",
+			"this",
+			"setColor",
+			"Background",
+			"darkBackground",
+			"textColor",
+			"theme.colors.textColor",
+			"this",
+			"colorBackground",
+			"this.co",
+			"this.c",
+			"this.",
+			"width",
+			"textIndicatorLayer",
+			"menuLayer",
+			"puzzleLayer",
+			"gameBounds",
+			"this.sc",
+			"solutionSize",
+			"quat.solver",
+			"pointsAdded",
+			"titleWord",
+			"menuWord",
+			"stepsWord",
+			"goalWord",
+			"this.solutionLayer.upda",
+			"letterLabel",
+			"chooseLetterLayer",
+			"solver.",
+			"this.solutionSize.width",
+			"solver.TouchInputManager",
+			"puzzleLayer",
+			"solver.SolverStateController",
+			"StateController.prototype",
+			"setCurrentOpacity",
+			" = solutionLayer",
+			"this.solutionLayer",
+			"puzzleScene",
+			"[type]",
+			";",
+			"this.state = ",
+			"shiftDelta",
+			"distanceThreshold",
+			"SWIPE_BEGUN",
+			"setcolor",
+			"lastMouseDown",
+			"this.sc",
+			"bottom",
+			"SWIPE_BEGUN",
+			"CHANGING_LETTER_NODRAG",
+			"problems",
+			"touchInputManager",
+			"solutionLayer",
+			"quatGame",
+			"state = ",
+			"states",
+			"state = states",
+			"state = "
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -582,6 +996,16 @@
 		"regex": true,
 		"replace_history":
 		[
+			"darkForeground",
+			"this.GSC",
+			"gameBounds",
+			"TouchInputManager",
+			"solver.GameStateController",
+			"setCurrentWordOpacity",
+			"puzzleLayer",
+			"GESTURING",
+			"this.sc.state",
+			"bottomOfCurrentWord"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -592,7 +1016,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -601,144 +1025,55 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6561,
+						"buffer_size": 7177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6478,
-								6478
+								3545,
+								3545
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.tmLanguage",
+							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3285.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "data/dump.sh",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 51,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								19,
-								19
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/src/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7171,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3255,
-								3255
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 259.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "app/src/model.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1824,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								359,
-								359
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1887.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/index.html",
+					"buffer": 1,
+					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1077,
+						"buffer_size": 175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								889,
-								889
+								133,
+								133
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -746,7 +1081,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -785,13 +1120,13 @@
 	},
 	"output.git":
 	{
-		"height": 199.0
+		"height": 189.0
 	},
 	"pinned_build_system": "Packages/Python/Python.sublime-build",
 	"project": "quat-mobile.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -800,6 +1135,30 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"game",
+				"app/src/Game.js"
+			],
+			[
+				"stim",
+				"app/src/solver/SolverTouchInputManager.js"
+			],
+			[
+				"sol",
+				"app/src/solver/SolutionLayer.js"
+			],
+			[
+				"puzz",
+				"app/src/solver/PuzzleLayer.js"
+			],
+			[
+				"soluti",
+				"app/src/solver/SolutionLayer.js"
+			],
+			[
+				"puz",
+				"app/src/solver/PuzzleLayer.js"
+			]
 		],
 		"width": 0.0
 	},

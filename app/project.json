@@ -16,6 +16,7 @@
         "src/StateController.js",
 
         "src/words.js",
+        "src/dict.js",
         "src/themes.js",
         "src/Game.js",
 
