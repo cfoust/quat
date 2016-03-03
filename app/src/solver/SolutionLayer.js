@@ -176,7 +176,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
             var steps = (puzzle.getSteps().length - 1),
                 par = puzzle.getPar();
 
-            this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
+            this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + (par - 1).toString();
         }
         
         this.stepsWord.setVisible(!puzzle.isSpecial());

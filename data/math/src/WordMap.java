@@ -137,17 +137,28 @@ public class WordMap {
             }
         }
 
+        map.initGraph();
+
         return map;
     }
 
-    public ArrayList<String> solve(String start, String end) {
-        Map<String, WordWrap> graph = new HashMap<>();
-
+    Map<String, WordWrap> graph;
+    private void initGraph() {
+        graph = new HashMap<>();
 
         // Build a "copy" of the graph with special places to store data
         for (Object obj : words.values().toArray()) {
             Word word = (Word) obj;
             graph.put(word.getWord(), new WordWrap(word));
+        }
+    }
+
+    public ArrayList<String> solve(String start, String end) {
+
+        for (Map.Entry<String, WordWrap> entry : graph.entrySet()) {
+            WordWrap wrapper = entry.getValue();
+            wrapper.distance = -1;
+            wrapper.predecessor = null;
         }
 
         WordWrap startWord = graph.get(start),
@@ -213,5 +224,6 @@ public class WordMap {
 
             writer.write(wordString + "\t" + freqString + "\t" + successorString);
         }
+        writer.close();
     }
 }

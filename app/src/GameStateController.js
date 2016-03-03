@@ -49,6 +49,7 @@ quat.ScreenStateController = quat.StateController.extend({
             menuLayer.setVisible(true);
             self.currentLayer = menuLayer;
             scene.puzzleLayer.setVisible(false);
+            scene.statsLayer.setVisible(false);
             scene.applyThemeByName(scene.gameState.getUser().getTheme());
             scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },

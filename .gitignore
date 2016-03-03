@@ -8,5 +8,3 @@ app/CMakeLists.txt
 
 data/words.js
 data/math/out/**
-data/math/.idea/**
-app/src/words.js

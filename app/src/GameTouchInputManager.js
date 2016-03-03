@@ -11,6 +11,7 @@ quat.GameTouchInputManager = quat.TouchInputManager.extend({
         this.gameScene = gameScene; 
         this.puzzleLayer = gameScene.puzzleLayer;
         this.menuLayer = gameScene.menuLayer;
+        this.statsLayer = gameScene.statsLayer;
         this.titleWord = gameScene.titleWord;
         this.subtextWord = gameScene.subtextWord;
         this.GSC = gameScene.GSC;
