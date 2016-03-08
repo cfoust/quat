@@ -520,19 +520,115 @@
 	"buffers":
 	[
 		{
-			"file": "data/puzzlegen.py",
+			"file": "app/src/GameTouchInputManager.js",
 			"settings":
 			{
-				"buffer_size": 7177,
+				"buffer_size": 4265,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/project.json",
+			"settings":
+			{
+				"buffer_size": 1147,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/publish/html5/index.html",
+			"settings":
+			{
+				"buffer_size": 1131,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/caleb/Developer/math340/p1/p1.tex",
+			"settings":
+			{
+				"buffer_size": 9644,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/publish/html5/build.xml",
+			"settings":
+			{
+				"buffer_size": 13460,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": ".gitignore",
+			"file": "app/src/solver/WordNode.js",
 			"settings":
 			{
-				"buffer_size": 175,
+				"buffer_size": 1925,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/simulator/html5/index.html",
+			"settings":
+			{
+				"buffer_size": 1134,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/simulator/html5/build.xml",
+			"settings":
+			{
+				"buffer_size": 13140,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/src/Game.js",
+			"settings":
+			{
+				"buffer_size": 11337,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/COMPILATION.MD",
+			"settings":
+			{
+				"buffer_size": 299,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/src/themes.js",
+			"settings":
+			{
+				"buffer_size": 6213,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/src/solver/SolutionLayer.js",
+			"settings":
+			{
+				"buffer_size": 5992,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/src/GameStateController.js",
+			"settings":
+			{
+				"buffer_size": 3448,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "data/puzzlegen.py",
+			"settings":
+			{
+				"buffer_size": 7212,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -575,10 +671,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 54.0,
-		"last_filter": "git status",
+		"height": 201.0,
+		"last_filter": "git comm",
 		"selected_items":
 		[
+			[
+				"git comm",
+				"Git: Commit"
+			],
 			[
 				"git status",
 				"Git: Status"
@@ -586,10 +686,6 @@
 			[
 				"git add",
 				"Git: Add All"
-			],
-			[
-				"git comm",
-				"Git: Commit"
 			],
 			[
 				"git ad",
@@ -691,16 +787,26 @@
 	[
 		"/home/caleb/Developer/quat-mobile",
 		"/home/caleb/Developer/quat-mobile/app",
+		"/home/caleb/Developer/quat-mobile/app/publish",
+		"/home/caleb/Developer/quat-mobile/app/publish/html5",
 		"/home/caleb/Developer/quat-mobile/app/src",
 		"/home/caleb/Developer/quat-mobile/app/src/about",
 		"/home/caleb/Developer/quat-mobile/app/src/menu",
 		"/home/caleb/Developer/quat-mobile/app/src/solver",
 		"/home/caleb/Developer/quat-mobile/app/src/stats",
-		"/home/caleb/Developer/quat-mobile/data",
-		"/home/caleb/Developer/quat-mobile/data/math"
+		"/home/caleb/Developer/quat-mobile/data"
 	],
 	"file_history":
 	[
+		"/home/caleb/Developer/quat-mobile/app/simulator/html5/game.min.js",
+		"/home/caleb/Developer/quat-mobile/app/publish/html5/game.min.js",
+		"/home/caleb/Developer/quat-mobile/app/publish/html5/game.out.js",
+		"/home/caleb/Developer/quat-mobile/.gitignore",
+		"/home/caleb/Developer/quat-mobile/app/project.json",
+		"/home/caleb/Developer/quat-mobile/data/puzzlegen.py",
+		"/home/caleb/Developer/quat-mobile/data/dict.js",
+		"/home/caleb/Developer/quat-mobile/app/src/dict.js",
+		"/home/caleb/Developer/quat-mobile/data/words2.js",
 		"/home/caleb/Developer/quat-mobile/app/src/themes.js",
 		"/home/caleb/Developer/quat-mobile/app/src/GameStateController.js",
 		"/home/caleb/Developer/quat-mobile/app/src/Game.js",
@@ -719,25 +825,21 @@
 		"/home/caleb/Developer/quat-mobile/app/src/about/AboutLayer.js",
 		"/home/caleb/Developer/quat-mobile/app/src/GameScene.js",
 		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/project.json",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/ChooseLetterLayer.js",
 		"/home/caleb/Developer/quat-mobile/app/src/BackgroundLayer.js",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/SolverStateController.js",
 		"/home/caleb/Developer/quat-mobile/app/src/StateController.js",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/WordNode.js",
-		"/home/caleb/Developer/quat-mobile/data/puzzlegen.py",
 		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuStateController.js",
 		"/home/caleb/Developer/quat-mobile/app/src/TouchInputManager.js",
 		"/home/caleb/Developer/quat-mobile/app/src/GameInfo.js",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/TouchInputManager.js",
 		"/home/caleb/Developer/quat-mobile/app/index.html",
-		"/home/caleb/Developer/quat-mobile/app/simulator/html5/game.min.js",
 		"/home/caleb/Developer/quat-mobile/app/CLOSURE-COMPILATION.MD",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/StateController.js",
 		"/home/caleb/Developer/quat-mobile/app/src/model.js",
 		"/home/caleb/Developer/quat-mobile/app/COMPILATION.MD",
 		"/home/caleb/Developer/quat-mobile/app/simulator/html5/index.html",
-		"/home/caleb/Developer/quat-mobile/.gitignore",
 		"/home/caleb/Developer/quat-mobile/app/quat.js",
 		"/home/caleb/Developer/quat-mobile/app/src/quat.js",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/solver.js",
@@ -823,12 +925,7 @@
 		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-log.properties",
 		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-client-log.properties",
 		"/home/caleb/.tmux.conf",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/system/org/apache/activemq/activemq-karaf/5.10.0/activemq-karaf-5.10.0-activemq.xml",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/deploy/asd.xml",
-		"/home/caleb/Developer/cyto/cyto/install.sh",
-		"/home/caleb/Developer/cyto/cyto/.git/config",
-		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/bundles/cytom-fcs/10c1c97b15861949c07700feb51c3261",
-		"/home/caleb/Developer/cyto/orientdb-community-2.0.10/config/orientdb-server-"
+		"/home/caleb/Developer/cyto/apache-servicemix-5.4.0/system/org/apache/activemq/activemq-karaf/5.10.0/activemq-karaf-5.10.0-activemq.xml"
 	],
 	"find":
 	{
@@ -861,6 +958,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cc",
+			"Class.",
+			"menuLayer",
+			"],[",
 			"aboveWords",
 			"PINE",
 			"console",
@@ -984,18 +1085,15 @@
 			"problems",
 			"touchInputManager",
 			"solutionLayer",
-			"quatGame",
-			"state = ",
-			"states",
-			"state = states",
-			"state = "
+			"quatGame"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"],\\n[",
 			"darkForeground",
 			"this.GSC",
 			"gameBounds",
@@ -1016,24 +1114,416 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "data/puzzlegen.py",
+					"file": "app/src/GameTouchInputManager.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7177,
+						"buffer_size": 4265,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3545,
-								3545
+								4130,
+								4130
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1326.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/project.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								850,
+								850
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/publish/html5/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								911,
+								911
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/caleb/Developer/math340/p1/p1.tex",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7880,
+								7880
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LaTeX/LaTeX.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3595.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/publish/html5/build.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11931,
+								11931
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/src/solver/WordNode.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1925,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1169,
+								1169
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/simulator/html5/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1134,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								997,
+								997
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/simulator/html5/build.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1207,
+								1207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/src/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7832,
+								7832
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4641.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "app/COMPILATION.MD",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								104,
+								104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/src/themes.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6213,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3600,
+								3600
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2176.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/src/solver/SolutionLayer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5894,
+								5894
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 2397.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "app/src/GameStateController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3448,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1555,
+								1555
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": -0.0,
+						"translation.y": 561.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 13,
+					"file": "data/puzzlegen.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7212,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5785,
+								5785
 							]
 						],
 						"settings":
@@ -1042,38 +1532,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1887.0,
+						"translation.y": 3417.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": ".gitignore",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 175,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								133,
-								133
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -1096,11 +1558,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
