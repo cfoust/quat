@@ -9,3 +9,4 @@ app/CMakeLists.txt
 data/words.js
 data/math/out/**
 **.quat
+workspace.xml
