@@ -32,6 +32,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         var currentWord = new quat.solver.WordNode(fontSize, gap);
         currentWord.x = width / 2;
         currentWord.y = height * 0.60;
+        currentWord.recalculateBounds();
         this.addChild(currentWord);
         this.currentWord = currentWord;
 
@@ -65,9 +66,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
         return true;
     },
-
-
-
     
     setCurrentWordOpacity: function(opacity) {
         this.currentWord.setOpacity(opacity);
@@ -98,15 +96,15 @@ quat.solver.SolutionLayer = cc.Layer.extend({
      * @return {number or boolean} 
      */
     pointInColumn: function(x,y) {
-        var wordY1 = this.panelHeight;
-        if ((x < 0) || (x > this.size.width) || (y < wordY1)) {
-            return false;
+        var bounds = this.currentWord.bounds;
+        for (var i = 0; i < bounds.length; i++) {
+            var bound = bounds[i];
+            if ((x >= bound.x) && (x <= (bound.x + bound.width))) {
+                return i;
+            }
         }
 
-        var fourths = this.size.width / 4,
-            loc = (x - (x % fourths)) / fourths;
-
-        return loc;
+        return false;
     },
 
     /**
@@ -137,9 +135,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
         if (!puzzle.isSpecial()) {
             var steps = (puzzle.getSteps().length - 1),
-                par = puzzle.getPar();
+                par = puzzle.getPar() - 1;
 
-            this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + (par - 1).toString();
+            this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
         }
         
         this.stepsWord.setVisible(!puzzle.isSpecial());

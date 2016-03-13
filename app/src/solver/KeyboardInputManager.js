@@ -10,7 +10,7 @@ quat.solver.KeyboardInputManager = function(puzzleScene) {
 	this.quatGame = puzzleScene.quatGame;
 	this.puzzleLayer = this;
     this.solutionLayer = puzzleScene.solutionLayer;
-    this.chooseLetterLayer = puzzleScene.chooseLetterLayer;
+    this.sliderLayer = puzzleScene.sliderLayer;
     this.sc = puzzleScene.stateController;
     this.textIndicatorLayer = puzzleScene.textIndicatorLayer;
 
@@ -117,13 +117,13 @@ quat.solver.KeyboardInputManager.prototype.inputKeycode = function(keyCode) {
 	// letter chooser is shown, scroll up
 	else if ((this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) &&
 	         (keyCode == 38)) {
-	    this.chooseLetterLayer.shift(1);
+	    this.sliderLayer.shift(1);
 	}
 	// If user enters down on the arrow pad while the 
 	// letter chooser is shown, scroll down
 	else if ((this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) &&
 	         (keyCode == 40)) {
-	    this.chooseLetterLayer.shift(-1);
+	    this.sliderLayer.shift(-1);
 	}
 	// If the user enters a backspace while idle, see if we
 	// can remove one of the last words

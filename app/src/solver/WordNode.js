@@ -35,7 +35,7 @@ quat.solver.WordNode = cc.Node.extend({
         }
         this.rowPool = rowPool;
 
-        this.recalculateBounds;
+        this.recalculateBounds();
         this.oldX = this.x;
         this.oldY = this.y;
 
@@ -52,7 +52,7 @@ quat.solver.WordNode = cc.Node.extend({
             y = this.y,
             fontHeight = this.fontSize,
             fontHeightHalf = fontHeight / 2,
-            fontWidth = fontHeight * 0.6,
+            fontWidth = fontHeight * 0.8,
             fontWidthHalf = fontWidth / 2,
             bounds = [];
 

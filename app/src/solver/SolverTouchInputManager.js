@@ -14,7 +14,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.puzzleLayer = puzzleLayer; 
         this.solutionLayer = puzzleLayer.solutionLayer;
         this.gameBounds = puzzleLayer.gameBounds;
-        this.chooseLetterLayer = puzzleLayer.chooseLetterLayer;
+        this.sliderLayer = puzzleLayer.sliderLayer;
         this.textIndicatorLayer = puzzleLayer.textIndicatorLayer;
         this.sc = puzzleLayer.stateController;
 
@@ -33,9 +33,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.distanceThreshold = this.gameBounds.width * 0.61;
     },
 
-    began: function(x, y) {
-        console.log(this.solutionLayer.currentWord.pointInWord(cc.p(x,y)));
-        
+    began: function(x, y) {    
         if (this.sc.state == this.sc.states.IDLE) {
             // Check to see if this is a click in the current word
             var currentLetter = this.solutionLayer.pointInCurrentWord(x,y);
@@ -62,7 +60,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             else if (currentColumn == this.lastColumn) {
                 // Get the letter at this point on the letter chooser
                 this.lastColumn = currentColumn;
-                this.lastLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord());
+                this.lastLetter = this.sliderLayer.letterAtY(y);
                 this.sc.CHANGING_LETTER_DRAG();
             }
             else {
@@ -82,7 +80,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             }
             else {
                 // Get the letter at this point on the letter chooser
-                this.lastLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord());
+                this.lastLetter = this.sliderLayer.letterAtY(y);
                 this.sc.CHANGING_LETTER_DRAG();
             }
         }
@@ -110,7 +108,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
                 if (currentColumn == this.lastColumn) {
                     this.sc.CHANGING_LETTER_DRAG();
                     var offset = y - this.lastDown.y;
-                    this.chooseLetterLayer.setOffset(offset);
+                    this.sliderLayer.setOffset(offset);
 
                 // Otherwise close everything out
                 } else {
@@ -131,7 +129,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         else if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
             // Change the letter chooser's offset to reflect the new input position.
             var offset = y - this.lastDown.y;
-            this.chooseLetterLayer.setOffset(offset);
+            this.sliderLayer.setOffset(offset);
         }
         else if (this.sc.state == this.sc.states.GESTURING) {
             var vector = this.calculateVector(x,y),
@@ -184,11 +182,11 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.sc.IDLE();
 
         // Hide the letter chooser
-        this.chooseLetterLayer.setVisible(false);
+        this.sliderLayer.setVisible(false);
 
         // Calculate the new word
         var oldWord = this.quatGame.getPuzzle().getCurrentWord(),
-            newWord = oldWord.substr(0,this.lastColumn) + this.chooseLetterLayer.getBaseLetter() + oldWord.substr(this.lastColumn + 1);
+            newWord = oldWord.substr(0,this.lastColumn) + this.sliderLayer.getBaseLetter() + oldWord.substr(this.lastColumn + 1);
 
         newWord = newWord.toLowerCase();
 
@@ -249,7 +247,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
          */
         if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
             var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
-                currentChooserLetter = this.chooseLetterLayer.letterAtY(y - this.solutionLayer.bottomOfCurrentWord()),
+                currentChooserLetter = this.sliderLayer.letterAtY(y),
                 currentColumn = this.solutionLayer.pointInColumn(x,y);
 
             /*
@@ -258,7 +256,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             if ((currentLetter === false) && 
                      (currentColumn !== false) &&
                      (currentChooserLetter == this.lastLetter)) {
-                this.chooseLetterLayer.setBaseLetter(this.lastLetter);
+                this.sliderLayer.setBaseLetter(this.lastLetter);
                 this.sc.CHANGING_LETTER_NODRAG();
             }
             /*
@@ -271,7 +269,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
                 // than anything. The getBaseLetter() method returns the CURRENT
                 // letter at the bottom instead of the REAL base letter before any
                 // offset.
-                this.chooseLetterLayer.setBaseLetter(this.chooseLetterLayer.getBaseLetter());
+                this.sliderLayer.setBaseLetter(this.sliderLayer.getBaseLetter());
                 this.sc.CHANGING_LETTER_NODRAG();
             }
             /*

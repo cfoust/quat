@@ -41,8 +41,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
     onEnter: function() {
         this._super();
 
-
-
         // Initialize the model and get a new puzzle
         var quatGame = this.quatGame;
 
@@ -59,13 +57,11 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.solutionLayer = solutionLayer;
 
         // Allows the user to choose letters
-        var chooseLetterLayer = new quat.solver.ChooseLetterLayer(gameBounds.width / 4, gameBounds.height, fontSize);
-        this.addChild(chooseLetterLayer);
-        chooseLetterLayer.setVisible(false);
-        chooseLetterLayer.x = gameBounds.x;
-        chooseLetterLayer.y = solutionLayer.panelHeight;
-        chooseLetterLayer.zIndex = 3;
-        this.chooseLetterLayer = chooseLetterLayer;
+        var sliderLayer = new quat.solver.SliderLayer(gameBounds, solutionLayer.currentWord, fontSize);
+        this.addChild(sliderLayer);
+        sliderLayer.setVisible(false);
+        sliderLayer.zIndex = 3;
+        this.sliderLayer = sliderLayer;
 
         // Used for notifications that need the user's attention
         var textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize, gameBounds);
@@ -161,16 +157,15 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-
         this.solutionLayer.applyTheme(theme);
         this.themeChangeLayer.applyTheme(theme);
-        this.chooseLetterLayer.applyTheme(theme);
+        this.sliderLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
     },
 
     setOpacity: function(opacity) {
         this.solutionLayer.setOpacity(opacity);
-        this.chooseLetterLayer.setOpacity(opacity);
+        this.sliderLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
         this.themeChangeLayer.setOpacity(opacity);
     }
