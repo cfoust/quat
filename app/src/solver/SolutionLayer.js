@@ -9,17 +9,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
         this.currentWord.setColor(textColor);
+        this.goalWord.setColor(textColor);
         this.prevWord.setColor(textColor);
-
-        if (theme.colors.contrastText) {
-            this.goalWord.setColor(textColor);
-            this.stepsWord.setColor(textColor);
-        } else {
-            this.goalWord.setColor(theme.colors.darkForeground);
-            this.stepsWord.setColor(theme.colors.darkForeground);
-        }
-        
-        this.goalBackground.setColor(theme.colors.lightForeground);
+        this.stepsWord.setColor(textColor);
     },
 
     ctor: function(puzzleLayer, width, height, fontSize) {
@@ -29,6 +21,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
         var size = {width: width, height: height},
             fourths = width / 4,
+            gap = width * 0.16,
             panelHeight = fontSize + (width * .09); // The bounds of the window
 
         this.size = size;
@@ -36,49 +29,39 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.panelHeight = panelHeight;
 
         // Used to display the current word for the user
-        var currentWord = new quat.solver.WordNode(fontSize, fourths);
-        currentWord.x = fourths / 2;
-        currentWord.y = panelHeight + (fontSize / 2);
+        var currentWord = new quat.solver.WordNode(fontSize, gap);
+        currentWord.x = width / 2;
+        currentWord.y = height * 0.60;
         this.addChild(currentWord);
         this.currentWord = currentWord;
 
         // Used exclusively for animating swiping backwards
-        var prevWord = new quat.solver.WordNode(fontSize, fourths);
+        var prevWord = new quat.solver.WordNode(fontSize, gap);
         prevWord.x = fourths / 2;
         prevWord.y = panelHeight + (fontSize / 2) + fontSize;
         prevWord.changeWord('TEST');
         prevWord.setOpacity(0);
+        prevWord.setVisible(false);
         this.addChild(prevWord);
         this.prevWord = prevWord;
 
         // Create a word to display the goal word
-        var goalWord = new quat.solver.WordNode(fontSize, fourths);
-        goalWord.x = fourths / 2;
-        goalWord.y = panelHeight * 0.6;
+        var goalWord = new quat.solver.WordNode(fontSize, gap);
+        goalWord.x = width / 2;
+        goalWord.y = currentWord.y + fontSize * 1.10;
         goalWord.zIndex = 1;
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
         // Create a word to display the steps count
-        var smallFontSize = panelHeight * 0.20,
-            smallFontY = panelHeight * 0.17;
+        var smallFontSize = fontSize * 0.4;
         var stepsWord = new cc.LabelTTF("", "Ubuntu", smallFontSize);
-        // stepsWord.setAnchorPoint(new cc.Point(0,0.5));
-        // stepsWord.x = (fourths * .23);
         stepsWord.x = width / 2;
-        stepsWord.y = smallFontY;
+        stepsWord.y = height * 0.1;
         stepsWord.zIndex = 1;
         stepsWord.string = "STEPS: 0 PAR: 0";
         this.addChild(stepsWord);
         this.stepsWord = stepsWord;
-
-        // Set up a background for the goal word
-        var goalBackground = new cc.LayerColor(cc.color(0,191,255,255));
-        goalBackground.height = panelHeight;
-        goalBackground.width = size.width;
-        goalBackground.zIndex = 0;
-        this.goalBackground = goalBackground;
-        this.addChild(goalBackground);
 
         return true;
     },
@@ -91,7 +74,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     },
 
     setOpacity: function(opacity) {
-        this.goalBackground.setOpacity(opacity);
         this.goalWord.setOpacity(opacity);
         this.currentWord.setOpacity(opacity);
         this.stepsWord.setOpacity(opacity);
@@ -105,26 +87,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
      * @return {number or boolean} 
      */
     pointInCurrentWord: function(x,y) {
-        var wordY1 = this.panelHeight,
-            wordY2 = wordY1 + (this.fontSize);
-
-        // Ensure the point is in the current word
-        if ((x > this.size.width) ||
-            (y > wordY2) ||
-            (x < 0) ||
-            (y < wordY1)) {
-            return false;
-        }
-
-        var fourths = this.size.width / 4,
-            loc = (x - (x % fourths)) / fourths;
-
-        // Handles edge case where loc can be 4 if the border falls on a pixel
-        if (loc >= 4) {
-            return false;
-        }
-
-        return loc;
+        return this.currentWord.pointInWord(cc.p(x,y));
     },
 
     /**

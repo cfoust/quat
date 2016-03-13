@@ -15,13 +15,15 @@ quat.solver.WordNode = cc.Node.extend({
         this.fontSize = fontSize;
         this.fontGap = fontGap;
 
+        var offset = -1 * ((fontGap * 1.5));
+
         // Create a pool of labels we can use to draw this word
-        var rowPool = []
+        var rowPool = [];
         for (var j = 0; j < 4; j++) {
             var letterLabel = new cc.LabelTTF("A", "Ubuntu", fontSize);
 
             // Set them to be hidden
-            letterLabel.x = (j * this.fontGap);
+            letterLabel.x = (j * this.fontGap) + offset;
             letterLabel.y = 0;
 
             // letterLabel.setColor(cc.color(176,196,222,255));
@@ -33,10 +35,62 @@ quat.solver.WordNode = cc.Node.extend({
         }
         this.rowPool = rowPool;
 
+        this.recalculateBounds;
+        this.oldX = this.x;
+        this.oldY = this.y;
+
         return true;
     },
 
-    
+    recalculateBounds: function() {
+        // Don't recalculate if x hasn't moved
+        if ((this.oldX == this.x) && (this.oldY == this.y)) {
+            return;
+        }
+
+        var x = this.x,
+            y = this.y,
+            fontHeight = this.fontSize,
+            fontHeightHalf = fontHeight / 2,
+            fontWidth = fontHeight * 0.6,
+            fontWidthHalf = fontWidth / 2,
+            bounds = [];
+
+        // Calculate bound rectangles for all the letters
+        for (var j = 0; j < 4; j++) {
+            var letter = this.rowPool[j];
+
+            // Set them to be hidden
+            bounds.push(cc.rect(x - letter.x - fontWidthHalf, 
+                                y - fontHeightHalf,
+                                fontWidth,
+                                fontHeight));
+        }
+        
+        // Not sure why we need this
+        bounds.reverse();
+
+        // Store the bounds
+        this.bounds = bounds;
+        this.oldX = x;
+        this.oldY = y;
+    },
+
+    pointInWord: function(point) {
+        var rowPool = this.rowPool;
+
+        this.recalculateBounds();
+        
+        var bounds = this.bounds;
+        for (var j = 0; j < 4; j++) {
+            var bound = bounds[j];
+            if (cc.rectContainsPoint(bound, point)) {
+                return j;
+            }
+        }
+
+        return false;
+    },
 
     /**
      * Replaces the text of this word with a given word.

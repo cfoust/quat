@@ -34,6 +34,8 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
     },
 
     began: function(x, y) {
+        console.log(this.solutionLayer.currentWord.pointInWord(cc.p(x,y)));
+        
         if (this.sc.state == this.sc.states.IDLE) {
             // Check to see if this is a click in the current word
             var currentLetter = this.solutionLayer.pointInCurrentWord(x,y);

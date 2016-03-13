@@ -65,6 +65,8 @@ quat.GameScene = cc.Scene.extend({
         this.menuLayer.applyTheme(theme);
         this.statsLayer.applyTheme(theme);
         this.aboutLayer.applyTheme(theme);
+
+        // todo: maybe just iterate over all the children and call applyTheme
     },
 
     onEnter: function() {
@@ -89,7 +91,7 @@ quat.GameScene = cc.Scene.extend({
 
         // Calculate the global font sizes
         // var fontSize = gameBounds.width * 0.18,
-        var fontSize = gameBounds.width * 0.15,
+        var fontSize = gameBounds.width * 0.12,
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer
