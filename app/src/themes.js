@@ -47,20 +47,7 @@ quat.themes = {
 			darkForeground: "#000080",
 			lightForeground: "#00BFFF"
 		},
-		puzzles: [
-			{
-				text: 'Go from "bane" to "bank" by changing one letter. Tap and drag a letter to start changing it. Tap it again to choose a letter.',
-				start: 'bane',
-				end: 'bank',
-				par: 1
-			},
-			{
-				text: 'Swipe from right to left to go back a step, and left to right to go to the menu.',
-				start: 'taps',
-				end: 'tape',
-				par: 1
-			},
-		],
+		puzzles: [],
 		unlock: 0
 	},
 	"LATE": {
@@ -167,6 +154,24 @@ quat.themes = {
 				end: 'time',
 				par: 6
 			},
+			{
+				text: "The machinations of a screen seemed more tangible than the world around me. I made friends with the leaping pixels, imagined arias to the tinny music.",
+				start: 'root',
+				end: 'note',
+				par: 5
+			},
+			{
+				text: "The screens weren't backlit then. I hid under the blankets with a flashlight like my father had with books.",
+				start: 'same',
+				end: 'boys',
+				par: 5
+			},
+			{
+				text: "\"A new challenger is approaching.\"",
+				start: 'fake',
+				end: 'life',
+				par: 4
+			},
 		],
 		unlock: 0
 	},
@@ -201,7 +206,20 @@ quat.themes = {
 			lightForeground: "#573526",
 			inverseButtons: true
 		},
-		puzzles: [],
+		puzzles: [
+			{
+				text: "\"And in her passing my madness passed.\"\nHOUSE OF LEAVES",
+				start: 'pass',
+				end: 'word',
+				par: 5
+			},
+			{
+				text: "\"It is a far, far better thing that I do, than I have ever done; it is a far, far better rest that I go to than I have ever known.\"\nA TALE OF TWO CITIES",
+				start: 'cuts',
+				end: 'down',
+				par: 6
+			},
+		],
 		unlock: 0
 	},
 	"PINE": { // Maybe revisit this one's colors

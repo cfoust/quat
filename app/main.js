@@ -12,6 +12,7 @@ cc.game.onStart = function(){
 
     var resources = [
         {type:"font", name:"Ubuntu", srcs:["res/Ubuntu.ttf"]},
+        {type:"font", name:"Font Awesome", srcs:["res/fontawesome-webfont.ttf"]},
     ];
 
     // Setup the resolution policy and design resolution size
