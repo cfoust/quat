@@ -78,6 +78,19 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.themeChangeLayer = themeChangeLayer;
         this._changingTheme = false;
 
+        var menuCallback = function(self) {
+            return function() {
+                self.gameScene.SSC.MAIN_MENU();
+            }
+        }(this);
+        var menuIcon = new quat.IconButton(fontSize * 0.8, "\uf0c9", menuCallback),
+            distance = fontSize / 2;
+        menuIcon.x = distance;
+        menuIcon.y = gameBounds.height - distance - fontSize;
+        menuIcon.enabled(true);
+        this.menuIcon = menuIcon;
+        this.addChild(menuIcon);
+
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
 
@@ -159,6 +172,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.themeChangeLayer.applyTheme(theme);
         this.sliderLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
+        this.menuIcon.applyTheme(theme);
     },
 
     setOpacity: function(opacity) {
@@ -166,6 +180,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.sliderLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
         this.themeChangeLayer.setOpacity(opacity);
+        this.menuIcon.setOpacity(opacity);
     }
 });
 

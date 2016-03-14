@@ -56,10 +56,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
                 self.updateFromModel(game);
             }
         }(this);
-        var undoIcon = new quat.IconButton(fontSize, "\uf0e2", undoCallback),
+        var undoIcon = new quat.IconButton(fontSize * 0.8, "\uf0e2", undoCallback),
             firstBounds = currentWord.bounds[0];
-        undoIcon.x = firstBounds.x - (fontSize * 1.4);
-        undoIcon.y = currentWord.y - (fontSize * 0.56);
+        undoIcon.x = firstBounds.x - (fontSize * 1.1);
+        undoIcon.y = currentWord.y - (fontSize * 0.50);
         undoIcon.enabled(true);
         this.undoIcon = undoIcon;
         this.addChild(undoIcon);

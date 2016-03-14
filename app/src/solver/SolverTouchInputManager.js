@@ -41,8 +41,6 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             if (currentLetter !== false) {
                 this.lastColumn = currentLetter;
                 this.sc.CHOOSING_LETTER(currentLetter);
-            } else if (y > this.solutionLayer.topOfCurrentWord()) {
-                this.sc.GESTURING();
             }
         }
         else if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
@@ -135,45 +133,6 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             var vector = this.calculateVector(x,y),
                 angle = vector.angle,
                 distance = vector.distance;
-            
-            // The user is dragging from right to left
-            if (((Math.PI - Math.abs(angle)) <= 0.30) &&
-                (distance > this.gestureThreshold) &&
-                (this.quatGame.getPuzzle().getSteps().length > 1)) {
-                this.solutionLayer.prevWord.changeWord(this.quatGame.getPuzzle().getPreviousWord());
-                this.solutionLayer.prevWord.setOpacity(0);
-                this.solutionLayer.currentWord.setOpacity(255);
-                this.sc.ERASING_WORD();
-            }
-        }
-        else if (this.sc.state == this.sc.states.ERASING_WORD) {
-            var vector = this.calculateVector(x,y),
-                angle = vector.angle,
-                distance = vector.distance,
-                solutionLayer = this.solutionLayer;
-
-            // The user is dragging and has maintained the strict right-to-left
-            // angle. They have to stay within 0.3 radians the whole time
-            if ((Math.PI - Math.abs(angle)) <= 0.30) {
-                var percent = (this.distanceThreshold - distance) / this.distanceThreshold,
-                    fadeOutPercent = Math.min((percent * 255) + 30, 255),
-                    fadeInPercent = Math.max(Math.min(255 - fadeOutPercent, 255), 0),
-                    movePercent = Math.max(solutionLayer.fontSize * percent,0);
-
-                // Fade in and out the current and previous words
-                solutionLayer.currentWord.setOpacity(fadeOutPercent);
-                solutionLayer.prevWord.setOpacity(fadeInPercent);
-
-                // Make it look like the previous word is coming down onto the
-                // current one to replace it
-                solutionLayer.prevWord.y = solutionLayer.currentWord.y + movePercent;
-            // Looks like they decided otherwise, stop tracking this touch
-            } else {
-                solutionLayer.currentWord.setOpacity(255);
-                solutionLayer.prevWord.setOpacity(0);
-                solutionLayer.prevWord.y = solutionLayer.currentWord.y + solutionLayer.fontSize;
-                this.sc.GESTURING();
-            }
         }
     },
 
@@ -289,24 +248,6 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             this.finishWord();   
         }
         else if (this.sc.state == this.sc.states.GESTURING) {
-            this.sc.IDLE();
-        }
-        else if (this.sc.state == this.sc.states.ERASING_WORD) {
-            var vector = this.calculateVector(x,y),
-                angle = vector.angle,
-                distance = vector.distance,
-                solutionLayer = this.solutionLayer;
-
-            if (((Math.PI - Math.abs(angle)) <= 0.30) && 
-                (distance > this.distanceThreshold)) {
-                this.quatGame.getPuzzle().goBack();
-                this.quatGame.saveToLocal();
-                this.solutionLayer.updateFromModel(this.quatGame);
-            }
-                
-            solutionLayer.currentWord.setOpacity(255);
-            solutionLayer.prevWord.setOpacity(0);
-            solutionLayer.prevWord.y = solutionLayer.currentWord.y + solutionLayer.fontSize;
             this.sc.IDLE();
         }
     }
