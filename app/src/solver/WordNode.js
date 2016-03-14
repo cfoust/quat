@@ -3,6 +3,11 @@ quat.solver = quat.solver || {};
 
 /* A conglomeration of four labels we use to display a word. */
 quat.solver.WordNode = cc.Node.extend({
+
+    applyTheme: function(theme) {
+        this.setColor(theme.colors.text);
+    },
+
     /**
      * Creates a WordNode with the given font size.
      * @param  {number} fontSize The size of the font to be initialized.
@@ -18,7 +23,7 @@ quat.solver.WordNode = cc.Node.extend({
         var offset = -1 * ((fontGap * 1.5));
 
         // Create a pool of labels we can use to draw this word
-        var rowPool = [];
+        var letterPool = [];
         for (var j = 0; j < 4; j++) {
             var letterLabel = new cc.LabelTTF("A", "Ubuntu", fontSize);
 
@@ -31,9 +36,9 @@ quat.solver.WordNode = cc.Node.extend({
             // Add it as a child to this layer
             this.addChild(letterLabel);
 
-            rowPool.push(letterLabel);
+            letterPool.push(letterLabel);
         }
-        this.rowPool = rowPool;
+        this.letterPool = letterPool;
 
         this.recalculateBounds();
         this.oldX = this.x;
@@ -58,7 +63,7 @@ quat.solver.WordNode = cc.Node.extend({
 
         // Calculate bound rectangles for all the letters
         for (var j = 0; j < 4; j++) {
-            var letter = this.rowPool[j];
+            var letter = this.letterPool[j];
 
             // Set them to be hidden
             bounds.push(cc.rect(x - letter.x - fontWidthHalf, 
@@ -77,7 +82,7 @@ quat.solver.WordNode = cc.Node.extend({
     },
 
     pointInWord: function(point) {
-        var rowPool = this.rowPool;
+        var letterPool = this.letterPool;
 
         this.recalculateBounds();
         
@@ -98,14 +103,14 @@ quat.solver.WordNode = cc.Node.extend({
      */
     changeWord: function(word) {
         for (var j = 0; j < 4; j++) {
-            var letterLabel = this.rowPool[j];
+            var letterLabel = this.letterPool[j];
             letterLabel.string = word[j].toUpperCase();
         }
     },
 
     setColor: function(color) {
         for (var j = 0; j < 4; j++) {
-            var letterLabel = this.rowPool[j];
+            var letterLabel = this.letterPool[j];
             letterLabel.setColor(color);
             letterLabel.setVisible(false);
             letterLabel.setVisible(true);
@@ -114,7 +119,7 @@ quat.solver.WordNode = cc.Node.extend({
 
     setOpacity: function(opacity) {
         for (var j = 0; j < 4; j++) {
-            var letterLabel = this.rowPool[j];
+            var letterLabel = this.letterPool[j];
             letterLabel.setOpacity(opacity);
         }
     }

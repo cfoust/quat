@@ -8,9 +8,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
-        this.currentWord.setColor(textColor);
-        this.goalWord.setColor(textColor);
-        this.prevWord.setColor(textColor);
+        this.currentWord.applyTheme(theme);
+        this.goalWord.applyTheme(theme);
+        this.prevWord.applyTheme(theme);
         this.stepsWord.setColor(textColor);
     },
 
@@ -29,9 +29,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.panelHeight = panelHeight;
 
         // Used to display the current word for the user
-        var currentWord = new quat.solver.WordNode(fontSize, gap);
+        var currentWord = new quat.solver.BorderedWordNode(fontSize, gap);
         currentWord.x = width / 2;
-        currentWord.y = height * 0.60;
+        currentWord.y = height * 0.6;
         currentWord.recalculateBounds();
         this.addChild(currentWord);
         this.currentWord = currentWord;
