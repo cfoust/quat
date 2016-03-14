@@ -39,6 +39,7 @@ quat.ScreenStateController = quat.StateController.extend({
             }
             
             scene.menuLayer.setVisible(false);
+            scene.menuIcon.setVisible(true);
         },
         /*
         When the user is at the main menu.
@@ -46,7 +47,10 @@ quat.ScreenStateController = quat.StateController.extend({
         MAIN_MENU: function(self) {
             var scene = self.gameScene,
                 menuLayer = scene.menuLayer;
+                menuIcon = scene.menuIcon;
+
             menuLayer.setVisible(true);
+            scene.menuIcon.setVisible(false);
             self.currentLayer = menuLayer;
             scene.puzzleLayer.setVisible(false);
             scene.statsLayer.setVisible(false);
@@ -67,6 +71,7 @@ quat.ScreenStateController = quat.StateController.extend({
             // Make the other ones invisible
             scene.menuLayer.setVisible(false);
             puzzleLayer.setVisible(true);
+            scene.menuIcon.setVisible(true);
             
             // Set up the puzzleLayer for LOOK changing
             scene.puzzleLayer.setThemeChange(true);
@@ -83,6 +88,7 @@ quat.ScreenStateController = quat.StateController.extend({
             
             // Make the other ones invisible
             scene.menuLayer.setVisible(false);
+            scene.menuIcon.setVisible(true);
             statsLayer.setVisible(true);
             statsLayer.setOpacity(255);
         },
@@ -95,6 +101,7 @@ quat.ScreenStateController = quat.StateController.extend({
             
             // Make the other ones invisible
             scene.menuLayer.setVisible(false);
+            scene.menuIcon.setVisible(true);
             aboutLayer.setVisible(true);
             aboutLayer.setOpacity(255);
         },

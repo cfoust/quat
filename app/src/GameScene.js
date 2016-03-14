@@ -65,6 +65,7 @@ quat.GameScene = cc.Scene.extend({
         this.menuLayer.applyTheme(theme);
         this.statsLayer.applyTheme(theme);
         this.aboutLayer.applyTheme(theme);
+        this.menuIcon.applyTheme(theme);
 
         // todo: maybe just iterate over all the children and call applyTheme
     },
@@ -129,6 +130,19 @@ quat.GameScene = cc.Scene.extend({
         subtextWord.setOpacity(0);
         this.addChild(subtextWord);
         this.subtextWord = subtextWord;
+
+        var menuCallback = function(self) {
+            return function() {
+                self.SSC.MAIN_MENU();
+            }
+        }(this);
+        var menuIcon = new quat.IconButton(fontSize * 0.8, "\uf0c9", menuCallback),
+            distance = fontSize / 2;
+        menuIcon.x = distance;
+        menuIcon.y = gameBounds.height - distance - fontSize;
+        menuIcon.enabled(true);
+        this.menuIcon = menuIcon;
+        this.addChild(menuIcon);
 
         // Apply the user's theme
         this.applyThemeByName(gameState.getUser().getTheme());

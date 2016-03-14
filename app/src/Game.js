@@ -501,7 +501,6 @@ quat.Game = quat.MessageQueue.extend({
 		} else  {
 			// Generate a random key
 			var key = Math.floor(Math.random() * this.puzzles.length);
-			console.log(key);
 			var puzzle = this.puzzles[key];
 			this._puzzle = new quat.Puzzle(puzzle[0],puzzle[1],puzzle[2], false);
 		}
