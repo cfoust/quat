@@ -10,16 +10,18 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         var textColor = theme.colors.text;
         this.currentWord.applyTheme(theme);
         this.goalWord.applyTheme(theme);
-        this.prevWord.applyTheme(theme);
         this.stepsWord.setColor(textColor);
+        this.undoIcon.applyTheme(theme);
     },
 
-    ctor: function(puzzleLayer, width, height, fontSize) {
+    ctor: function(puzzleLayer, gameBounds, fontSize) {
         this._super();
 
         this.puzzleLayer = puzzleLayer;
 
-        var size = {width: width, height: height},
+        var width = gameBounds.width,
+            height = gameBounds.height;
+            size = {width: width, height: height},
             fourths = width / 4,
             gap = width * 0.16,
             panelHeight = fontSize + (width * .09); // The bounds of the window
@@ -30,34 +32,42 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
         // Used to display the current word for the user
         var currentWord = new quat.solver.BorderedWordNode(fontSize, gap);
-        currentWord.x = width / 2;
+        currentWord.x = gameBounds.x + (width / 2);
         currentWord.y = height * 0.6;
         currentWord.recalculateBounds();
         this.addChild(currentWord);
         this.currentWord = currentWord;
 
-        // Used exclusively for animating swiping backwards
-        var prevWord = new quat.solver.WordNode(fontSize, gap);
-        prevWord.x = fourths / 2;
-        prevWord.y = panelHeight + (fontSize / 2) + fontSize;
-        prevWord.changeWord('TEST');
-        prevWord.setOpacity(0);
-        prevWord.setVisible(false);
-        this.addChild(prevWord);
-        this.prevWord = prevWord;
-
         // Create a word to display the goal word
         var goalWord = new quat.solver.WordNode(fontSize, gap);
-        goalWord.x = width / 2;
+        goalWord.x = gameBounds.x + (width / 2);
         goalWord.y = currentWord.y + fontSize * 1.10;
         goalWord.zIndex = 1;
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
+
+        var undoCallback = function(self) {
+            return function() {
+                var puzzleLayer = self.puzzleLayer,
+                    game = puzzleLayer.quatGame;
+
+                game.getPuzzle().goBack();
+                self.updateFromModel(game);
+            }
+        }(this);
+        var undoIcon = new quat.IconButton(fontSize, "\uf0e2", undoCallback),
+            firstBounds = currentWord.bounds[0];
+        undoIcon.x = firstBounds.x - (fontSize * 1.4);
+        undoIcon.y = currentWord.y - (fontSize * 0.56);
+        undoIcon.enabled(true);
+        this.undoIcon = undoIcon;
+        this.addChild(undoIcon);
+
         // Create a word to display the steps count
         var smallFontSize = fontSize * 0.4;
         var stepsWord = new cc.LabelTTF("", "Ubuntu", smallFontSize);
-        stepsWord.x = width / 2;
+        stepsWord.x = gameBounds.x + (width / 2);
         stepsWord.y = height * 0.1;
         stepsWord.zIndex = 1;
         stepsWord.string = "STEPS: 0 PAR: 0";
@@ -75,6 +85,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.goalWord.setOpacity(opacity);
         this.currentWord.setOpacity(opacity);
         this.stepsWord.setOpacity(opacity);
+        this.undoIcon.setOpacity(opacity);
     },
 
     /**
@@ -139,6 +150,8 @@ quat.solver.SolutionLayer = cc.Layer.extend({
 
             this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
         }
+
+        this.undoIcon.setVisible(puzzle.getSteps().length > 1);
         
         this.stepsWord.setVisible(!puzzle.isSpecial());
     }

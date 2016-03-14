@@ -16,6 +16,7 @@
         "src/StateController.js",
 
         "src/nodes/RectRadius.js",
+        "src/nodes/IconButton.js",
 
         "src/puzzles.js",
         "src/dict.js",

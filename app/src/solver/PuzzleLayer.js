@@ -49,9 +49,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
             fontSize = this.fontSize;
 
         // Has all of the indicators about the current solution and steps
-        var solutionLayer = new quat.solver.SolutionLayer(this, gameBounds.width, gameBounds.height, fontSize);
-        solutionLayer.x = gameBounds.x;
-        solutionLayer.y = gameBounds.y;
+        var solutionLayer = new quat.solver.SolutionLayer(this, gameBounds, fontSize);
         solutionLayer.zIndex = 2;
         this.addChild(solutionLayer);
         this.solutionLayer = solutionLayer;
@@ -105,8 +103,8 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
          */
         var transpose = function(event) {
             return {
-                x: event.getLocationX() - gameBounds.x,
-                y: event.getLocationY() - gameBounds.y
+                x: event.getLocationX(),
+                y: event.getLocationY()
             };
         };
 

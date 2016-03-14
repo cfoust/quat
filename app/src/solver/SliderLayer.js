@@ -16,7 +16,7 @@ quat.solver.SliderLayer = cc.Layer.extend({
 
         // Used for setting the elements to the proper position
         this.halfFontGap = halfFontGap;
-        this.baseX = gameBounds.x;
+        this.baseX = 0;
 
         // Store the bounds of all the letters
         var letterBounds = [];
