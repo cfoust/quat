@@ -65,6 +65,7 @@ quat.GameScene = cc.Scene.extend({
         this.menuLayer.applyTheme(theme);
         this.statsLayer.applyTheme(theme);
         this.aboutLayer.applyTheme(theme);
+        this.lookLayer.applyTheme(theme);
         this.menuIcon.applyTheme(theme);
 
         // todo: maybe just iterate over all the children and call applyTheme
@@ -115,6 +116,11 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(this.aboutLayer);
         this.aboutLayer.setVisible(false);
 
+        // Create a reference to the look layer
+        this.lookLayer = new quat.look.LookLayer(this, gameBounds, fontSize, gameState);
+        this.addChild(this.lookLayer);
+        this.lookLayer.setVisible(false);
+
         // Create the MENU word
         var titleWord = new cc.LabelTTF("MENU?", "Ubuntu", fontSize);
         titleWord.x = this.windowWidth / 2;
@@ -141,6 +147,7 @@ quat.GameScene = cc.Scene.extend({
         menuIcon.x = distance;
         menuIcon.y = gameBounds.height - distance - fontSize;
         menuIcon.enabled(true);
+        menuIcon.setVisible(true);
         this.menuIcon = menuIcon;
         this.addChild(menuIcon);
 

@@ -8,7 +8,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
 
         var textLabel = new cc.LabelTTF("", "Ubuntu", fontSize*.6, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = gameBounds.x + (gameBounds.width / 2);
-        textLabel.y = gameBounds.y + (gameBounds.height * 0.3);
+        textLabel.y = gameBounds.y + (gameBounds.height * 0.38);
         textLabel.boundingWidth = gameBounds.width;
 
         this.textLabel = textLabel;

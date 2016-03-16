@@ -39,6 +39,8 @@
 
         "src/about/AboutLayer.js",
 
+        "src/look/LookLayer.js",
+
         "src/menu/MenuButton.js",
         "src/menu/MenuLayer.js",
         

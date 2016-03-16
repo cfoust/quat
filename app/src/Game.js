@@ -497,7 +497,7 @@ quat.Game = quat.MessageQueue.extend({
 			user.setThemeProgress(progress + 1);
 
 			// Initialize the puzzle object
-			this._puzzle = new quat.Puzzle(puzzle.start, puzzle.end, null, true, puzzle.text);
+			this._puzzle = new quat.Puzzle(puzzle.start, puzzle.end, puzzle.par, true, puzzle.text);
 		} else  {
 			// Generate a random key
 			var key = Math.floor(Math.random() * this.puzzles.length);

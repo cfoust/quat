@@ -37,7 +37,7 @@ quat.ScreenStateController = quat.StateController.extend({
             if (puzzle.isSpecial()) {
                 puzzleLayer.textIndicatorLayer.addMessage(puzzle.getSpecialText().toUpperCase(), true);
             }
-            
+            scene.menuIcon.setVisible(true);
             scene.menuLayer.setVisible(false);
             scene.menuIcon.setVisible(true);
         },
@@ -54,12 +54,14 @@ quat.ScreenStateController = quat.StateController.extend({
             self.currentLayer = menuLayer;
             scene.puzzleLayer.setVisible(false);
             scene.statsLayer.setVisible(false);
+            scene.lookLayer.setVisible(false);
+            scene.aboutLayer.setVisible(false);
             scene.applyThemeByName(scene.gameState.getUser().getTheme());
             scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
         LOOK: function(self) {
             var scene = self.gameScene,
-                puzzleLayer = self.gameScene.puzzleLayer;
+                puzzleLayer = scene.puzzleLayer;
 
             var indicator = puzzleLayer.textIndicatorLayer;
             indicator.stopAllActions();
@@ -70,12 +72,12 @@ quat.ScreenStateController = quat.StateController.extend({
             
             // Make the other ones invisible
             scene.menuLayer.setVisible(false);
-            puzzleLayer.setVisible(true);
+            scene.puzzleLayer.setVisible(false);
+            scene.lookLayer.setVisible(true);
             scene.menuIcon.setVisible(true);
             
             // Set up the puzzleLayer for LOOK changing
-            scene.puzzleLayer.setThemeChange(true);
-            scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
+            scene.lookLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
         STATS: function(self) {
             var scene = self.gameScene,
