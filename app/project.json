@@ -29,6 +29,7 @@
         "src/solver/WordNode.js",
         "src/solver/BorderedWordNode.js",
         "src/solver/SliderLayer.js",
+        "src/solver/FinishedLayer.js",
         "src/solver/TextIndicatorLayer.js",
         "src/solver/KeyboardLayer.js",
         "src/solver/SolutionLayer.js",

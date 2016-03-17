@@ -30,18 +30,25 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.addChild(solutionLayer);
         this.solutionLayer = solutionLayer;
 
-        // Allows the user to choose letters
+        // Allows the user to choose letters with a slider
         var sliderLayer = new quat.solver.SliderLayer(gameBounds, solutionLayer.currentWord, fontSize);
         this.addChild(sliderLayer);
         sliderLayer.setVisible(false);
         sliderLayer.zIndex = 3;
         this.sliderLayer = sliderLayer;
 
+        // Allows the user to choose letters with a keyboard
         var keyboardLayer = new quat.solver.KeyboardLayer(gameBounds);
         this.addChild(keyboardLayer);
         keyboardLayer.setVisible(false);
         keyboardLayer.zIndex = 3;
         this.keyboardLayer = keyboardLayer;
+
+        // Used to show the pings that happen then the user finished a puzzle
+        var finishedLayer = new quat.solver.FinishedLayer(fontSize, gameBounds);
+        this.addChild(finishedLayer);
+        finishedLayer.setVisible(true);
+        this.finishedLayer = finishedLayer;
 
         // Used for notifications that need the user's attention
         var textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize, gameBounds);
@@ -133,6 +140,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.solutionLayer.applyTheme(theme);
         this.sliderLayer.applyTheme(theme);
         this.keyboardLayer.applyTheme(theme);
+        this.finishedLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
     },
 

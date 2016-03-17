@@ -212,6 +212,12 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
             this.puzzleLayer.textIndicatorLayer.clearMessages();
 
+            if (puzzle.getSteps().length == puzzle.getPar()) {
+                this.puzzleLayer.finishedLayer.par();
+            } else {
+                this.puzzleLayer.finishedLayer.done();
+            }
+
             // Grab a new puzzle
             this.quatGame.newPuzzle();
 
