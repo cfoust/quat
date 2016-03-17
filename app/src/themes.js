@@ -119,7 +119,7 @@ quat.themes = {
 				par: 6
 			},
 		],
-		unlock: 2000
+		unlock: 0
 	},
 	
 	"GAME": {
