@@ -14,9 +14,14 @@ quat.look.LookLayer = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-        this.themeName.applyTheme(theme);
+        this.themeName.setColor(theme.colors.text);
+        this.themePos.setColor(theme.colors.text);
+        this.lockIcon.setColor(theme.colors.text);
+        this.remaining.setColor(theme.colors.text);
+        this.puzzlesLeft.setColor(theme.colors.text);
         this.leftIcon.applyTheme(theme);
         this.rightIcon.applyTheme(theme);
+        this.selectedButton.applyTheme(theme);
     },
 
     viewTheme: function(themeName) {
@@ -25,7 +30,7 @@ quat.look.LookLayer = cc.Layer.extend({
 
         this.gameScene.applyTheme(theme);
         this.gameScene.applyTheme(theme);
-        this.themeName.changeWord(theme.name);
+        this.themeName.string = theme.name;
 
         var user = this.quatGame.getUser(),
             // Whether or not this is the current theme
@@ -35,36 +40,39 @@ quat.look.LookLayer = cc.Layer.extend({
             // The user's progress in the theme (how many puzzles remain)
             progress = user.getThemeProgressForTheme(themeName),
             // The total number of puzzles the theme has.
-            puzzles = theme.puzzles.length;
+            puzzles = theme.puzzles.length,
+            remaining = puzzles - progress;
 
-        // if (!unlocked) {
-        //     this.remaining.string = ("You need " + (theme.unlock - user.getPoints()) + " more points to unlock this theme.").toUpperCase();   
-        // }
+        // Stuff that shows up when the theme is unlocked
+        this.selectedButton.setVisible(unlocked);
+        this.themeName.setVisible(unlocked);
+        this.puzzlesLeft.setVisible(unlocked);
 
-        // this.selectedButton.setVisible(unlocked);
-        // this.remaining.setVisible(!unlocked);
+        // Stuff that shows up when it isn't
+        this.lockIcon.setVisible(!unlocked);
+        this.remaining.setVisible(!unlocked);
 
-        // this.selectedButton.selected(enabled);
-        // this.selectedButton.enabled(!enabled);
+        // Enabled the select button if the theme is enabled
+        this.selectedButton.selected(enabled);
+        this.selectedButton.enabled(!enabled);
+        this.selectedButton.setText(enabled ? "SELECTED" : "SELECT");
 
-        // if (enabled) {
-        //     this.selectedButton.setText("SELECTED");
-        // } else {
-        //     this.selectedButton.setText("SELECT");
-        // }
-
-        // if (puzzles != 0) {
-        //     this.progress.string = progress.toString() + "/" + puzzles.toString() + " PUZZLES SOLVED";
-        //     this.progress.setVisible(true);
-        // } else {
-        //     this.progress.setVisible(false);
-        // }
-
+        if (unlocked) {
+            this.puzzlesLeft.setVisible(remaining != 0);
+            if (remaining != 0) {
+                var word = remaining == 1 ? "PUZZLE" : "PUZZLES";
+                this.puzzlesLeft.string = remaining.toString() + " " + word + " LEFT";
+            }
+        } else {
+            var points = (theme.unlock - user.getPoints()),
+                word = points == 1 ? "point" : "points";
+            this.remaining.string = ("You need " + points.toString() + " more " + word + " to unlock this theme.").toUpperCase(); 
+        }
 
         this._current = themeName;
         this._currentIndex = this._themes.indexOf(themeName);
 
-        // solutionLayer.stepsWord.string = "THEME " + (this._currentIndex + 1).toString() + "/" + this._themes.length.toString();
+        this.themePos.string = "THEME #" + (this._currentIndex + 1).toString();
     },
 
     deltaTheme: function(delta) {
@@ -102,14 +110,13 @@ quat.look.LookLayer = cc.Layer.extend({
             width = gameBounds.width,
             height = gameBounds.height,
             fourths = width / 4,
-            gap = width * 0.16;
+            gap = width * 0.08;
 
         // Create a word to display the theme name
-        var themeName = new quat.solver.WordNode(fontSize, gap);
+        var themeName = new cc.LabelTTF("TEST", "Ubuntu", fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
         themeName.x = gameBounds.x + (width / 2);
         themeName.y = gameBounds.height * 0.6;
         themeName.zIndex = 1;
-        themeName.changeWord('TEST');
         this.addChild(themeName);
         this.themeName = themeName;
 
@@ -127,6 +134,59 @@ quat.look.LookLayer = cc.Layer.extend({
         rightIcon.enabled(true);
         this.rightIcon = rightIcon;
         this.addChild(rightIcon);
+
+        // Initialize the parameters for the button size
+        var buttonFontSize = fontSize * 0.9,
+            buttonHeight = buttonFontSize * 1.3,
+            buttonWidth = gameBounds.width * 0.6,
+            difference = (gameBounds.width - buttonWidth) / 2;
+
+        // The callback for select
+        var selectCallback = function(self) {return function() {
+            self.quatGame.setTheme(self._current);
+            self.selectedButton.setText("SELECTED");
+            self.selectedButton.selected(true);
+            self.selectedButton.enabled(false);
+            self.quatGame.saveToLocal();
+        }}(this);
+        var selectedButton = new quat.menu.Button("SELECTED", buttonFontSize, buttonWidth, buttonHeight, selectCallback);
+        selectedButton.x = gameBounds.x + difference;
+        selectedButton.y = gameBounds.y + (gameBounds.height * 0.16);
+        this.addChild(selectedButton);
+        this.selectedButton = selectedButton;
+
+        // The size of all the smaller text on this page
+        var subsidiarySize = buttonFontSize * 0.5;
+
+        // Create a label to display the theme name
+        var themePos = new cc.LabelTTF("TEST", "Ubuntu", subsidiarySize, null, cc.TEXT_ALIGNMENT_CENTER);
+        themePos.x = gameBounds.x + (width / 2);
+        themePos.y = selectedButton.y - (subsidiarySize);
+        this.addChild(themePos);
+        this.themePos = themePos;
+
+        // Lock icon that shows up when a theme is not unlocked.
+        var lockIcon = new cc.LabelTTF("\uf023", "Font Awesome", fontSize * 2, null, cc.TEXT_ALIGNMENT_CENTER);
+        lockIcon.x = themeName.x;
+        lockIcon.y = themeName.y - (fontSize * 0.1);
+        this.addChild(lockIcon);
+        this.lockIcon = lockIcon;
+
+        // Create a label to display the theme name
+        var puzzlesLeft = new cc.LabelTTF("TEST", "Ubuntu", subsidiarySize, null, cc.TEXT_ALIGNMENT_CENTER);
+        puzzlesLeft.x = gameBounds.x + (width / 2);
+        puzzlesLeft.y = themeName.y - fontSize;
+        puzzlesLeft.boundingWidth = gameBounds.width * 0.7;
+        this.addChild(puzzlesLeft);
+        this.puzzlesLeft = puzzlesLeft;
+
+        // Create a label to display the theme name
+        var remaining = new cc.LabelTTF("TEST", "Ubuntu", subsidiarySize, null, cc.TEXT_ALIGNMENT_CENTER);
+        remaining.x = gameBounds.x + (width / 2);
+        remaining.y = gameBounds.height * 0.38;
+        remaining.boundingWidth = gameBounds.width * 0.7;
+        this.addChild(remaining);
+        this.remaining = remaining;
     },
 
     setOpacity: function(opacity) {

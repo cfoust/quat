@@ -123,5 +123,10 @@ quat.IconButton = cc.Node.extend({
 
     setOpacity: function(opacity) {
         this.icon.setOpacity(opacity);
+    },
+
+    setVisible: function(visible) {
+        this._super(visible);
+        this.enabled(visible);
     }
 });

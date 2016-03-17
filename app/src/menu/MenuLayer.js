@@ -28,9 +28,9 @@ quat.menu.MenuLayer = cc.Layer.extend({
         	fontSize = this.fontSize;
 
         // Sets up the title label
-        var textLabel = new cc.LabelTTF("QUAT", "Ubuntu", fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
+        var textLabel = new cc.LabelTTF("QUAT", "Ubuntu", fontSize * 1.2, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = gameBounds.x + (gameBounds.width / 2);
-        textLabel.y = gameBounds.y + (gameBounds.height / 2) + fontSize * 2;
+        textLabel.y = gameBounds.y + (gameBounds.height * 0.7);
         textLabel.boundingWidth = gameBounds.width;
         this.textLabel = textLabel;
         this.addChild(textLabel);
@@ -51,13 +51,16 @@ quat.menu.MenuLayer = cc.Layer.extend({
         	}
         };
 
-        var buttonHeight = fontSize * 1.3,
-        	buttonGap = buttonHeight * 1.1,
+        var buttonFontSize = fontSize * 0.9,
+            buttonHeight = buttonFontSize * 1.3,
+            buttonWidth = gameBounds.width * 0.5,
+            difference = (gameBounds.width - buttonWidth) / 2,
+        	buttonGap = buttonHeight * 1.4,
             numButtons = Object.keys(buttons).length;
 
         // Calculate the offset needed to center all of the buttons
         var totalHeight = fontSize + (numButtons * buttonGap);
-            offset = (((1 - (fontSize / totalHeight)) * totalHeight) - (totalHeight / 2)) / 2;
+            offset = (((1 - (buttonFontSize / totalHeight)) * totalHeight) - (totalHeight / 2)) / 2;
         // I have no idea why that worked but #yolo
 
         // Reset the offset of the QUAT label
@@ -80,10 +83,10 @@ quat.menu.MenuLayer = cc.Layer.extend({
         	}(this, func);
 
         	// Initialize a menu button
-        	var menuButton = new quat.menu.Button(key, fontSize, gameBounds.width, buttonHeight, action);
+        	var menuButton = new quat.menu.Button(key, buttonFontSize, buttonWidth, buttonHeight, action);
 	        
 	        // Move it properly
-	        menuButton.x = gameBounds.x;
+	        menuButton.x = gameBounds.x + difference;
 	        menuButton.y = gameBounds.y + (gameBounds.height / 2) + (-buttonGap * i) + offset;
 	        this.addChild(menuButton);
 	        this.buttons.push(menuButton);

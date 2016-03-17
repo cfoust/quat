@@ -30,7 +30,6 @@
         "src/solver/BorderedWordNode.js",
         "src/solver/SliderLayer.js",
         "src/solver/TextIndicatorLayer.js",
-        "src/solver/ThemeChangeLayer.js",
         "src/solver/SolutionLayer.js",
         "src/solver/PuzzleLayer.js",
 

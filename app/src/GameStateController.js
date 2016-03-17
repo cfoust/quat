@@ -26,7 +26,6 @@ quat.ScreenStateController = quat.StateController.extend({
 
             self.currentLayer = puzzleLayer;
             puzzleLayer.setVisible(true);
-            puzzleLayer.setThemeChange(false);
 
             var game = scene.gameState,
                 puzzle = game.getPuzzle(),
@@ -37,7 +36,6 @@ quat.ScreenStateController = quat.StateController.extend({
             if (puzzle.isSpecial()) {
                 puzzleLayer.textIndicatorLayer.addMessage(puzzle.getSpecialText().toUpperCase(), true);
             }
-            scene.menuIcon.setVisible(true);
             scene.menuLayer.setVisible(false);
             scene.menuIcon.setVisible(true);
         },
@@ -57,7 +55,6 @@ quat.ScreenStateController = quat.StateController.extend({
             scene.lookLayer.setVisible(false);
             scene.aboutLayer.setVisible(false);
             scene.applyThemeByName(scene.gameState.getUser().getTheme());
-            scene.puzzleLayer.themeChangeLayer.viewTheme(scene.gameState.getUser().getTheme());
         },
         LOOK: function(self) {
             var scene = self.gameScene,

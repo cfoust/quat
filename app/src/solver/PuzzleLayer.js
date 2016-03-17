@@ -14,30 +14,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         return true;
     },
 
-    setThemeChange: function(set) {
-        this._changingTheme = set;
-        if (set) {
-            this.touchInputManager.setEnabled(false);
-            this.textIndicatorLayer.clearMessages();
-            this.textIndicatorLayer.addMessage('Swipe from left to right to return to the main menu. Each theme comes with special puzzles.'.toUpperCase(), true);
-
-            var solutionLayer = this.solutionLayer;
-            solutionLayer.goalWord.changeWord("WORD");
-            solutionLayer.currentWord.setVisible(false);
-            solutionLayer.stepsWord.setVisible(true);
-            this.themeChangeLayer.setVisible(true);
-        }
-        else {
-            this.touchInputManager.setEnabled(true);
-            this.themeChangeLayer.setVisible(false);
-
-            var solutionLayer = this.solutionLayer;
-            solutionLayer.currentWord.setVisible(true);
-            solutionLayer.stepsWord.setVisible(true);
-            solutionLayer.updateFromModel(this.quatGame);
-        }
-    },
-
     onEnter: function() {
         this._super();
 
@@ -68,15 +44,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         textIndicatorLayer.zIndex = 1;
         this.addChild(textIndicatorLayer);
         this.textIndicatorLayer = textIndicatorLayer;
-
-        var themeChangeLayer = new quat.solver.ThemeChangeLayer(this, fontSize, gameBounds);
-        themeChangeLayer.x = 0;
-        themeChangeLayer.y = 0;
-        themeChangeLayer.zIndex = 2;
-        this.addChild(themeChangeLayer);
-        themeChangeLayer.setVisible(false);
-        this.themeChangeLayer = themeChangeLayer;
-        this._changingTheme = false;
 
         
 
@@ -158,7 +125,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
 
     applyTheme: function(theme) {
         this.solutionLayer.applyTheme(theme);
-        this.themeChangeLayer.applyTheme(theme);
         this.sliderLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
     },
@@ -167,7 +133,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.solutionLayer.setOpacity(opacity);
         this.sliderLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
-        this.themeChangeLayer.setOpacity(opacity);
     }
 });
 

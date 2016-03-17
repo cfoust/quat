@@ -16,10 +16,10 @@ quat.menu.Button = cc.Layer.extend({
 
     applyTheme: function(theme) {
         this.textLabel.setColor(theme.colors.text);
-        this.background.setColor(theme.colors.darkForeground);
         this.textColor = theme.colors.text;
         this.defaultColor = theme.colors.darkForeground;
         this.selectedColor = theme.colors.lightForeground;
+        this.rect.setColor(this.defaultColor);
 
         if (theme.colors.inverseButtons) {
             this._invert = true;
@@ -33,14 +33,13 @@ quat.menu.Button = cc.Layer.extend({
         if (selected) {
             if (this._invert) {
                 this.textLabel.setColor(this.defaultColor);
-                this.background.setColor(this.selectedColor);
             } else {
                 this.textLabel.setColor(this.textColor);
-                this.background.setColor(this.selectedColor);
             }
+            this.rect.setColor(this.selectedColor);
         } else {
             this.textLabel.setColor(this.textColor);
-            this.background.setColor(this.defaultColor);
+            this.rect.setColor(this.defaultColor);
         }
         this._selected = selected;
     },
@@ -74,15 +73,15 @@ quat.menu.Button = cc.Layer.extend({
 
         this.defaultColor = cc.color(0,0,128,255),
         this.selectedColor = cc.color(0,191,255,255);
-        
-        // The button's background
-        var background = new cc.LayerColor(this.defaultColor);
-        background.width = this.width;
-        background.height = this.height;
-        background.zIndex = 1;
-        this.background = background;
-        this.addChild(background);
 
+        var borderRadius = this.fontSize * 0.2,
+            borderWidth = this.fontSize * 0.08;
+
+        var rect = new quat.RectRadius(this.width, this.height, borderRadius, borderWidth, false);
+        rect.x = this.width / 2;
+        rect.y = this.height / 2;
+        this.addChild(rect);
+        this.rect = rect;
 
         // Touch listener
         var button = this,
@@ -139,8 +138,14 @@ quat.menu.Button = cc.Layer.extend({
     },
 
     setOpacity: function(opacity) {
-        this.textLabel.setOpacity(opacity);
-    	this.background.setOpacity(opacity);
-    }
+        // Set all children opacity
+        var children = this.children;
+        for (var i = 0; i < this.childrenCount; i++) {
+            var obj = children[i];
+            obj.setOpacity(opacity);
+        }
+    },
+
+
 });
 
