@@ -6,9 +6,12 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
 	applyTheme: function(theme) {
         this._super(theme);
 
+        this.default = theme.colors.darkForeground;
+        this.selected = theme.colors.lightForeground;
+
         for (var j = 0; j < 4; j++) {
             var rect = this.rects[j];
-            rect.setColor(theme.colors.darkForeground);
+            rect.setColor(this.default);
         }
     },
 
@@ -43,6 +46,17 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
         this.rects = rects;
 
         return true;
+    },
+
+    select: function(col) {
+        this.rects[col].setColor(this.selected);
+    },
+
+    unselect: function() {
+        for (var j = 0; j < 4; j++) {
+            var rect = this.rects[j];
+            rect.setColor(this.default);
+        }
     },
 
     setOpacity: function(opacity) {

@@ -37,6 +37,12 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         sliderLayer.zIndex = 3;
         this.sliderLayer = sliderLayer;
 
+        var keyboardLayer = new quat.solver.KeyboardLayer(gameBounds);
+        this.addChild(keyboardLayer);
+        keyboardLayer.setVisible(false);
+        keyboardLayer.zIndex = 3;
+        this.keyboardLayer = keyboardLayer;
+
         // Used for notifications that need the user's attention
         var textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize, gameBounds);
         textIndicatorLayer.x = 0;
@@ -45,7 +51,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.addChild(textIndicatorLayer);
         this.textIndicatorLayer = textIndicatorLayer;
 
-        
+        this._slider = false;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
@@ -126,12 +132,14 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
     applyTheme: function(theme) {
         this.solutionLayer.applyTheme(theme);
         this.sliderLayer.applyTheme(theme);
+        this.keyboardLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
     },
 
     setOpacity: function(opacity) {
         this.solutionLayer.setOpacity(opacity);
         this.sliderLayer.setOpacity(opacity);
+        this.keyboardLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
     }
 });

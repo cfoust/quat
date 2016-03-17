@@ -55,9 +55,6 @@ quat.menu.Button = cc.Layer.extend({
     onEnter: function() {
         this._super();
 
-        // var gameBounds = this.gameBounds,
-        // 	fontSize = this.fontSize;
-
         var textLabel = new cc.LabelTTF(this.title, "Ubuntu", this.fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = this.width / 2;
         textLabel.y = this.height / 2;
@@ -120,7 +117,9 @@ quat.menu.Button = cc.Layer.extend({
             onTouchEnded: function(event){
                 button.selected(false);
                 if (contains(event)) {
-                    button.callback();
+                    if (button.callback != null) {
+                        button.callback();
+                    }
                 }
                 trackingTouch = false;
                 return true;

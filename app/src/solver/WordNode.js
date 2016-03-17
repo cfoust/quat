@@ -108,6 +108,23 @@ quat.solver.WordNode = cc.Node.extend({
         }
     },
 
+    getWord: function() {
+        var str = "";
+        for (var j = 0; j < 4; j++) {
+            var letterLabel = this.letterPool[j];
+            str += letterLabel.string;
+        }
+        return str;
+    },
+
+    changeLetter: function(column, letter) {
+        this.letterPool[column].string = letter;
+    },
+
+    getLetter: function(column) {
+        return this.letterPool[column].string;
+    },
+
     setColor: function(color) {
         for (var j = 0; j < 4; j++) {
             var letterLabel = this.letterPool[j];

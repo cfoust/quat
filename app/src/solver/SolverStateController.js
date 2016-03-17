@@ -10,7 +10,17 @@ quat.solver.SolverStateController = quat.StateController.extend({
             if ((self.state == self.states.CHANGING_LETTER_NODRAG) ||
                 (self.state == self.states.CHOOSING_LETTER)) {
                 self.sliderLayer.setVisible(false);
+                self.keyboardLayer.setVisible(false);
             }
+
+            if (!self.solutionLayer._slider) {
+                self.solutionLayer.currentWord.unselect();
+            }
+
+            self.solutionLayer.stepsWord.setVisible(true);
+            self.solutionLayer.score.setVisible(true);
+            self.puzzleLayer.textIndicatorLayer.setVisible(true);
+
             self.solutionLayer.updateFromModel(self.quatGame);
         },
         /*
@@ -20,10 +30,23 @@ quat.solver.SolverStateController = quat.StateController.extend({
         CHOOSING_LETTER: function(self,args) {
             var column = args[0];
 
-            // Move the letter chooser to its proper location
-            self.sliderLayer.setBaseLetter(self.quatGame.getPuzzle().getCurrentWord()[column]);
-            self.sliderLayer.appear(column);
-            self.sliderLayer.setVisible(true);
+            var sliderEnabled = self.puzzleLayer._slider;
+
+            self.sliderLayer.setVisible(sliderEnabled);
+            self.solutionLayer.stepsWord.setVisible(sliderEnabled);
+            self.solutionLayer.score.setVisible(sliderEnabled);
+            self.puzzleLayer.textIndicatorLayer.setVisible(sliderEnabled);
+            self.keyboardLayer.setVisible(!sliderEnabled);
+            
+            if (self.puzzleLayer._slider) {
+                // Move the letter chooser to its proper location
+                self.sliderLayer.setBaseLetter(self.quatGame.getPuzzle().getCurrentWord()[column]);
+                self.sliderLayer.appear(column);
+            } else {
+                var currentWord = self.solutionLayer.currentWord;
+                currentWord.unselect();
+                currentWord.select(column);
+            }
 
             self.setState(self.states.CHOOSING_LETTER);
         },
@@ -55,9 +78,11 @@ quat.solver.SolverStateController = quat.StateController.extend({
 
         // Grab all the references to things we need from puzzleScene
         this.quatGame = puzzleScene.quatGame;
+        this.puzzleLayer = puzzleScene;
         this.backgroundLayer = puzzleScene.backgroundLayer;
         this.solutionLayer = puzzleScene.solutionLayer;
         this.sliderLayer = puzzleScene.sliderLayer;
+        this.keyboardLayer = puzzleScene.keyboardLayer;
         this.gameBounds = puzzleScene.gameBounds;
     }
 });
