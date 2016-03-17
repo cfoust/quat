@@ -31,16 +31,11 @@ quat.menu.Button = cc.Layer.extend({
     _selected: false,
     selected: function(selected) {
         if (selected) {
-            if (this._invert) {
-                this.textLabel.setColor(this.defaultColor);
-            } else {
-                this.textLabel.setColor(this.textColor);
-            }
             this.rect.setColor(this.selectedColor);
         } else {
-            this.textLabel.setColor(this.textColor);
             this.rect.setColor(this.defaultColor);
         }
+        this.textLabel.setColor(this.textColor);
         this._selected = selected;
     },
 

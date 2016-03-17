@@ -15,7 +15,6 @@ quat.look.LookLayer = cc.Layer.extend({
 
     applyTheme: function(theme) {
         this.themeName.setColor(theme.colors.text);
-        this.themePos.setColor(theme.colors.text);
         this.lockIcon.setColor(theme.colors.text);
         this.remaining.setColor(theme.colors.text);
         this.puzzlesLeft.setColor(theme.colors.text);
@@ -45,7 +44,6 @@ quat.look.LookLayer = cc.Layer.extend({
 
         // Stuff that shows up when the theme is unlocked
         this.selectedButton.setVisible(unlocked);
-        this.themeName.setVisible(unlocked);
         this.puzzlesLeft.setVisible(unlocked);
 
         // Stuff that shows up when it isn't
@@ -71,8 +69,6 @@ quat.look.LookLayer = cc.Layer.extend({
 
         this._current = themeName;
         this._currentIndex = this._themes.indexOf(themeName);
-
-        this.themePos.string = "THEME #" + (this._currentIndex + 1).toString();
     },
 
     deltaTheme: function(delta) {
@@ -158,17 +154,10 @@ quat.look.LookLayer = cc.Layer.extend({
         // The size of all the smaller text on this page
         var subsidiarySize = buttonFontSize * 0.5;
 
-        // Create a label to display the theme name
-        var themePos = new cc.LabelTTF("TEST", "Ubuntu", subsidiarySize, null, cc.TEXT_ALIGNMENT_CENTER);
-        themePos.x = gameBounds.x + (width / 2);
-        themePos.y = selectedButton.y - (subsidiarySize);
-        this.addChild(themePos);
-        this.themePos = themePos;
-
         // Lock icon that shows up when a theme is not unlocked.
-        var lockIcon = new cc.LabelTTF("\uf023", "Font Awesome", fontSize * 2, null, cc.TEXT_ALIGNMENT_CENTER);
+        var lockIcon = new cc.LabelTTF("\uf023", "Font Awesome", fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
         lockIcon.x = themeName.x;
-        lockIcon.y = themeName.y - (fontSize * 0.1);
+        lockIcon.y = themeName.y + (fontSize);
         this.addChild(lockIcon);
         this.lockIcon = lockIcon;
 
@@ -197,5 +186,11 @@ quat.look.LookLayer = cc.Layer.extend({
             obj.setOpacity(opacity);
         }
     },
+
+    setVisible: function(visible) {
+        this._super(visible);
+        this.leftIcon.enabled(visible);
+        this.rightIcon.enabled(visible);
+    }
 });
 
