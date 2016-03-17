@@ -27,8 +27,9 @@ quat.look.LookLayer = cc.Layer.extend({
         var theme = this.quatGame.getTheme(themeName);
         theme.name = themeName;
 
-        this.gameScene.applyTheme(theme);
-        this.gameScene.applyTheme(theme);
+        this.applyTheme(theme);
+        this.gameScene.backgroundLayer.applyTheme(theme);
+        this.gameScene.menuIcon.applyTheme(theme);
         this.themeName.string = theme.name;
 
         var user = this.quatGame.getUser(),

@@ -20,7 +20,7 @@ quat.solver.KeyboardLayer = cc.Layer.extend({
 
         // Sets a baseline for how high the keyboard should be.
         // We scale down from this until it fits, as this is the max.
-        var keyboardHeight = gameBounds.height * 0.38;
+        var keyboardHeight = gameBounds.height * 0.30;
 
         // Ratio of width over height
         var ratio = 2.265;

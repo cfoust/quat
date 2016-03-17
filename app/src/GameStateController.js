@@ -47,6 +47,10 @@ quat.ScreenStateController = quat.StateController.extend({
                 menuLayer = scene.menuLayer;
                 menuIcon = scene.menuIcon;
 
+            if (self.state == self.states.LOOK) {
+                scene.applyThemeByName(scene.gameState.getUser().getTheme());
+            }
+
             menuLayer.setVisible(true);
             scene.menuIcon.setVisible(false);
             self.currentLayer = menuLayer;
@@ -54,7 +58,7 @@ quat.ScreenStateController = quat.StateController.extend({
             scene.statsLayer.setVisible(false);
             scene.lookLayer.setVisible(false);
             scene.aboutLayer.setVisible(false);
-            scene.applyThemeByName(scene.gameState.getUser().getTheme());
+            
         },
         LOOK: function(self) {
             var scene = self.gameScene,
