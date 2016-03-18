@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by caleb on 3/2/16.
@@ -114,6 +115,10 @@ public class Puzzle {
         }
 
         return new Puzzle(puzzle);
+    }
+
+    public void reverse() {
+        Collections.reverse(steps);
     }
 
     public boolean equals(Puzzle other) {
