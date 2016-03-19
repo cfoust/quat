@@ -238,6 +238,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
 
         // Dump the current game state to localstorage
         quatGame.saveToLocal();
+        quatGame.loadFromLocal();
 
         // Update the solution layer to match the new game state
         this.solutionLayer.updateFromModel(this.quatGame);

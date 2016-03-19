@@ -5,8 +5,8 @@ cc.game.onStart = function(){
     cc.view.enableRetina(true);
     
     var resources = [
-                     {type:"font", name:"Ubuntu", srcs:["res/Ubuntu.ttf"]},
-                     {type:"font", name:"FontAwesome", srcs:["res/fontawesome-webfont.ttf"]},
+         {type:"font", name:"Ubuntu", srcs:["res/Ubuntu.ttf"]},
+         {type:"font", name:"FontAwesome", srcs:["res/fontawesome-webfont.ttf"]},
     ];
 
     // Adjust viewport meta
@@ -15,12 +15,12 @@ cc.game.onStart = function(){
     var w = window.innerWidth,
         h = window.innerHeight;
     
+    // If we're native, grab the resolution from th
     if (cc.sys.isNative) {
         var rect = cc.visibleRect;
+
         w = rect.width;
         h = rect.height;
-        console.log(w);
-        console.log(h);
         
         cc.view.setDesignResolutionSize(w, h, cc.ResolutionPolicy.SHOW_ALL);
     } else {

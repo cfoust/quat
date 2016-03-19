@@ -44,11 +44,6 @@ quat.GameScene = cc.Scene.extend({
             cWidth = w;
             cX = 0;
         }
-                                 
-        console.log("Calculated width");
-        console.log(cWidth);
-        console.log("Calculated height");
-        console.log(cHeight);
 
         return {
             width: cWidth,
@@ -102,8 +97,7 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(this.backgroundLayer);
 
         // Calculate the global font sizes
-        // var fontSize = gameBounds.width * 0.18,
-        var fontSize = gameBounds.width * 0.18,
+        var fontSize = gameBounds.width * 0.15,
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer

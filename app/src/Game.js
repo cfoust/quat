@@ -405,7 +405,13 @@ quat.User = quat.MessageQueue.extend({
 logic out of the display logic.*/
 quat.Game = quat.MessageQueue.extend({
 	canLoadFromLocal: function() {
-		return 'quat' in cc.sys.localStorage;
+		if (cc.sys.isNative) {
+			var path = jsb.fileUtils.getWritablePath() + 'out.json';
+			return jsb.fileUtils.isFileExist(path);
+		// Otherwise, try local storage.
+		} else {
+			return 'quat' in cc.sys.localStorage;
+		}
 	},
 
 	init: function() {
@@ -474,7 +480,24 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	loadFromLocal: function() {
-		var data = JSON.parse(cc.sys.localStorage['quat']);
+		
+		var data = null;
+
+		// If we're native, load from a file.
+		if (cc.sys.isNative) {
+			var path = jsb.fileUtils.getWritablePath() + 'out.json';
+			if (jsb.fileUtils.isFileExist(path)) {
+	            var temp = jsb.fileUtils.getValueMapFromFile(path);
+	            var file = JSON.parse(temp.data);
+	            cc.log('Loaded save data from path ' + path + '.');
+	            data = file;
+	        } else {
+	            cc.log('No save data found at path ' + path + '.');
+	        }
+		// Otherwise, try local storage.
+		} else {
+			data = JSON.parse(cc.sys.localStorage.getItem('quat'));
+		}
 		this._user = new quat.User().fromObject(data.user);
 		this._puzzle = new quat.Puzzle().fromObject(data.puzzle);
 		this._restored = true;
@@ -516,8 +539,25 @@ quat.Game = quat.MessageQueue.extend({
 		var obj = {
 			user: this._user.toObject(),
 			puzzle: this._puzzle.toObject()
+		};
+
+		var out = JSON.stringify(obj);
+
+		if (cc.sys.isNative) {
+			var path = jsb.fileUtils.getWritablePath() + 'out.json';
+			if (jsb.fileUtils.writeToFile({data:out}, path))
+            {
+                cc.log('Save succeeded to path' + path + '.');
+            }
+            else
+            {
+                cc.log('Save failed to path ' + path + '.');
+
+            }
+		} else {
+			cc.sys.localStorage.setItem(key, out);
 		}
-		cc.sys.localStorage['quat'] = JSON.stringify(obj);
+		
 	},
 
 	wasRestored: function() {
