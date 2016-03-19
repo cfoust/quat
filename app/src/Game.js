@@ -404,11 +404,14 @@ quat.User = quat.MessageQueue.extend({
 /* Defines a general model for operating on QUAT puzzles to move the business
 logic out of the display logic.*/
 quat.Game = quat.MessageQueue.extend({
+
+	/**
+	 * @return {boolean} Whether or not we can load local persistent data.
+	 */
 	canLoadFromLocal: function() {
 		if (cc.sys.isNative) {
-			var path = jsb.fileUtils.getWritablePath() + 'out.json';
+			var path = this._savePath;
 			return jsb.fileUtils.isFileExist(path);
-		// Otherwise, try local storage.
 		} else {
 			return 'quat' in cc.sys.localStorage;
 		}
@@ -426,25 +429,41 @@ quat.Game = quat.MessageQueue.extend({
 		var keys = Object.keys(this.themes);
 		this.themeNames = keys;
 		for (var i = 0; i < keys.length; i++) {
-			var colors = this.themes[keys[i]].colors;
-			var colorKeys = Object.keys(colors);
+			var colors = this.themes[keys[i]].colors, // This theme's colors
+				colorKeys = Object.keys(colors); // Their keys
+
 			for (var j = 0; j < colorKeys.length; j++) {
 				var colorKey = colorKeys[j];
+
+				// Only translate into a cc.color if it's a string
+				// Maybe make this check to see if there's a #
 				if (typeof colors[colorKey] == "string") {
 					colors[colorKey] = cc.color(colors[colorKey]);
 				}
 			}
 		}
 
+		// Basic data keeping values
 		this._puzzle = null;
 		this._user = null;
 		this._restored = false;
+
+		if (cc.sys.isNative) {
+			this._savePath = jsb.fileUtils.getWritablePath() + 'out.json';
+		}
 	},
 
+	/**
+	 * Gets the current puzzle the user can modify.
+	 */
 	getPuzzle: function() {
 		return this._puzzle;
 	},
 
+	/**
+	 * Sets the current theme. This does not change the GUI, it's just for
+	 * recording purposes.
+	 */
 	setTheme: function(name) {
 		// If the puzzle is special, we gotta set back their theme progress
 		// because you can't play that puzzle on the new theme
@@ -463,6 +482,11 @@ quat.Game = quat.MessageQueue.extend({
 		}
 	},
 
+	/**
+	 * Gets a theme object from the list of themes.
+	 * @param  {String} Name of theme to get. 
+	 * @return {Object} Theme object corresponding to this name.
+	 */
 	getTheme: function(name) {
 		if (!(name in this.themes)) {
 			return null;
@@ -485,14 +509,15 @@ quat.Game = quat.MessageQueue.extend({
 
 		// If we're native, load from a file.
 		if (cc.sys.isNative) {
-			var path = jsb.fileUtils.getWritablePath() + 'out.json';
+			var path = this._savePath;
+
+			// If the file exists, attempt to load it
 			if (jsb.fileUtils.isFileExist(path)) {
-	            var temp = jsb.fileUtils.getValueMapFromFile(path);
-	            var file = JSON.parse(temp.data);
-	            cc.log('Loaded save data from path ' + path + '.');
+				// Load and parse the file's data
+	            var temp = jsb.fileUtils.getValueMapFromFile(path),
+	            	file = JSON.parse(temp.data);
+
 	            data = file;
-	        } else {
-	            cc.log('No save data found at path ' + path + '.');
 	        }
 		// Otherwise, try local storage.
 		} else {
@@ -503,16 +528,15 @@ quat.Game = quat.MessageQueue.extend({
 		this._restored = true;
 	},
 
+	/**
+	 * Gets a new puzzle for the user to play.
+	 */
 	newPuzzle: function() {
 		var user = this._user,
 			theme = this.getTheme(user.getTheme()),
 			progress = user.getThemeProgress();
-			random = Math.floor((Math.random() * 5) + 1),
-			special = random == 1;
 
-		special = true;
-
-		if ((special) && (progress < theme.puzzles.length)) {
+		if (progress < theme.puzzles.length) {
 			// Grab the special puzzle from this theme
 			var puzzle = theme.puzzles[progress];
 
@@ -544,16 +568,8 @@ quat.Game = quat.MessageQueue.extend({
 		var out = JSON.stringify(obj);
 
 		if (cc.sys.isNative) {
-			var path = jsb.fileUtils.getWritablePath() + 'out.json';
-			if (jsb.fileUtils.writeToFile({data:out}, path))
-            {
-                cc.log('Save succeeded to path' + path + '.');
-            }
-            else
-            {
-                cc.log('Save failed to path ' + path + '.');
-
-            }
+			// todo: some error checking
+			jsb.fileUtils.writeToFile({data:out}, this._savePath);
 		} else {
 			cc.sys.localStorage.setItem(key, out);
 		}
