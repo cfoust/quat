@@ -14,6 +14,8 @@ quat.RectRadius = cc.Layer.extend({
      */
     ctor:function (width, height, borderRadius, borderWidth, filled) {
         this._super();
+                                  
+                                  borderWidth *= 0.6;
 
         this._width = width;
         this._height = height;

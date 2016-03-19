@@ -405,7 +405,7 @@ quat.User = quat.MessageQueue.extend({
 logic out of the display logic.*/
 quat.Game = quat.MessageQueue.extend({
 	canLoadFromLocal: function() {
-		return 'quat' in localStorage;
+		return 'quat' in cc.sys.localStorage;
 	},
 
 	init: function() {
@@ -474,7 +474,7 @@ quat.Game = quat.MessageQueue.extend({
 	},
 
 	loadFromLocal: function() {
-		var data = JSON.parse(localStorage['quat']);
+		var data = JSON.parse(cc.sys.localStorage['quat']);
 		this._user = new quat.User().fromObject(data.user);
 		this._puzzle = new quat.Puzzle().fromObject(data.puzzle);
 		this._restored = true;
@@ -517,7 +517,7 @@ quat.Game = quat.MessageQueue.extend({
 			user: this._user.toObject(),
 			puzzle: this._puzzle.toObject()
 		}
-		localStorage['quat'] = JSON.stringify(obj);
+		cc.sys.localStorage['quat'] = JSON.stringify(obj);
 	},
 
 	wasRestored: function() {

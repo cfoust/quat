@@ -26,7 +26,7 @@ quat.IconButton = cc.Node.extend({
 
         var fontSize = size;
 
-        var icon = new cc.LabelTTF(iconString, "Font Awesome", fontSize);
+        var icon = new cc.LabelTTF(iconString, "FontAwesome", fontSize);
         icon.x = size / 2;
         icon.y = size / 2;
         this.icon = icon;

@@ -15,7 +15,7 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         this.addChild(text);
 
         // Bigger icon above it
-        var icon = new cc.LabelTTF("\uf058", "Font Awesome", fontSize * 1.5, null, cc.TEXT_ALIGNMENT_CENTER);
+        var icon = new cc.LabelTTF("\uf058", "FontAwesome", fontSize * 1.5, null, cc.TEXT_ALIGNMENT_CENTER);
         icon.x = gameBounds.x + (gameBounds.width / 2);
         icon.y = text.y + fontSize;
         icon.opacity = 0;
@@ -56,8 +56,16 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         text.setVisible(true);
         icon.setVisible(true);
 
-        text.runAction(this.sequence.clone());
-        icon.runAction(this.sequence.clone());
+                                            text.runAction(cc.sequence(
+                                                                       cc.fadeIn(0.3),
+                                                                       cc.delayTime(2),
+                                                                       cc.fadeOut(0.3)
+                                                                       ));
+                                            icon.runAction(cc.sequence(
+                                                                       cc.fadeIn(0.3),
+                                                                       cc.delayTime(2),
+                                                                       cc.fadeOut(0.3)
+                                                                       ));
     },
 
     /**

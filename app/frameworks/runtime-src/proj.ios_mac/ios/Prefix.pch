@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'quat-native' target in the 'quat-native' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif

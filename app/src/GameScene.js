@@ -32,13 +32,23 @@ quat.GameScene = cc.Scene.extend({
 
         // Case 1: Landscape (and square) orientation
         if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
-            cWidth = Math.min(w, NICE_WIDTH);
+                                 if (cc.sys.isMobile) {
+                                    cWidth = w * 0.8;
+                                 } else {
+                                    cWidth = Math.min(w, NICE_WIDTH);
+                                 }
+            
             cX = (w / 2) - (cWidth / 2);
         // Case 2: Portrait orientation
         } else {
             cWidth = w;
             cX = 0;
         }
+                                 
+        console.log("Calculated width");
+        console.log(cWidth);
+        console.log("Calculated height");
+        console.log(cHeight);
 
         return {
             width: cWidth,
@@ -93,7 +103,7 @@ quat.GameScene = cc.Scene.extend({
 
         // Calculate the global font sizes
         // var fontSize = gameBounds.width * 0.18,
-        var fontSize = gameBounds.width * 0.12,
+        var fontSize = gameBounds.width * 0.18,
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer

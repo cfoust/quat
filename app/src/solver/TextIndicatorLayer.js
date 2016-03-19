@@ -95,7 +95,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             // Fade out the word after 5 seconds
             end = cc.sequence(
                 cc.delayTime(5),
-                this.fadeOut,
+                cc.fadeOut(0.25),
                 cc.hide()
             );
         }
@@ -119,7 +119,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             cc.show(),
 
             // Fade in
-            this.fadeIn,
+            cc.fadeIn(0.25),
 
             // Do the rest of what we needed to do:
             // * If this one was sticky, it will just stay faded in

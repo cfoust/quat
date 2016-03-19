@@ -24,7 +24,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
             height = gameBounds.height;
             size = {width: width, height: height},
             fourths = width / 4,
-            gap = width * 0.16,
+            gap = fontSize * 1.25,
             panelHeight = fontSize + (width * .09); // The bounds of the window
 
         this.size = size;

@@ -1,5 +1,4 @@
 app/.idea/**
-app/frameworks/**
 app/linux-build/**
 app/publish/**
 app/simulator/**
@@ -10,3 +9,5 @@ data/words.js
 data/math/out/**
 **.quat
 workspace.xml
+
+**/.DS_Store
