@@ -54,6 +54,16 @@ quat.themes = {
 	// 	// The number of points the user has to have to unlock this theme
 	// 	unlock: 999
 	// },
+	"QUAT": {
+		colors: {
+			background: "#D29034",
+			text: "#523914",
+			darkForeground: "#926424",
+			lightForeground: "#B87F2E"
+		},
+		puzzles: [],
+		unlock: 0
+	},
 	"WASH": {
 		colors: {
 			background: "#0000CD",
