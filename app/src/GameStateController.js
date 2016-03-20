@@ -36,6 +36,8 @@ quat.ScreenStateController = quat.StateController.extend({
             if (puzzle.isSpecial()) {
                 puzzleLayer.textIndicatorLayer.addMessage(puzzle.getSpecialText().toUpperCase(), true);
             }
+
+            puzzleLayer.solutionLayer.updateFromModel(game);
             scene.menuLayer.setVisible(false);
             scene.menuIcon.setVisible(true);
         },

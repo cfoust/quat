@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A922753C1517C094001B78AA"
-               BuildableName = "quat-native-mobile.app"
-               BlueprintName = "quat-native-mobile"
-               ReferencedContainer = "container:quat-native.xcodeproj">
+               BlueprintIdentifier = "509D4A7517EBB24E00697056"
+               BuildableName = "QUAT-mobile.app"
+               BlueprintName = "QUAT-desktop"
+               ReferencedContainer = "container:QUAT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A922753C1517C094001B78AA"
-            BuildableName = "quat-native-mobile.app"
-            BlueprintName = "quat-native-mobile"
-            ReferencedContainer = "container:quat-native.xcodeproj">
+            BlueprintIdentifier = "509D4A7517EBB24E00697056"
+            BuildableName = "QUAT-mobile.app"
+            BlueprintName = "QUAT-desktop"
+            ReferencedContainer = "container:QUAT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A922753C1517C094001B78AA"
-            BuildableName = "quat-native-mobile.app"
-            BlueprintName = "quat-native-mobile"
-            ReferencedContainer = "container:quat-native.xcodeproj">
+            BlueprintIdentifier = "509D4A7517EBB24E00697056"
+            BuildableName = "QUAT-mobile.app"
+            BlueprintName = "QUAT-desktop"
+            ReferencedContainer = "container:QUAT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A922753C1517C094001B78AA"
-            BuildableName = "quat-native-mobile.app"
-            BlueprintName = "quat-native-mobile"
-            ReferencedContainer = "container:quat-native.xcodeproj">
+            BlueprintIdentifier = "509D4A7517EBB24E00697056"
+            BuildableName = "QUAT-mobile.app"
+            BlueprintName = "QUAT-desktop"
+            ReferencedContainer = "container:QUAT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

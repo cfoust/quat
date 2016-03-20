@@ -47,14 +47,11 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         // Used to show the pings that happen then the user finished a puzzle
         var finishedLayer = new quat.solver.FinishedLayer(fontSize, gameBounds);
         this.addChild(finishedLayer);
-        finishedLayer.setVisible(true);
         this.finishedLayer = finishedLayer;
 
         // Used for notifications that need the user's attention
         var textIndicatorLayer = new quat.solver.TextIndicatorLayer(fontSize, gameBounds);
-        textIndicatorLayer.x = 0;
-        textIndicatorLayer.y = 0;
-        textIndicatorLayer.zIndex = 1;
+        textIndicatorLayer.zIndex = 3;
         this.addChild(textIndicatorLayer);
         this.textIndicatorLayer = textIndicatorLayer;
 

@@ -10,22 +10,16 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
         textLabel.x = gameBounds.x + (gameBounds.width / 2);
         textLabel.y = gameBounds.y + (gameBounds.height * 0.38);
         textLabel.boundingWidth = gameBounds.width;
-
+        textLabel.opacity = 0;
+        textLabel.string = "";
         this.textLabel = textLabel;
         this.addChild(textLabel);
-
-        var fadeIn = cc.fadeIn(0.25),
-            fadeOut = fadeIn.reverse();
-
-        this.fadeIn = fadeIn;
-        this.fadeOut = fadeOut;
 
         this._messages = [];
         this._animating = false;
         this._displayingSticky = false;
         this._stickyVisible = false;
 
-        this.resetOpacity();
         return true;
     },
 
@@ -49,13 +43,8 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     	this.textLabel.setOpacity(0);
     },
 
-    displayMessage: function() {
-        if (this._messages.length == 0) {
-            return;
-        }
-
-        var message = this._messages.pop(),
-            sticky = message.sticky,
+    _displayMessageWeb: function(message) {
+        var sticky = message.sticky,
             text = message.text,
             // Some placeholders that don't impede on the sequence
             // if they don't need to be used
@@ -64,12 +53,11 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             retry = cc.delayTime(0),
             reset = cc.callFunc(this.resetOpacity, this);
 
-        
-
         // Have to fade out the current text if it's sticky
         if (this._displayingSticky) {
-            begin = this.fadeOut;
+            begin = cc.fadeOut(0.25);
         }
+        this.setVisible(true);
 
         if (sticky) {
             // We can assume this is the only sticky message in the queue
@@ -95,8 +83,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             // Fade out the word after 5 seconds
             end = cc.sequence(
                 cc.delayTime(5),
-                cc.fadeOut(0.25),
-                cc.hide()
+                cc.fadeOut(0.25)
             );
         }
 
@@ -106,7 +93,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             // Generic begin action for fading out if necessary
             begin,
 
-            cc.hide(),
+            // cc.hide(),
             
             // Reset the opacity to 0
             reset,
@@ -116,7 +103,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
                 this.textLabel.string = text;
             };}(text), this),
 
-            cc.show(),
+            // cc.show(),
 
             // Fade in
             cc.fadeIn(0.25),
@@ -139,6 +126,52 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
 
         // Run the animation
         this.runAction(sequence);
+    },
+
+    _displayMessageNative: function(message) {
+        var sticky = message.sticky,
+            text = message.text,
+            textLabel = this.textLabel;
+
+        textLabel.setVisible(false);
+        textLabel.string = text;
+        if (sticky) {
+            textLabel.setOpacity(255);
+            textLabel.setVisible(true);
+            this._messages.push(message);
+        } else {
+            cc.log("Trying to display message");
+
+            textLabel.setVisible(false);
+            textLabel.setOpacity(0);
+            textLabel.string = text;
+            textLabel.stopAllActions();
+            textLabel.setVisible(true);
+            textLabel.runAction(cc.sequence(
+               cc.fadeIn(0.3),
+               cc.delayTime(2),
+               cc.fadeOut(0.3),
+               cc.callFunc(function(){
+                    if ((this._stickyVisible) && (this._messages.length == 1)) {
+                        return;
+                    }
+                    this.displayMessage()
+                }, this)
+            ));
+        }
+    },
+
+    displayMessage: function() {
+        if (this._messages.length == 0) {
+            return;
+        }
+
+        var message = this._messages.pop();
+        if (cc.sys.isNative) {
+            this._displayMessageNative(message);
+        } else {
+            this._displayMessageWeb(message);
+        }
     },
 
     addMessage: function(text, sticky) {

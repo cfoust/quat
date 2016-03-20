@@ -135,7 +135,7 @@ quat.look.LookLayer = cc.Layer.extend({
         // Initialize the parameters for the button size
         var buttonFontSize = fontSize * 0.9,
             buttonHeight = buttonFontSize * 1.3,
-            buttonWidth = gameBounds.width * 0.6,
+            buttonWidth = gameBounds.width * 0.7,
             difference = (gameBounds.width - buttonWidth) / 2;
 
         // The callback for select

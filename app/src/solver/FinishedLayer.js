@@ -56,16 +56,16 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         text.setVisible(true);
         icon.setVisible(true);
 
-                                            text.runAction(cc.sequence(
-                                                                       cc.fadeIn(0.3),
-                                                                       cc.delayTime(2),
-                                                                       cc.fadeOut(0.3)
-                                                                       ));
-                                            icon.runAction(cc.sequence(
-                                                                       cc.fadeIn(0.3),
-                                                                       cc.delayTime(2),
-                                                                       cc.fadeOut(0.3)
-                                                                       ));
+        text.runAction(cc.sequence(
+           cc.fadeIn(0.3),
+           cc.delayTime(2),
+           cc.fadeOut(0.3)
+        ));
+        icon.runAction(cc.sequence(
+           cc.fadeIn(0.3),
+           cc.delayTime(2),
+           cc.fadeOut(0.3)
+        ));
     },
 
     /**
