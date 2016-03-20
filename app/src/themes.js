@@ -1,31 +1,44 @@
 var quat = quat || {};
 
 quat.themes = {
-	// EXAMPLE THEME:
+	// #################################################
+	//                 EXAMPLE THEME:
+	// #################################################
+	// 
 	// // The four-letter word describing the theme
 	// "NAME": {
+	// 
 	// 	// Details all of the colors of the theme
 	// 	colors: {
 	// 		// The background color
 	// 		background: "#FFFFFF",
+	// 		
 	// 		// The color of all text (except the goal word)
 	// 		textColor: "#FFFFFF",
+	// 		
 	// 		// Color used in the following places:
 	// 		// * Text color for goal word
 	// 		// * Background on letter chooser
 	// 		// * Background on menu buttons
 	// 		darkForeground: "#FFFFFF",
+	// 		
 	// 		// Color used in the following places:
 	// 		// * Background on the goal word
 	// 		// * Background on menu buttons when selected
-	// 		lightForeground: "#FFFFFF"
+	// 		lightForeground: "#FFFFFF",
+	// 		
 	// 		// Optional parameter that sets buttons to the following colors
 	// 		// when selected:
 	// 		//  	text color: darkForeground
 	// 		//		background color: lightForeground
 	// 		// Instead of the normal behavior.
-	// 		inverseButtons: true
+	// 		inverseButtons: true,
+	// 		
+	// 		// For now, used only on the stats screen. It changes the text color
+	// 		// on the right to the theme's text color instead of lightForeground
+	// 		contrastText: false
 	// 	},
+	// 	
 	// 	// List of puzzles related to this theme. These have a small chance of
 	// 	// being shown while the user is playing on this theme.
 	// 	puzzles: [
@@ -37,6 +50,7 @@ quat.themes = {
 	// 			par: 0
 	// 		}
 	// 	],
+	// 	
 	// 	// The number of points the user has to have to unlock this theme
 	// 	unlock: 999
 	// },
@@ -278,9 +292,9 @@ quat.themes = {
 		colors: {
 			background: "#00C1C2",
 			text: "#4F4A44",
-			contrastText: true,
 			darkForeground: "#CF9F3B",
-			lightForeground: "#CF9C19"
+			lightForeground: "#CF9C19",
+			contrastText: true
 		},
 		puzzles: [],
 		unlock: 0

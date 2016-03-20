@@ -32,11 +32,14 @@ quat.GameScene = cc.Scene.extend({
 
         // Case 1: Landscape (and square) orientation
         if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
-                                 if (cc.sys.isMobile) {
-                                    cWidth = w * 0.8;
-                                 } else {
-                                    cWidth = Math.min(w, NICE_WIDTH);
-                                 }
+
+            // On mobile this looks pretty nice, but we might have
+            // to play with this a bit for really small screens
+            if (cc.sys.isMobile) {
+                cWidth = w * 0.8;
+            } else {
+                cWidth = Math.min(w, NICE_WIDTH);
+            }
             
             cX = (w / 2) - (cWidth / 2);
         // Case 2: Portrait orientation
@@ -207,6 +210,7 @@ quat.GameScene = cc.Scene.extend({
             event: cc.EventListener.CUSTOM,
             eventName: "game_on_hide",
             callback: function(event) {
+                // This stops the puzzle time counter
                 gameState.saveToLocal();
             }
         },this);
@@ -216,6 +220,7 @@ quat.GameScene = cc.Scene.extend({
             event: cc.EventListener.CUSTOM,
             eventName: "game_on_show",
             callback: function(event) {
+                // Restart it when we come back
                 gameState.getPuzzle().startTime();
             }
         },this);
