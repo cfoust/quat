@@ -214,7 +214,7 @@ def generate(difficulty):
 	return (first,second,solve(first,second))
 
 
-print solve('cuts','down')
+print solve('slim','sand')
 exit()
 
 """

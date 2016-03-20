@@ -571,7 +571,7 @@ quat.Game = quat.MessageQueue.extend({
 			// todo: some error checking
 			jsb.fileUtils.writeToFile({data:out}, this._savePath);
 		} else {
-			cc.sys.localStorage.setItem(key, out);
+			cc.sys.localStorage.setItem('quat', out);
 		}
 		
 	},

@@ -59,6 +59,11 @@ quat.look.LookLayer = cc.Layer.extend({
         if (unlocked) {
             this.puzzlesLeft.setVisible(remaining != 0);
             if (remaining != 0) {
+                // Only occurs if the user is on a special puzzle of this theme
+                if (this.quatGame.getPuzzle().isSpecial() && enabled) {
+                    remaining++;
+                }
+
                 var word = remaining == 1 ? "PUZZLE" : "PUZZLES";
                 this.puzzlesLeft.string = remaining.toString() + " " + word + " LEFT";
             }

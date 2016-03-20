@@ -60,62 +60,62 @@ quat.themes = {
 		puzzles: [
 			{
 				text: 'I went to bed at around 9pm. My phone pulsed with an unread text message.',
-				start: 'went',
-				end: 'text',
+				start: 'text',
+				end: 'went',
 				par: 3
 			},
 			{
 				text: "\"I'm not over it. I've gotten a lot better about it, and I can pretend that I am, but seeing you just reminds me of everything.\"",
-				start: 'over',
-				end: 'that',
+				start: 'that',
+				end: 'over',
 				par: 6
 			},
 			{
 				text: "\"You just want me to come back.\"",
-				start: 'come',
-				end: 'back',
+				start: 'back',
+				end: 'come',
 				par: 6
 			},
 			{
 				text: "\"I guess I still don't understand how or why you feel the way you do. I'll just go.\"",
-				start: 'dont',
-				end: 'feel',
+				start: 'feel',
+				end: 'dont',
 				par: 5
 			},
 			{
 				text: "\"I do care about you too, I do. I feel the way I do for a lot of reasons.\"",
-				start: 'dont',
-				end: 'care',
+				start: 'care',
+				end: 'dont',
 				par: 5
 			},
 			{
 				text: "\"All I seem to be doing is making your life so much harder.\"",
-				start: 'life',
-				end: 'hard',
+				start: 'hard',
+				end: 'life',
 				par: 5
 			},
 			{
 				text: "\"You made me feel like that. Like I was some sort of stupid kid always getting in the way when all I was trying to do was care.\"",
-				start: 'sort',
-				end: 'care',
+				start: 'care',
+				end: 'sort',
 				par: 5
 			},
 			{
 				text: "\"I didn't mean to get like this again.\"",
-				start: 'like',
-				end: 'this',
+				start: 'this',
+				end: 'like',
 				par: 5
 			},
 			{
 				text: "\"I'm sick of not being \"old enough\" for you or being a burden to you.\"",
-				start: 'sick',
-				end: 'life',
+				start: 'life',
+				end: 'sick',
 				par: 4
 			},
 			{
 				text: "\"We can still be friends.\"",
-				start: 'more',
-				end: 'lies',
+				start: 'lies',
+				end: 'more',
 				par: 6
 			},
 		],
@@ -132,44 +132,44 @@ quat.themes = {
 		puzzles: [
 			{
 				text: "My thumbs hurt after the first hour, but I didn't care. I stared into that monochromatic screen the whole night.",
-				start: 'hurt',
-				end: 'care',
+				start: 'care',
+				end: 'hurt',
 				par: 4
 			},
 			{
 				text: "I ripped out the game cart and threw it across the room. I wanted to beat that darn gorilla.",
-				start: 'beat',
-				end: 'damn',
+				start: 'damn',
+				end: 'beat',
 				par: 6
 			},
 			{
 				text: "Did you ever notice how it doesn't list your points anywhere while you play? That seems like bad game design.",
-				start: 'ever',
-				end: 'play',
+				start: 'play',
+				end: 'ever',
 				par: 6
 			},
 			{
 				text: "The world the device created was violent, comical, and fun. Life was anything but.",
-				start: 'good',
-				end: 'time',
+				start: 'time',
+				end: 'good',
 				par: 6
 			},
 			{
 				text: "The machinations of a screen seemed more tangible than the world around me. I made friends with the leaping pixels, imagined arias to the tinny music.",
-				start: 'root',
-				end: 'note',
+				start: 'note',
+				end: 'root',
 				par: 5
 			},
 			{
 				text: "The screens weren't backlit then. I hid under the blankets with a flashlight like my father had with books.",
-				start: 'same',
-				end: 'boys',
+				start: 'boys',
+				end: 'same',
 				par: 5
 			},
 			{
 				text: "\"A new challenger is approaching.\"",
-				start: 'fake',
-				end: 'life',
+				start: 'life',
+				end: 'fake',
 				par: 4
 			},
 		],
@@ -185,14 +185,14 @@ quat.themes = {
 		puzzles: [
 			{
 				text: "It was quiet. You know the snow smell has? It's like nothing.",
-				start: 'snow',
-				end: 'like',
+				start: 'like',
+				end: 'snow',
 				par: 8
 			},
 			{
 				text: "Water had soaked into my glove. The numbness made my grip loose around the sled's rope handles.",
-				start: 'sled',
-				end: 'time',
+				start: 'time',
+				end: 'sled',
 				par: 6
 			},
 		],
@@ -209,14 +209,14 @@ quat.themes = {
 		puzzles: [
 			{
 				text: "\"And in her passing my madness passed.\"\nHOUSE OF LEAVES",
-				start: 'pass',
-				end: 'word',
+				start: 'word',
+				end: 'pass',
 				par: 5
 			},
 			{
 				text: "\"It is a far, far better thing that I do, than I have ever done; it is a far, far better rest that I go to than I have ever known.\"\nA TALE OF TWO CITIES",
-				start: 'cuts',
-				end: 'down',
+				start: 'down',
+				end: 'cuts',
 				par: 6
 			},
 		],
