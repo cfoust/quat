@@ -30,13 +30,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.addChild(solutionLayer);
         this.solutionLayer = solutionLayer;
 
-        // Allows the user to choose letters with a slider
-        var sliderLayer = new quat.solver.SliderLayer(gameBounds, solutionLayer.currentWord, fontSize);
-        this.addChild(sliderLayer);
-        sliderLayer.setVisible(false);
-        sliderLayer.zIndex = 3;
-        this.sliderLayer = sliderLayer;
-
         // Allows the user to choose letters with a keyboard
         var keyboardLayer = new quat.solver.KeyboardLayer(gameBounds);
         this.addChild(keyboardLayer);
@@ -54,8 +47,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         textIndicatorLayer.zIndex = 3;
         this.addChild(textIndicatorLayer);
         this.textIndicatorLayer = textIndicatorLayer;
-
-        this._slider = false;
 
         // Update the solution layer's current status and goal
         solutionLayer.updateFromModel(quatGame);
@@ -135,7 +126,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
 
     applyTheme: function(theme) {
         this.solutionLayer.applyTheme(theme);
-        this.sliderLayer.applyTheme(theme);
         this.keyboardLayer.applyTheme(theme);
         this.finishedLayer.applyTheme(theme);
         this.textIndicatorLayer.applyTheme(theme);
@@ -143,7 +133,6 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
 
     setOpacity: function(opacity) {
         this.solutionLayer.setOpacity(opacity);
-        this.sliderLayer.setOpacity(opacity);
         this.keyboardLayer.setOpacity(opacity);
         this.textIndicatorLayer.setOpacity(opacity);
     }

@@ -184,6 +184,10 @@ quat.Puzzle = quat.MessageQueue.extend({
 	},
 
 	stopTime: function() {
+		if (!this._timeStarted) {
+			return;
+		}
+		
 		var difference = new Date() - this._startTime;
 
 		if (isNaN(difference)) {

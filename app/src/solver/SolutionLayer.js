@@ -110,6 +110,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         return this.currentWord.pointInWord(cc.p(x,y));
     },
 
+    pointInWhole: function(x,y) {
+        return this.currentWord.pointInWhole(cc.p(x,y));
+    },
+
     /**
      * Returns whether or not a given point is in one of the current word's
      * columns. If not, returns false, otherwise returns the letter's index.

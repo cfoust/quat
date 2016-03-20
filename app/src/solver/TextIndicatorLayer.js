@@ -6,9 +6,9 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     ctor:function (fontSize, gameBounds) {
         this._super();
 
-        var textLabel = new cc.LabelTTF("", "Ubuntu", fontSize*.6, null, cc.TEXT_ALIGNMENT_CENTER);
+        var textLabel = new cc.LabelTTF("", "Ubuntu", fontSize*.5, null, cc.TEXT_ALIGNMENT_CENTER);
         textLabel.x = gameBounds.x + (gameBounds.width / 2);
-        textLabel.y = gameBounds.y + (gameBounds.height * 0.38);
+        textLabel.y = gameBounds.y + (gameBounds.height * 0.37);
         textLabel.boundingWidth = gameBounds.width;
         textLabel.opacity = 0;
         textLabel.string = "";

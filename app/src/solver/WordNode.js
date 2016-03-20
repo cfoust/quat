@@ -71,12 +71,21 @@ quat.solver.WordNode = cc.Node.extend({
                                 fontWidth,
                                 fontHeight));
         }
-        
+
         // Not sure why we need this
         bounds.reverse();
 
+        // Calculate the bound rectangle for the whole word
+        var first = bounds[0],
+            last = bounds[3],
+            whole = cc.rect(first.x, 
+                            first.y, 
+                            ((last.x + last.width) - first.x),
+                            first.height);
+
         // Store the bounds
         this.bounds = bounds;
+        this.wholeBounds = whole;
         this.oldX = x;
         this.oldY = y;
     },
@@ -95,6 +104,10 @@ quat.solver.WordNode = cc.Node.extend({
         }
 
         return false;
+    },
+
+    pointInWhole: function(point) {
+        return cc.rectContainsPoint(this.wholeBounds, point);
     },
 
     /**

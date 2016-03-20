@@ -9,13 +9,10 @@ quat.solver.SolverStateController = quat.StateController.extend({
         IDLE: function(self) {
             if ((self.state == self.states.CHANGING_LETTER_NODRAG) ||
                 (self.state == self.states.CHOOSING_LETTER)) {
-                self.sliderLayer.setVisible(false);
                 self.keyboardLayer.setVisible(false);
             }
 
-            if (!self.solutionLayer._slider) {
-                self.solutionLayer.currentWord.unselect();
-            }
+            self.solutionLayer.currentWord.unselect();  
 
             self.solutionLayer.stepsWord.setVisible(true);
             self.solutionLayer.score.setVisible(true);
@@ -30,23 +27,14 @@ quat.solver.SolverStateController = quat.StateController.extend({
         CHOOSING_LETTER: function(self,args) {
             var column = args[0];
 
-            var sliderEnabled = self.puzzleLayer._slider;
-
-            self.sliderLayer.setVisible(sliderEnabled);
-            self.solutionLayer.stepsWord.setVisible(sliderEnabled);
-            self.solutionLayer.score.setVisible(sliderEnabled);
-            self.puzzleLayer.textIndicatorLayer.setVisible(sliderEnabled);
-            self.keyboardLayer.setVisible(!sliderEnabled);
+            self.solutionLayer.stepsWord.setVisible(false);
+            self.solutionLayer.score.setVisible(false);
+            self.puzzleLayer.textIndicatorLayer.setVisible(false);
+            self.keyboardLayer.setVisible(true);
             
-            if (self.puzzleLayer._slider) {
-                // Move the letter chooser to its proper location
-                self.sliderLayer.setBaseLetter(self.quatGame.getPuzzle().getCurrentWord()[column]);
-                self.sliderLayer.appear(column);
-            } else {
-                var currentWord = self.solutionLayer.currentWord;
-                currentWord.unselect();
-                currentWord.select(column);
-            }
+            var currentWord = self.solutionLayer.currentWord;
+            currentWord.unselect();
+            currentWord.select(column);
 
             self.setState(self.states.CHOOSING_LETTER);
         },

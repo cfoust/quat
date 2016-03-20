@@ -45,62 +45,23 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             }
         }
         else if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
-            var currentLetter = this.solutionLayer.pointInCurrentWord(x,y);
-            if (this.puzzleLayer._slider) {
-                var currentColumn = this.solutionLayer.pointInColumn(x,y);
-
-                /*
-                If we have the letter chooser open and the user clicks on another 
-                letter in the current word.
-                 */
-                if ((currentLetter !== false) && (currentColumn != this.lastColumn)) {
-                    this.lastColumn = currentLetter;
-                    this.sc.CHOOSING_LETTER(currentLetter);
-                }
-                else if (currentColumn == this.lastColumn) {
-                    // Get the letter at this point on the letter chooser
-                    this.lastColumn = currentColumn;
-                    this.lastLetter = this.sliderLayer.letterAtY(y);
-                    this.sc.CHANGING_LETTER_DRAG();
-                }
-                else {
-                    this.sc.IDLE();
-                }
-            } else {
-                var point = cc.p(x,y);
-                var onBoard = this.keyboardLayer.pointInKeyboard(point),
-                    boardLetter = this.keyboardLayer.pointInLetter(point);
-
-                // User tapped on another letter
-                if (currentLetter !== false) {
-                    this.sc.CHOOSING_LETTER(currentLetter);
-                    this.lastColumn = currentLetter;
-                // User tapped somewhere not on the keyboard
-                } else if (!onBoard) {
-                    this.sc.IDLE();
-                // Only happens if they tapped on the keyboard in a letter
-                } else if (boardLetter !== false) {
-                    var currentWord = this.solutionLayer.currentWord,
-                        column = this.lastColumn;
-                    currentWord.changeLetter(column, boardLetter);
-                }
-            }
-        }
-        else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
             var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
-                currentColumn = this.solutionLayer.pointInColumn(x,y);
+                point = cc.p(x,y),
+                onBoard = this.keyboardLayer.pointInKeyboard(point),
+                boardLetter = this.keyboardLayer.pointInLetter(point);
 
-            if ((currentColumn != this.lastColumn) && (currentLetter !== false)) {
-                this.lastColumn = currentLetter;
+            // User tapped on another letter
+            if (currentLetter !== false) {
                 this.sc.CHOOSING_LETTER(currentLetter);
-            }
-            else if ((currentLetter === false) && (currentColumn != this.lastColumn)) {
+                this.lastColumn = currentLetter;
+            // User tapped somewhere not on the keyboard
+            } else if (!onBoard) {
                 this.sc.IDLE();
-            }
-            else {
-                // Get the letter at this point on the letter chooser
-                this.lastLetter = this.sliderLayer.letterAtY(y);
-                this.sc.CHANGING_LETTER_DRAG();
+            // Only happens if they tapped on the keyboard in a letter
+            } else if (boardLetter !== false) {
+                var currentWord = this.solutionLayer.currentWord,
+                    column = this.lastColumn;
+                currentWord.changeLetter(column, boardLetter);
             }
         }
     },
@@ -110,58 +71,23 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         The user is choosing the letter they want to change.
          */
         if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
-            if (this.puzzleLayer._slider) {
-                /*
-                Gets the index of the letter the input is hovering over, or false if it
-                is not over any letter.
-                 */
-                var currentLetter = this.solutionLayer.pointInCurrentWord(x,y);
+            var point = cc.p(x,y),
+                onBoard = this.keyboardLayer.pointInKeyboard(point),
+                letter = this.keyboardLayer.pointInLetter(point),
+                wordLetter = this.solutionLayer.pointInCurrentWord(x,y);
 
-                /*
-                The input moved out of the letter it started dragging from, but not
-                into another letter.
-                 */
-                if (currentLetter === false) {
-                    var currentColumn = this.solutionLayer.pointInColumn(x,y);
+            // If they moved over a key on the keyboard
+            if (letter !== false) {
+                var currentWord = this.solutionLayer.currentWord,
+                    column = this.lastColumn;
+                currentWord.changeLetter(column, letter);
 
-                    // If the user stayed within the current column
-                    if (currentColumn == this.lastColumn) {
-                        this.sc.CHANGING_LETTER_DRAG();
-                        var offset = y - this.lastDown.y;
-                        this.sliderLayer.setOffset(offset);
-
-                    // Otherwise close everything out
-                    } else {
-                        this.sc.IDLE();
-                    }
-                /*
-                The input moved to another letter, so let's move the letter chooser to
-                that letter.
-                 */
-                } else {
-                    this.sc.CHOOSING_LETTER(currentLetter);
-                    this.lastColumn = currentLetter;
-                }
-            } else {
-                var point = cc.p(x,y),
-                    onBoard = this.keyboardLayer.pointInKeyboard(point),
-                    letter = this.keyboardLayer.pointInLetter(point);
-
-                if (letter !== false) {
-                    var currentWord = this.solutionLayer.currentWord,
-                        column = this.lastColumn;
-                    currentWord.changeLetter(column, letter);
-                }
+            // Lets you drag across the current word
+            } else if ((wordLetter !== false) && (this.lastColumn != wordLetter)) {
+                this.sc.CHOOSING_LETTER(wordLetter);
+                this.lastColumn = wordLetter;
             }
             
-        }
-        /*
-        The user is dragging the letter chooser.
-         */
-        else if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
-            // Change the letter chooser's offset to reflect the new input position.
-            var offset = y - this.lastDown.y;
-            this.sliderLayer.setOffset(offset);
         }
         else if (this.sc.state == this.sc.states.GESTURING) {
             var vector = this.calculateVector(x,y),
@@ -245,52 +171,7 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
     },
 
     done: function(x, y) {
-        /*
-        The user slid along the current word to bring up the letter choosers, but
-        never dragged upwards to start changing a letter. We just hide the chooser.
-         */
-
-        /*
-        The user stopped dragging after starting to move the letter chooser.
-         */
-        if (this.sc.state == this.sc.states.CHANGING_LETTER_DRAG) {
-            var currentLetter = this.solutionLayer.pointInCurrentWord(x,y),
-                currentChooserLetter = this.sliderLayer.letterAtY(y),
-                currentColumn = this.solutionLayer.pointInColumn(x,y);
-
-            /*
-            The user tapped on a letter in the letter chooser. Let's select that letter.
-             */
-            if ((currentLetter === false) && 
-                     (currentColumn !== false) &&
-                     (currentChooserLetter == this.lastLetter)) {
-                this.sliderLayer.setBaseLetter(this.lastLetter);
-                this.sc.CHANGING_LETTER_NODRAG();
-            }
-            /*
-            The user stopped dragging outside of a letter, so we keep the letter
-            chooser up and let them keep manipulating it.
-             */
-            else if ((currentLetter === false) && (currentColumn !== false)) {
-                // Resets the base letter to the current letter. 
-                // This looks nonsensical, but it's a problem of method naming more
-                // than anything. The getBaseLetter() method returns the CURRENT
-                // letter at the bottom instead of the REAL base letter before any
-                // offset.
-                this.sliderLayer.setBaseLetter(this.sliderLayer.getBaseLetter());
-                this.sc.CHANGING_LETTER_NODRAG();
-            }
-            /*
-            The user stopped dragging or touched inside a letter after selecting a 
-            letter with the letter chooser, so we enter their choice.
-             */
-            else if ((currentLetter === this.lastColumn) && (currentColumn == this.lastColumn)) {
-                this.finishWord();
-            } else {
-                this.sc.CHANGING_LETTER_NODRAG();
-            }
-        }
-        else if ((this.sc.state == this.sc.states.CHOOSING_LETTER) && !this.puzzleLayer._slider) {
+        if (this.sc.state == this.sc.states.CHOOSING_LETTER) {
             var point = cc.p(x,y),
                 onBoard = this.keyboardLayer.pointInKeyboard(point),
                 letter = this.keyboardLayer.pointInLetter(point);
@@ -298,12 +179,6 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
             if (letter !== false) {
                 this.finishWord();
             }
-        }
-        /*
-        The user tapped on a letter in the current word after choosing a letter.
-         */
-        else if (this.sc.state == this.sc.states.CHANGING_LETTER_NODRAG) {
-            this.finishWord();   
         }
         else if (this.sc.state == this.sc.states.GESTURING) {
             this.sc.IDLE();
