@@ -48,12 +48,16 @@ quat.menu.MenuLayer = cc.Layer.extend({
         	},
         	"ABOUT": function(self) {
         		self.gameScene.SSC.ABOUT();
-        	}
+        	},
+            // Used to take the Default.png screenshots
+            // "DEFAULT": function(self) {
+            //     self.gameScene.SSC.DEFAULT();
+            // }
         };
 
         var buttonFontSize = fontSize * 0.9,
             buttonHeight = buttonFontSize * 1.3,
-            buttonWidth = gameBounds.width * 0.5,
+            buttonWidth = gameBounds.width * 0.55,
             difference = (gameBounds.width - buttonWidth) / 2,
         	buttonGap = buttonHeight * 1.4,
             numButtons = Object.keys(buttons).length;

@@ -181,7 +181,6 @@ quat.Puzzle = quat.MessageQueue.extend({
 		this._timeStarted = true;
 		this._state = this.states.PLAYING;
 		this._startTime = new Date();
-		cc.log("Starting time");
 	},
 
 	stopTime: function() {
@@ -201,8 +200,6 @@ quat.Puzzle = quat.MessageQueue.extend({
 		} else {
 			this._totalTime = difference;
 		}
-
-		cc.log("Stopped time. New total time: " + this._totalTime);
 	},
 
 	toObject: function() {

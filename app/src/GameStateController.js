@@ -110,6 +110,21 @@ quat.ScreenStateController = quat.StateController.extend({
             aboutLayer.setVisible(true);
             aboutLayer.setOpacity(255);
         },
+        DEFAULT: function(self) {
+            var scene = self.gameScene,
+                defaultLayer = self.gameScene.defaultLayer;
+
+            // Set the current layer
+            self.currentLayer = defaultLayer;
+
+
+            
+            // Make the other ones invisible
+            scene.menuLayer.setVisible(false);
+            scene.menuIcon.setVisible(false);
+            defaultLayer.setVisible(true);
+            defaultLayer.setOpacity(255);
+        },
     },
 
     init: function(gameScene) {
