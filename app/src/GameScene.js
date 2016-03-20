@@ -201,5 +201,23 @@ quat.GameScene = cc.Scene.extend({
                 return true;
             }
         },this);
+
+        // Callback for when the game goes in the background
+        cc.eventManager.addListener({
+            event: cc.EventListener.CUSTOM,
+            eventName: "game_on_hide",
+            callback: function(event) {
+                gameState.saveToLocal();
+            }
+        },this);
+
+        // Callback for when the game comes back
+        cc.eventManager.addListener({
+            event: cc.EventListener.CUSTOM,
+            eventName: "game_on_show",
+            callback: function(event) {
+                gameState.getPuzzle().startTime();
+            }
+        },this);
     }
 });
