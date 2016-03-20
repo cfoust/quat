@@ -15,7 +15,11 @@ quat.RectRadius = cc.Layer.extend({
     ctor:function (width, height, borderRadius, borderWidth, filled) {
         this._super();
                                   
-                                  borderWidth *= 0.6;
+        borderWidth *= 0.6;
+
+        if (cc.sys.isMobile && cc.sys.OS_IOS) {
+            borderWidth *= 0.7;
+        }
 
         this._width = width;
         this._height = height;
