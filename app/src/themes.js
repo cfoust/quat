@@ -257,6 +257,16 @@ quat.themes = {
 		puzzles: [],
 		unlock: 0
 	},
+	"RISE": {
+		colors: {
+			background: "#355C7D",
+			text: "#C06C84",
+			darkForeground: "#6C5B7B",
+			lightForeground: "#F67280"
+		},
+		puzzles: [],
+		unlock: 0
+	},
 	"DEAD": {
 		colors: {
 			background: "#000000",
@@ -268,26 +278,31 @@ quat.themes = {
 		puzzles: [],
 		unlock: 0
 	},
-	"WISH": {
-		colors: {
-			background: "#FAD6AB",
-			text: "#A08800",
-			darkForeground: "#111859",
-			lightForeground: "#BA9E00",
-		},
-		puzzles: [],
-		unlock: 0
-	},
-	"WOOD": {
-		colors: {
-			background: "#64371B",
-			text: "#E37D3E",
-			darkForeground: "#573018",
-			lightForeground: "#A35A2D",
-		},
-		puzzles: [],
-		unlock: 0
-	},
+
+	// Revisit this theme
+	// "WISH": {
+	// 	colors: {
+	// 		background: "#FAD6AB",
+	// 		text: "#A08800",
+	// 		darkForeground: "#111859",
+	// 		lightForeground: "#BA9E00",
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
+	
+	// Revisit this theme
+	// "WOOD": {
+	// 	colors: {
+	// 		background: "#64371B",
+	// 		text: "#E37D3E",
+	// 		darkForeground: "#573018",
+	// 		lightForeground: "#A35A2D",
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
+	
 	"SAIL": {
 		colors: {
 			background: "#171857",
@@ -298,15 +313,17 @@ quat.themes = {
 		puzzles: [],
 		unlock: 0
 	},
-	"DAYS": {
-		colors: {
-			background: "#00C1C2",
-			text: "#4F4A44",
-			darkForeground: "#CF9F3B",
-			lightForeground: "#CF9C19",
-			contrastText: true
-		},
-		puzzles: [],
-		unlock: 0
-	},
+
+	// Revisit this theme
+	// "DAYS": {
+	// 	colors: {
+	// 		background: "#00C1C2",
+	// 		text: "#4F4A44",
+	// 		darkForeground: "#CF9F3B",
+	// 		lightForeground: "#CF9C19",
+	// 		contrastText: true
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
 };
