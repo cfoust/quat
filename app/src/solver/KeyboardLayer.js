@@ -4,7 +4,6 @@ quat.solver = quat.solver || {};
 
 quat.solver.KeyboardLayer = cc.Layer.extend({
     ctor:function (gameBounds, fontSize) {
-        cc.log(gameBounds,fontSize);
         this._super();
 
         this.gameBounds = gameBounds;

@@ -133,15 +133,18 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         // Check if the puzzle is now done
         if (puzzle.isDone()) {
             // If so, take down all its stats
-            this.quatGame.getUser().registerPuzzle(puzzle);
+            var user = this.quatGame.getUser();
+            user.registerPuzzle(puzzle);
 
             this.puzzleLayer.textIndicatorLayer.clearMessages();
 
+            var finished = this.puzzleLayer.finishedLayer;
             if (puzzle.getSteps().length == puzzle.getPar()) {
-                this.puzzleLayer.finishedLayer.par();
+                finished.par();
             } else {
-                this.puzzleLayer.finishedLayer.done();
+                finished.done();
             }
+            
 
             // Grab a new puzzle
             this.quatGame.newPuzzle();

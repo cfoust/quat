@@ -161,7 +161,7 @@ quat.look.LookLayer = cc.Layer.extend({
         var subsidiarySize = buttonFontSize * 0.5;
 
         // Lock icon that shows up when a theme is not unlocked.
-        var lockIcon = new cc.LabelTTF("\uf023", "Font Awesome", fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
+        var lockIcon = new cc.LabelTTF("\uf023", "FontAwesome", fontSize, null, cc.TEXT_ALIGNMENT_CENTER);
         lockIcon.x = themeName.x;
         lockIcon.y = themeName.y + (fontSize);
         this.addChild(lockIcon);
