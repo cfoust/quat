@@ -286,7 +286,7 @@ quat.User = quat.MessageQueue.extend({
 
 	init: function() {
 		this._super();
-		this._theme = "WASH";
+		this._theme = "QUAT";
 		this._themeProgress = {};
 		this._timePlayed = 0;
 		this._puzzlesPlayed = 0;
