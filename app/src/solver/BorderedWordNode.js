@@ -24,9 +24,9 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
         this._super(fontSize, fontGap);
 
         var rects = [],
-        	size = fontSize * 1.1,
-        	radius = fontSize * 0.2,
-        	width = fontSize * 0.08;
+        	size = fontSize * 1.25,
+        	radius = fontSize * 0.24,
+        	width = fontSize * 0.17;
 
         // Iterate through and create the rectangles
         for (var j = 0; j < 4; j++) {

@@ -98,7 +98,7 @@ quat.RectRadius = cc.Layer.extend({
             filler = this._filled ? node.getDrawColor() : null;
 
         node.clear();
-        node.drawPoly(this.points, filler, borderWidth);
+        node.drawPoly(this.points, filler, borderWidth, filler);
     },
 
     setColor: function(color) {
@@ -109,6 +109,7 @@ quat.RectRadius = cc.Layer.extend({
     setOpacity: function(opacity) {
         this._super(opacity);
         var color = this.node.getDrawColor();
+        console.log(color);
         color.a = opacity;
         this.drawRect();
     }

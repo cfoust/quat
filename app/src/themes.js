@@ -150,7 +150,7 @@ quat.themes = {
 				par: 6
 			},
 		],
-		unlock: 50
+		unlock: 0
 	},
 	
 	"GAME": {
@@ -222,7 +222,7 @@ quat.themes = {
 				par: 6
 			},
 		],
-		unlock: 100
+		unlock: 0
 	},
 	"SNOW": {
 		colors: {

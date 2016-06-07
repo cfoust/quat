@@ -15,11 +15,8 @@ quat.menu.Button = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-        this.textLabel.setColor(theme.colors.text);
-        this.textColor = theme.colors.text;
-        this.defaultColor = theme.colors.darkForeground;
-        this.selectedColor = theme.colors.lightForeground;
-        this.rect.setColor(this.defaultColor);
+        // this.textLabel.setColor(theme.colors.text);
+        // this.textColor = theme.colors.text;
 
         if (theme.colors.inverseButtons) {
             this._invert = true;
@@ -31,11 +28,10 @@ quat.menu.Button = cc.Layer.extend({
     _selected: false,
     selected: function(selected) {
         if (selected) {
-            this.rect.setColor(this.selectedColor);
+            this.background.setColor(this.selectedColor);
         } else {
-            this.rect.setColor(this.defaultColor);
+            this.background.setColor(this.defaultColor);
         }
-        this.textLabel.setColor(this.textColor);
         this._selected = selected;
     },
 
@@ -63,17 +59,27 @@ quat.menu.Button = cc.Layer.extend({
         this.textLabel = textLabel;
         this.addChild(textLabel);
 
-        this.defaultColor = cc.color(0,0,128,255),
-        this.selectedColor = cc.color(0,191,255,255);
+        this.defaultColor = cc.color(255,255,255,64),
+        this.selectedColor = cc.color(255,255,255,153);
 
         var borderRadius = this.fontSize * 0.2,
-            borderWidth = this.fontSize * 0.08;
+            borderWidth = this.fontSize * 0.18;
 
-        var rect = new quat.RectRadius(this.width, this.height, borderRadius, borderWidth, false);
-        rect.x = this.width / 2;
-        rect.y = this.height / 2;
-        this.addChild(rect);
-        this.rect = rect;
+        var border = new quat.RectRadius(this.width, this.height, borderRadius, borderWidth, false);
+        border.x = this.width / 2;
+        border.y = this.height / 2;
+        border.zIndex = 1;
+        border.setColor(cc.color.WHITE);
+        this.addChild(border);
+        this.border = border;
+
+        var background = new quat.RectRadius(this.width, this.height, borderRadius, borderWidth, true);
+        background.x = this.width / 2;
+        background.y = this.height / 2;
+        background.zIndex = 0;
+        background.setColor(this.defaultColor);
+        this.addChild(background);
+        this.background = background;
 
         // Touch listener
         var button = this,

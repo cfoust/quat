@@ -24,28 +24,30 @@ quat.solver.SolutionLayer = cc.Layer.extend({
             height = gameBounds.height;
             size = {width: width, height: height},
             fourths = width / 4,
-            gap = fontSize * 1.25,
+            gap = fontSize * 1.6,
             panelHeight = fontSize + (width * .09); // The bounds of the window
 
         this.size = size;
         this.fontSize = fontSize;
         this.panelHeight = panelHeight;
 
+        // Create a word to display the goal word
+        var goalWord = new quat.solver.WordNode(fontSize, gap);
+        goalWord.x = gameBounds.x + (width / 2);
+        goalWord.y = height * 0.5;
+        goalWord.zIndex = 1;
+        this.addChild(goalWord);
+        this.goalWord = goalWord;
+
         // Used to display the current word for the user
         var currentWord = new quat.solver.BorderedWordNode(fontSize, gap);
         currentWord.x = gameBounds.x + (width / 2);
-        currentWord.y = height * 0.6;
+        currentWord.y = goalWord.y + fontSize * 1.4;
         currentWord.recalculateBounds();
         this.addChild(currentWord);
         this.currentWord = currentWord;
 
-        // Create a word to display the goal word
-        var goalWord = new quat.solver.WordNode(fontSize, gap);
-        goalWord.x = gameBounds.x + (width / 2);
-        goalWord.y = currentWord.y + fontSize * 1.10;
-        goalWord.zIndex = 1;
-        this.addChild(goalWord);
-        this.goalWord = goalWord;
+        
 
 
         var undoCallback = function(self) {
