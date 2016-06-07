@@ -6,13 +6,8 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
 	applyTheme: function(theme) {
         this._super(theme);
 
-        this.default = theme.colors.darkForeground;
-        this.selected = theme.colors.lightForeground;
+        this.setColor(this.default);
 
-        for (var j = 0; j < 4; j++) {
-            var rect = this.rects[j];
-            rect.setColor(this.default);
-        }
     },
 
     /**
@@ -23,38 +18,60 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
     ctor: function (fontSize, fontGap) {
         this._super(fontSize, fontGap);
 
-        var rects = [],
+        this.default = cc.color(255,255,255,64),
+        this.selected = cc.color(255,255,255,153);
+
+        var borders = [],
+            fills = [],
         	size = fontSize * 1.25,
         	radius = fontSize * 0.24,
         	width = fontSize * 0.17;
 
         // Iterate through and create the rectangles
         for (var j = 0; j < 4; j++) {
-            var rect = new quat.RectRadius(size, size, radius, width, false),
+
+            // Set up the border rectangle
+            var border = new quat.RectRadius(size, size, radius, width, false),
             	bound = this.bounds[j];
 
             // Set them to be hidden
-            rect.x = bound.x + (bound.width / 2);
-            rect.y = bound.y + (bound.height / 2);
+            border.x = bound.x + (bound.width / 2);
+            border.y = bound.y + (bound.height / 2);
+            border.zIndex = 1;
 
-			rect.setColor(cc.color(255,255,255,255));
+			border.setColor(cc.color(255,255,255,255));
             // Add it as a child to this layer
-            this.addChild(rect);
+            this.addChild(border);
 
-            rects.push(rect);
+            borders.push(border);
+
+            // Set up the fill rectangle
+            var fill = new quat.RectRadius(size, size, radius, width, true);
+
+            // Set them to be hidden
+            fill.x = bound.x + (bound.width / 2);
+            fill.y = bound.y + (bound.height / 2);
+            fill.zIndex = 0;
+
+            fill.setColor(this.default);
+            // Add it as a child to this layer
+            this.addChild(fill);
+
+            fills.push(fill);
         }
-        this.rects = rects;
+        this.borders = borders;
+        this.fills = fills;
 
         return true;
     },
 
     select: function(col) {
-        this.rects[col].setColor(this.selected);
+        this.fills[col].setColor(this.selected);
     },
 
     unselect: function() {
         for (var j = 0; j < 4; j++) {
-            var rect = this.rects[j];
+            var rect = this.fills[j];
             rect.setColor(this.default);
         }
     },
@@ -63,8 +80,8 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
     	this._super(opacity);
 
     	for (var j = 0; j < 4; j++) {
-            var rect = this.rects[j];
-            rect.setOpacity(opacity);
+            this.borders[j].setOpacity(opacity);
+            this.fills[j].setOpacity(opacity);
         }
     },
 
@@ -72,8 +89,8 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
     	this._super(color);
 
     	for (var j = 0; j < 4; j++) {
-            var rect = this.rects[j];
-            rect.setColor(color);
+            this.borders[j].setColor(color);
+            this.fills[j].setColor(color);
         }
     }
 });

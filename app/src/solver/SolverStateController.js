@@ -15,7 +15,6 @@ quat.solver.SolverStateController = quat.StateController.extend({
             self.solutionLayer.currentWord.unselect();  
 
             self.solutionLayer.stepsWord.setVisible(true);
-            self.solutionLayer.score.setVisible(true);
             self.puzzleLayer.textIndicatorLayer.setVisible(true);
 
             self.solutionLayer.updateFromModel(self.quatGame);
@@ -28,7 +27,6 @@ quat.solver.SolverStateController = quat.StateController.extend({
             var column = args[0];
 
             self.solutionLayer.stepsWord.setVisible(false);
-            self.solutionLayer.score.setVisible(false);
             self.puzzleLayer.textIndicatorLayer.setVisible(false);
             self.keyboardLayer.setVisible(true);
             

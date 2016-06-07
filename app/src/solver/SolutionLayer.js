@@ -11,7 +11,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.currentWord.applyTheme(theme);
         this.goalWord.applyTheme(theme);
         this.stepsWord.setColor(textColor);
-        this.score.setColor(textColor);
         this.undoIcon.applyTheme(theme);
     },
 
@@ -47,9 +46,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.addChild(currentWord);
         this.currentWord = currentWord;
 
-        
-
-
         var undoCallback = function(self) {
             return function() {
                 var puzzleLayer = self.puzzleLayer,
@@ -78,15 +74,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.addChild(stepsWord);
         this.stepsWord = stepsWord;
 
-
-        var score = new cc.LabelTTF("", "Ubuntu", fontSize * 0.8);
-        score.x = stepsWord.x;
-        score.y = stepsWord.y + smallFontSize * 1.7;
-        score.zIndex = 1;
-        score.string = "";
-        this.addChild(score);
-        this.score = score;
-
         return true;
     },
     
@@ -98,7 +85,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.goalWord.setOpacity(opacity);
         this.currentWord.setOpacity(opacity);
         this.stepsWord.setOpacity(opacity);
-        this.score.setOpacity(opacity);
         this.undoIcon.setOpacity(opacity);
     },
 
@@ -168,7 +154,5 @@ quat.solver.SolutionLayer = cc.Layer.extend({
             par = puzzle.getPar() - 1;
 
         this.undoIcon.setVisible(puzzle.getSteps().length > 1);
-
-        this.score.string = model.getUser().getPoints();
     }
 });

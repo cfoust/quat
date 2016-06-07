@@ -64,7 +64,6 @@ quat.GameScene = cc.Scene.extend({
     },
 
     applyThemeByName: function(themeName) {
-        console.log(themeName);
         var theme = this.gameState.getTheme(themeName);
         theme.name = themeName;
         this.applyTheme(theme);
