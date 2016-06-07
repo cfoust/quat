@@ -59,7 +59,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         }(this);
         var undoIcon = new quat.IconButton(fontSize * 0.8, "\uf0e2", undoCallback),
             firstBounds = currentWord.bounds[0];
-        undoIcon.x = firstBounds.x - (fontSize * 1.1);
+        undoIcon.x = gameBounds.x;
         undoIcon.y = currentWord.y - (fontSize * 0.50);
         undoIcon.enabled(true);
         this.undoIcon = undoIcon;

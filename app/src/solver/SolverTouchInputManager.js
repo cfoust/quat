@@ -112,7 +112,6 @@ quat.solver.SolverTouchInputManager = quat.TouchInputManager.extend({
         this.sc.IDLE();
 
         // Hide the letter choosers
-        this.sliderLayer.setVisible(false);
         this.keyboardLayer.setVisible(false);
 
         newWord = newWord.toLowerCase();
