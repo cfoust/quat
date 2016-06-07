@@ -140,7 +140,6 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
             textLabel.setVisible(true);
             this._messages.push(message);
         } else {
-            cc.log("Trying to display message");
 
             textLabel.setVisible(false);
             textLabel.setOpacity(0);

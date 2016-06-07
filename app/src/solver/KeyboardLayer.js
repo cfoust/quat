@@ -3,7 +3,7 @@ quat.solver = quat.solver || {};
 
 
 quat.solver.KeyboardLayer = cc.Layer.extend({
-    ctor:function (gameBounds) {
+    ctor:function (gameBounds, fontSize) {
         this._super();
 
         this.gameBounds = gameBounds;
@@ -20,7 +20,9 @@ quat.solver.KeyboardLayer = cc.Layer.extend({
 
         // Sets a baseline for how high the keyboard should be.
         // We scale down from this until it fits, as this is the max.
-        var keyboardHeight = gameBounds.height * 0.30;
+        var keyboardHeight = gameBounds.height * 0.30,
+            // keyboardY = (gameBounds.height / 2)  - (keyboardHeight - (fontSize * 0.2));
+            keyboardY = 0;
 
         // Ratio of width over height
         var ratio = 2.265;
@@ -56,12 +58,12 @@ quat.solver.KeyboardLayer = cc.Layer.extend({
             for (var i = 0; i < this.rows[j].length; i++) {
                 var button = new quat.menu.Button(this.rows[j].charAt(i), keyFontSize, keyWidth, keyHeight, null);
                 button.x = (width / 2) + offsets[j] + (i * (horizontalGap + keyWidth)) - halfWidth + (horizontalGap / 2);
-                button.y = ((this.rows.length - (j+1)) * (keyHeight + verticalGap)) + height * 0.02;
+                button.y = ((this.rows.length - (j+1)) * (keyHeight + verticalGap)) + (height * 0.02) + keyboardY;
                 this.addChild(button);
             }
         }
 
-        this.keyBounds = cc.rect((width / 2) - keyboardWidth / 2,0,keyboardWidth, keyboardHeight);
+        this.keyBounds = cc.rect((width / 2) - keyboardWidth / 2,keyboardY,keyboardWidth, keyboardHeight);
         
 
         return true;

@@ -72,6 +72,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         stepsWord.y = height * 0.1;
         stepsWord.zIndex = 1;
         stepsWord.string = "STEPS: 0 PAR: 0";
+        stepsWord.setVisible(false);
         this.addChild(stepsWord);
         this.stepsWord = stepsWord;
 
@@ -159,14 +160,13 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         this.currentWord.changeWord(puzzle.getCurrentWord());
         this.goalWord.changeWord(puzzle.getGoal());
 
+        this.stepsWord.setVisible(false);
+
         var steps = (puzzle.getSteps().length - 1),
             par = puzzle.getPar() - 1;
-        this.stepsWord.string = "STEPS: " + steps.toString() + " PAR: " + par.toString();
 
         this.undoIcon.setVisible(puzzle.getSteps().length > 1);
 
         this.score.string = model.getUser().getPoints();
-        
-        // this.stepsWord.setVisible(!puzzle.isSpecial());
     }
 });

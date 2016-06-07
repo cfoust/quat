@@ -12,6 +12,7 @@
 
     "jsList" : [
         "src/Class.js",
+        "src/fixes.js",
         "src/TouchInputManager.js",
         "src/StateController.js",
 
@@ -26,6 +27,7 @@
         "src/solver/SolverStateController.js",
         "src/solver/SolverTouchInputManager.js",
         "src/solver/KeyboardInputManager.js",
+        "src/solver/TapToast.js",
         "src/solver/WordNode.js",
         "src/solver/BorderedWordNode.js",
         "src/solver/FinishedLayer.js",
@@ -38,6 +40,8 @@
         "src/stats/StatsLayer.js",
 
         "src/about/AboutLayer.js",
+
+        "src/default/DefaultLayer.js",
 
         "src/look/LookLayer.js",
 

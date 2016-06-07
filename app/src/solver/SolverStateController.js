@@ -33,6 +33,7 @@ quat.solver.SolverStateController = quat.StateController.extend({
             self.keyboardLayer.setVisible(true);
             
             var currentWord = self.solutionLayer.currentWord;
+            currentWord.changeWord(self.quatGame.getPuzzle().getCurrentWord());
             currentWord.unselect();
             currentWord.select(column);
 

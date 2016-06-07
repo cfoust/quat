@@ -15,7 +15,11 @@ quat.RectRadius = cc.Layer.extend({
     ctor:function (width, height, borderRadius, borderWidth, filled) {
         this._super();
                                   
-                                  borderWidth *= 0.6;
+        borderWidth *= 0.6;
+
+        if (cc.sys.isMobile && cc.sys.OS_IOS) {
+            borderWidth *= 0.7;
+        }
 
         this._width = width;
         this._height = height;
@@ -81,8 +85,7 @@ quat.RectRadius = cc.Layer.extend({
             }
         }
         this.points = points;
-        this.color = cc.color.RED;
-
+        this.setColor(cc.color.RED);
 
         this.drawRect();
 
@@ -92,18 +95,22 @@ quat.RectRadius = cc.Layer.extend({
     drawRect: function() {
         var node = this.node,
             borderWidth = this._borderWidth,
-            filler = this._filled ? this._color : null;
+            filler = this._filled ? node.getDrawColor() : null;
+
         node.clear();
-        node.drawPoly(this.points, filler, borderWidth, this._color);
+        node.drawPoly(this.points, filler, borderWidth);
     },
 
     setColor: function(color) {
-    	this._color = color;
+        this.node.setDrawColor(color);
         this.drawRect();
     },
 
     setOpacity: function(opacity) {
-        this._color.a = opacity;
+        this._super(opacity);
+        var color = this.node.getDrawColor();
+        color.a = opacity;
         this.drawRect();
     }
+
 });

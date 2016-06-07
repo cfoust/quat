@@ -31,7 +31,7 @@ quat.solver.PuzzleLayer = cc.Layer.extend({
         this.solutionLayer = solutionLayer;
 
         // Allows the user to choose letters with a keyboard
-        var keyboardLayer = new quat.solver.KeyboardLayer(gameBounds);
+        var keyboardLayer = new quat.solver.KeyboardLayer(gameBounds, fontSize);
         this.addChild(keyboardLayer);
         keyboardLayer.setVisible(false);
         keyboardLayer.zIndex = 3;

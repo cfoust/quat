@@ -87,6 +87,13 @@ quat.stats.StatsLayer = cc.Layer.extend({
             PARS: function(self, game) {
                 return game.getUser().getPars();
             },
+            PARCENTAGE: function(self, game) {
+                var user = game.getUser(),
+                    pars = user.getPars(),
+                    puzzles = user.getPuzzlesPlayed(),
+                    percentage = ((pars / puzzles) * 100).toFixed()
+                return percentage + "%";
+            },
             PLAYED: function(self, game) {
                 return self.milliToString(game.getUser().getTimePlayed());
             },

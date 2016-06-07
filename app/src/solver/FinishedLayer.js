@@ -22,12 +22,13 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         this.icon = icon;
         this.addChild(icon);
 
-        // The animation sequence used to bring this layer in and out
-        this.sequence = cc.sequence(
-            cc.fadeIn(0.3),
-            cc.delayTime(2),
-            cc.fadeOut(0.3)
-        );
+        // var toastFontSize = fontSize * 0.8,
+        //     toastWidth = gameBounds.width * 0.8;
+        // var toast = new quat.solver.TapToast("", toastWidth, toastFontSize * 1.1, function(){cc.log("p")});
+        // toast.x = (gameBounds.width / 2) + gameBounds.x - (toastWidth / 2);
+        // toast.y = gameBounds.height * 0.8;
+        // this.addChild(toast);
+        // this.toast = toast;
 
         return true;
     },
@@ -68,6 +69,11 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         ));
     },
 
+    // onEnter: function() {
+    //     this._super();
+    //     this.toast.setOpacity(0);
+    // },
+
     /**
      * Indicates that the user finished a puzzle.
      */
@@ -82,13 +88,56 @@ quat.solver.FinishedLayer = cc.Layer.extend({
         this.run("MADE PAR!", "\uf118");
     },
 
+    /**
+     * Shows a clickable toast.
+     * @param  {String}   message  Message to show.
+     * @param  {Function} callback Callback to run if the user clicks.
+     */
+    showToast: function(message, callback) {
+        // this.toast.showToast(message, callback);
+        // var toast = this.toast;
+
+        // // Reset the opacity
+        // toast.setOpacity(0);
+        // toast.setVisible(true);
+
+        // // Follow the callback
+        // toast.callback = callback;
+
+        // // Update the text
+        // toast.setText(message);
+
+        // // Run the action
+        // toast.runAction(cc.sequence(
+        //     cc.callFunc(function(t) {
+        //         return function() {
+        //             cc.log("Started anim", t.isVisible(), t.opacity);
+        //             t.enabled(true);};
+        //     }(toast)),
+        //     cc.fadeIn(0.3),
+        //     cc.callFunc(function(t) {
+        //         return function() {
+        //             cc.log("Middle of anim", t.isVisible(), t.opacity);};
+        //     }(toast)),
+        //     cc.delayTime(8),
+        //     cc.fadeOut(0.3),
+        //     cc.callFunc(function(t) {
+        //         return function() {
+        //             cc.log("Ended anim", t.isVisible(), t.opacity);
+        //             t.enabled(false);};
+        //     }(toast))
+        // ));
+    },
+
     applyTheme: function(theme) {
         this.text.setColor(theme.colors.text);
         this.icon.setColor(theme.colors.text);
+        // this.toast.applyTheme(theme);
     },
 
     setOpacity: function(opacity) {
         this.text.setOpacity(opacity);
     	this.icon.setOpacity(opacity);
+        // this.toast.setOpacity(opacity);
     },
 });

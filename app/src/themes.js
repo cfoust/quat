@@ -1,31 +1,44 @@
 var quat = quat || {};
 
 quat.themes = {
-	// EXAMPLE THEME:
+	// #################################################
+	//                 EXAMPLE THEME:
+	// #################################################
+	// 
 	// // The four-letter word describing the theme
 	// "NAME": {
+	// 
 	// 	// Details all of the colors of the theme
 	// 	colors: {
 	// 		// The background color
 	// 		background: "#FFFFFF",
+	// 		
 	// 		// The color of all text (except the goal word)
 	// 		textColor: "#FFFFFF",
+	// 		
 	// 		// Color used in the following places:
 	// 		// * Text color for goal word
 	// 		// * Background on letter chooser
 	// 		// * Background on menu buttons
 	// 		darkForeground: "#FFFFFF",
+	// 		
 	// 		// Color used in the following places:
 	// 		// * Background on the goal word
 	// 		// * Background on menu buttons when selected
-	// 		lightForeground: "#FFFFFF"
+	// 		lightForeground: "#FFFFFF",
+	// 		
 	// 		// Optional parameter that sets buttons to the following colors
 	// 		// when selected:
 	// 		//  	text color: darkForeground
 	// 		//		background color: lightForeground
 	// 		// Instead of the normal behavior.
-	// 		inverseButtons: true
+	// 		inverseButtons: true,
+	// 		
+	// 		// For now, used only on the stats screen. It changes the text color
+	// 		// on the right to the theme's text color instead of lightForeground
+	// 		contrastText: false
 	// 	},
+	// 	
 	// 	// List of puzzles related to this theme. These have a small chance of
 	// 	// being shown while the user is playing on this theme.
 	// 	puzzles: [
@@ -37,19 +50,31 @@ quat.themes = {
 	// 			par: 0
 	// 		}
 	// 	],
+	// 	
 	// 	// The number of points the user has to have to unlock this theme
 	// 	unlock: 999
 	// },
-	"WASH": {
+	"QUAT": {
 		colors: {
-			background: "#0000CD",
-			text: "#FFFFFF",
-			darkForeground: "#000080",
-			lightForeground: "#00BFFF"
+			background: "#D29034",
+			text: "#523914",
+			darkForeground: "#926424",
+			lightForeground: "#B87F2E"
 		},
 		puzzles: [],
 		unlock: 0
 	},
+	// Revisit this theme
+	// "WASH": {
+	// 	colors: {
+	// 		background: "#0000CD",
+	// 		text: "#FFFFFF",
+	// 		darkForeground: "#000080",
+	// 		lightForeground: "#00BFFF"
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
 	"LATE": {
 		colors: {
 			background: "#000000",
@@ -65,19 +90,25 @@ quat.themes = {
 				par: 3
 			},
 			{
-				text: "\"I'm not over it. I've gotten a lot better about it, and I can pretend that I am, but seeing you just reminds me of everything.\"",
-				start: 'that',
-				end: 'over',
+				text: "\"Are you there?\"",
+				start: 'want',
+				end: 'dont',
+				par: 3
+			},
+			{
+				text: "\"Yeah, what's up?\" I replied.",
+				start: 'what',
+				end: 'says',
 				par: 6
 			},
 			{
-				text: "\"You just want me to come back.\"",
-				start: 'back',
-				end: 'come',
-				par: 6
+				text: "\"I've been thinking lately.\"",
+				start: 'days',
+				end: 'late',
+				par: 4
 			},
 			{
-				text: "\"I guess I still don't understand how or why you feel the way you do. I'll just go.\"",
+				text: "\"I guess I still don't understand how or why you feel the way you do. I care about you.\"",
 				start: 'feel',
 				end: 'dont',
 				par: 5
@@ -119,7 +150,7 @@ quat.themes = {
 				par: 6
 			},
 		],
-		unlock: 0
+		unlock: 50
 	},
 	
 	"GAME": {
@@ -172,8 +203,26 @@ quat.themes = {
 				end: 'fake',
 				par: 4
 			},
+			{
+				text: "My character tromped around the countryside with shoulderpads as big as her head.",
+				start: 'time',
+				end: 'raid',
+				par: 6
+			},
+			{
+				text: "I made a friend, Ardy. We met when he healed me.",
+				start: 'life',
+				end: 'real',
+				par: 6
+			},
+			{
+				text: "Living in-game was preferable to the alternative. Who needed sun when you had stats?",
+				start: 'name',
+				end: 'user',
+				par: 6
+			},
 		],
-		unlock: 0
+		unlock: 100
 	},
 	"SNOW": {
 		colors: {
@@ -195,8 +244,62 @@ quat.themes = {
 				end: 'sled',
 				par: 6
 			},
+			{
+				text: "I couldn't see the bottom of the hill from here. The earth fell away in front of me.",
+				start: 'here',
+				end: 'from',
+				par: 6
+			},
+			{
+				text: "You ever get that feeling that a sheer drop is just ahead?",
+				start: 'drop',
+				end: 'huge',
+				par: 8
+			},
+			{
+				text: "You can feel the fear before you see it.",
+				start: 'fear',
+				end: 'feel',
+				par: 4
+			},
+			{
+				text: "But there I was. So I launched down the hill.",
+				start: 'hill',
+				end: 'down',
+				par: 6
+			},
+			{
+				text: "I flew down banks and through clouds of mist.",
+				start: 'away',
+				end: 'flew',
+				par: 6
+			},
+			{
+				text: "There were lights ahead, far away. They shined through the fog with flames of orange and blue.",
+				start: 'suns',
+				end: 'lose',
+				par: 5
+			},
+			{
+				text: "Music drifted down from behind me, but I still coursed down the mountain.",
+				start: 'keys',
+				end: 'lost',
+				par: 5
+			},
+			{
+				text: "Music drifted down from behind me, but I still coursed down the mountain.",
+				start: 'keys',
+				end: 'lost',
+				par: 5
+			},
+			{
+				text: "Someone sang to me.",
+				start: 'song',
+				end: 'some',
+				par: 3
+			},
 		],
-		unlock: 0
+		unlock: 200
 	},
 	"BOOK": {
 		colors: {
@@ -220,7 +323,7 @@ quat.themes = {
 				par: 6
 			},
 		],
-		unlock: 0
+		unlock: 300
 	},
 	"PINE": { // Maybe revisit this one's colors
 		colors: {
@@ -231,7 +334,17 @@ quat.themes = {
 			inverseButtons: true
 		},
 		puzzles: [],
-		unlock: 0
+		unlock: 400
+	},
+	"RISE": {
+		colors: {
+			background: "#355C7D",
+			text: "#C06C84",
+			darkForeground: "#6C5B7B",
+			lightForeground: "#F67280"
+		},
+		puzzles: [],
+		unlock: 500
 	},
 	"DEAD": {
 		colors: {
@@ -242,28 +355,33 @@ quat.themes = {
 			inverseButtons: true
 		},
 		puzzles: [],
-		unlock: 0
+		unlock: 600
 	},
-	"WISH": {
-		colors: {
-			background: "#FAD6AB",
-			text: "#A08800",
-			darkForeground: "#111859",
-			lightForeground: "#BA9E00",
-		},
-		puzzles: [],
-		unlock: 0
-	},
-	"WOOD": {
-		colors: {
-			background: "#64371B",
-			text: "#E37D3E",
-			darkForeground: "#573018",
-			lightForeground: "#A35A2D",
-		},
-		puzzles: [],
-		unlock: 0
-	},
+
+	// Revisit this theme
+	// "WISH": {
+	// 	colors: {
+	// 		background: "#FAD6AB",
+	// 		text: "#A08800",
+	// 		darkForeground: "#111859",
+	// 		lightForeground: "#BA9E00",
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
+	
+	// Revisit this theme
+	// "WOOD": {
+	// 	colors: {
+	// 		background: "#64371B",
+	// 		text: "#E37D3E",
+	// 		darkForeground: "#573018",
+	// 		lightForeground: "#A35A2D",
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
+	
 	"SAIL": {
 		colors: {
 			background: "#171857",
@@ -272,17 +390,19 @@ quat.themes = {
 			lightForeground: "#64371B",
 		},
 		puzzles: [],
-		unlock: 0
+		unlock: 700
 	},
-	"DAYS": {
-		colors: {
-			background: "#00C1C2",
-			text: "#4F4A44",
-			contrastText: true,
-			darkForeground: "#CF9F3B",
-			lightForeground: "#CF9C19"
-		},
-		puzzles: [],
-		unlock: 0
-	},
+
+	// Revisit this theme
+	// "DAYS": {
+	// 	colors: {
+	// 		background: "#00C1C2",
+	// 		text: "#4F4A44",
+	// 		darkForeground: "#CF9F3B",
+	// 		lightForeground: "#CF9C19",
+	// 		contrastText: true
+	// 	},
+	// 	puzzles: [],
+	// 	unlock: 0
+	// },
 };

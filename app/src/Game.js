@@ -204,7 +204,6 @@ quat.Puzzle = quat.MessageQueue.extend({
 
 	toObject: function() {
 		this.stopTime();
-		this.startTime();
 		return {
 			start: this._start,
 			steps: this._steps,
@@ -256,7 +255,7 @@ quat.User = quat.MessageQueue.extend({
 
 			// Only true if the user just unlocked this theme
 			if ((obj.unlock > before) && (obj.unlock <= after)) {
-				this._addMessage('UNOOCKED THEME "' + theme + '"');
+				this._addMessage("'" + theme + "' THEME UNLOCKED!");
 			}
 		}
 	},
@@ -287,7 +286,7 @@ quat.User = quat.MessageQueue.extend({
 
 	init: function() {
 		this._super();
-		this._theme = "WASH";
+		this._theme = "QUAT";
 		this._themeProgress = {};
 		this._timePlayed = 0;
 		this._puzzlesPlayed = 0;
@@ -316,7 +315,6 @@ quat.User = quat.MessageQueue.extend({
 		if (par == steps) {
 			points = par * 2;
 			this._pars += 1;
-			this._addMessage('MADE PAR!');
 		}
 		else {
 			points = par;
@@ -336,9 +334,6 @@ quat.User = quat.MessageQueue.extend({
 	setTheme: function(theme) {
 		if (theme in quat.themes) {
 			this._theme = theme;
-		}
-		else {
-			this._addMessage("TRIED TO CHANGE TO NONEXISTENT THEME " + theme);
 		}
 	},
 
@@ -446,6 +441,7 @@ quat.Game = quat.MessageQueue.extend({
 				}
 			}
 		}
+
 
 		// Basic data keeping values
 		this._puzzle = null;
