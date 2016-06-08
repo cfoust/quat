@@ -14,7 +14,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-        this.textLabel.setColor(theme.colors.text);
+        // this.quatLogo.setColor(theme.colors.text);
 
         for (var i = 0; i < this.buttons.length; i++) {
             this.buttons[i].applyTheme(theme);
@@ -25,28 +25,31 @@ quat.menu.MenuLayer = cc.Layer.extend({
         this._super();
 
         var gameBounds = this.gameBounds,
-        	fontSize = this.fontSize;
+        	fontSize = this.fontSize,
+            logoSize = fontSize * 0.85;
 
         // Sets up the title label
-        var textLabel = new cc.LabelTTF("QUAT", "Ubuntu", fontSize * 1.2, null, cc.TEXT_ALIGNMENT_CENTER);
-        textLabel.x = gameBounds.x + (gameBounds.width / 2);
-        textLabel.y = gameBounds.y + (gameBounds.height * 0.7);
-        textLabel.boundingWidth = gameBounds.width;
-        this.textLabel = textLabel;
-        this.addChild(textLabel);
+        // var quatLogo = new cc.LabelTTF("QUAT", "Ubuntu", fontSize * 1.2, null, cc.TEXT_ALIGNMENT_CENTER);
+        var quatLogo = new quat.solver.BorderedWordNode(logoSize, logoSize * 1.6);
+        quatLogo.x = gameBounds.x + (gameBounds.width / 2);
+        quatLogo.y = gameBounds.y + (gameBounds.height * 0.74);
+        quatLogo.boundingWidth = gameBounds.width;
+        quatLogo.changeWord('QUAT');
+        this.quatLogo = quatLogo;
+        this.addChild(quatLogo);
 
         // Describes what happens when you click each menu button
         var buttons = {
-            "PLAY": function(self) {
+            "Play": function(self) {
                 self.gameScene.SSC.GAME();
             },
-        	"LOOK": function(self) {
+        	"Themes": function(self) {
         		self.gameScene.SSC.LOOK();
         	},
-        	"STATS": function(self) {
+        	"Stats": function(self) {
         		self.gameScene.SSC.STATS();
         	},
-        	"ABOUT": function(self) {
+        	"About": function(self) {
         		self.gameScene.SSC.ABOUT();
         	},
             // Used to take the Default.png screenshots
@@ -55,20 +58,21 @@ quat.menu.MenuLayer = cc.Layer.extend({
             // }
         };
 
-        var buttonFontSize = fontSize * 0.9,
-            buttonHeight = buttonFontSize * 1.3,
-            buttonWidth = gameBounds.width * 0.55,
+        var buttonFontSize = fontSize * 0.5,
+            buttonWidth = gameBounds.width * 0.34,
+            buttonRadius = buttonWidth * 0.18,
+            buttonHeight = buttonWidth,
             difference = (gameBounds.width - buttonWidth) / 2,
-        	buttonGap = buttonHeight * 1.4,
+        	buttonGap = buttonHeight * 1.1,
             numButtons = Object.keys(buttons).length;
 
         // Calculate the offset needed to center all of the buttons
-        var totalHeight = fontSize + (numButtons * buttonGap);
+        var totalHeight = logoSize + (numButtons * buttonGap);
             offset = (((1 - (buttonFontSize / totalHeight)) * totalHeight) - (totalHeight / 2)) / 2;
         // I have no idea why that worked but #yolo
 
         // Reset the offset of the QUAT label
-        textLabel.y += offset;
+        quatLogo.y += offset;
 
         var buttonKeys = Object.keys(buttons);
         this.buttons = [];
@@ -87,7 +91,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
         	}(this, func);
 
         	// Initialize a menu button
-        	var menuButton = new quat.menu.Button(key, buttonFontSize, buttonWidth, buttonHeight, action);
+        	var menuButton = new quat.menu.Button(key, buttonFontSize, buttonWidth, buttonHeight, action, buttonRadius);
 	        
 	        // Move it properly
 	        menuButton.x = gameBounds.x + difference;
@@ -99,7 +103,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
     },
 
     setOpacity: function(opacity) {
-    	this.textLabel.setOpacity(opacity);
+    	this.quatLogo.setOpacity(opacity);
 
     	for (var i = 0; i < this.buttons.length; i++) {
     		this.buttons[i].setOpacity(opacity);

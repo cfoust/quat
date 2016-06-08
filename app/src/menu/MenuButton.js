@@ -2,12 +2,13 @@ var quat = quat || {};
 quat.menu = quat.menu || {};
 
 quat.menu.Button = cc.Layer.extend({
-    ctor: function(title, fontSize, width, height, callback) {
+    ctor: function(title, fontSize, width, height, callback, radius) {
         this._super();
 
         this.title = title;
         this.width = width;
         this.height = height;
+        this.radius = radius;
         this.fontSize = fontSize;
         this.callback = callback;
 
@@ -59,7 +60,7 @@ quat.menu.Button = cc.Layer.extend({
         this.defaultColor = cc.color(255,255,255,64),
         this.selectedColor = cc.color(255,255,255,153);
 
-        var borderRadius = this.fontSize * 0.3,
+        var borderRadius = (this.radius === undefined) ? this.fontSize * 0.3 : this.radius,
             borderWidth = this.fontSize * 0.18;
 
         var border = new quat.RectRadius(this.width, this.height, borderRadius, borderWidth, false);
