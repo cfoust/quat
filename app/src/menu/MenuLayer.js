@@ -26,7 +26,7 @@ quat.menu.MenuLayer = cc.Layer.extend({
 
         var gameBounds = this.gameBounds,
         	fontSize = this.fontSize,
-            logoSize = fontSize * 0.85;
+            logoSize = fontSize * 0.70;
 
         // Sets up the title label
         // var quatLogo = new cc.LabelTTF("QUAT", "Ubuntu", fontSize * 1.2, null, cc.TEXT_ALIGNMENT_CENTER);
@@ -59,9 +59,9 @@ quat.menu.MenuLayer = cc.Layer.extend({
         };
 
         var buttonFontSize = fontSize * 0.5,
-            buttonWidth = gameBounds.width * 0.34,
-            buttonRadius = buttonWidth * 0.18,
+            buttonWidth = gameBounds.width * 0.35,
             buttonHeight = buttonWidth,
+            buttonRadius = buttonWidth * 0.18,
             difference = (gameBounds.width - buttonWidth) / 2,
         	buttonGap = buttonHeight * 1.1,
             numButtons = Object.keys(buttons).length;
