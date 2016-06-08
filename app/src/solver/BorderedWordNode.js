@@ -25,7 +25,7 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
             fills = [],
         	size = fontSize * 1.25,
         	radius = fontSize * 0.24,
-        	width = fontSize * 0.17;
+        	width = fontSize * 0.10;
 
         // Iterate through and create the rectangles
         for (var j = 0; j < 4; j++) {
@@ -39,7 +39,7 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
             border.y = bound.y + (bound.height / 2);
             border.zIndex = 1;
 
-			border.setColor(cc.color(255,255,255,255));
+			border.setColor(cc.color.WHITE);
             // Add it as a child to this layer
             this.addChild(border);
 
@@ -89,7 +89,6 @@ quat.solver.BorderedWordNode = quat.solver.WordNode.extend({
     	this._super(color);
 
     	for (var j = 0; j < 4; j++) {
-            this.borders[j].setColor(color);
             this.fills[j].setColor(color);
         }
     }

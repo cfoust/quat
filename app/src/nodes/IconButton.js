@@ -3,8 +3,7 @@ var quat = quat || {};
 quat.IconButton = cc.Node.extend({
 
     applyTheme: function(theme) {
-        this.defaultColor = theme.colors.text;
-        this.selectedColor = theme.colors.lightForeground;
+        
         this.icon.setColor(this.defaultColor);
     },
 
@@ -19,6 +18,9 @@ quat.IconButton = cc.Node.extend({
         this._super();
 
         this.callback = callback;
+
+        this.defaultColor = cc.color.WHITE;
+        this.selectedColor = cc.color.WHITE;
 
         // Always square
         this.width = size;

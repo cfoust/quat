@@ -55,7 +55,7 @@ quat.Puzzle = quat.MessageQueue.extend({
 
 		// Check if the word exists, and if it does, add it
 		if (!(word in this._dict)) {
-			this._addMessage(word.toUpperCase() + " IS NOT A WORD");
+			this._addMessage(word.toUpperCase() + " is not a real word.");
 			return false;
 		}
 

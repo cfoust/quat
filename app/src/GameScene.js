@@ -30,30 +30,30 @@ quat.GameScene = cc.Scene.extend({
 
         var NICE_WIDTH = 300;
 
-        // Case 1: Landscape (and square) orientation
-        if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
+        // // Case 1: Landscape (and square) orientation
+        // if ((w >= h) || ((w < h) && (w > NICE_WIDTH))) {
 
-            // On mobile this looks pretty nice, but we might have
-            // to play with this a bit for really small screens
-            if (cc.sys.isMobile) {
-                var ratio = w / h;
+        //     // On mobile this looks pretty nice, but we might have
+        //     // to play with this a bit for really small screens
+        //     if (cc.sys.isMobile) {
+        //         var ratio = w / h;
 
-                if (ratio < 0.6) {
-                    cWidth = w * 0.8;
-                } else {
-                    cWidth = w * 0.4;
-                }
+        //         if (ratio < 0.6) {
+        //             cWidth = w * 0.8;
+        //         } else {
+        //             cWidth = w * 0.4;
+        //         }
                 
-            } else {
-                cWidth = Math.min(w, NICE_WIDTH);
-            }
+        //     } else {
+        //         cWidth = Math.min(w, NICE_WIDTH);
+        //     }
             
+        //     cX = (w / 2) - (cWidth / 2);
+        // // Case 2: Portrait orientation
+        // } else {
+            cWidth = w* 0.8;
             cX = (w / 2) - (cWidth / 2);
-        // Case 2: Portrait orientation
-        } else {
-            cWidth = w;
-            cX = 0;
-        }
+        // }
 
         return {
             width: cWidth,
@@ -108,7 +108,7 @@ quat.GameScene = cc.Scene.extend({
         this.addChild(this.backgroundLayer);
 
         // Calculate the global font sizes
-        var fontSize = gameBounds.width * 0.15,
+        var fontSize = gameBounds.width * 0.14,
             smallFontSize = fontSize * .5;
 
         // Create a reference to the puzzle layer

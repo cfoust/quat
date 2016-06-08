@@ -9,9 +9,9 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
         this.currentWord.applyTheme(theme);
-        this.goalWord.applyTheme(theme);
-        this.stepsWord.setColor(textColor);
-        this.undoIcon.applyTheme(theme);
+        // this.goalWord.applyTheme(theme);
+        // this.stepsWord.setColor(textColor);
+        // this.undoIcon.applyTheme(theme);
     },
 
     ctor: function(puzzleLayer, gameBounds, fontSize) {
@@ -35,6 +35,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         goalWord.x = gameBounds.x + (width / 2);
         goalWord.y = height * 0.5;
         goalWord.zIndex = 1;
+        goalWord.setColor(cc.color.WHITE);
         this.addChild(goalWord);
         this.goalWord = goalWord;
 
@@ -57,9 +58,10 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         }(this);
         var undoIcon = new quat.IconButton(fontSize * 0.8, "\uf0e2", undoCallback),
             firstBounds = currentWord.bounds[0];
-        undoIcon.x = gameBounds.x;
+        undoIcon.x = gameBounds.x - (fontSize * 0.6);
         undoIcon.y = currentWord.y - (fontSize * 0.50);
         undoIcon.enabled(true);
+        undoIcon.setColor(cc.color.WHITE);
         this.undoIcon = undoIcon;
         this.addChild(undoIcon);
 
@@ -71,6 +73,7 @@ quat.solver.SolutionLayer = cc.Layer.extend({
         stepsWord.zIndex = 1;
         stepsWord.string = "STEPS: 0 PAR: 0";
         stepsWord.setVisible(false);
+        stepsWord.setColor(cc.color.WHITE);
         this.addChild(stepsWord);
         this.stepsWord = stepsWord;
 

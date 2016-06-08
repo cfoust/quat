@@ -12,6 +12,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
         textLabel.boundingWidth = gameBounds.width;
         textLabel.opacity = 0;
         textLabel.string = "";
+        textLabel.setColor(cc.color.WHITE);
         this.textLabel = textLabel;
         this.addChild(textLabel);
 
@@ -24,7 +25,7 @@ quat.solver.TextIndicatorLayer = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-        this.textLabel.setColor(theme.colors.text);
+        // this.textLabel.setColor(theme.colors.text);
     },
 
     setOpacity: function(opacity) {
