@@ -15,9 +15,6 @@ quat.menu.Button = cc.Layer.extend({
     },
 
     applyTheme: function(theme) {
-        // this.textLabel.setColor(theme.colors.text);
-        // this.textColor = theme.colors.text;
-
         if (theme.colors.inverseButtons) {
             this._invert = true;
         } else {

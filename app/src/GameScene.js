@@ -162,14 +162,16 @@ quat.GameScene = cc.Scene.extend({
                 self.SSC.MAIN_MENU();
             }
         }(this);
-        var menuIcon = new quat.IconButton(fontSize * 0.8, "\uf0c9", menuCallback),
-            distance = fontSize / 2;
+        var menuIcon = new quat.menu.Button("Menu", fontSize * 0.5, this.windowWidth * 0.2, fontSize, menuCallback),
+            distance = (fontSize / 2) * 0.8;
         menuIcon.x = distance;
         menuIcon.y = gameBounds.height - distance - fontSize;
         menuIcon.enabled(true);
         menuIcon.setVisible(true);
         this.menuIcon = menuIcon;
         this.addChild(menuIcon);
+        menuIcon.border.setVisible(false);
+        menuIcon.background.setVisible(false);
 
         // Apply the user's theme
         this.applyThemeByName(gameState.getUser().getTheme());
