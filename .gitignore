@@ -1,13 +1,13 @@
-app/.idea/**
-app/linux-build/**
-app/publish/**
-app/simulator/**
-app/CMakeLists.txt
+js/app/.idea/**
+js/app/linux-build/**
+js/app/publish/**
+js/app/simulator/**
+js/app/CMakeLists.txt
 **.pyc
 
-data/words.js
-data/math/out/**
+js/data/words.js
+js/data/math/out/**
 **.quat
-workspace.xml
+js/workspace.xml
 
 **/.DS_Store
