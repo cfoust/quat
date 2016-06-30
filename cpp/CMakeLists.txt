@@ -126,6 +126,8 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/GameScene.cpp
   Classes/BackgroundLayer.cpp
+  Classes/models/Game.cpp
+  Classes/models/Puzzle.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -133,6 +135,8 @@ set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/GameScene.h
   Classes/BackgroundLayer.h
+  Classes/models/Game.h
+  Classes/models/Puzzle.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

@@ -8,8 +8,15 @@ namespace QUAT {
 class BackgroundLayer : public cocos2d::Layer
 {
 public:
-	BackgroundLayer();
+	/**
+	 * Initialize the background layer.
+	 * @return Whether or not the layer was initialized successfully.
+	 */
+	virtual bool init();
 	
+	/**
+	 * Syntactic sugar for hooking the creation function.
+	 */
 	CREATE_FUNC(BackgroundLayer);
 };
 

@@ -3,7 +3,10 @@ js/app/linux-build/**
 js/app/publish/**
 js/app/simulator/**
 js/app/CMakeLists.txt
+
 **.pyc
+**.o
+**.log
 
 js/data/words.js
 js/data/math/out/**
