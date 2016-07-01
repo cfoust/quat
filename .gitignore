@@ -4,6 +4,8 @@ js/app/publish/**
 js/app/simulator/**
 js/app/CMakeLists.txt
 
+cpp/linux-build/**
+
 **.pyc
 **.o
 **.log

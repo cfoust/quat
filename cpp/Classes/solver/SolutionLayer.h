@@ -8,7 +8,10 @@ namespace QUAT {
 class SolutionLayer : public cocos2d::Layer
 {
 private:
+	// Bounds of the game that we render in
 	cocos2d::Rect * gameBounds;
+
+	// The font size for this layer
 	float fontSize;
 
 public:

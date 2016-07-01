@@ -38,13 +38,19 @@ bool SolutionLayer::init() {
     	  gap = fontSize * 1.6,
     	  panelHeight = fontSize + (width * .09);
     
-    auto ttf0 = WordNode::create(80, 50);
+    auto goalWord = WordNode::create(fontSize, gap);
+    goalWord->changeWord(new std::string("GOAL"));
+    goalWord->setPosition(gameBounds->origin.x + (width / 2), 
+                          height / 2);
+    this->addChild(goalWord);
     
-    ttf0->setPosition(Vec2(width / 2, height / 2));
-    ttf0->changeWord(new std::string("PORN"));
-    this->addChild(ttf0);
-    
-	
+	auto currentWord = WordNode::create(fontSize, gap);
+    currentWord->changeWord(new std::string("WORD"));
+    currentWord->setPosition(gameBounds->origin.x + (width / 2), 
+                             goalWord->getPositionY() + fontSize * 1.4);
+    this->addChild(currentWord);
+
+
     return true;
 }
 
