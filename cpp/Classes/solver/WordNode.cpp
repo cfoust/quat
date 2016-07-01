@@ -33,6 +33,12 @@ std::string * WordNode::getWord() {
 }
 
 bool WordNode::init() {
+	// Init the super class
+    if ( !Layer::init() )
+    {
+        return false;
+    }
+	
 	float offset = -1 * (this->fontGap * 1.5);
 
 	// Initialize the whole bounds

@@ -1,5 +1,6 @@
 #include "PuzzleLayer.h"
 #include "SolutionLayer.h"
+#include "../nodes/RectRadius.h"
 
 USING_NS_CC;
 
@@ -31,7 +32,6 @@ bool PuzzleLayer::init() {
     
     solutionLayer = QUAT::SolutionLayer::create(gameBounds, fontSize);
     addChild(solutionLayer, 0);
-
 	
     return true;
 }

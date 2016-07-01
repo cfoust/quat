@@ -131,6 +131,8 @@ set(GAME_SRC
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolutionLayer.cpp
   Classes/solver/WordNode.cpp
+  Classes/solver/BorderedWordNode.cpp
+  Classes/nodes/RectRadius.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -143,6 +145,8 @@ set(GAME_HEADERS
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolutionLayer.h
   Classes/solver/WordNode.h
+  Classes/solver/BorderedWordNode.h
+  Classes/nodes/RectRadius.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

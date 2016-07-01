@@ -1,5 +1,6 @@
 #include "SolutionLayer.h"
 #include "WordNode.h"
+#include "BorderedWordNode.h"
 
 #include <string>
 
@@ -44,7 +45,7 @@ bool SolutionLayer::init() {
                           height / 2);
     this->addChild(goalWord);
     
-	auto currentWord = WordNode::create(fontSize, gap);
+	auto currentWord = BorderedWordNode::create(fontSize, gap);
     currentWord->changeWord(new std::string("WORD"));
     currentWord->setPosition(gameBounds->origin.x + (width / 2), 
                              goalWord->getPositionY() + fontSize * 1.4);

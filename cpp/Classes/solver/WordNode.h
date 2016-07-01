@@ -7,7 +7,7 @@ namespace QUAT {
 
 class WordNode : public cocos2d::Layer
 {
-private:
+protected:
 	float fontGap,  // Gap between the letters horizontally 
 		  fontSize; // Actual font size
 
