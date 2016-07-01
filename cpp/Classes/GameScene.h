@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "BackgroundLayer.h"
+#include "solver/PuzzleLayer.h"
 
 namespace QUAT {
 
@@ -11,7 +12,20 @@ class GameScene : public cocos2d::Layer
 
 private:
 	// The colorful global background of the game.
-	BackgroundLayer * background;
+    BackgroundLayer * background;
+
+    // Layer for actually playing the game
+	PuzzleLayer * puzzleLayer;
+
+    // Stores the boundaries of the game
+    cocos2d::Rect * gameBounds;
+
+
+    /**
+     * Generates the bounds of the game used to render everything.
+     * @return Rect representing the game area.
+     */
+    void generateBounds();
 
 public:
 	/**

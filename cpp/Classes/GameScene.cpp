@@ -1,5 +1,6 @@
 #include "GameScene.h"
 #include "BackgroundLayer.h"
+#include "solver/PuzzleLayer.h"
 
 namespace QUAT {
 
@@ -20,6 +21,12 @@ Scene* GameScene::createScene()
     return scene;
 }
 
+void GameScene::generateBounds() {
+    Size visibleSize = Director::getInstance()->getVisibleSize();
+
+    gameBounds = new cocos2d::Rect(0, 0, visibleSize.width, visibleSize.height);
+}
+
 bool GameScene::init()
 {
     // Init the super class
@@ -28,9 +35,18 @@ bool GameScene::init()
         return false;
     }
 
+    // Generate the bounds of the game space
+    generateBounds();
+
+    float fontSize = gameBounds->size.width * 0.14;
+
     // Create the background
     background = BackgroundLayer::create();
     addChild(background, 0);
+
+    // Create the puzzle layer
+    puzzleLayer = PuzzleLayer::create(gameBounds, fontSize);
+    addChild(puzzleLayer, 1);
     
     return true;
 }

@@ -128,6 +128,9 @@ set(GAME_SRC
   Classes/BackgroundLayer.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
+  Classes/solver/PuzzleLayer.cpp
+  Classes/solver/SolutionLayer.cpp
+  Classes/solver/WordNode.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -137,6 +140,9 @@ set(GAME_HEADERS
   Classes/BackgroundLayer.h
   Classes/models/Game.h
   Classes/models/Puzzle.h
+  Classes/solver/PuzzleLayer.h
+  Classes/solver/SolutionLayer.h
+  Classes/solver/WordNode.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

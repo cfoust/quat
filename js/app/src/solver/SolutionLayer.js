@@ -9,9 +9,6 @@ quat.solver.SolutionLayer = cc.Layer.extend({
     applyTheme: function(theme) {
         var textColor = theme.colors.text;
         this.currentWord.applyTheme(theme);
-        // this.goalWord.applyTheme(theme);
-        // this.stepsWord.setColor(textColor);
-        // this.undoIcon.applyTheme(theme);
     },
 
     ctor: function(puzzleLayer, gameBounds, fontSize) {
