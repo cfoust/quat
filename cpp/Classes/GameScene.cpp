@@ -62,7 +62,7 @@ bool GameScene::init()
                                            CC_CALLBACK_0(GameScene::menuCallback, this));
     button->setPositionX(distance);
     button->setPositionY(gameBounds->size.height - distance - fontSize);
-    button->showBorder(true);
+    button->showBorder(false);
     this->addChild(button);
     
     return true;

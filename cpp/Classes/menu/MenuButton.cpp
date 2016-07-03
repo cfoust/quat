@@ -91,7 +91,7 @@ bool MenuButton::init() {
     this->selectedColor = new cocos2d::Color4B(255,255,255,153);
 
     float borderRadius = this->fontSize * 0.3,
-          borderWidth = this->fontSize * 0.18;
+          borderWidth = this->fontSize * 0.08;
 
     this->border = RectRadius::create(this->width, this->height, borderRadius, borderWidth, false);
     this->border->setPositionX(this->width / 2);
