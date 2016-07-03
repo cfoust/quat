@@ -27,6 +27,8 @@ private:
      */
     void generateBounds();
 
+    void menuCallback();
+
 public:
 	/**
 	 * Creates a scene object with a game scene that is used by the director 

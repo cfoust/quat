@@ -1,4 +1,5 @@
 #include "SolutionLayer.h"
+#include "../menu/MenuButton.h"
 
 #include <string>
 
@@ -20,6 +21,10 @@ SolutionLayer * SolutionLayer::create(cocos2d::Rect * gameBounds, float fontSize
         pRet = NULL;
         return NULL;
     }
+}
+
+void SolutionLayer::menu() {
+    log("Test");
 }
 
 
@@ -48,7 +53,6 @@ bool SolutionLayer::init() {
     currentWord->setPosition(gameBounds->origin.x + (width / 2), 
                              goalWord->getPositionY() + fontSize * 1.4);
     this->addChild(currentWord);
-
 
     return true;
 }

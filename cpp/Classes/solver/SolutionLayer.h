@@ -28,6 +28,8 @@ public:
 	virtual bool init();
 	
 	SolutionLayer(cocos2d::Rect * gameBounds, float fontSize);
+
+	void menu();
 	
 	static SolutionLayer * create(cocos2d::Rect * gameBounds, float fontSize);
 };
