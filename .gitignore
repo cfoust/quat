@@ -5,6 +5,7 @@ js/app/simulator/**
 js/app/CMakeLists.txt
 
 cpp/linux-build/**
+cpp/bin/**
 
 **.pyc
 **.o

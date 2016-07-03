@@ -3,6 +3,9 @@
 
 #include "cocos2d.h"
 
+#include "WordNode.h"
+#include "BorderedWordNode.h"
+
 namespace QUAT {
 
 class SolutionLayer : public cocos2d::Layer
@@ -10,6 +13,9 @@ class SolutionLayer : public cocos2d::Layer
 private:
 	// Bounds of the game that we render in
 	cocos2d::Rect * gameBounds;
+
+	WordNode * goalWord;
+	BorderedWordNode * currentWord;
 
 	// The font size for this layer
 	float fontSize;
