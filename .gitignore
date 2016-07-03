@@ -3,7 +3,8 @@ js/app/linux-build/**
 js/app/publish/**
 js/app/simulator/**
 js/app/CMakeLists.txt
-
+js/app/frameworks/cocos2d-x/**
+js/app/frameworks/cocos2d-html5/**
 cpp/linux-build/**
 cpp/bin/**
 
