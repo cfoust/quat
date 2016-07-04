@@ -5,6 +5,7 @@
 
 #include "WordNode.h"
 #include "BorderedWordNode.h"
+#include "../menu/MenuButton.h"
 
 namespace QUAT {
 
@@ -14,7 +15,13 @@ private:
 	// Bounds of the game that we render in
 	cocos2d::Rect * gameBounds;
 
+	cocos2d::Rect * bounds;
+
+	std::vector<MenuButton*> * buttons;
+
 	float fontSize;
+
+	int indexForPoint(cocos2d::Vec2 * point);
 
 public:
 	/**
@@ -26,6 +33,21 @@ public:
 	KeyboardLayer(cocos2d::Rect * gameBounds, float fontSize);
 
 	void none();
+
+	/**
+	 * Checks whether a point is in the keyboard.
+	 */
+	bool pointInKeyboard(cocos2d::Vec2 * point);
+
+	/**
+	 * Checks whether the point is in a letter.
+	 */
+	bool pointInLetter(cocos2d::Vec2 * point);
+
+	/**
+	 * Gets the string for the letter the point is in.
+	 */
+	const std::string getLetter(cocos2d::Vec2 * point);
 	
 	static KeyboardLayer * create(cocos2d::Rect * gameBounds, float fontSize);
 };

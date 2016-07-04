@@ -45,6 +45,8 @@ public:
 	 */
 	void enabled(bool status);
 
+	cocos2d::Rect * getBounds();
+
 	/**
 	 * Returns whether or not the button is enabled.
 	 */
@@ -65,6 +67,11 @@ public:
 	 * Sets the text of the button.
 	 */
 	void setText(std::string text);
+
+	/**
+	 * Gets the text of the button.
+	 */
+	const std::string getText();
 
 	void setPositionX(float x);
 	void setPositionY(float y);

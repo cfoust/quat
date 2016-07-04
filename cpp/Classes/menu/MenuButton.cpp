@@ -22,6 +22,10 @@ bool MenuButton::isEnabled() {
     return this->_enabled;
 }
 
+cocos2d::Rect * MenuButton::getBounds() {
+    return this->bounds;
+}
+
 /**
 * Sets the selected status of the button. Selected means that the border
 * is highlighted.
@@ -46,6 +50,10 @@ void MenuButton::showBorder(bool showBorder) {
 */
 void MenuButton::setText(std::string text) {
     this->textLabel->setString(text);
+}
+
+const std::string MenuButton::getText() {
+    return this->textLabel->getString();
 }
 
 MenuButton * MenuButton::create(std::string title, 

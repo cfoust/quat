@@ -1,5 +1,4 @@
 #include "KeyboardLayer.h"
-#include "../menu/MenuButton.h"
 
 #include <string>
 
@@ -55,6 +54,8 @@ bool KeyboardLayer::init() {
           verticalGap = keyboardHeight * 0.07,
           horizontalGap = keyboardWidth * 0.02;
 
+    this->buttons = new std::vector<MenuButton*>();
+
     std::string rows[] = {
         "QWERTYUIOP",
         "ASDFGHJKL",
@@ -80,8 +81,14 @@ bool KeyboardLayer::init() {
             button->setPositionY(((3 - (i + 1)) * (keyHeight + verticalGap))
                                  + (height * 0.02) + keyboardY);
             this->addChild(button);
+            this->buttons->push_back(button);
         }
     }
+
+    this->bounds = new cocos2d::Rect((width / 2) - keyboardWidth / 2,
+                                     keyboardY,
+                                     keyboardWidth,
+                                     keyboardHeight);
 
 
     return true;
@@ -91,6 +98,37 @@ KeyboardLayer::KeyboardLayer(cocos2d::Rect * gameBounds, float fontSize) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
+}
+
+int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {
+    for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {
+        MenuButton * button = (*this->buttons)[i];
+        if (button->getBounds()->containsPoint(*point)) {
+            return (int) i;
+        }
+    }
+    return -1;
+}
+
+/**
+ * Checks whether a point is in the keyboard.
+ */
+bool KeyboardLayer::pointInKeyboard(cocos2d::Vec2 * point) {
+    return this->bounds->containsPoint(*point);
+}
+
+/**
+ * Checks whether the point is in a letter.
+ */
+bool KeyboardLayer::pointInLetter(cocos2d::Vec2 * point) {
+    return this->indexForPoint(point) != -1;
+}
+
+/**
+ * Gets the string for the letter the point is in.
+ */
+const std::string KeyboardLayer::getLetter(cocos2d::Vec2 * point) {
+    return (*this->buttons)[this->indexForPoint(point)]->getText();
 }
 
 }
