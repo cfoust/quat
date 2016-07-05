@@ -5,7 +5,7 @@ USING_NS_CC;
 
 // Half of iPhone 6's size, just keeps the aspect ratio nice for desktop
 // testing 
-static cocos2d::Size designResolutionSize = cocos2d::Size(375, 667);
+static cocos2d::Size designResolutionSize = cocos2d::Size(562.5, 1000);
 
 AppDelegate::AppDelegate() {
 

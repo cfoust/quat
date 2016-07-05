@@ -54,7 +54,7 @@ bool GameScene::init()
     addChild(puzzleLayer, 1);
 
 
-    float distance = (fontSize / 2) * 0.8;
+    float distance = (fontSize / 2) * 0.3;
     auto button = QUAT::MenuButton::create("Menu", 
                                            fontSize * 0.5,
                                            gameBounds->size.width * 0.2,

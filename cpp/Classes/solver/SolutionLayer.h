@@ -17,6 +17,8 @@ private:
 	WordNode * goalWord;
 	BorderedWordNode * currentWord;
 
+	cocos2d::Sprite * undo;
+
 	// The font size for this layer
 	float fontSize;
 

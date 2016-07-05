@@ -51,7 +51,7 @@ bool WordNode::init() {
 	bounds = new std::vector<cocos2d::Rect*>();
 
 	for (int i = 0; i < 4; i++) {
-		auto letterLabel = cocos2d::Label::createWithTTF("A", "fonts/Ubuntu.ttf", this->fontSize);
+		auto letterLabel = cocos2d::Label::createWithTTF("A", "fonts/Arimo-Regular.ttf", this->fontSize);
 
 		// Set them to their proper location
 		letterLabel->setPositionX((((float) i) * this->fontGap) + offset);

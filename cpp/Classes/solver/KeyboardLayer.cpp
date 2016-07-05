@@ -49,7 +49,7 @@ bool KeyboardLayer::init() {
     // Calculates the rest of them
     float halfWidth = keyboardWidth / 2,
           keyHeight = keyboardHeight * 0.27,
-          keyFontSize = keyHeight * 0.6,
+          keyFontSize = keyHeight * 0.5,
           keyWidth = keyboardWidth * 0.080,
           verticalGap = keyboardHeight * 0.07,
           horizontalGap = keyboardWidth * 0.02;

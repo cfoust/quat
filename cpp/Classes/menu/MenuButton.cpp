@@ -88,8 +88,8 @@ bool MenuButton::init() {
         return false;
     }
 
-    this->textLabel = cocos2d::Label::createWithTTF(this->title, "fonts/Ubuntu.ttf", this->fontSize);
-    this->textLabel->setPositionX(this->width / 2);
+    this->textLabel = cocos2d::Label::createWithTTF(this->title, "fonts/Arimo-Regular.ttf", this->fontSize);
+    this->textLabel->setPositionX(this->width * 0.48);
     this->textLabel->setPositionY(this->height / 2);
     this->addChild(this->textLabel, 2);
 
@@ -99,7 +99,7 @@ bool MenuButton::init() {
     this->selectedColor = new cocos2d::Color4B(255,255,255,153);
 
     float borderRadius = this->fontSize * 0.3,
-          borderWidth = this->fontSize * 0.08;
+          borderWidth = this->fontSize * 0.06;
 
     this->border = RectRadius::create(this->width, this->height, borderRadius, borderWidth, false);
     this->border->setPositionX(this->width / 2);

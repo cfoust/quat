@@ -39,20 +39,30 @@ bool SolutionLayer::init() {
     float width = gameBounds->size.width,
     	  height = gameBounds->size.height,
     	  fourths = width / 4,
-    	  gap = fontSize * 1.6,
+          wordSize = fontSize,
+    	  gap = wordSize * 1.8,
     	  panelHeight = fontSize + (width * .09);
     
-    this->goalWord = WordNode::create(fontSize, gap);
+    this->goalWord = WordNode::create(wordSize, gap);
     goalWord->changeWord(new std::string("GOAL"));
     goalWord->setPosition(gameBounds->origin.x + (width / 2), 
-                          height / 2);
+                          height * 0.55);
     this->addChild(goalWord);
     
-	this->currentWord = BorderedWordNode::create(fontSize, gap);
+	this->currentWord = BorderedWordNode::create(wordSize, gap);
     currentWord->changeWord(new std::string("WORD"));
     currentWord->setPosition(gameBounds->origin.x + (width / 2), 
-                             goalWord->getPositionY() + fontSize * 1.4);
+                             goalWord->getPositionY() + wordSize * 1.6);
     this->addChild(currentWord);
+
+    auto spr = cocos2d::Sprite::create("undo.png");
+    spr->setPosition(gameBounds->origin.x + width * 0.07,
+                     currentWord->getPositionY());
+
+    float scale = (fontSize * 0.8)/ spr->getBoundingBox().size.height;
+    spr->setScale(scale,scale);
+    auto box = spr->getBoundingBox();
+    this->addChild(spr);
 
     return true;
 }
