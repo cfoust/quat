@@ -133,6 +133,7 @@ set(GAME_SRC
   Classes/solver/WordNode.cpp
   Classes/solver/BorderedWordNode.cpp
   Classes/solver/KeyboardLayer.cpp
+  Classes/solver/SolverStateController.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -149,6 +150,7 @@ set(GAME_HEADERS
   Classes/solver/WordNode.h
   Classes/solver/BorderedWordNode.h
   Classes/solver/KeyboardLayer.h
+  Classes/solver/SolverStateController.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

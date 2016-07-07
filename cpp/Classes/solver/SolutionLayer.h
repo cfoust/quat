@@ -14,8 +14,6 @@ private:
 	// Bounds of the game that we render in
 	cocos2d::Rect * gameBounds;
 
-	WordNode * goalWord;
-	BorderedWordNode * currentWord;
 
 	cocos2d::Sprite * undo;
 
@@ -23,6 +21,8 @@ private:
 	float fontSize;
 
 public:
+	WordNode * goalWord;
+	BorderedWordNode * currentWord;
 	/**
 	 * Initialize the solution layer.
 	 * @return Whether or not the layer was initialized successfully.
