@@ -9,27 +9,39 @@ namespace QUAT {
 class Puzzle
 {
 private:
-	std::vector<std::string> steps;
+	std::vector<std::string> * steps;
 	std::string start, finish;
 
+	int par,   // The ideal number of steps to finish the puzzle
+		undos; // The number of times the user hit undo
+
+	
+	long int _startTime, // When we last started recording time
+			 totalMs;    // The number of milliseconds the user spent on this Puzzle
+
+	// Whether or not we're recording time
+	bool timeStarted;
+
+	// Gets the current time in ms
+	long int epochMs();
+
+	/**
+	 * Clears any stored data about this puzzle and reverts to an empty puzzle.
+	 */
+	void clear(); 
 public:
 	/**
 	 * Standard constructor that initializes steps.
 	 */
 	Puzzle();
-	
-	/**
-	 * Construct a puzzle from an already existing steps vector. Copies to new
-	 * vector.
-	 */
-	Puzzle(std::string * start, std::string * finish);
 
 	/**
 	 * Add a word to the solution. Checks to see if it is a valid move. Returns
 	 * true if the word was added successfully and false if it was not.
 	 * @param word Four-letter string word to add to solution.
+	 * @return True if the word was added, false if it is not a word.
 	 */
-	void addWord(std::string * word);
+	bool addWord(std::string * word);
 
 	/**
 	 * Checks whether the puzzle is solved.
@@ -38,12 +50,17 @@ public:
 	bool atGoal();
 
 	/**
-	 * Creates a Puzzle instance from bytes based on the Puzzle data format.
+	 * Fills this instance from bytes based on the Puzzle data format.
 	 * @param  bytes Array of bytes representing a puzzle.
-	 * @return       Puzzle instance representing the puzzle contained by the
 	 *               array of bytes.
 	 */
-	static Puzzle * fromBytes(char * bytes);
+	void fromBytes(char * bytes);
+
+	/**
+	 * Gets the last step in the puzzle solution (the current end word.)
+	 * @return The last step in the puzzle solution.
+	 */
+	std::string getCurrent();
 
 	/**
 	 * Gets the first step in the puzzle solution (the start word.)
@@ -58,17 +75,29 @@ public:
 	std::string getGoal();
 
 	/**
-	 * Gets the last step in the puzzle solution (the current end word.)
-	 * @return The last step in the puzzle solution.
+	 * Gets the par for this puzzle.
 	 */
-	std::string getLast();
+	int getPar();
 
 	/**
-	 * Converts an instance of Puzzle into bytes.
-	 * @return array of bytes.
+	 * Get the number of milliseconds the user has spent in solving this puzzle.
 	 */
-	char * toBytes();
+	long int getTime();
 
+	/**
+	 * Delete the most recent step in the solution.
+	 */
+	void goBack();
+
+	/**
+	 * Starts (or continues) time recording for this puzzle.
+	 */
+	void startTime();
+
+	/**
+	 * Stops recording time for this puzzle.
+	 */
+	void stopTime();
 };
 
 }

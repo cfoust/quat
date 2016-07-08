@@ -1,5 +1,6 @@
 #include "PuzzleLayer.h"
 #include "SolverStateController.h"
+#include "../models/Puzzle.h"
 #include "../nodes/RectRadius.h"
 
 // USING_NS_CC;

@@ -8,7 +8,6 @@ class Game
 private:
 
 public:
-	void init();
 
 	bool canLoadFromLocal();
 
