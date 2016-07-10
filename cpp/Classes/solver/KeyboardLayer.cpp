@@ -127,7 +127,7 @@ bool KeyboardLayer::pointInLetter(cocos2d::Vec2 * point) {
 /**
  * Gets the string for the letter the point is in.
  */
-const std::string KeyboardLayer::getLetter(cocos2d::Vec2 * point) {
+std::string KeyboardLayer::getLetter(cocos2d::Vec2 * point) {
     return (*this->buttons)[this->indexForPoint(point)]->getText();
 }
 

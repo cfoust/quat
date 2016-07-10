@@ -47,7 +47,7 @@ public:
 	/**
 	 * Gets the string for the letter the point is in.
 	 */
-	const std::string getLetter(cocos2d::Vec2 * point);
+	std::string getLetter(cocos2d::Vec2 * point);
 	
 	static KeyboardLayer * create(cocos2d::Rect * gameBounds, float fontSize);
 };

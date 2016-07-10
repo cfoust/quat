@@ -5,11 +5,11 @@
 
 namespace QUAT {
 
-void WordNode::changeLetter(int column, std::string * letter) {
+void WordNode::changeLetter(int column, std::string letter) {
 	auto letterLabel = (*this->letterPool)[column];
 
 	// Set the letter label to this letter
-	letterLabel->setString(*letter);
+	letterLabel->setString(letter);
 }
 
 void WordNode::changeWord(std::string * word) {
@@ -24,8 +24,8 @@ void WordNode::changeWord(std::string * word) {
 	}
 }
 
-std::string * WordNode::getLetter(int column) {
-	return NULL;
+const std::string * WordNode::getLetter(int column) {
+	return &(*this->letterPool)[column]->getString();
 }
 
 std::string * WordNode::getWord() {

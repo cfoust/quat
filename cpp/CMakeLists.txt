@@ -126,14 +126,18 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/GameScene.cpp
   Classes/BackgroundLayer.cpp
+  Classes/TouchInputManager.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
+  Classes/models/User.cpp
+  Classes/models/Dictionary.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolutionLayer.cpp
   Classes/solver/WordNode.cpp
   Classes/solver/BorderedWordNode.cpp
   Classes/solver/KeyboardLayer.cpp
   Classes/solver/SolverStateController.cpp
+  Classes/solver/SolverTouchInputManager.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -143,14 +147,18 @@ set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/GameScene.h
   Classes/BackgroundLayer.h
+  Classes/TouchInputManager.h
   Classes/models/Game.h
   Classes/models/Puzzle.h
+  Classes/models/User.h
+  Classes/models/Dictionary.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolutionLayer.h
   Classes/solver/WordNode.h
   Classes/solver/BorderedWordNode.h
   Classes/solver/KeyboardLayer.h
   Classes/solver/SolverStateController.h
+  Classes/solver/SolverTouchInputManager.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

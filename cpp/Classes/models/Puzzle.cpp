@@ -21,11 +21,13 @@ void Puzzle::clear() {
 	this->_startTime = 0;
 }
 
-Puzzle::Puzzle() {
+Puzzle::Puzzle(Dictionary * d) {
 	this->steps = new std::vector<std::string>();
+	this->dictionary = d;
 
 	// Kind of superfluous, but this can't hurt 
 	this->clear();
+
 }
 
 bool Puzzle::addWord(std::string * word) {
@@ -33,13 +35,12 @@ bool Puzzle::addWord(std::string * word) {
 		return false;
 	}
 
-	// Ensure the word is in the dictionary
-	// if (!wordInDictionary) {
-	// 	return false;
-	// }
+	if (this->dictionary->contains(word) == -1) {
+		return false;
+	}
 	
 	// Can't play the same word twice
-	if ((*word) == this->getCurrent()) {
+	if ((*word) == (*this->getCurrent())) {
 		return false;
 	}
 
@@ -62,19 +63,19 @@ void Puzzle::fromBytes(char * bytes) {
 	// Reset the instance data
 	this->clear();
 
-
+	// todo: actually implement this
 }
 
-std::string Puzzle::getCurrent() {
-	return (*this->steps)[this->steps->size() - 1];
+std::string * Puzzle::getCurrent() {
+	return &(*this->steps)[this->steps->size() - 1];
 }
 
-std::string Puzzle::getFirst() {
-	return this->start;
+std::string * Puzzle::getFirst() {
+	return &this->start;
 }
 
-std::string Puzzle::getGoal() {
-	return this->finish;
+std::string * Puzzle::getGoal() {
+	return &this->finish;
 }
 
 int Puzzle::getPar() {
@@ -83,6 +84,10 @@ int Puzzle::getPar() {
 
 long int Puzzle::getTime() {
 	return this->totalMs;
+}
+
+bool Puzzle::getTimeStarted() {
+	return this->timeStarted;
 }
 
 void Puzzle::goBack() {
@@ -105,6 +110,10 @@ void Puzzle::stopTime() {
 
 	this->timeStarted = false;
 	this->totalMs += difference;
+}
+
+void Puzzle::toBytes(char * bytes) {
+	// todo: implement
 }
 
 

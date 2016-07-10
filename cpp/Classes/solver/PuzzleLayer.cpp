@@ -1,6 +1,6 @@
 #include "PuzzleLayer.h"
 #include "SolverStateController.h"
-#include "../models/Puzzle.h"
+#include "SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
 
 // USING_NS_CC;
@@ -34,7 +34,7 @@ void PuzzleLayer::goIdle() {
 
  //    self.solutionLayer.stepsWord.setVisible(true);
  //    self.puzzleLayer.textIndicatorLayer.setVisible(true);
-
+    this->updateFromModel();
  //    self.solutionLayer.updateFromModel(self.quatGame);
 }
 
@@ -45,6 +45,37 @@ void PuzzleLayer::chooseLetter(int column) {
  //    currentWord.changeWord(self.quatGame.getPuzzle().getCurrentWord());
     word->unselect();
     word->select(column);
+}
+
+void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
+    this->solutionLayer->currentWord->changeLetter(column, letter);
+}
+
+int PuzzleLayer::pointInCurrentWord(cocos2d::Vec2 * point) {
+    return this->solutionLayer->currentWord->pointInWord(point);
+}
+
+bool PuzzleLayer::pointInKeyboard(cocos2d::Vec2 * point) {
+    return this->keyboardLayer->pointInKeyboard(point);
+}
+
+bool PuzzleLayer::pointInKeyboardLetter(cocos2d::Vec2 * point) {
+    return this->keyboardLayer->pointInLetter(point);
+}
+
+std::string PuzzleLayer::getKeyboardLetter(cocos2d::Vec2 * point) {
+    return this->keyboardLayer->getLetter(point);
+}
+
+void PuzzleLayer::updateFromModel() {
+    auto puzzle = this->game->getPuzzle();
+
+    if (!puzzle->getTimeStarted()) {
+        puzzle->startTime();
+    }
+
+    this->solutionLayer->currentWord->changeWord(puzzle->getCurrent());
+    this->solutionLayer->goalWord->changeWord(puzzle->getGoal());
 }
 
 bool PuzzleLayer::init() {
@@ -61,6 +92,9 @@ bool PuzzleLayer::init() {
     this->addChild(keyboardLayer);
 
     solverStateController = new SolverStateController(this);
+
+    auto game = new Game();
+
 	
     return true;
 }

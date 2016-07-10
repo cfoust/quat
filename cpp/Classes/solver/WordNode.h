@@ -27,7 +27,7 @@ public:
 	 * @param column Column (0-3) of the letter to change.
 	 * @param letter New letter.
 	 */
-	void changeLetter(int column, std::string * letter);
+	void changeLetter(int column, std::string letter);
 
 	/**
 	 * Replaces the text of this word with a given word.
@@ -40,7 +40,7 @@ public:
 	 * @param column Column (0-3) of the letter to get.
 	 * @return [description]
 	 */
-	std::string * getLetter(int column);
+	const std::string * getLetter(int column);
 
 	/**
 	 * Gets the current word displayed by the WordNode.
