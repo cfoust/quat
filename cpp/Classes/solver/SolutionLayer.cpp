@@ -53,16 +53,17 @@ bool SolutionLayer::init() {
     currentWord->changeWord(new std::string("WORD"));
     currentWord->setPosition(gameBounds->origin.x + (width / 2), 
                              goalWord->getPositionY() + wordSize * 1.6);
+    currentWord->recalculateBounds();
     this->addChild(currentWord);
 
-    auto spr = cocos2d::Sprite::create("undo.png");
-    spr->setPosition(gameBounds->origin.x + width * 0.07,
+    this->undo = cocos2d::Sprite::create("undo.png");
+    undo->setPosition(gameBounds->origin.x + width * 0.07,
                      currentWord->getPositionY());
 
-    float scale = (fontSize * 0.8)/ spr->getBoundingBox().size.height;
-    spr->setScale(scale,scale);
-    auto box = spr->getBoundingBox();
-    this->addChild(spr);
+    float scale = (fontSize * 0.8)/ undo->getBoundingBox().size.height;
+    undo->setScale(scale,scale);
+    auto box = undo->getBoundingBox();
+    this->addChild(undo);
 
     return true;
 }

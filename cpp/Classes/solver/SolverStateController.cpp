@@ -22,6 +22,7 @@ SolverStateController::STATE SolverStateController::state() {
 
 SolverStateController::SolverStateController(PuzzleLayer * puzzleLayer) {
 	this->puzzleLayer = puzzleLayer;
+	this->setState(IDLE);
 }
 
 }

@@ -20,6 +20,8 @@ protected:
 	// The bounds of the whole word
 	cocos2d::Rect * whole;
 
+	std::string * word;
+
 public:
 
 	/**

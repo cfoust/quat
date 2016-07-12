@@ -1,9 +1,12 @@
 #include "Puzzle.h"
 #include "cocos2d.h"
 
+#include <ctype.h>
 #include <chrono>
 
 namespace QUAT {
+
+using namespace cocos2d;
 
 // Gets the current time in ms
 long int Puzzle::epochMs() {
@@ -27,14 +30,20 @@ Puzzle::Puzzle(Dictionary * d) {
 
 	// Kind of superfluous, but this can't hurt 
 	this->clear();
+	this->steps->push_back(std::string("BANE"));
+	this->start = std::string("BANE");
+	this->finish = std::string("BANK");
 
 }
 
 bool Puzzle::addWord(std::string * word) {
+
 	if (word->length() != 4) {
 		return false;
 	}
 
+	
+	// Then check if it's in the dictionary
 	if (this->dictionary->contains(word) == -1) {
 		return false;
 	}
@@ -80,6 +89,10 @@ std::string * Puzzle::getGoal() {
 
 int Puzzle::getPar() {
 	return this->par;
+}
+
+int Puzzle::getStepCount() {
+	return this->steps->size();
 }
 
 long int Puzzle::getTime() {

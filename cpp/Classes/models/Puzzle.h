@@ -84,6 +84,12 @@ public:
 	int getPar();
 
 	/**
+	 * Gets the number of steps so far.
+	 * @return [description]
+	 */
+	int getStepCount();
+
+	/**
 	 * Get the number of milliseconds the user has spent in solving this puzzle.
 	 */
 	long int getTime();

@@ -22,6 +22,8 @@ private:
 
 	SolverStateController * solverStateController;
 	SolverTouchInputManager * solverTouchInputManager;
+
+	bool trackingTouch;
 public:
 	// ##################################################
 	// ######METHODS USED FOR STATE TRANSITIONS##########
@@ -53,6 +55,11 @@ public:
 	 *                corresponds to the letter the point is in.
 	 */
 	int pointInCurrentWord(cocos2d::Vec2 * point);
+
+	/**
+	 * Gets a pointer to the current word displayed by the current word.
+	 */
+	std::string * getCurrentWord();
 
 	/**
 	 * Checks whether the point is in the general area of the keyboard.
@@ -90,9 +97,11 @@ public:
 	 */
 	virtual bool init();
 
-	
-
 	PuzzleLayer(cocos2d::Rect * gameBounds, float fontSize);
+
+	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	
 	/**
 	 * Creates a PuzzleLayer object.

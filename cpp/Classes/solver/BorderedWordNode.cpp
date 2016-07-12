@@ -47,7 +47,7 @@ bool BorderedWordNode::init() {
 }
 
 void BorderedWordNode::select(int column) {
-	this->fills[column]->setColor(*this->selectedColor);
+	this->fills[3 - column]->setColor(*this->selectedColor);
 }
 
 void BorderedWordNode::unselect() {

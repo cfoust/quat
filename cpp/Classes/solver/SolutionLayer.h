@@ -15,12 +15,12 @@ private:
 	cocos2d::Rect * gameBounds;
 
 
-	cocos2d::Sprite * undo;
 
 	// The font size for this layer
 	float fontSize;
 
 public:
+	cocos2d::Sprite * undo;
 	WordNode * goalWord;
 	BorderedWordNode * currentWord;
 	/**

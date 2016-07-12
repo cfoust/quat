@@ -10,6 +10,7 @@ void WordNode::changeLetter(int column, std::string letter) {
 
 	// Set the letter label to this letter
 	letterLabel->setString(letter);
+	this->word->replace(column, 1, letter, 0, 1);
 }
 
 void WordNode::changeWord(std::string * word) {
@@ -19,8 +20,7 @@ void WordNode::changeWord(std::string * word) {
 
 		auto letterLabel = (*this->letterPool)[i];
 
-		// Set the letter label to this letter
-		letterLabel->setString(sub);
+		this->changeLetter(i, sub);
 	}
 }
 
@@ -29,7 +29,8 @@ const std::string * WordNode::getLetter(int column) {
 }
 
 std::string * WordNode::getWord() {
-	return NULL;
+	// Have to create a string and update it
+	return this->word;
 }
 
 bool WordNode::init() {
@@ -66,6 +67,8 @@ bool WordNode::init() {
 		bounds->push_back(new cocos2d::Rect(0,0,0,0));
 	}
 
+	this->word = new std::string("AAAA");
+
 
 	this->recalculateBounds();
 
@@ -81,7 +84,7 @@ int WordNode::pointInWord(cocos2d::Point * point) {
 		auto rect = (*this->bounds)[i];
 
 		if (rect->containsPoint(*point)) {
-			return i;
+			return 3-i;
 		}
 	}
 

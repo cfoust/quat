@@ -16,8 +16,16 @@ Dictionary::Dictionary() {
  * @return      Integer representation of relative word frequency.
  */
 int Dictionary::contains(std::string * word) {
-	if (this->map->find(*word) != this->map->end()) {
-		return (*this->map)[*word];
+	// make the string lower
+	auto copy = new std::string(*word);
+	const char * cStrCopy = copy->c_str();
+	
+	for (int i = 0; i < 4; i++) {
+		copy->replace(i, 1, 1, tolower(cStrCopy[i]));
+	}
+
+	if (this->map->find(*copy) != this->map->end()) {
+		return (*this->map)[*copy];
 	} else {
 		return -1;
 	}

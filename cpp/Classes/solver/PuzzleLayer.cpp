@@ -3,7 +3,6 @@
 #include "SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
 
-// USING_NS_CC;
 
 namespace QUAT {
 
@@ -25,24 +24,14 @@ PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 }
 
 void PuzzleLayer::goIdle() {
-	if (solverStateController->state() == SolverStateController::CHOOSING_LETTER) {
-		this->keyboardLayer->setVisible(false);
-	}
-
+	this->keyboardLayer->setVisible(false);
 	this->solutionLayer->currentWord->unselect();
-
-
- //    self.solutionLayer.stepsWord.setVisible(true);
- //    self.puzzleLayer.textIndicatorLayer.setVisible(true);
-    this->updateFromModel();
- //    self.solutionLayer.updateFromModel(self.quatGame);
 }
 
 void PuzzleLayer::chooseLetter(int column) {
 	this->keyboardLayer->setVisible(true);
 
-	auto word = this->solutionLayer->currentWord;    
- //    currentWord.changeWord(self.quatGame.getPuzzle().getCurrentWord());
+	auto word = this->solutionLayer->currentWord;
     word->unselect();
     word->select(column);
 }
@@ -74,8 +63,13 @@ void PuzzleLayer::updateFromModel() {
         puzzle->startTime();
     }
 
+    this->solutionLayer->undo->setVisible(puzzle->getStepCount() > 1);
     this->solutionLayer->currentWord->changeWord(puzzle->getCurrent());
     this->solutionLayer->goalWord->changeWord(puzzle->getGoal());
+}
+
+std::string * PuzzleLayer::getCurrentWord() {
+    this->solutionLayer->currentWord->getWord();
 }
 
 bool PuzzleLayer::init() {
@@ -85,18 +79,58 @@ bool PuzzleLayer::init() {
         return false;
     }
     
-    solutionLayer = QUAT::SolutionLayer::create(gameBounds, fontSize);
+    this->solutionLayer = QUAT::SolutionLayer::create(gameBounds, fontSize);
     addChild(solutionLayer, 0);
 
-    keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
+    this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
     this->addChild(keyboardLayer);
 
-    solverStateController = new SolverStateController(this);
+    this->solverStateController = new SolverStateController(this);
 
-    auto game = new Game();
+    this->game = new Game();
 
+    this->solverTouchInputManager = new SolverTouchInputManager(this->solverStateController, this->game, this);
+
+    this->trackingTouch = false;
+
+    //Create a "one by one" touch event listener (processes one touch at a time)
+    auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
+    // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
+    touchListener->setSwallowTouches(false);
+
+    touchListener->onTouchBegan = CC_CALLBACK_2(PuzzleLayer::onTouchBegan, this);
+    touchListener->onTouchMoved = CC_CALLBACK_2(PuzzleLayer::onTouchMoved, this);
+    touchListener->onTouchEnded = CC_CALLBACK_2(PuzzleLayer::onTouchEnded, this);
+
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+
+    this->updateFromModel();
 	
     return true;
+}
+
+bool PuzzleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
+    if (!this->isVisible()) {
+        return false;
+    }
+
+    if (this->trackingTouch) {
+        return false;
+    } else {
+        this->trackingTouch = true;
+    }
+    cocos2d::Vec2 point = touch->getLocation();
+
+    this->solverTouchInputManager->began(&point);
+}
+void PuzzleLayer::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
+    cocos2d::Vec2 point = touch->getLocation();
+    this->solverTouchInputManager->moved(&point);
+}
+void PuzzleLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
+    cocos2d::Vec2 point = touch->getLocation();
+    this->solverTouchInputManager->done(&point);
+    this->trackingTouch = false;
 }
 
 PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds, float fontSize) {
