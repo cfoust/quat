@@ -19,7 +19,6 @@ SolverTouchInputManager::SolverTouchInputManager(SolverStateController * sc,
 }
 
 void SolverTouchInputManager::began(cocos2d::Vec2 * point) {
-	log("BEGAN");
 	if (this->sc->state() == SolverStateController::IDLE) {
 		int currentLetter = this->puzzleLayer->pointInCurrentWord(point);
 
@@ -39,14 +38,12 @@ void SolverTouchInputManager::began(cocos2d::Vec2 * point) {
 			this->sc->to_IDLE();
 		}
 		else if (this->puzzleLayer->pointInKeyboardLetter(point)) {
-			cocos2d::log("%d lastColumn", this->lastColumn);
 			this->puzzleLayer->changeCurrentLetter(this->lastColumn, this->puzzleLayer->getKeyboardLetter(point));
 		}
 	}
 }
 
 void SolverTouchInputManager::moved(cocos2d::Vec2 * point) {
-	log("MOVED");
 	if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
 		int currentLetter = this->puzzleLayer->pointInCurrentWord(point);
 
@@ -70,6 +67,13 @@ void SolverTouchInputManager::finishWord() {
 	bool result = puzzle->addWord(newWord);
 
 	if (puzzle->atGoal()) {
+		// this->model->getUser()->registerPuzzle(puzzle);
+
+
+		this->model->newPuzzle();
+
+		// todo: puzzle->startTime()
+	} else {
 		
 	}
 
@@ -77,7 +81,6 @@ void SolverTouchInputManager::finishWord() {
 }
 
 void SolverTouchInputManager::done(cocos2d::Vec2 * point) {
-	log("DONE");
 	if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
 		if (this->puzzleLayer->pointInKeyboardLetter(point)) {
 			this->finishWord();	

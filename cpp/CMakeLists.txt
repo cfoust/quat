@@ -131,6 +131,7 @@ set(GAME_SRC
   Classes/models/Puzzle.cpp
   Classes/models/User.cpp
   Classes/models/Dictionary.cpp
+  Classes/models/PuzzleManager.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolutionLayer.cpp
   Classes/solver/WordNode.cpp
@@ -152,6 +153,7 @@ set(GAME_HEADERS
   Classes/models/Puzzle.h
   Classes/models/User.h
   Classes/models/Dictionary.h
+  Classes/models/PuzzleManager.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolutionLayer.h
   Classes/solver/WordNode.h

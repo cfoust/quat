@@ -4,6 +4,7 @@
 
 #include "Puzzle.h"
 #include "Dictionary.h"
+#include "PuzzleManager.h"
 #include "User.h"
 
 namespace QUAT {
@@ -12,6 +13,7 @@ class Game
 {
 private:
 	Puzzle * puzzle;
+	PuzzleManager * puzzleManager;
 	User * user;
 	Dictionary * dictionary;
 

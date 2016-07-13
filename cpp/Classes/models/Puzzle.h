@@ -54,13 +54,6 @@ public:
 	bool atGoal();
 
 	/**
-	 * Fills this instance from bytes based on the Puzzle data format.
-	 * @param  bytes Array of bytes representing a puzzle.
-	 *               array of bytes.
-	 */
-	void fromBytes(char * bytes);
-
-	/**
 	 * Gets the last step in the puzzle solution (the current end word.)
 	 * @return The last step in the puzzle solution.
 	 */
@@ -103,6 +96,14 @@ public:
 	 * Delete the most recent step in the solution.
 	 */
 	void goBack();
+
+	/**
+	 * Resets this instance to this puzzle.
+	 * @param first Pointer to first word.
+	 * @param last  Pointer to second word.
+	 * @param par   Number of steps to par.
+	 */
+	void set(std::string * first, std::string * last, int par);
 
 	/**
 	 * Starts (or continues) time recording for this puzzle.

@@ -8,6 +8,10 @@ Game::Game() {
 	this->dictionary->loadFromFile();
 
 	this->puzzle = new Puzzle(this->dictionary);
+
+	this->puzzleManager = new PuzzleManager(this->puzzle);
+	this->puzzleManager->init();
+
 	this->user = new User();
 }
 
@@ -28,7 +32,7 @@ void Game::loadFromLocal() {
 }
 
 void Game::newPuzzle() {
-
+	this->puzzleManager->fill(0);
 }
 
 void Game::saveToLocal() {

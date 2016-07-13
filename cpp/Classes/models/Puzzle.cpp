@@ -17,8 +17,8 @@ void Puzzle::clear() {
 	this->steps->clear();
 	this->par = 0;
 	this->undos = 0;
-	this->start = "";
-	this->finish = "";
+	this->start = std::string("AAAA");
+	this->finish = std::string("AAAA");
 	this->totalMs = 0;
 	this->timeStarted = false;
 	this->_startTime = 0;
@@ -65,14 +65,7 @@ bool Puzzle::addWord(std::string * word) {
 }
 
 bool Puzzle::atGoal() {
-	return this->getGoal() == this->getCurrent();
-}
-
-void Puzzle::fromBytes(char * bytes) {
-	// Reset the instance data
-	this->clear();
-
-	// todo: actually implement this
+	return (*this->getGoal()) == (*this->getCurrent());
 }
 
 std::string * Puzzle::getCurrent() {
@@ -107,6 +100,14 @@ void Puzzle::goBack() {
 	if (this->steps->size() > 1) {
 		this->steps->pop_back();
 	}
+}
+
+void Puzzle::set(std::string * first, std::string * last, int par) {
+	this->clear();
+	this->start.replace(0,4,*first);
+	this->steps->push_back(this->start);
+	this->finish.replace(0,4,*last);
+	this->par = par;
 }
 
 void Puzzle::startTime() {

@@ -4,8 +4,196 @@
 		"selected_items":
 		[
 			[
+				"ran",
+				"randomIndex"
+			],
+			[
+				"star",
+				"startAddress"
+			],
+			[
+				"sta",
+				"startAddress"
+			],
+			[
+				"end",
+				"endAddress"
+			],
+			[
+				"endI",
+				"endIndex"
+			],
+			[
+				"st",
+				"startIndex"
+			],
+			[
+				"puz",
+				"puzzleBytes"
+			],
+			[
+				"puzzl",
+				"puzzleBytes"
+			],
+			[
+				"pu",
+				"puzzleBytes"
+			],
+			[
 				"add",
-				"addChild"
+				"address"
+			],
+			[
+				"hea",
+				"headerAddress"
+			],
+			[
+				"head",
+				"headerAddress"
+			],
+			[
+				"beg",
+				"beginAddress"
+			],
+			[
+				"fir",
+				"firstBytes"
+			],
+			[
+				"Puzzl",
+				"PuzzleManager"
+			],
+			[
+				"to",
+				"to_IDLE"
+			],
+			[
+				"Solv",
+				"SolverTouchInputManager"
+			],
+			[
+				"chan",
+				"changeWord"
+			],
+			[
+				"sol",
+				"solutionLayer"
+			],
+			[
+				"d",
+				"dictionary"
+			],
+			[
+				"lett",
+				"letterLabel"
+			],
+			[
+				"to_",
+				"to_CHOOSING_LETTER"
+			],
+			[
+				"point",
+				"pointInKeyboard"
+			],
+			[
+				"key",
+				"keyboardLayer"
+			],
+			[
+				"pointIn",
+				"pointInCurrentWord"
+			],
+			[
+				"poin",
+				"pointInCurrentWord"
+			],
+			[
+				"en",
+				"enabled"
+			],
+			[
+				"ke",
+				"keyboardLayer"
+			],
+			[
+				"Solver",
+				"SolverStateController"
+			],
+			[
+				"k",
+				"keyboardLayer"
+			],
+			[
+				"gam",
+				"gameBounds"
+			],
+			[
+				"le",
+				"letterForPoint"
+			],
+			[
+				"keyb",
+				"KeyboardLayer"
+			],
+			[
+				"game",
+				"gameBounds"
+			],
+			[
+				"getPo",
+				"getPositionY"
+			],
+			[
+				"sel",
+				"selected"
+			],
+			[
+				"bor",
+				"borderWidth"
+			],
+			[
+				"font",
+				"fontSize"
+			],
+			[
+				"def",
+				"defaultColor"
+			],
+			[
+				"Rec",
+				"RectRadius"
+			],
+			[
+				"bord",
+				"borderRadius"
+			],
+			[
+				"bo",
+				"borderRadius"
+			],
+			[
+				"fontWidth",
+				"fontWidth"
+			],
+			[
+				"fontH",
+				"fontHeightHalf"
+			],
+			[
+				"lette",
+				"letterPool"
+			],
+			[
+				"fon",
+				"fontWidth"
+			],
+			[
+				"let",
+				"letterLabel"
+			],
+			[
+				"g",
+				"generateBounds"
 			],
 			[
 				"frame",
@@ -44,10 +232,6 @@
 				"fadeIn"
 			],
 			[
-				"key",
-				"keyboardLayer"
-			],
-			[
 				"cu",
 				"currentWord"
 			],
@@ -68,24 +252,12 @@
 				"lastColumn"
 			],
 			[
-				"bo",
-				"boardLetter"
-			],
-			[
-				"sel",
-				"selected"
-			],
-			[
 				"curre",
 				"currentLetter"
 			],
 			[
 				"on",
 				"onBoard"
-			],
-			[
-				"ke",
-				"keyboardHeight"
 			],
 			[
 				"sli",
@@ -96,24 +268,12 @@
 				"setVisible"
 			],
 			[
-				"pu",
-				"puzzleLayer"
-			],
-			[
-				"puz",
-				"puzzleScene"
-			],
-			[
 				"gap",
 				"horizontalGap"
 			],
 			[
 				"ho",
 				"horizontalGap"
-			],
-			[
-				"keyb",
-				"keyboardHeight"
 			],
 			[
 				"right",
@@ -134,10 +294,6 @@
 			[
 				"but",
 				"buttonFontSize"
-			],
-			[
-				"bor",
-				"borderWidth"
 			],
 			[
 				"bu",
@@ -172,24 +328,12 @@
 				"drawRect"
 			],
 			[
-				"le",
-				"letterPool"
-			],
-			[
-				"lett",
-				"letterPool"
-			],
-			[
 				"ind",
 				"closestIndex"
 			],
 			[
 				"clos",
 				"closestIndex"
-			],
-			[
-				"let",
-				"letterBounds"
 			],
 			[
 				"bas",
@@ -256,24 +400,12 @@
 				"pointsLabel"
 			],
 			[
-				"gam",
-				"gameBounds"
-			],
-			[
 				"colo",
 				"colorBackground"
 			],
 			[
-				"game",
-				"gameBounds"
-			],
-			[
 				"stas",
 				"statsLayer"
-			],
-			[
-				"puzzl",
-				"puzzleLayer"
 			],
 			[
 				"spe",
@@ -310,10 +442,6 @@
 			[
 				"fa",
 				"fadeOutPercent"
-			],
-			[
-				"to",
-				"totalHeight"
 			],
 			[
 				"se",
@@ -386,171 +514,11 @@
 			[
 				"te",
 				"textColor"
-			],
-			[
-				"col",
-				"colorBackground"
-			],
-			[
-				"back",
-				"backgroundLayer"
-			],
-			[
-				"tr",
-				"trackingTouch"
-			],
-			[
-				"layer",
-				"LayerColor"
-			],
-			[
-				"r",
-				"rectContainsPoint"
-			],
-			[
-				"btt",
-				"buttonHeight"
-			],
-			[
-				"menu",
-				"menuLayer"
-			],
-			[
-				"getC",
-				"getCurrentSteps"
-			],
-			[
-				"ttl",
-				"titleOpacity"
-			],
-			[
-				"distance",
-				"distanceThreshold"
-			],
-			[
-				"dist",
-				"distance"
-			],
-			[
-				"steps",
-				"stepsWord"
-			],
-			[
-				"solutio",
-				"SolutionLayer"
-			],
-			[
-				"small",
-				"smallFontY"
-			],
-			[
-				"pa",
-				"panelHeight"
-			],
-			[
-				"sol",
-				"solutionLayer"
-			],
-			[
-				"short",
-				"shortSeq"
-			],
-			[
-				"sho",
-				"shortFade"
-			],
-			[
-				"wi",
-				"windowHeight"
-			],
-			[
-				"wind",
-				"windowWidth"
-			],
-			[
-				"solu",
-				"solutionSize"
-			],
-			[
-				"windoww",
-				"windowWidth"
-			],
-			[
-				"mod",
-				"modifyWidth"
-			],
-			[
-				"win",
-				"windowWidth"
-			],
-			[
-				"CHAN",
-				"CHANGING_LETTER_DRAG"
-			],
-			[
-				"la",
-				"lastColumn"
-			],
-			[
-				"las",
-				"lastColumn"
-			],
-			[
-				"dista",
-				"distanceThreshold"
-			],
-			[
-				"dis",
-				"distanceThreshold"
-			],
-			[
-				"x",
-				"xDelta"
-			],
-			[
-				"BE",
-				"SWIPE_BEGUN"
-			],
-			[
-				"CH",
-				"CHOOSING_LETTER"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "cpp/Classes/AppDelegate.cpp",
-			"settings":
-			{
-				"buffer_size": 2797,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/AppDelegate.h",
-			"settings":
-			{
-				"buffer_size": 987,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/CMakeLists.txt",
-			"settings":
-			{
-				"buffer_size": 5481,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/BackgroundLayer.js",
-			"settings":
-			{
-				"buffer_size": 439,
-				"line_ending": "Unix"
-			}
-		},
 		{
 			"file": "js/app/src/GameScene.js",
 			"settings":
@@ -560,34 +528,308 @@
 			}
 		},
 		{
-			"file": "cpp/Classes/GameScene.cpp",
+			"file": "js/app/src/solver/KeyboardLayer.js",
 			"settings":
 			{
-				"buffer_size": 676,
+				"buffer_size": 3009,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/GameScene.h",
+			"file": "js/app/src/solver/KeyboardInputManager.js",
 			"settings":
 			{
-				"buffer_size": 336,
+				"buffer_size": 4316,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/BackgroundLayer.h",
+			"file": "js/app/src/Game.js",
 			"settings":
 			{
-				"buffer_size": 219,
+				"buffer_size": 12608,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/BackgroundLayer.cpp",
+			"contents": "Searching 66 files for \"toBytes\"\n\n0 matches\n\nSearching 27 files for \"log\"\n\n/home/caleb/Developer/quat-mobile/cpp/Classes/GameScene.cpp:\n   30  \n   31  void GameScene::menuCallback() {\n   32:     log(\"This is a test\");\n   33  }\n   34  \n\n/home/caleb/Developer/quat-mobile/cpp/Classes/models/Puzzle.cpp:\n   25  	this->steps = new std::vector<std::string>();\n   26  \n   27: 	log(\"%ld\\n\", this->epochMs());\n   28  \n   29  	// Kind of superfluous, but this can't hurt \n\n/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.cpp:\n   25  \n   26  void SolutionLayer::menu() {\n   27:     log(\"Test\");\n   28  }\n   29  \n\n3 matches across 3 files\n",
 			"settings":
 			{
-				"buffer_size": 285,
+				"buffer_size": 647,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "js/app/src/solver/PuzzleLayer.js",
+			"settings":
+			{
+				"buffer_size": 4767,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/solver/SolverTouchInputManager.js",
+			"settings":
+			{
+				"buffer_size": 6787,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/solver/SolverStateController.js",
+			"settings":
+			{
+				"buffer_size": 2676,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/StateController.js",
+			"settings":
+			{
+				"buffer_size": 1085,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/solver/SolutionLayer.js",
+			"settings":
+			{
+				"buffer_size": 5247,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/nodes/IconButton.js",
+			"settings":
+			{
+				"buffer_size": 3540,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/menu/MenuButton.js",
+			"settings":
+			{
+				"buffer_size": 4385,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/nodes/RectRadius.js",
+			"settings":
+			{
+				"buffer_size": 3371,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/app/src/solver/BorderedWordNode.js",
+			"settings":
+			{
+				"buffer_size": 2503,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/TouchInputManager.h",
+			"settings":
+			{
+				"buffer_size": 681,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/TouchInputManager.cpp",
+			"settings":
+			{
+				"buffer_size": 668,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 6449,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/PuzzleLayer.h",
+			"settings":
+			{
+				"buffer_size": 3182,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/SolverTouchInputManager.cpp",
+			"settings":
+			{
+				"buffer_size": 2250,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/PuzzleManager.h",
+			"settings":
+			{
+				"buffer_size": 3425,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/PuzzleManager.cpp",
+			"settings":
+			{
+				"buffer_size": 4719,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/SolverStateController.cpp",
+			"settings":
+			{
+				"buffer_size": 644,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/KeyboardLayer.h",
+			"settings":
+			{
+				"buffer_size": 1085,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/KeyboardLayer.cpp",
+			"settings":
+			{
+				"buffer_size": 3660,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/SolutionLayer.h",
+			"settings":
+			{
+				"buffer_size": 746,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/SolutionLayer.cpp",
+			"settings":
+			{
+				"buffer_size": 2006,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/PuzzleLayer.cpp",
+			"settings":
+			{
+				"buffer_size": 4140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/menu/MenuButton.h",
+			"settings":
+			{
+				"buffer_size": 1840,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/menu/MenuButton.cpp",
+			"settings":
+			{
+				"buffer_size": 5540,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/WordNode.h",
+			"settings":
+			{
+				"buffer_size": 1910,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/WordNode.cpp",
+			"settings":
+			{
+				"buffer_size": 3228,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/BorderedWordNode.cpp",
+			"settings":
+			{
+				"buffer_size": 1993,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/SolverTouchInputManager.h",
+			"settings":
+			{
+				"buffer_size": 682,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Game.h",
+			"settings":
+			{
+				"buffer_size": 854,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Dictionary.h",
+			"settings":
+			{
+				"buffer_size": 594,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Dictionary.cpp",
+			"settings":
+			{
+				"buffer_size": 1077,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Game.cpp",
+			"settings":
+			{
+				"buffer_size": 537,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Puzzle.cpp",
+			"settings":
+			{
+				"buffer_size": 2386,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/models/Puzzle.h",
+			"settings":
+			{
+				"buffer_size": 2637,
 				"line_ending": "Unix"
 			}
 		}
@@ -631,10 +873,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 201.0,
-		"last_filter": "git comm",
+		"height": 96.0,
+		"last_filter": "git push",
 		"selected_items":
 		[
+			[
+				"git push",
+				"Git: Push"
+			],
 			[
 				"git comm",
 				"Git: Commit"
@@ -644,20 +890,28 @@
 				"Git: Add All"
 			],
 			[
-				"Git comm",
-				"Git: Commit"
+				"git ad",
+				"Git: Add All"
 			],
 			[
 				"git status",
 				"Git: Status"
 			],
 			[
-				"git a",
-				"Git: Add All"
+				"git com",
+				"Git: Commit"
 			],
 			[
-				"git push",
-				"Git: Push"
+				"it comm",
+				"Git: Commit"
+			],
+			[
+				"Git comm",
+				"Git: Commit"
+			],
+			[
+				"git a",
+				"Git: Add All"
 			],
 			[
 				"it push",
@@ -688,15 +942,7 @@
 				"Git: Pull"
 			],
 			[
-				"git ad",
-				"Git: Add All"
-			],
-			[
 				"it com",
-				"Git: Commit"
-			],
-			[
-				"git com",
 				"Git: Commit"
 			],
 			[
@@ -768,17 +1014,61 @@
 		"/home/caleb/Developer/quat-mobile",
 		"/home/caleb/Developer/quat-mobile/cpp",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/menu",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver",
 		"/home/caleb/Developer/quat-mobile/cpp/Resources",
-		"/home/caleb/Developer/quat-mobile/cpp/Resources/res",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build",
-		"/home/caleb/Developer/quat-mobile/cpp/proj.ios_mac/ios",
 		"/home/caleb/Developer/quat-mobile/js",
 		"/home/caleb/Developer/quat-mobile/js/app",
-		"/home/caleb/Developer/quat-mobile/js/app/src"
+		"/home/caleb/Developer/quat-mobile/js/app/res",
+		"/home/caleb/Developer/quat-mobile/js/app/src",
+		"/home/caleb/Developer/quat-mobile/js/app/src/menu",
+		"/home/caleb/Developer/quat-mobile/js/app/src/nodes",
+		"/home/caleb/Developer/quat-mobile/js/app/src/solver",
+		"/home/caleb/Developer/quat-mobile/js/app/src/stats",
+		"/home/caleb/Developer/quat-mobile/js/data",
+		"/home/caleb/Developer/quat-mobile/js/data/math",
+		"/home/caleb/Developer/quat-mobile/js/data/math/src"
 	],
 	"file_history":
 	[
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/User.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/User.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/Puzzle.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/Puzzle.cpp",
+		"/home/caleb/Developer/quat-mobile/js/app/src/BackgroundLayer.js",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/GameScene.cpp",
+		"/home/caleb/Developer/quat-mobile/js/data/math/src/Puzzle.java",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/nodes/RectRadius.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/menu/MenuButton.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/menu/MenuButton.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/nodes/RectRadius.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolverStateController.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolverStateController.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/BorderedWordNode.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/BorderedWordNode.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/KeyboardLayer.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/KeyboardLayer.cpp",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes/GameScene.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/AppDelegate.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/Clickable.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/WordNode.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/solver/WordNode.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/StateController.h",
+		"/home/caleb/Developer/quat-mobile/cpp/CMakeLists.txt",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/StateController.cpp",
+		"/home/caleb/Developer/quat-mobile/.gitignore",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/BackgroundLayer.cpp",
+		"/home/caleb/Developer/quat-mobile/test.git",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/Game.cpp",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/Game.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/BackgroundLayer.h",
+		"/home/caleb/Developer/quat-mobile/cpp/Classes/AppDelegate.h",
+		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/link.txt",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes/HelloWorldScene.cpp",
 		"/home/caleb/Developer/quat-mobile/js/app/main.js",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeCache.txt",
@@ -790,7 +1080,6 @@
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/cmake_clean.cmake",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/depend.internal",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/depend.make",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/link.txt",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_CORE_PRE_BUILD.dir/build.make",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_CORE_PRE_BUILD.dir/cmake_clean.cmake",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_PRE_BUILD.dir/build.make",
@@ -798,7 +1087,6 @@
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/TargetDirectories.txt",
 		"/home/caleb/Developer/quat-mobile/cpp/proj.ios_mac/ios/AppController.mm",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/Makefile",
-		"/home/caleb/Developer/quat-mobile/.gitignore",
 		"/home/caleb/.config/sublime-text-3/Packages/User/cocos.sublime-build",
 		"/home/caleb/Developer/quat-mobile/app/src/solver/PuzzleLayer.js",
 		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuButton.js",
@@ -871,41 +1159,7 @@
 		"/home/caleb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
 		"/home/caleb/Developer/quat-mobile/app/manifest.webapp",
 		"/home/caleb/.jwmrc",
-		"/home/caleb/Developer/words/test2",
-		"/home/caleb/Developer/words/test",
-		"/home/caleb/Developer/words/puzzles.txt",
-		"/home/caleb/Developer/words/test2.map",
-		"/home/caleb/Developer/math340/.gitignore",
-		"/home/caleb/Developer/cs354/p5/tests/Makefile",
-		"/home/caleb/Developer/cs354/p5/Makefile",
-		"/home/caleb/Developer/cs354/p5/tests/coalesce2.c",
-		"/home/caleb/Developer/cs354/p5/freetests.c",
-		"/home/caleb/Developer/cs354/p5/tests/free3.c",
-		"/home/caleb/acpiformat.py",
-		"/home/caleb/Developer/cs354/p5/mem.c",
-		"/home/caleb/Developer/cs577/test.py",
-		"/home/caleb/Developer/cs577/mul.py",
-		"/home/caleb/Developer/raecode.py",
-		"/home/caleb/BITWISE/d1.txt",
-		"/home/caleb/.bashrc",
-		"/home/caleb/Downloads/fixed.js",
-		"/home/caleb/.config/sublime-text-3/Packages/User/CS 4.7 build.sublime-build",
-		"/home/caleb/Developer/GLS/glsldap/composer.json",
-		"/home/caleb/Developer/GLS/glszfs/composer.json",
-		"/home/caleb/Developer/GLS/torpedo/src/classes/Cacher.php",
-		"/home/caleb/Developer/GLS/torpedo/src/routes/eventhandlers.php",
-		"/home/caleb/Developer/GLS/torpedo/composer.json",
-		"/home/caleb/Developer/cs354/p4/intdate.c",
-		"/home/caleb/Developer/python/proto/proto/languages/ru/starling.py",
-		"/home/caleb/Developer/python/proto/proto/languages/ru/sdict.py",
-		"/home/caleb/Developer/python/proto/proto/languages/ru/ruktionary.py",
-		"/home/caleb/Developer/python/proto/proto/languages/ru/deck.py",
-		"/home/caleb/Developer/python/proto/proto/exporters/toapkg.py",
-		"/home/caleb/Developer/python/proto/proto/builder.py",
-		"/home/caleb/Developer/python/proto/de.py",
-		"/home/caleb/Developer/python/proto/ru.py",
-		"/home/caleb/Developer/python/proto/proto/fields/basic.py",
-		"/home/caleb/Developer/python/proto/.gitignore"
+		"/home/caleb/Developer/words/test2"
 	],
 	"find":
 	{
@@ -916,6 +1170,10 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/caleb/Developer/quat-mobile/cpp/Classes",
+			"/home/caleb/Developer/quat-mobile/js/app",
+			"/home/caleb/Developer/quat-mobile/cpp/Classes",
+			"/home/caleb/Developer/quat-mobile/js/app",
 			"/home/caleb/Developer/quat-mobile/cpp/linux-build",
 			"/home/caleb/Developer/quat-mobile/cpp",
 			"/home/caleb/Developer/quat-mobile/cpp/proj.ios_mac",
@@ -945,6 +1203,115 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"startIndex",
+			"//",
+			" // ",
+			"Byte",
+			"firstBytes",
+			";",
+			"puzzles",
+			"DICTIONARY_H",
+			"data",
+			"spr",
+			"Frommod",
+			"MenuButton",
+			";",
+			"StateController",
+			"substring",
+			";",
+			"user",
+			"User",
+			"USER",
+			";",
+			"Puzzle",
+			"PUZZLE",
+			"__PUZZLE",
+			"result",
+			";",
+			"// ",
+			"currentWordPos",
+			";",
+			" = 0",
+			"virtual ",
+			";",
+			"SolverStateController",
+			"SOLVER_TOUCH_INPUT_MANAGER",
+			"SOLVER_STATE_CONTROLLER",
+			"log",
+			"last",
+			"first",
+			"vector",
+			";",
+			"toBytes",
+			"SSC_STATE",
+			"Solution",
+			"SOLUTION",
+			"STATE_CONTROLLER",
+			"BORDERED_WORD_NODE",
+			"origin",
+			"box->origin",
+			"->",
+			"origin",
+			"box->origin",
+			"box->",
+			"box->origin",
+			"box->",
+			"origin",
+			"box->origin",
+			"box->",
+			"fontSize",
+			"Ubuntu",
+			"letterForPoint",
+			"'",
+			"SolutionLayer",
+			"SOLUTION_LAYER",
+			"alse",
+			"windowWidth",
+			"this->border",
+			"border",
+			"listener1",
+			"SolutionLayer",
+			"MENU_BUTTON",
+			"Clickable",
+			"CLICKABLE",
+			"SolutionLayer",
+			"SOLUTION_LAYER",
+			"Paddle",
+			"listener",
+			"Sprite*",
+			"Color4B",
+			"border",
+			"WordNode",
+			"__WORD_NODE_H__",
+			"WORD_NODE",
+			"SolutionLayer",
+			"cocos2d::Rect * gameBounds, float fontSize",
+			"SolutionLayer",
+			"SOLUTION_LAYER",
+			"drawRect",
+			"goalWord",
+			"ttf0",
+			"cocos2d::Vec2",
+			"Vec2",
+			"point",
+			"fontSize",
+			"SolutionLayer",
+			"SOLUTION_LAYER",
+			"PuzzleLayer",
+			"Background",
+			"background",
+			"__TYPE__",
+			"PuzzleLayer",
+			"PUZZLE_LAYER",
+			"BackgroundLayer",
+			"BACKGROUND_LAYER",
+			"first",
+			"Game",
+			"GAME_H",
+			"Game",
+			"GAME",
+			"GAME_SCENE",
+			"bg",
 			"layer1",
 			"GameScene",
 			"GAME_SCENE",
@@ -963,116 +1330,7 @@
 			"fontSize",
 			"textLabel",
 			"colorBackground",
-			"is not a word",
-			"color",
-			"Color",
-			"border",
-			"rects",
-			"rect",
-			"Rect",
-			"rect",
-			"Rect",
-			"rect",
-			"Rect",
-			"rect",
-			"setColor",
-			"rect",
-			"Rect",
-			"rect",
-			"Rect",
-			"rect",
-			"WASH",
-			"[type]",
-			"finishLayer",
-			"setVisible",
-			"text",
-			"TEXT",
-			"text",
-			"keyboardLayer",
-			"KeyboardLayer",
-			"keyboardLayer",
-			"textLabel",
-			"currentLetter",
-			"boar",
-			"sliderLayer",
-			"sliderLayer;",
-			"sliderLayer",
-			"bound",
-			"textLabel",
-			"solutionLayer",
-			"SolutionLayer",
-			"solutionLayer",
-			"remaining",
-			"themePos",
-			"buttonFontSize * 0.4",
-			"themeName",
-			"-       ",
-			"menuButton",
-			"setThemeChange",
-			"themeChange",
-			"viewTheme",
-			"this._currentIndex",
-			"this._themes",
-			"goalWord",
-			"leftIcon",
-			"leftCallback",
-			"undoIcon",
-			"undoCallback",
-			"aboutLayer",
-			"AboutLayer",
-			"aboutLayer",
-			"menu",
-			"stepsWord",
-			"menuLayer",
-			"undoCallback",
-			"fontSize * 2",
-			"undoIcon",
-			"icon",
-			"Icon",
-			"icon",
-			"Icon",
-			"icon",
-			"\",\n",
-			"letterLabel",
-			"letterPool",
-			"rowPool",
-			"letterAtY",
-			"chooseLetterLayer",
-			"sliderLayer.",
-			"sliderLayer",
-			"chooseLetterLayer",
-			"ChooseLetterLayer",
-			"chooseLetterLayer",
-			"cc",
-			"Class.",
-			"menuLayer",
-			"],[",
-			"aboveWords",
-			"PINE",
-			"console",
-			"fontSize*.4",
-			"remaining",
-			"event\\s",
-			"startTime()",
-			"clearMessages",
-			"statsLayer",
-			"StatsLayer",
-			"statsLayer",
-			"textLabel",
-			"stats",
-			"minute",
-			"points",
-			"POINTS",
-			"points",
-			"puzzles",
-			"PUZZLES",
-			"puzzles",
-			"points",
-			"stat",
-			"Stat",
-			"stat",
-			"Stat",
-			"stat"
+			"is not a word"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1080,6 +1338,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"finish",
+			"start",
+			"Arimo-Regular",
 			"QuatGame",
 			"sliderLayer",
 			"],\\n[",
@@ -1103,46 +1364,77 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 6,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "cpp/Classes/AppDelegate.cpp",
+					"file": "js/app/src/GameScene.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2797,
+						"buffer_size": 8363,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2093,
-								2093
+								7197,
+								7197
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 720.0,
+						"translation.y": 3060.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 28,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "cpp/Classes/AppDelegate.h",
-					"semi_transient": true,
+					"file": "js/app/src/solver/KeyboardLayer.js",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 987,
+						"buffer_size": 3009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2283,
+								2283
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1666.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 34,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/app/src/solver/KeyboardInputManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4316,
 						"regions":
 						{
 						},
@@ -1155,7 +1447,178 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 35,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/app/src/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5043,
+								5043
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3876.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 29,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 647,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										195,
+										198
+									],
+									[
+										371,
+										374
+									],
+									[
+										591,
+										594
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								401,
+								401
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ 	].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 31,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/app/src/solver/PuzzleLayer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4045,
+								4045
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1479.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/app/src/solver/SolverTouchInputManager.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6787,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5486,
+								5486
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2193.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/app/src/solver/SolverStateController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2676,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								711,
+								711
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1163,24 +1626,270 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "cpp/CMakeLists.txt",
+					"buffer": 8,
+					"file": "js/app/src/StateController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5481,
+						"buffer_size": 1085,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4977,
-								4977
+								437,
+								437
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 32,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "js/app/src/solver/SolutionLayer.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4678,
+								4678
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1887.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "js/app/src/nodes/IconButton.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 36,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "js/app/src/menu/MenuButton.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3333,
+								3333
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1538.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 33,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "js/app/src/nodes/RectRadius.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								573,
+								573
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 38,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "js/app/src/solver/BorderedWordNode.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2503,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								766,
+								766
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 37,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 6,
+			"sheets":
+			[
+				{
+					"buffer": 14,
+					"file": "cpp/Classes/TouchInputManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 681,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								144,
+								144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 27,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "cpp/Classes/TouchInputManager.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 668,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								639,
+								639
+							],
+							[
+								655,
+								655
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 30,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "cpp/CMakeLists.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6449,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4799,
+								4799
 							]
 						],
 						"settings":
@@ -1190,93 +1899,258 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2057.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "js/app/src/BackgroundLayer.js",
+					"buffer": 17,
+					"file": "cpp/Classes/solver/PuzzleLayer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 439,
+						"buffer_size": 3182,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								217,
-								217
+								1548,
+								1548
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 646.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "js/app/src/GameScene.js",
+					"buffer": 18,
+					"file": "cpp/Classes/solver/SolverTouchInputManager.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8363,
+						"buffer_size": 2250,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2612,
-								2612
+								437,
+								437
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 561.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "cpp/Classes/models/PuzzleManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3425,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2456,
+								2456
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 5,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
+				},
 				{
-					"buffer": 5,
-					"file": "cpp/Classes/GameScene.cpp",
+					"buffer": 20,
+					"file": "cpp/Classes/models/PuzzleManager.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 676,
+						"buffer_size": 4719,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22,
-								22
+								3792,
+								3792
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1946.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "cpp/Classes/solver/SolverStateController.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 644,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								255,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "cpp/Classes/solver/KeyboardLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1085,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								935,
+								935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 102.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 26,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "cpp/Classes/solver/KeyboardLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3660,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3537,
+								3537
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1650.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "cpp/Classes/solver/SolutionLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 746,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								363,
+								363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "cpp/Classes/solver/SolutionLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2006,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1499,
+								1499
 							]
 						],
 						"settings":
@@ -1289,24 +2163,287 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "cpp/Classes/GameScene.h",
+					"buffer": 26,
+					"file": "cpp/Classes/solver/PuzzleLayer.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 336,
+						"buffer_size": 4140,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								193,
-								193
+								604,
+								604
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1071.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "cpp/Classes/menu/MenuButton.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1840,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1602,
+								1602
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 816.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 28,
+					"file": "cpp/Classes/menu/MenuButton.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5540,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4598,
+								4598
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2448.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 29,
+					"file": "cpp/Classes/solver/WordNode.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1113,
+								1113
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 103.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 30,
+					"file": "cpp/Classes/solver/WordNode.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3228,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								139,
+								139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 31,
+					"file": "cpp/Classes/solver/BorderedWordNode.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1993,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1467,
+								1467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 459.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 32,
+					"file": "cpp/Classes/solver/SolverTouchInputManager.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 682,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								323,
+								323
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "cpp/Classes/models/Game.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								218
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": -0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 34,
+					"file": "cpp/Classes/models/Dictionary.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 594,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								594,
+								594
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 35,
+					"file": "cpp/Classes/models/Dictionary.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								804,
+								804
 							]
 						],
 						"settings":
@@ -1314,55 +2451,27 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 306.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "cpp/Classes/BackgroundLayer.h",
+					"buffer": 36,
+					"file": "cpp/Classes/models/Game.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 219,
+						"buffer_size": 537,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								102,
-								102
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "cpp/Classes/BackgroundLayer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 285,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								282,
-								282
+								260,
+								260
 							]
 						],
 						"settings":
@@ -1375,13 +2484,71 @@
 					},
 					"stack_index": 3,
 					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "cpp/Classes/models/Puzzle.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2386,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								819,
+								819
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 38,
+					"file": "cpp/Classes/models/Puzzle.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2228,
+								2228
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
 				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 23.0
+		"height": 25.0
 	},
 	"input":
 	{
@@ -1407,7 +2574,7 @@
 		"cols":
 		[
 			0.0,
-			0.462673088501,
+			0.437387116195,
 			1.0
 		],
 		"rows":
@@ -1419,7 +2586,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 186.0
+		"height": 230.0
 	},
 	"output.find_results":
 	{
@@ -1433,7 +2600,7 @@
 	"project": "quat-mobile.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1442,6 +2609,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"stim",
+				"cpp/Classes/solver/SolverTouchInputManager.h"
+			],
+			[
+				"puzzlel",
+				"cpp/Classes/solver/PuzzleLayer.h"
+			],
+			[
+				"ke",
+				"cpp/Classes/solver/KeyboardLayer.h"
+			],
 			[
 				"puz",
 				"app/src/solver/PuzzleLayer.js"
@@ -1520,10 +2699,6 @@
 			],
 			[
 				"input",
-				"app/src/solver/SolverTouchInputManager.js"
-			],
-			[
-				"stim",
 				"app/src/solver/SolverTouchInputManager.js"
 			],
 			[
