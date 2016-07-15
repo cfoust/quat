@@ -5,6 +5,7 @@
 #include <string>
 
 #include "Puzzle.h"
+#include "cocos2d.h"
 
 namespace QUAT {
 

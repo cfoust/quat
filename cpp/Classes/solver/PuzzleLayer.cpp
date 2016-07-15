@@ -3,6 +3,9 @@
 #include "SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
 
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+#include "SolverKeyboardManager.h"
+#endif
 
 namespace QUAT {
 
@@ -104,9 +107,49 @@ bool PuzzleLayer::init() {
 
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
+    // Enable the keyboard if we're native
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+    
+    // Initialize the input manager
+    this->solverKeyboardManager = new SolverKeyboardManager(this->solverStateController, this->game, this);
+
+    auto keyboardEventListener = cocos2d::EventListenerKeyboard::create();
+    // Register the callback
+    keyboardEventListener->onKeyPressed = CC_CALLBACK_2(PuzzleLayer::onKeyPressed, this);
+    // Add the event listener
+    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
+    
+    #endif
+
     this->updateFromModel();
 	
     return true;
+}
+
+void PuzzleLayer::finishWord() {
+    std::string * newWord = this->getCurrentWord();
+
+    this->solverStateController->to_IDLE();
+
+    auto puzzle = this->game->getPuzzle();
+
+    puzzle->addWord(newWord);
+
+    if (puzzle->atGoal()) {
+        this->game->getUser()->registerPuzzle(puzzle);
+
+
+        this->game->newPuzzle();
+
+        // todo: puzzle->startTime()
+    }
+
+    this->updateFromModel();
+}
+
+void PuzzleLayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, 
+                                      cocos2d::Event* event) {
+    this->solverKeyboardManager->input(keyCode, event);
 }
 
 bool PuzzleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {

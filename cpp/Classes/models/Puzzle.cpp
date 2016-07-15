@@ -16,6 +16,7 @@ long int Puzzle::epochMs() {
 void Puzzle::clear() {
 	this->steps->clear();
 	this->par = 0;
+	this->rank = 0;
 	this->undos = 0;
 	this->start = std::string("AAAA");
 	this->finish = std::string("AAAA");
@@ -80,8 +81,16 @@ std::string * Puzzle::getGoal() {
 	return &this->finish;
 }
 
+std::vector<std::string> * Puzzle::getSteps() {
+	return this->steps;
+}
+
 int Puzzle::getPar() {
 	return this->par;
+}
+
+int Puzzle::getRank() {
+	return this->rank;
 }
 
 int Puzzle::getStepCount() {
@@ -99,15 +108,17 @@ bool Puzzle::getTimeStarted() {
 void Puzzle::goBack() {
 	if (this->steps->size() > 1) {
 		this->steps->pop_back();
+		this->undos++;
 	}
 }
 
-void Puzzle::set(std::string * first, std::string * last, int par) {
+void Puzzle::set(std::string * first, std::string * last, int par, int rank) {
 	this->clear();
 	this->start.replace(0,4,*first);
 	this->steps->push_back(this->start);
 	this->finish.replace(0,4,*last);
 	this->par = par;
+	this->rank = rank;
 }
 
 void Puzzle::startTime() {

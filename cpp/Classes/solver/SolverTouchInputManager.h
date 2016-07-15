@@ -18,7 +18,6 @@ private:
 	PuzzleLayer * puzzleLayer;
 	int lastColumn;
 
-	void finishWord();
 public:
 	SolverTouchInputManager(SolverStateController * sc, 
 							Game * model, 

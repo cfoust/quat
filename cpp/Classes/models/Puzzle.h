@@ -15,8 +15,8 @@ private:
 	std::string start, finish;
 
 	int par,   // The ideal number of steps to finish the puzzle
-		undos; // The number of times the user hit undo
-
+		undos, // The number of times the user hit undo
+		rank; // The rank of the puzzle
 	
 	long int _startTime, // When we last started recording time
 			 totalMs;    // The number of milliseconds the user spent on this Puzzle
@@ -72,9 +72,19 @@ public:
 	std::string * getGoal();
 
 	/**
+	 * Gets the steps vector.
+	 */
+	std::vector<std::string> * getSteps();
+
+	/**
 	 * Gets the par for this puzzle.
 	 */
 	int getPar();
+
+	/**
+	 * Gets the puzzle's rank (0-256).
+	 */
+	int getRank();
 
 	/**
 	 * Gets the number of steps so far.
@@ -103,7 +113,7 @@ public:
 	 * @param last  Pointer to second word.
 	 * @param par   Number of steps to par.
 	 */
-	void set(std::string * first, std::string * last, int par);
+	void set(std::string * first, std::string * last, int par, int rank);
 
 	/**
 	 * Starts (or continues) time recording for this puzzle.

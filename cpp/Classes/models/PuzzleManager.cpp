@@ -157,7 +157,7 @@ void PuzzleManager::fill(int rating) {
 	this->parseWords(puzzleBytes, start, finish);
 
 	// Sets the puzzle
-	this->puzzle->set(start, finish, par);
+	this->puzzle->set(start, finish, par, rating);
 }
 
 int PuzzleManager::getPuzzleCount(int rating) {

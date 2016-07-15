@@ -2,31 +2,48 @@
 
 namespace QUAT {
 
-int getRank() {
+using namespace cocos2d;
+
+int User::getRank() {
 	return 0;
 }
 
-int getSubRank() {
+int User::getSubRank() {
 	return 0;
 }
 
-int getPuzzlesPlayed() {
+int User::getPuzzlesPlayed() {
 	return 0;
 }
 
-long int getTimePlayed() {
+long int User::getTimePlayed() {
 	return 0;
 }
 
-void loadFromBytes(char * bytes) {
+void User::loadFromBytes(char * bytes) {
 	
 }
 
-void registerPuzzle(Puzzle * puzzle) {
+void User::registerPuzzle(Puzzle * puzzle) {
+	// Gets the steps the user took to the solution
+	std::vector<std::string> * steps = puzzle->getSteps();
 
+	// The difference (in steps) between the number of steps the user took
+	// and the puzzle's par.
+	int difference = steps->size() - puzzle->getPar();
+
+	log("Difference was %d", difference);
+
+	// Calculate the step difference metric
+	float stepDiffMetric;
+	if (difference == 0) {
+		stepDiffMetric = 256;
+	} else {
+
+	}
 }
 
-void toBytes(char * bytes) {
+void User::toBytes(char * bytes) {
 
 }
 

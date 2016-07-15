@@ -3,7 +3,6 @@
 #include "PuzzleLayer.h"
 #include "SolverStateController.h"
 
-#include <algorithm>
 
 
 namespace QUAT {
@@ -57,33 +56,10 @@ void SolverTouchInputManager::moved(cocos2d::Vec2 * point) {
 	}
 }
 
-void SolverTouchInputManager::finishWord() {
-	std::string * newWord = this->puzzleLayer->getCurrentWord();
-
-	this->sc->to_IDLE();
-
-	auto puzzle = this->model->getPuzzle();
-
-	bool result = puzzle->addWord(newWord);
-
-	if (puzzle->atGoal()) {
-		// this->model->getUser()->registerPuzzle(puzzle);
-
-
-		this->model->newPuzzle();
-
-		// todo: puzzle->startTime()
-	} else {
-		
-	}
-
-	this->puzzleLayer->updateFromModel();
-}
-
 void SolverTouchInputManager::done(cocos2d::Vec2 * point) {
 	if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
 		if (this->puzzleLayer->pointInKeyboardLetter(point)) {
-			this->finishWord();	
+			this->puzzleLayer->finishWord();	
 		}
 	}
 }

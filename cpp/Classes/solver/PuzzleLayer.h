@@ -9,6 +9,7 @@
 namespace QUAT {
 class SolverStateController;
 class SolverTouchInputManager;
+class SolverKeyboardManager;
 class PuzzleLayer : public cocos2d::Layer
 {
 private:
@@ -22,6 +23,10 @@ private:
 
 	SolverStateController * solverStateController;
 	SolverTouchInputManager * solverTouchInputManager;
+
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+    SolverKeyboardManager * solverKeyboardManager;
+    #endif
 
 	bool trackingTouch;
 public:
@@ -83,6 +88,11 @@ public:
 	std::string getKeyboardLetter(cocos2d::Vec2 * point);
 
 	/**
+	 * Finishes the word being chosen.
+	 */
+	void finishWord();
+
+	/**
 	 * Updates the game layer with information from the model.
 	 */
 	void updateFromModel();
@@ -102,6 +112,9 @@ public:
 	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
     void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
     void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, 
+								      cocos2d::Event* event);
 	
 	/**
 	 * Creates a PuzzleLayer object.
