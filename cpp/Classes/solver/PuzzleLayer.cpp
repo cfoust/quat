@@ -121,6 +121,7 @@ bool PuzzleLayer::init() {
     
     #endif
 
+    this->goIdle();
     this->updateFromModel();
 	
     return true;

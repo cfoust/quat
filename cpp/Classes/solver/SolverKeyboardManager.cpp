@@ -19,8 +19,9 @@ SolverKeyboardManager::SolverKeyboardManager(SolverStateController * sc,
 
 void SolverKeyboardManager::input(cocos2d::EventKeyboard::KeyCode keyCode, 
 								  cocos2d::Event* event) {
+	// Convert the key code to an int
 	int code = (int) keyCode;
-	log("%d", code);
+
 	// Checks for numbers 1-4, which correspond to selecting that column
 	if ((code >= 77) && (code <= 80)) {
 		lastColumn = code - 77;
@@ -37,6 +38,18 @@ void SolverKeyboardManager::input(cocos2d::EventKeyboard::KeyCode keyCode,
 
 		this->puzzleLayer->changeCurrentLetter(lastColumn, newLetter);
 		this->puzzleLayer->finishWord();
+	}
+	// The user entered the backspace key
+	else if (code == 7) {
+		// Go back a step if we're currently idling
+		if (this->sc->state() == SolverStateController::IDLE) {
+			this->model->getPuzzle()->goBack();
+			this->puzzleLayer->updateFromModel();
+		}
+		// Otherwise just hide the keyboard
+		else if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
+			this->sc->to_IDLE();
+		}
 	}
 }
 };
