@@ -1,25 +1,30 @@
 #include "User.h"
 
 #include <cmath>
+#include <algorithm>
 
 namespace QUAT {
 
 using namespace cocos2d;
 
+User::User() {
+	this->subRank = 8192;
+}
+
 int User::getRank() {
-	return 0;
+	return (this->subRank - (this->subRank % 64)) / 64;
 }
 
 int User::getSubRank() {
-	return 0;
+	return this->subRank;
 }
 
 int User::getPuzzlesPlayed() {
-	return 0;
+	return this->puzzlesPlayed;
 }
 
 long int User::getTimePlayed() {
-	return 0;
+	return this->timePlayed;
 }
 
 void User::loadFromBytes(char * bytes) {
@@ -30,23 +35,28 @@ void User::registerPuzzle(Puzzle * puzzle) {
 	// Gets the steps the user took to the solution
 	std::vector<std::string> * steps = puzzle->getSteps();
 
-	// Gets the declared rank of the puzzle (0-255)
-	int rank = puzzle->getRank();
-
-	log("Calculating puzzle performance heuristics.");
-
-	// ##################################################
-	// ################# PAR DIFFERENCE #################
-	// ##################################################
-	// The difference (in steps) between the number of steps the user took
-	// and the puzzle's par. Since 255 is considered the "perfect" rank,
-	// getting par is 255 and we fall off logarithmically from there.
+	//// Calculates a heuristic for how hard the puzzle was to the user
 	
+	// the difference between the number of steps and the par
 	int difference = steps->size() - puzzle->getPar();
-	float parDifferenceRating = pow(0.5, difference) * 255.0;
-	log("parDifferenceRating: %.2f", parDifferenceRating);
 
-	
+	// An exponential relationship that reduces the user's rating
+	// if they don't play very well, or increases it if they do
+	float parDifferenceRating = (pow(0.7, difference) * 255.0) - 127.0;
+
+	// Converts that value to an integer
+	int change = (int) floor((parDifferenceRating / 128) * 10);
+
+
+	this->subRank = std::max(this->subRank + change, 0);
+
+	// Add in the time the user played this puzzle
+	this->timePlayed += puzzle->getTime();
+
+	// Increase the number of puzzles played
+	this->puzzlesPlayed++;
+
+	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRank(), this->subRank);
 }
 
 void User::toBytes(char * bytes) {

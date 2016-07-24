@@ -18,6 +18,8 @@ private:
 	long int timePlayed;
 public:
 
+	User();
+
 	/**
 	 * Get the user's rank in terms of 0-256.
 	 */
