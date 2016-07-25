@@ -92,6 +92,8 @@ public:
 	 * @param[in]  height  The height
 	 */
 	void setHeight(float height);
+	
+	void setVisible(bool visible);
 };
 
 }

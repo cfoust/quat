@@ -23,6 +23,8 @@ public:
 	BannerButtonLayer(float height);
 	
 	static BannerButtonLayer * create(float height);
+
+	void update(int newVal);
 };
 
 }

@@ -6,6 +6,7 @@
 #include "WordNode.h"
 #include "BorderedWordNode.h"
 #include "BannerButtonLayer.h"
+#include "UndoButtonLayer.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -17,7 +18,7 @@ class PuzzleLayer : public cocos2d::Layer
 private:
 	Game * game;
 
-	cocos2d::Sprite * undo;
+	UndoButtonLayer * undo;
 	WordNode * goalWord;
 	BorderedWordNode * currentWord;
 	BannerButtonLayer * bannerButton;
@@ -102,8 +103,13 @@ public:
 	 * Updates the game layer with information from the model.
 	 */
 	void updateFromModel();
-
+	
+	/**
+	 * @brief      Called when the user clicks the banner.
+	 */
 	void bannerClick();
+
+	void undoClick();
 
 	// ##################################################
 	// ############# NORMAL CLASS METHODS ###############

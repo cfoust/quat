@@ -144,4 +144,9 @@ void Clickable::setHeight(float height) {
     this->recalculateBounds();
 }
 
+void Clickable::setVisible(bool visible) {
+    Layer::setVisible(visible);
+    this->setEnabled(visible);
+}
+
 }

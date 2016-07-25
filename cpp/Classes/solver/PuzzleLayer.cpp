@@ -71,6 +71,7 @@ void PuzzleLayer::updateFromModel() {
     this->undo->setVisible(puzzle->getStepCount() > 1);
     this->currentWord->changeWord(puzzle->getCurrent());
     this->goalWord->changeWord(puzzle->getGoal());
+    this->bannerButton->update(this->game->getUser()->getRank());
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
@@ -79,6 +80,11 @@ std::string * PuzzleLayer::getCurrentWord() {
 
 void PuzzleLayer::bannerClick() {
     cocos2d::log("Clicked on banner");
+}
+
+void PuzzleLayer::undoClick() {
+    this->game->getPuzzle()->goBack();
+    this->updateFromModel();
 }
 
 bool PuzzleLayer::init() {
@@ -108,6 +114,7 @@ bool PuzzleLayer::init() {
     goalWord->setPosition(gameBounds->origin.x + (width / 2), 
                           height * 0.55);
     this->addChild(goalWord);
+
     
     // Initializes the current word, which is the word the user is currently
     // operating on
@@ -120,18 +127,6 @@ bool PuzzleLayer::init() {
     currentWord->recalculateBounds();
     this->addChild(currentWord);
 
-    // Initializes the undo button, which allows the user to jump back in the
-    // solution
-    this->undo = cocos2d::Sprite::create("undo.png");
-    undo->setPosition(gameBounds->origin.x + width * 0.07,
-                     currentWord->getPositionY());
-    // We have to recalculate the scale of the sprite since it's of a fixed
-    // size
-    float scale = (fontSize * 0.8)/ undo->getBoundingBox().size.height;
-    undo->setScale(scale,scale);
-    auto box = undo->getBoundingBox();
-    this->addChild(undo);
-
     // Initialize the banner, which is used to show the rank the user is 
     // currently at
     float bannerHeight = height * 0.08; 
@@ -143,7 +138,16 @@ bool PuzzleLayer::init() {
     // Sets up the proper positioning of the banner
     this->bannerButton->setPositionX(gameBounds->origin.x + (width * 0.88));
     this->bannerButton->setPositionY(height - bannerHeight);
+    this->bannerButton->update(15);
     this->addChild(this->bannerButton);
+
+    float undoSize = fontSize * 0.8;
+    this->undo = UndoButtonLayer::create(undoSize);
+    this->undo->upCallback = CC_CALLBACK_0(PuzzleLayer::undoClick, this);
+    this->undo->setPositionX(gameBounds->origin.x + width * 0.05);
+    this->undo->setPositionY(currentWord->getPositionY() - undoSize / 2);
+    this->addChild(this->undo);
+
 
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
@@ -152,6 +156,7 @@ bool PuzzleLayer::init() {
     
     /*=====  End of Initialization of GUI elements  ======*/
     
+    this->game = new Game();
 
     /*========================================
     =            Input management            =
@@ -193,7 +198,6 @@ bool PuzzleLayer::init() {
     =            Model Handling and Initialization            =
     =========================================================*/
     
-    this->game = new Game();
 
     // Clean up this layer and set it to its default (IDLE) state
     this->goIdle();
@@ -202,7 +206,7 @@ bool PuzzleLayer::init() {
     this->updateFromModel();
     
     /*=====  End of Model Handling and Initialization  ======*/
-	
+    
     // Indicates we initialized successfully
     return true;
 }
@@ -246,6 +250,8 @@ bool PuzzleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
     cocos2d::Vec2 point = touch->getLocation();
 
     this->solverTouchInputManager->began(&point);
+
+    return true;
 }
 void PuzzleLayer::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
     cocos2d::Vec2 point = touch->getLocation();

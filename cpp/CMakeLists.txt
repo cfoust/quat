@@ -141,6 +141,7 @@ set(GAME_SRC
   Classes/solver/SolverTouchInputManager.cpp
   Classes/solver/SolverKeyboardManager.cpp
   Classes/solver/BannerButtonLayer.cpp
+  Classes/solver/UndoButtonLayer.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -165,6 +166,7 @@ set(GAME_HEADERS
   Classes/solver/SolverTouchInputManager.h
   Classes/solver/SolverKeyboardManager.h
   Classes/solver/BannerButtonLayer.h
+  Classes/solver/UndoButtonLayer.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

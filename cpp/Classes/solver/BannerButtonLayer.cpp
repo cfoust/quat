@@ -49,6 +49,10 @@ BannerButtonLayer::BannerButtonLayer(float height) {
 	this->_height = height;
 }
 
+void BannerButtonLayer::update(int newVal) {
+    this->textLabel->setString(std::to_string(newVal));
+}
+
 BannerButtonLayer * BannerButtonLayer::create(float height)
 {
     BannerButtonLayer *pRet = new(std::nothrow) BannerButtonLayer(height);
