@@ -127,6 +127,7 @@ set(GAME_SRC
   Classes/GameScene.cpp
   Classes/BackgroundLayer.cpp
   Classes/TouchInputManager.cpp
+  Classes/Clickable.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
   Classes/models/User.cpp
@@ -149,6 +150,7 @@ set(GAME_HEADERS
   Classes/GameScene.h
   Classes/BackgroundLayer.h
   Classes/TouchInputManager.h
+  Classes/Clickable.h
   Classes/models/Game.h
   Classes/models/Puzzle.h
   Classes/models/User.h
