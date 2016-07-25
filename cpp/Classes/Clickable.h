@@ -7,7 +7,7 @@ namespace QUAT {
 
 class Clickable : public cocos2d::Layer
 {
-private:
+protected:
 	// The bounds of the clickable area to check against
 	cocos2d::Rect * bounds;
 
@@ -53,7 +53,7 @@ public:
 	 *
 	 * @param[in]  callback  The callback
 	 */
-	void setLeaveCallback(std::function<void(void)> callback);
+	void setLeaveCallback(std::function<void(void)> & callback);
 
 	/**
 	 * @brief      Sets the callback called when the user either enters or
@@ -61,7 +61,7 @@ public:
 	 *
 	 * @param[in]  callback  The callback
 	 */
-	void setEnterCallback(std::function<void(void)> callback);
+	void setEnterCallback(std::function<void(void)> & callback);
 
 	/**
 	 * @brief      Sets the callback called when the user releases a tap within
@@ -69,7 +69,7 @@ public:
 	 *
 	 * @param[in]  callback  The callback
 	 */
-	void setUpCallback(std::function<void(void)> callback);
+	void setUpCallback(std::function<void(void)> & callback);
 
 	/**
 	 * @brief      Sets whether this Clickable object is accepting input.

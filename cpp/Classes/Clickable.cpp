@@ -117,15 +117,15 @@ void Clickable::setPositionY(float y) {
     this->recalculateBounds();
 }
 
-void Clickable::setLeaveCallback(std::function<void(void)> callback) {
+void Clickable::setLeaveCallback(std::function<void(void)> & callback) {
     this->leaveCallback = callback;
 }
 
-void Clickable::setEnterCallback(std::function<void(void)> callback) {
+void Clickable::setEnterCallback(std::function<void(void)> & callback) {
     this->enterCallback = callback;
 }
 
-void Clickable::setUpCallback(std::function<void(void)> callback) {
+void Clickable::setUpCallback(std::function<void(void)> & callback) {
     this->upCallback = callback;
 }
 

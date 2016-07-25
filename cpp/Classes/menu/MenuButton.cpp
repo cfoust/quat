@@ -6,20 +6,12 @@ USING_NS_CC;
 
 namespace QUAT {
 
-
-/**
-* Sets the enabled status of the button. Enabled buttons can receive
-* events.
-*/
-void MenuButton::enabled(bool status) {
-    this->_enabled = status;
+void MenuButton::entered() {
+    this->selected(true);
 }
 
-/**
-* Returns whether or not the button is enabled.
-*/
-bool MenuButton::isEnabled() {
-    return this->_enabled;
+void MenuButton::left() {
+    this->selected(false);
 }
 
 cocos2d::Rect * MenuButton::getBounds() {
@@ -83,17 +75,22 @@ MenuButton * MenuButton::create(std::string title,
 
 bool MenuButton::init() {
 	// Init the super class
-    if ( !Layer::init() )
+    if ( !Clickable::init() )
     {
         return false;
     }
+
+    this->setWidth(this->_width);
+    this->setHeight(this->_height);
+
+    this->upCallback = this->callback;
+    this->enterCallback = CC_CALLBACK_0(MenuButton::entered, this);
+    this->leaveCallback = CC_CALLBACK_0(MenuButton::left, this);
 
     this->textLabel = cocos2d::Label::createWithTTF(this->title, "fonts/Arimo-Regular.ttf", this->fontSize);
     this->textLabel->setPositionX(this->width * 0.48);
     this->textLabel->setPositionY(this->height / 2);
     this->addChild(this->textLabel, 2);
-
-    this->bounds = new cocos2d::Rect(0,0,0,0);
 
     this->defaultColor = new cocos2d::Color4B(255,255,255,64);
     this->selectedColor = new cocos2d::Color4B(255,255,255,153);
@@ -112,20 +109,6 @@ bool MenuButton::init() {
     this->background->setPositionY(this->height / 2);
     this->background->setColor(*this->defaultColor);
     this->addChild(this->background, 0);
-    
-    //Create a "one by one" touch event listener (processes one touch at a time)
-    auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
-    // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
-    touchListener->setSwallowTouches(false);
-
-    touchListener->onTouchBegan = CC_CALLBACK_2(MenuButton::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(MenuButton::onTouchMoved, this);
-    touchListener->onTouchEnded = CC_CALLBACK_2(MenuButton::onTouchEnded, this);
-
-     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
-
-
-    this->regenerateBounds();
 
     return true;
 }
@@ -137,63 +120,10 @@ MenuButton::MenuButton(std::string title,
                std::function<void(void)> callback) {
     this->title = title;
 	this->fontSize = fontSize;
-    this->width = width;
-    this->height = height;
+    this->_width = width;
+    this->_height = height;
     this->callback = callback;
     this->_enabled = true;
-    this->_trackingTouch = false;
-}
-
-void MenuButton::regenerateBounds() {
-    this->bounds->setRect(this->getPositionX(), this->getPositionY(), this->width, this->height);
-}
-
-void MenuButton::setPositionX(float x) {
-    cocos2d::Layer::setPositionX(x);
-    this->regenerateBounds();
-}
-void MenuButton::setPositionY(float y) {
-    cocos2d::Layer::setPositionY(y);
-    this->regenerateBounds();
-}
-
-bool MenuButton::contains(cocos2d::Touch* touch) {
-    return this->bounds->containsPoint(touch->getLocation());
-}
-
-bool MenuButton::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
-    if (!this->_enabled) {
-        return false;
-    }
-
-    if (!this->contains(touch)) {
-        return false;
-    }
-
-    if (this->_trackingTouch) {
-        return false;
-    } else {
-        this->_trackingTouch = true;
-    }
-    this->selected(true);
-    return true;
-}
-void MenuButton::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
-    bool inside = this->contains(touch);
-    if (this->_trackingTouch && !inside) {
-        this->_trackingTouch = false;
-        this->selected(false);
-    } else if (!this->_trackingTouch && inside) {
-        this->_trackingTouch = true;
-        this->selected(true);
-    }
-}
-void MenuButton::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
-    this->selected(false);
-    if (this->contains(touch)) {
-        this->callback();
-    }
-    this->_trackingTouch = false;
 }
 
 }

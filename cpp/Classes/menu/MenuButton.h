@@ -2,20 +2,20 @@
 #define __MENU_BUTTON_H__
 
 #include "cocos2d.h"
+#include "../Clickable.h"
 #include "../nodes/RectRadius.h"
 
 namespace QUAT {
 
-class MenuButton : public cocos2d::Layer
+class MenuButton : public Clickable
 {
 private:
 	float fontSize,
-		  width,
-		  height;
+		  _width,
+		  _height;
 
 	bool _enabled,
 		 _selected,
-		 _trackingTouch,
 		 _showBorder;
 
 	std::function<void(void)> callback;
@@ -25,32 +25,26 @@ private:
 	cocos2d::Color4B * defaultColor,
 					 * selectedColor;
 
-	cocos2d::Rect * bounds;
 
 	RectRadius * border,
 			   * background;
 
 	std::string title;
 
-	bool contains(cocos2d::Touch* touch);
+	/**
+	 * @brief      When the touch enters this button.
+	 */
+	void entered();
 
-	void regenerateBounds();
+	/**
+	 * @brief      When the touch leaves this button.
+	 */
+	void left();
 
 public:
-	virtual bool init();	
-
-	/**
-	 * Sets the enabled status of the button. Enabled buttons can receive
-	 * events.
-	 */
-	void enabled(bool status);
+	virtual bool init();
 
 	cocos2d::Rect * getBounds();
-
-	/**
-	 * Returns whether or not the button is enabled.
-	 */
-	bool isEnabled();
 
 	/**
 	 * Sets the selected status of the button. Selected means that the border
@@ -72,9 +66,6 @@ public:
 	 * Gets the text of the button.
 	 */
 	const std::string getText();
-
-	void setPositionX(float x);
-	void setPositionY(float y);
 	
 	MenuButton(std::string title, 
 			   float fontSize, 
@@ -87,10 +78,6 @@ public:
 							   float width, 
 							   float height,
 							   std::function<void(void)> callback);
-
-	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 };
 
 }
