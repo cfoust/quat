@@ -17,11 +17,7 @@ protected:
 		 enabled; // Whether or not this layer is accepting clicks
 
 	float width, height;
-
 	
-	std::function<void(void)> leaveCallback, // When the click leaves (even if not down)
-							  enterCallback,	 // When the click is down and in the bounds
-							  upCallback; 	 // When the click goes up and was in the bounds
 
 	// Called by this class to regenerate the click bounds when this layer
 	// is moved and resized
@@ -35,6 +31,10 @@ protected:
     bool contains(cocos2d::Touch* touch);
 
 public:
+	std::function<void(void)> leaveCallback, // When the click leaves (even if not down)
+							  enterCallback,	 // When the click is down and in the bounds
+							  upCallback; 	 // When the click goes up and was in the bounds
+
 	bool init();
 	
 	Clickable();

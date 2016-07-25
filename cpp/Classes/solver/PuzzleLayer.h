@@ -5,6 +5,7 @@
 #include "../models/Game.h"
 #include "WordNode.h"
 #include "BorderedWordNode.h"
+#include "BannerButtonLayer.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -19,11 +20,12 @@ private:
 	cocos2d::Sprite * undo;
 	WordNode * goalWord;
 	BorderedWordNode * currentWord;
+	BannerButtonLayer * bannerButton;
+	KeyboardLayer * keyboardLayer;
 
 	cocos2d::Rect * gameBounds;
 	float fontSize;
 
-	KeyboardLayer * keyboardLayer;
 
 	SolverStateController * solverStateController;
 	SolverTouchInputManager * solverTouchInputManager;
@@ -100,6 +102,8 @@ public:
 	 * Updates the game layer with information from the model.
 	 */
 	void updateFromModel();
+
+	void bannerClick();
 
 	// ##################################################
 	// ############# NORMAL CLASS METHODS ###############

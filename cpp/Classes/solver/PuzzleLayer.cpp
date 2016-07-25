@@ -74,7 +74,11 @@ void PuzzleLayer::updateFromModel() {
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
-    this->currentWord->getWord();
+    return this->currentWord->getWord();
+}
+
+void PuzzleLayer::bannerClick() {
+    cocos2d::log("Clicked on banner");
 }
 
 bool PuzzleLayer::init() {
@@ -127,6 +131,19 @@ bool PuzzleLayer::init() {
     undo->setScale(scale,scale);
     auto box = undo->getBoundingBox();
     this->addChild(undo);
+
+    // Initialize the banner, which is used to show the rank the user is 
+    // currently at
+    float bannerHeight = height * 0.08; 
+    this->bannerButton = BannerButtonLayer::create(bannerHeight);
+
+    // The callback called when the user taps on the banner
+    this->bannerButton->upCallback = CC_CALLBACK_0(PuzzleLayer::bannerClick, this);
+    
+    // Sets up the proper positioning of the banner
+    this->bannerButton->setPositionX(gameBounds->origin.x + (width * 0.88));
+    this->bannerButton->setPositionY(height - bannerHeight);
+    this->addChild(this->bannerButton);
 
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
