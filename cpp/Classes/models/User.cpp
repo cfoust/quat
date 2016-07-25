@@ -60,7 +60,7 @@ void User::registerPuzzle(Puzzle * puzzle) {
 }
 
 void User::toBytes(char * bytes) {
-
+	// cocos2d::FileUtils::getInstance()->getWritablePath()
 }
 
 }

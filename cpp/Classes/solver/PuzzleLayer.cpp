@@ -3,6 +3,8 @@
 #include "SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
 
+#include <string>
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 #include "SolverKeyboardManager.h"
 #endif
@@ -28,23 +30,23 @@ PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 
 void PuzzleLayer::goIdle() {
 	this->keyboardLayer->setVisible(false);
-	this->solutionLayer->currentWord->unselect();
+	this->currentWord->unselect();
 }
 
 void PuzzleLayer::chooseLetter(int column) {
 	this->keyboardLayer->setVisible(true);
 
-	auto word = this->solutionLayer->currentWord;
+	auto word = this->currentWord;
     word->unselect();
     word->select(column);
 }
 
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
-    this->solutionLayer->currentWord->changeLetter(column, letter);
+    this->currentWord->changeLetter(column, letter);
 }
 
 int PuzzleLayer::pointInCurrentWord(cocos2d::Vec2 * point) {
-    return this->solutionLayer->currentWord->pointInWord(point);
+    return this->currentWord->pointInWord(point);
 }
 
 bool PuzzleLayer::pointInKeyboard(cocos2d::Vec2 * point) {
@@ -66,13 +68,13 @@ void PuzzleLayer::updateFromModel() {
         puzzle->startTime();
     }
 
-    this->solutionLayer->undo->setVisible(puzzle->getStepCount() > 1);
-    this->solutionLayer->currentWord->changeWord(puzzle->getCurrent());
-    this->solutionLayer->goalWord->changeWord(puzzle->getGoal());
+    this->undo->setVisible(puzzle->getStepCount() > 1);
+    this->currentWord->changeWord(puzzle->getCurrent());
+    this->goalWord->changeWord(puzzle->getGoal());
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
-    this->solutionLayer->currentWord->getWord();
+    this->currentWord->getWord();
 }
 
 bool PuzzleLayer::init() {
@@ -81,49 +83,110 @@ bool PuzzleLayer::init() {
     {
         return false;
     }
-    
-    this->solutionLayer = QUAT::SolutionLayer::create(gameBounds, fontSize);
-    addChild(solutionLayer, 0);
 
+    /*======================================================
+    =            Initialization of GUI elements            =
+    ======================================================*/
+
+    // Calculates all of the necessary ratios
+    float width = gameBounds->size.width,
+          height = gameBounds->size.height,
+          fourths = width / 4,
+          wordSize = fontSize,
+          gap = wordSize * 1.8,
+          panelHeight = fontSize + (width * .09);
+    
+    // Initializes the goal word, which is the word the user is trying to change
+    // the start word into.
+    this->goalWord = WordNode::create(wordSize, gap);
+    goalWord->changeWord(new std::string("GOAL"));
+    // Set its position to be horizontally centered
+    goalWord->setPosition(gameBounds->origin.x + (width / 2), 
+                          height * 0.55);
+    this->addChild(goalWord);
+    
+    // Initializes the current word, which is the word the user is currently
+    // operating on
+    this->currentWord = BorderedWordNode::create(wordSize, gap);
+    currentWord->changeWord(new std::string("WORD"));
+    currentWord->setPosition(gameBounds->origin.x + (width / 2), 
+                             goalWord->getPositionY() + wordSize * 1.6);
+    // Since this word is interactable, we have to recalculate the bounds
+    // in which we track touches
+    currentWord->recalculateBounds();
+    this->addChild(currentWord);
+
+    // Initializes the undo button, which allows the user to jump back in the
+    // solution
+    this->undo = cocos2d::Sprite::create("undo.png");
+    undo->setPosition(gameBounds->origin.x + width * 0.07,
+                     currentWord->getPositionY());
+    // We have to recalculate the scale of the sprite since it's of a fixed
+    // size
+    float scale = (fontSize * 0.8)/ undo->getBoundingBox().size.height;
+    undo->setScale(scale,scale);
+    auto box = undo->getBoundingBox();
+    this->addChild(undo);
+
+    // Initializes the keyboard layer, the means by which users can select
+    // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
     this->addChild(keyboardLayer);
+    
+    /*=====  End of Initialization of GUI elements  ======*/
+    
 
+    /*========================================
+    =            Input management            =
+    ========================================*/
+    
+    // Initializes the game's model here (should probably be more global)
     this->solverStateController = new SolverStateController(this);
-
-    this->game = new Game();
-
     this->solverTouchInputManager = new SolverTouchInputManager(this->solverStateController, this->game, this);
-
     this->trackingTouch = false;
 
-    //Create a "one by one" touch event listener (processes one touch at a time)
     auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
-    // When "swallow touches" is true, then returning 'true' from the onTouchBegan method will "swallow" the touch event, preventing other listeners from using it.
+    // Means that other touch listeners can grab touches
     touchListener->setSwallowTouches(false);
 
+    // Registers all of our PuzzleLayer-specific touch callbacks
     touchListener->onTouchBegan = CC_CALLBACK_2(PuzzleLayer::onTouchBegan, this);
     touchListener->onTouchMoved = CC_CALLBACK_2(PuzzleLayer::onTouchMoved, this);
     touchListener->onTouchEnded = CC_CALLBACK_2(PuzzleLayer::onTouchEnded, this);
 
+    // Registers the new listener with the global contexts
     _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
-    // Enable the keyboard if we're native
+    // Enables keyboard input if we are on a desktop platform
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-    
-    // Initialize the input manager
-    this->solverKeyboardManager = new SolverKeyboardManager(this->solverStateController, this->game, this);
+        // Initialize the input manager that handles key presses
+        this->solverKeyboardManager = new SolverKeyboardManager(this->solverStateController, this->game, this);
 
-    auto keyboardEventListener = cocos2d::EventListenerKeyboard::create();
-    // Register the callback
-    keyboardEventListener->onKeyPressed = CC_CALLBACK_2(PuzzleLayer::onKeyPressed, this);
-    // Add the event listener
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
-    
+        auto keyboardEventListener = cocos2d::EventListenerKeyboard::create();
+        // Register the callback for the event listener
+        keyboardEventListener->onKeyPressed = CC_CALLBACK_2(PuzzleLayer::onKeyPressed, this);
+        // Add the event listener to the global context
+        _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
     #endif
+    
+    /*=====  End of Input management  ======*/
+    
 
+    /*=========================================================
+    =            Model Handling and Initialization            =
+    =========================================================*/
+    
+    this->game = new Game();
+
+    // Clean up this layer and set it to its default (IDLE) state
     this->goIdle();
+
+    // Updates the view with information from the model
     this->updateFromModel();
+    
+    /*=====  End of Model Handling and Initialization  ======*/
 	
+    // Indicates we initialized successfully
     return true;
 }
 

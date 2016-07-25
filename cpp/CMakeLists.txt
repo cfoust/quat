@@ -133,7 +133,6 @@ set(GAME_SRC
   Classes/models/Dictionary.cpp
   Classes/models/PuzzleManager.cpp
   Classes/solver/PuzzleLayer.cpp
-  Classes/solver/SolutionLayer.cpp
   Classes/solver/WordNode.cpp
   Classes/solver/BorderedWordNode.cpp
   Classes/solver/KeyboardLayer.cpp
@@ -156,7 +155,6 @@ set(GAME_HEADERS
   Classes/models/Dictionary.h
   Classes/models/PuzzleManager.h
   Classes/solver/PuzzleLayer.h
-  Classes/solver/SolutionLayer.h
   Classes/solver/WordNode.h
   Classes/solver/BorderedWordNode.h
   Classes/solver/KeyboardLayer.h

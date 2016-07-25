@@ -3,7 +3,8 @@
 
 #include "cocos2d.h"
 #include "../models/Game.h"
-#include "SolutionLayer.h"
+#include "WordNode.h"
+#include "BorderedWordNode.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -15,10 +16,13 @@ class PuzzleLayer : public cocos2d::Layer
 private:
 	Game * game;
 
+	cocos2d::Sprite * undo;
+	WordNode * goalWord;
+	BorderedWordNode * currentWord;
+
 	cocos2d::Rect * gameBounds;
 	float fontSize;
 
-	SolutionLayer * solutionLayer;
 	KeyboardLayer * keyboardLayer;
 
 	SolverStateController * solverStateController;
