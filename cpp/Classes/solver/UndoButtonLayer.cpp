@@ -6,11 +6,11 @@ void UndoButtonLayer::up() {
 }
 
 void UndoButtonLayer::entered() {
-	cocos2d::log("entered");
 }
+
 void UndoButtonLayer::left() {
-	cocos2d::log("left");
 }
+
 bool UndoButtonLayer::init() {
 	// Init the super class
     if ( !Clickable::init() )
