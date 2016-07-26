@@ -30,6 +30,9 @@ private:
 	float fontSize;
 
 
+	float stepStart, stepFinish;
+
+
 	SolverStateController * solverStateController;
 	SolverTouchInputManager * solverTouchInputManager;
 

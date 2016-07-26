@@ -22,6 +22,10 @@ KeyboardLayer * KeyboardLayer::create(cocos2d::Rect * gameBounds, float fontSize
     }
 }
 
+float KeyboardLayer::getHeight() {
+    return this->keyboardHeight;
+}
+
 void KeyboardLayer::none() {
 }
 
@@ -40,6 +44,8 @@ bool KeyboardLayer::init() {
           keyboardY = 0,
           ratio = 2.265,
           keyboardWidth = ratio * keyboardHeight;
+
+    this->keyboardHeight = keyboardHeight;
 
     if (width < keyboardWidth) {
         keyboardWidth = width;

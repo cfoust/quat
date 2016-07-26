@@ -31,10 +31,13 @@ PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 void PuzzleLayer::goIdle() {
 	this->keyboardLayer->setVisible(false);
 	this->currentWord->unselect();
+    this->stepsLayer->setPositionY(this->stepStart);
 }
 
 void PuzzleLayer::chooseLetter(int column) {
-	this->keyboardLayer->setVisible(true);
+    this->keyboardLayer->setVisible(true);
+
+    this->stepsLayer->setPositionY(this->stepFinish);
 
 	auto word = this->currentWord;
     word->unselect();
@@ -68,16 +71,28 @@ void PuzzleLayer::updateFromModel() {
         puzzle->startTime();
     }
 
+    // We have to adjust the step count in the UI by one
     int stepCount = puzzle->getStepCount() - 1;
 
+    // Shows the undo button only if the user has added more than one word
     this->undo->setVisible(stepCount > 0);
     
+    // Same with the steps layer
     this->stepsLayer->setVisible(stepCount > 0);
+    
+    // Updates the count of steps
     this->stepsLayer->update(stepCount);
-    this->stepsLayer->setOverPar(stepCount > (puzzle->getPar() - 2));
 
+    // Shows the over indicator if the user is over par
+    this->stepsLayer->setOverPar(puzzle->getStepCount() > puzzle->getPar());
+
+    // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
+
+    // Gets the new goal word from the puzzle model
     this->goalWord->changeWord(puzzle->getGoal());
+    
+    // Update the rank display
     this->bannerButton->update(this->game->getUser()->getRank());
 }
 
@@ -160,9 +175,12 @@ bool PuzzleLayer::init() {
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
     this->addChild(keyboardLayer);
 
+    this->stepStart = height * 0.05;
+    this->stepFinish = this->keyboardLayer->getHeight();
+
     this->stepsLayer = StepsIndicatorLayer::create(fontSize);
     this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->stepsLayer->setPositionY(height * 0.05);
+    this->stepsLayer->setPositionY(this->stepStart);
     this->addChild(this->stepsLayer);
     
     /*=====  End of Initialization of GUI elements  ======*/

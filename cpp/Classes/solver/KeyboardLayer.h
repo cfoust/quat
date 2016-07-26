@@ -19,7 +19,7 @@ private:
 
 	std::vector<MenuButton*> * buttons;
 
-	float fontSize;
+	float fontSize, keyboardHeight;
 
 	int indexForPoint(cocos2d::Vec2 * point);
 
@@ -33,6 +33,13 @@ public:
 	KeyboardLayer(cocos2d::Rect * gameBounds, float fontSize);
 
 	void none();
+
+	/**
+	 * @brief      Get the top boundary (y coordinate) of the keyboard.
+	 *
+	 * @return     The top.
+	 */
+	float getHeight();
 
 	/**
 	 * Checks whether a point is in the keyboard.
