@@ -140,6 +140,7 @@ set(GAME_SRC
   Classes/solver/SolverStateController.cpp
   Classes/solver/SolverTouchInputManager.cpp
   Classes/solver/SolverKeyboardManager.cpp
+  Classes/solver/StepsIndicatorLayer.cpp
   Classes/solver/BannerButtonLayer.cpp
   Classes/solver/UndoButtonLayer.cpp
   Classes/nodes/RectRadius.cpp
@@ -165,6 +166,7 @@ set(GAME_HEADERS
   Classes/solver/SolverStateController.h
   Classes/solver/SolverTouchInputManager.h
   Classes/solver/SolverKeyboardManager.h
+  Classes/solver/StepsIndicatorLayer.h
   Classes/solver/BannerButtonLayer.h
   Classes/solver/UndoButtonLayer.h
   Classes/nodes/RectRadius.h

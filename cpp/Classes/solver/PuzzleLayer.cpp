@@ -68,7 +68,14 @@ void PuzzleLayer::updateFromModel() {
         puzzle->startTime();
     }
 
-    this->undo->setVisible(puzzle->getStepCount() > 1);
+    int stepCount = puzzle->getStepCount() - 1;
+
+    this->undo->setVisible(stepCount > 0);
+    
+    this->stepsLayer->setVisible(stepCount > 0);
+    this->stepsLayer->update(stepCount);
+    this->stepsLayer->setOverPar(stepCount > (puzzle->getPar() - 2));
+
     this->currentWord->changeWord(puzzle->getCurrent());
     this->goalWord->changeWord(puzzle->getGoal());
     this->bannerButton->update(this->game->getUser()->getRank());
@@ -148,11 +155,15 @@ bool PuzzleLayer::init() {
     this->undo->setPositionY(currentWord->getPositionY() - undoSize / 2);
     this->addChild(this->undo);
 
-
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
     this->addChild(keyboardLayer);
+
+    this->stepsLayer = StepsIndicatorLayer::create(fontSize);
+    this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
+    this->stepsLayer->setPositionY(height * 0.05);
+    this->addChild(this->stepsLayer);
     
     /*=====  End of Initialization of GUI elements  ======*/
     

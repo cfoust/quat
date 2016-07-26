@@ -7,6 +7,7 @@
 #include "BorderedWordNode.h"
 #include "BannerButtonLayer.h"
 #include "UndoButtonLayer.h"
+#include "StepsIndicatorLayer.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -23,6 +24,7 @@ private:
 	BorderedWordNode * currentWord;
 	BannerButtonLayer * bannerButton;
 	KeyboardLayer * keyboardLayer;
+	StepsIndicatorLayer * stepsLayer;
 
 	cocos2d::Rect * gameBounds;
 	float fontSize;
