@@ -29,19 +29,23 @@ PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 }
 
 void PuzzleLayer::goIdle() {
-	this->keyboardLayer->setVisible(false);
+    // Clear any selections on the current word
 	this->currentWord->unselect();
-    this->stepsLayer->setPositionY(this->stepStart);
+
+    if (this->keyboardUp) {
+        this->lowerKeyboard();
+    } 
 }
 
 void PuzzleLayer::chooseLetter(int column) {
-    this->keyboardLayer->setVisible(true);
-
-    this->stepsLayer->setPositionY(this->stepFinish);
-
-	auto word = this->currentWord;
+    // Select the proper column
+    auto word = this->currentWord;
     word->unselect();
     word->select(column);
+
+    if (!this->keyboardUp) {
+        this->raiseKeyboard();
+    } 
 }
 
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
@@ -84,7 +88,7 @@ void PuzzleLayer::updateFromModel() {
     this->stepsLayer->update(stepCount);
 
     // Shows the over indicator if the user is over par
-    this->stepsLayer->setOverPar(puzzle->getStepCount() > puzzle->getPar());
+    this->stepsLayer->setOverPar(puzzle->getStepCount() >= puzzle->getPar());
 
     // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
@@ -102,11 +106,45 @@ std::string * PuzzleLayer::getCurrentWord() {
 
 void PuzzleLayer::bannerClick() {
     cocos2d::log("Clicked on banner");
+    
+    this->lowerKeyboard();
 }
 
 void PuzzleLayer::undoClick() {
+    // Tries to go back one in the solution
     this->game->getPuzzle()->goBack();
+
+    // Updates the GUI from the model
     this->updateFromModel();
+}
+
+void PuzzleLayer::raiseKeyboard() {
+    // Set up the steps to move
+    auto stepsTextAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepFinish));
+    this->stepsLayer->setPositionY(this->stepStart);
+    
+    // Set up the keyboard to move
+    auto keyboardAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
+    this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
+    
+    this->stepsLayer->runAction(stepsTextAction);
+    this->keyboardLayer->runAction(keyboardAction);
+
+    this->keyboardUp = true;
+}
+
+void PuzzleLayer::lowerKeyboard() {
+    // Set up the steps to move
+    auto stepsTextAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepStart));
+    this->stepsLayer->setPositionY(this->stepFinish);
+    
+    // Set up the keyboard to move
+    auto keyboardAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
+    this->keyboardLayer->setPositionY(0);
+    
+    this->stepsLayer->runAction(stepsTextAction);
+    this->keyboardLayer->runAction(keyboardAction);
+    this->keyboardUp = false;
 }
 
 bool PuzzleLayer::init() {
@@ -163,6 +201,7 @@ bool PuzzleLayer::init() {
     this->bannerButton->update(15);
     this->addChild(this->bannerButton);
 
+    // Create and size the undo button
     float undoSize = fontSize * 0.8;
     this->undo = UndoButtonLayer::create(undoSize);
     this->undo->upCallback = CC_CALLBACK_0(PuzzleLayer::undoClick, this);
@@ -173,8 +212,13 @@ bool PuzzleLayer::init() {
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
+    this->keyboardLayer->setPositionY(this->keyboardLayer->getHeight() * -1);
     this->addChild(keyboardLayer);
 
+    // Initialize the keyboard to down
+    this->keyboardUp = false;
+
+    // Grab the proper positions for the step counter
     this->stepStart = height * 0.05;
     this->stepFinish = this->keyboardLayer->getHeight();
 

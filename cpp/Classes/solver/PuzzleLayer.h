@@ -19,28 +19,52 @@ class PuzzleLayer : public cocos2d::Layer
 private:
 	Game * game;
 
-	UndoButtonLayer * undo;
+	// The goal word and current word
 	WordNode * goalWord;
 	BorderedWordNode * currentWord;
+
+	// The various layers that handle other aspects of the game UI
 	BannerButtonLayer * bannerButton;
+	
 	KeyboardLayer * keyboardLayer;
+	bool keyboardUp;
+
+	UndoButtonLayer * undo;
 	StepsIndicatorLayer * stepsLayer;
 
+	// Contains the bounds of the game (just the portrait part) handed down
+	// by the global context
 	cocos2d::Rect * gameBounds;
+
+	// Stores the font size given to us by the global context. Most graphical
+	// calculations are based on this so that you could adjust it if you wanted
+	// to.
 	float fontSize;
 
+	float stepStart,   // The y-position of the steps indicator when the 
+	                   // keyboard is hidden.  
+		  stepFinish;  // The y-position of the steps indicator when the 
+		               // keyboard is shown.
 
-	float stepStart, stepFinish;
-
-
+	// Handles various aspects of UI state control. Usually used for
+	// larger-scale view manipulation while still staying within the game.
+	// Things like displaying a definition, the keyboard being shown, 
 	SolverStateController * solverStateController;
+
+	// Manages all of the touches that come into the layer as a whole, but not
+	// necessarily on specific elements.
 	SolverTouchInputManager * solverTouchInputManager;
 
-	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-    SolverKeyboardManager * solverKeyboardManager;
-    #endif
-
+	// Whether or not this layer is tracking a specific touch at a given time. 
 	bool trackingTouch;
+
+	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+    	// On desktop platforms, allows the user to manipulate the game using
+    	// context-sensitive key bindings. Useful for rapidly solving puzzles
+    	// and to test things.
+    	SolverKeyboardManager * solverKeyboardManager;
+    #endif
+    
 public:
 	// ##################################################
 	// ######METHODS USED FOR STATE TRANSITIONS##########
@@ -114,7 +138,22 @@ public:
 	 */
 	void bannerClick();
 
+	/**
+	 * @brief      Called when the user clicks on the undo button.
+	 */
 	void undoClick();
+
+	/**
+	 * @brief      Animates the keyboard appearing and sets it to be 
+	 *             interactable.
+	 */
+	void raiseKeyboard();
+
+	/**
+	 * @brief      Animates the keyboard disappearing and disables 
+	 *             interactability.
+	 */
+	void lowerKeyboard();
 
 	// ##################################################
 	// ############# NORMAL CLASS METHODS ###############
