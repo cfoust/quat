@@ -105,9 +105,7 @@ std::string * PuzzleLayer::getCurrentWord() {
 }
 
 void PuzzleLayer::bannerClick() {
-    cocos2d::log("Clicked on banner");
-    
-    this->lowerKeyboard();
+    cocos2d::log("Clicked on banner");    
 }
 
 void PuzzleLayer::undoClick() {
@@ -125,8 +123,11 @@ void PuzzleLayer::raiseKeyboard() {
     
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
-    this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
     
+    // Move the keyboard underground
+    this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
+
+    // Run the animations for both the step indicator and the keyboard
     this->stepsLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
 
@@ -161,10 +162,8 @@ bool PuzzleLayer::init() {
     // Calculates all of the necessary ratios
     float width = gameBounds->size.width,
           height = gameBounds->size.height,
-          fourths = width / 4,
           wordSize = fontSize,
-          gap = wordSize * 1.8,
-          panelHeight = fontSize + (width * .09);
+          gap = wordSize * 1.8;
     
     // Initializes the goal word, which is the word the user is trying to change
     // the start word into.

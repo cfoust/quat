@@ -12,9 +12,11 @@ bool BorderedWordNode::init() {
     this->defaultColor = new cocos2d::Color4B(255,255,255,64);
     this->selectedColor = new cocos2d::Color4B(255,255,255,153);
 
-    float size   = this->fontSize * 1.5,
-    	  radius = this->fontSize * 0.24,
-    	  width  = this->fontSize * 0.040;
+    float size       = this->fontSize * 1.5,
+    	  radius     = this->fontSize * 0.24,
+    	  width      = this->fontSize * 0.040;
+
+    this->difference = size - (*this->bounds)[0]->size.width;
 
     for (int i = 0; i < 4; i++) {
     	// Initialize the new RectRadius
@@ -36,7 +38,7 @@ bool BorderedWordNode::init() {
     	auto fill = this->fills[i];
 
     	fill->setPositionX(bound->origin.x + (bound->size.width / 2));
-    	fill->setPositionY(bound->origin.y + (bound->size.height / 2));
+    	fill->setPositionY(bound->origin.y + (bound->size.height / 2)); 
 
     	fill->setColor(*this->defaultColor);
 
@@ -56,6 +58,37 @@ void BorderedWordNode::unselect() {
     	fill->setColor(*this->defaultColor);
     }
 }
+
+void BorderedWordNode::recalculateBounds() {
+    // Initialize all the pretty calculations
+    float x = this->getPositionX(),
+          y = this->getPositionY(),
+          fontHeight = this->fontSize,
+          fontHeightHalf = fontHeight / 2,
+          fontWidth = fontHeight * 0.8,
+          fontWidthHalf = fontWidth / 2,
+          delta = this->difference / 2;
+
+    // Calculate bound rectangles for all of the letters
+    for (int i = 0; i < 4; i++) {
+        auto letter = (*this->letterPool)[i];
+        auto rect = (*this->bounds)[i];
+
+        rect->setRect(x - letter->getPositionX() - fontWidthHalf - delta,
+                      y - fontHeightHalf - delta,
+                      fontWidth + difference,
+                      fontHeight + difference);
+    }
+
+    auto first = (*this->bounds)[0],
+         last  = (*this->bounds)[3];
+
+    whole->setRect(first->origin.x - delta,
+                   first->origin.y - delta,
+                   ((last->origin.x + last->size.width) - first->origin.x + difference),
+                   first->size.height + difference);
+}
+
 
 BorderedWordNode::BorderedWordNode(float fontSize, float fontGap) : WordNode(fontSize, fontGap) {
 	

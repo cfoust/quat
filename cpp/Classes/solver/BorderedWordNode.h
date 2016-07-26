@@ -21,6 +21,8 @@ private:
 	cocos2d::Color4B * defaultColor,
 					 * selectedColor;
 
+	// Used to adjust the bounds to fit the border
+	float difference;
 
 public:
 	bool init();
@@ -28,6 +30,8 @@ public:
 	void select(int column);
 
 	void unselect();
+
+	void recalculateBounds();
 	
 	BorderedWordNode(float fontSize, float fontGap);
 	
