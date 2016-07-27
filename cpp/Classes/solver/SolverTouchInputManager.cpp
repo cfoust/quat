@@ -24,6 +24,7 @@ void SolverTouchInputManager::began(cocos2d::Vec2 * point) {
 		if (currentLetter != -1) {
 			this->lastColumn = currentLetter;
 			this->sc->to_CHOOSING_LETTER(currentLetter);
+			this->puzzleLayer->updateFromModel();
 		}
 	}
 	else if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
@@ -32,9 +33,11 @@ void SolverTouchInputManager::began(cocos2d::Vec2 * point) {
 		if (currentLetter != -1) {
 			this->lastColumn = currentLetter;
 			this->sc->to_CHOOSING_LETTER(currentLetter);
+			this->puzzleLayer->updateFromModel();
 		}
 		else if (!this->puzzleLayer->pointInKeyboard(point)) {
 			this->sc->to_IDLE();
+			this->puzzleLayer->updateFromModel();
 		}
 		else if (this->puzzleLayer->pointInKeyboardLetter(point)) {
 			this->puzzleLayer->changeCurrentLetter(this->lastColumn, this->puzzleLayer->getKeyboardLetter(point));
@@ -52,6 +55,7 @@ void SolverTouchInputManager::moved(cocos2d::Vec2 * point) {
 		else if ((currentLetter != -1) && (this->lastColumn != currentLetter)) {
 			this->lastColumn = currentLetter;
 			this->sc->to_CHOOSING_LETTER(currentLetter);
+			this->puzzleLayer->updateFromModel();
 		}
 	}
 }

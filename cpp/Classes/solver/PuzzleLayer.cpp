@@ -34,7 +34,7 @@ void PuzzleLayer::goIdle() {
 
     if (this->keyboardUp) {
         this->lowerKeyboard();
-    } 
+    }
 }
 
 void PuzzleLayer::chooseLetter(int column) {
@@ -98,6 +98,7 @@ void PuzzleLayer::updateFromModel() {
     
     // Update the rank display
     this->bannerButton->update(this->game->getUser()->getRank());
+
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
