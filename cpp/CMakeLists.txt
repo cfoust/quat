@@ -143,6 +143,7 @@ set(GAME_SRC
   Classes/solver/StepsIndicatorLayer.cpp
   Classes/solver/BannerButtonLayer.cpp
   Classes/solver/UndoButtonLayer.cpp
+  Classes/solver/MenuButtonLayer.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -169,6 +170,7 @@ set(GAME_HEADERS
   Classes/solver/StepsIndicatorLayer.h
   Classes/solver/BannerButtonLayer.h
   Classes/solver/UndoButtonLayer.h
+  Classes/solver/MenuButtonLayer.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

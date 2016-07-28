@@ -2,6 +2,7 @@
 #define __MENU_BUTTON_LAYER_H__
 
 #include "cocos2d.h"
+#include "../nodes/RectRadius.h"
 #include "../Clickable.h"
 
 namespace QUAT {
@@ -9,14 +10,14 @@ namespace QUAT {
 class MenuButtonLayer : public Clickable
 {
 private:
-	cocos2d::Sprite * background;
-	cocos2d::Label * textLabel;
+	RectRadius * circle;
 
 	float _size;
 
 	void up();
 	void entered();
 	void left();
+	void recalculateBounds();
 public:
 	bool init();
 	

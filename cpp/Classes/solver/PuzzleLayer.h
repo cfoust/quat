@@ -8,6 +8,7 @@
 #include "BannerButtonLayer.h"
 #include "UndoButtonLayer.h"
 #include "StepsIndicatorLayer.h"
+#include "MenuButtonLayer.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -25,6 +26,7 @@ private:
 
 	// The various layers that handle other aspects of the game UI
 	BannerButtonLayer * bannerButton;
+	MenuButtonLayer * menuButton;
 	
 	KeyboardLayer * keyboardLayer;
 	bool keyboardUp;

@@ -52,18 +52,6 @@ bool GameScene::init()
     // Create the puzzle layer
     puzzleLayer = PuzzleLayer::create(gameBounds, fontSize);
     addChild(puzzleLayer, 1);
-
-
-    float distance = (fontSize / 2) * 0.3;
-    auto button = QUAT::MenuButton::create("Menu", 
-                                           fontSize * 0.5,
-                                           gameBounds->size.width * 0.2,
-                                           fontSize * 0.8, 
-                                           CC_CALLBACK_0(GameScene::menuCallback, this));
-    button->setPositionX(distance);
-    button->setPositionY(gameBounds->size.height - distance - fontSize);
-    button->showBorder(false);
-    this->addChild(button);
     
     return true;
 }

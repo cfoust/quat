@@ -7,6 +7,13 @@ namespace QUAT {
 
 void Clickable::recalculateBounds() {
     this->bounds->setRect(this->getPositionX(), this->getPositionY(), this->width, this->height);
+    if (this->debug) {
+        cocos2d::log("Regenerated bounds (D) (%f,%f,%f,%f)", this->bounds->origin.x,
+                                                 this->bounds->origin.y,
+                                                 this->bounds->size.width,
+                                                 this->bounds->size.height);
+    }
+    
 }
 
 bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
@@ -19,6 +26,11 @@ bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
     }
 
     this->tracking = true;
+
+    if (this->debug) {
+        Vec2 loc = touch->getLocation();
+        cocos2d::log("B%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
+    }
 
     return true;
 }
@@ -37,6 +49,11 @@ void Clickable::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
         this->inside = false;
         this->leaveCallback();
     }
+
+    if (this->debug) {
+        Vec2 loc = touch->getLocation();
+        cocos2d::log("M%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
+    }
 }
 void Clickable::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     this->tracking = false;
@@ -44,6 +61,18 @@ void Clickable::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     if (this->contains(touch)) {
         this->leaveCallback();
         this->upCallback();
+
+        if (this->debug) {
+            cocos2d::log("Click in rect: (%f,%f,%f,%f)", this->bounds->origin.x,
+                                                         this->bounds->origin.y,
+                                                         this->bounds->size.width,
+                                                         this->bounds->size.height);
+        }
+    }
+
+    if (this->debug) {
+        Vec2 loc = touch->getLocation();
+        cocos2d::log("E%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
     }
 }
 
@@ -60,6 +89,7 @@ bool Clickable::init() {
     this->tracking = false;
     this->inside = false;
     this->enabled = true;
+    this->debug = false;
 
     this->width = 0;
     this->height = 0;
@@ -98,6 +128,10 @@ Clickable * Clickable::create() {
         pRet = NULL;
         return NULL;
     }
+}
+
+void Clickable::setDebug(bool debug) {
+    this->debug = debug;
 }
 
 void Clickable::setPosition(const cocos2d::Vec2 & position) {

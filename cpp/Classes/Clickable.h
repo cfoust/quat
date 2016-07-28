@@ -14,14 +14,15 @@ protected:
 	
 	bool inside,  // Whether or not the touch is inside
 		 tracking,// Whether we're tracking a click 
-		 enabled; // Whether or not this layer is accepting clicks
+		 enabled, // Whether or not this layer is accepting clicks
+		 debug; 
 
 	float width, height;
 	
 
 	// Called by this class to regenerate the click bounds when this layer
 	// is moved and resized
-	void recalculateBounds();
+	virtual void recalculateBounds();
 
 	// Handle all of the touch events for this object
 	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
@@ -46,6 +47,13 @@ public:
 	void setPosition(float x, float y);
 	void setPositionX(float x);
 	void setPositionY(float y);
+
+	/**
+	 * @brief      Whether or not to print debug log for this clickable.
+	 *
+	 * @param[in]  debug  The debug
+	 */
+	void setDebug(bool debug);
 
 	/**
 	 * @brief      Sets the callback called when the user leaves the bounds
