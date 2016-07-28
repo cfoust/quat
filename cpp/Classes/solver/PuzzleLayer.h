@@ -9,6 +9,7 @@
 #include "UndoButtonLayer.h"
 #include "StepsIndicatorLayer.h"
 #include "MenuButtonLayer.h"
+#include "DefinitionButtonLayer.h"
 #include "KeyboardLayer.h"
 
 namespace QUAT {
@@ -27,6 +28,7 @@ private:
 	// The various layers that handle other aspects of the game UI
 	BannerButtonLayer * bannerButton;
 	MenuButtonLayer * menuButton;
+	DefinitionButtonLayer * definitionButton;
 	
 	KeyboardLayer * keyboardLayer;
 	bool keyboardUp;
@@ -144,6 +146,11 @@ public:
 	 * @brief      Called when the user clicks on the undo button.
 	 */
 	void undoClick();
+
+	/**
+	 * @brief      Called when the user clicks on the definition button.
+	 */
+	void definitionClick();
 
 	/**
 	 * @brief      Animates the keyboard appearing and sets it to be 

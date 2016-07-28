@@ -117,6 +117,10 @@ void PuzzleLayer::undoClick() {
     this->updateFromModel();
 }
 
+void PuzzleLayer::definitionClick() {
+    cocos2d::log("Clicked on definition button"); 
+}
+
 void PuzzleLayer::raiseKeyboard() {
     // Set up the steps to move
     auto stepsTextAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepFinish));
@@ -208,6 +212,14 @@ bool PuzzleLayer::init() {
     this->undo->setPositionX(gameBounds->origin.x + width * 0.05);
     this->undo->setPositionY(currentWord->getPositionY() - undoSize / 2);
     this->addChild(this->undo);
+
+    // Create and size the definition button
+    float defSize = fontSize * 0.7;
+    this->definitionButton = DefinitionButtonLayer::create(defSize);
+    this->definitionButton->upCallback = CC_CALLBACK_0(PuzzleLayer::definitionClick, this);
+    this->definitionButton->setPositionX(gameBounds->origin.x + width * 0.88);
+    this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
+    this->addChild(this->definitionButton);
 
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution

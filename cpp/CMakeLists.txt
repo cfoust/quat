@@ -142,6 +142,7 @@ set(GAME_SRC
   Classes/solver/SolverKeyboardManager.cpp
   Classes/solver/StepsIndicatorLayer.cpp
   Classes/solver/BannerButtonLayer.cpp
+  Classes/solver/DefinitionButtonLayer.cpp
   Classes/solver/UndoButtonLayer.cpp
   Classes/solver/MenuButtonLayer.cpp
   Classes/nodes/RectRadius.cpp
@@ -169,6 +170,7 @@ set(GAME_HEADERS
   Classes/solver/SolverKeyboardManager.h
   Classes/solver/StepsIndicatorLayer.h
   Classes/solver/BannerButtonLayer.h
+  Classes/solver/DefinitionButtonLayer.h
   Classes/solver/UndoButtonLayer.h
   Classes/solver/MenuButtonLayer.h
   Classes/nodes/RectRadius.h
