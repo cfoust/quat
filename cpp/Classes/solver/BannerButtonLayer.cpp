@@ -49,8 +49,28 @@ BannerButtonLayer::BannerButtonLayer(float height) {
 	this->_height = height;
 }
 
+void BannerButtonLayer::updateText() {
+    this->textLabel->setString(std::to_string(this->value));
+}
+
+void BannerButtonLayer::rankDown(int toVal) {
+    this->value = toVal;
+
+    auto moveUp = cocos2d::Sequence::create(
+        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY() + this->_height)),
+        // Updates the text
+        cocos2d::CallFunc::create( CC_CALLBACK_0(BannerButtonLayer::updateText, this)),
+        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY())),
+         nullptr
+    );
+    
+    this->runAction(moveUp);
+}
+
 void BannerButtonLayer::update(int newVal) {
-    this->textLabel->setString(std::to_string(newVal));
+    if (newVal < this->value) {
+        this->rankDown(newVal);
+    }
 }
 
 BannerButtonLayer * BannerButtonLayer::create(float height)

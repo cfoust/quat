@@ -27,6 +27,7 @@ bool TextIndicatorLayer::init() {
     }
 
     this->text = cocos2d::Label::createWithTTF("Done!", "fonts/Arimo-Regular.ttf", this->fontSize);
+    this->text->setOpacity(0);
     this->addChild(this->text);
 
 	return true;

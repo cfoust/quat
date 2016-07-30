@@ -202,7 +202,6 @@ bool PuzzleLayer::init() {
     // Sets up the proper positioning of the banner
     this->bannerButton->setPositionX(gameBounds->origin.x + (width * 0.88));
     this->bannerButton->setPositionY(height - bannerHeight);
-    this->bannerButton->update(15);
     this->addChild(this->bannerButton);
 
     // Create and size the undo button
