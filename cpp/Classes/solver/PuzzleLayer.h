@@ -8,6 +8,7 @@
 #include "BannerButtonLayer.h"
 #include "UndoButtonLayer.h"
 #include "StepsIndicatorLayer.h"
+#include "TextIndicatorLayer.h"
 #include "MenuButtonLayer.h"
 #include "DefinitionButtonLayer.h"
 #include "KeyboardLayer.h"
@@ -29,12 +30,13 @@ private:
 	BannerButtonLayer * bannerButton;
 	MenuButtonLayer * menuButton;
 	DefinitionButtonLayer * definitionButton;
+	UndoButtonLayer * undo;
+	StepsIndicatorLayer * stepsLayer;
+	TextIndicatorLayer * textLayer;
 	
 	KeyboardLayer * keyboardLayer;
 	bool keyboardUp;
 
-	UndoButtonLayer * undo;
-	StepsIndicatorLayer * stepsLayer;
 
 	// Contains the bounds of the game (just the portrait part) handed down
 	// by the global context

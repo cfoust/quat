@@ -31,7 +31,7 @@ void User::loadFromBytes(char * bytes) {
 	
 }
 
-void User::registerPuzzle(Puzzle * puzzle) {
+bool User::registerPuzzle(Puzzle * puzzle) {
 	// Gets the steps the user took to the solution
 	std::vector<std::string> * steps = puzzle->getSteps();
 
@@ -47,7 +47,6 @@ void User::registerPuzzle(Puzzle * puzzle) {
 	// Converts that value to an integer
 	int change = (int) floor((parDifferenceRating / 128) * 10);
 
-
 	this->subRank = std::max(this->subRank + change, 0);
 
 	// Add in the time the user played this puzzle
@@ -57,6 +56,8 @@ void User::registerPuzzle(Puzzle * puzzle) {
 	this->puzzlesPlayed++;
 
 	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRank(), this->subRank);
+	
+	return difference == 0;
 }
 
 void User::toBytes(char * bytes) {

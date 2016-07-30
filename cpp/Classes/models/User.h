@@ -48,7 +48,7 @@ public:
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.
 	 */
-	void registerPuzzle(Puzzle * puzzle);
+	bool registerPuzzle(Puzzle * puzzle);
 
 	/**
 	 * Exports the user's info to bytes. 

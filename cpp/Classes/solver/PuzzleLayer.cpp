@@ -221,6 +221,12 @@ bool PuzzleLayer::init() {
     this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
     this->addChild(this->definitionButton);
 
+    this->textLayer = TextIndicatorLayer::create(fontSize);
+    this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
+    this->textLayer->setPositionY(currentWord->getPositionY() + width * 0.15);
+    
+    this->addChild(this->textLayer);
+
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
@@ -310,15 +316,28 @@ void PuzzleLayer::finishWord() {
 
     auto puzzle = this->game->getPuzzle();
 
-    puzzle->addWord(newWord);
+    // Attempts to add the word to the solution
+    bool result = puzzle->addWord(newWord);
 
+    // If the new word was not a word, tell the user about it
+    if (!result) {
+        this->textLayer->display((*newWord) + std::string(" is not a word"));
+    }
+
+    // Checks to see if the puzzle has been completed because of this new word
     if (puzzle->atGoal()) {
-        this->game->getUser()->registerPuzzle(puzzle);
-
+        // This returns true if the puzzle was finished with par steps
+        result = this->game->getUser()->registerPuzzle(puzzle);
 
         this->game->newPuzzle();
 
-        // todo: puzzle->startTime()
+        this->game->getPuzzle()->startTime();
+
+        if (result) {
+            this->textLayer->display(std::string("Perfect!"));
+        } else {
+            this->textLayer->display(std::string("Done!"));
+        }
     }
 
     this->updateFromModel();
