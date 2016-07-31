@@ -146,6 +146,7 @@ set(GAME_SRC
   Classes/solver/info/StepsIndicatorLayer.cpp
   Classes/solver/info/TextIndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
+  Classes/solver/info/banner/ExplodingCircle.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -175,6 +176,7 @@ set(GAME_HEADERS
   Classes/solver/info/StepsIndicatorLayer.h
   Classes/solver/info/TextIndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
+  Classes/solver/info/banner/ExplodingCircle.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

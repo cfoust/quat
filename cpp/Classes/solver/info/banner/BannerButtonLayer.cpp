@@ -39,13 +39,11 @@ bool BannerButtonLayer::init() {
     this->addChild(this->textLabel, 2);
 
     // Creates the draw node that's used for the rank up animation
-    this->node = cocos2d::DrawNode::create();
-    this->node->setPositionX(width / 2);
-    this->node->setPositionY(height / 2);
-    this->addChild(this->node);
-
-    // Fills the node with a circle
-    this->node->drawSolidCircle( cocos2d::Vec2(0,0), 40, CC_DEGREES_TO_RADIANS(360), 50, cocos2d::Color4F::WHITE);
+    this->circle = ExplodingCircle::create();
+    this->circle->setPositionX(width / 2);
+    this->circle->setPositionY(height / 2);
+    this->circle->setOpacity(0);
+    this->addChild(this->circle);
 
     // Set up the bounds
     this->setHeight(height);
@@ -67,7 +65,7 @@ void BannerButtonLayer::animateChange(int toVal) {
     this->value = toVal;
 
     auto moveUp = cocos2d::Sequence::create(
-        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY() + this->_height)),
+        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY() + this->_height * 1.2)),
         // Updates the text
         cocos2d::CallFunc::create( CC_CALLBACK_0(BannerButtonLayer::updateText, this)),
         cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY())),
@@ -80,17 +78,27 @@ void BannerButtonLayer::animateChange(int toVal) {
 void BannerButtonLayer::rankUp(int toVal) {
     this->animateChange(toVal);
 
-    // this->node->setScale(0.01);
-    this->node->setOpacity(128);
+    // Reset the scale and the opacity of the circle
+    this->circle->setScale(0.01);
+    this->circle->setOpacity(255);
 
+    // The simultaneous growth and fade of the exploding circle
     auto spawn = cocos2d::Spawn::create(
-        cocos2d::FadeOut::create(0.75),
-        cocos2d::ScaleTo::create(0.75, 200),
+        cocos2d::FadeOut::create(1.0f),
+        cocos2d::ScaleTo::create(1.0f, 200),
+        nullptr
+    );
+
+    // The sequence that makes it happen after the banner has finished
+    // animating
+    auto wait = cocos2d::Sequence::create(
+        cocos2d::DelayTime::create(1.5f),
+        spawn,
         nullptr
     );
 
     
-    // this->node->runAction(spawn);
+    this->circle->runAction(wait);
     
 }
 void BannerButtonLayer::rankDown(int toVal) {
