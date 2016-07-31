@@ -2,7 +2,7 @@
 #define __UNDO_LAYER_H__
 
 #include "cocos2d.h"
-#include "../Clickable.h"
+#include "../../Clickable.h"
 
 namespace QUAT {
 

@@ -8,7 +8,7 @@ namespace QUAT {
 using namespace cocos2d;
 
 User::User() {
-	this->subRank = 8192;
+	this->subRank = 8192 + 63;
 }
 
 int User::getRank() {

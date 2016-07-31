@@ -2,7 +2,7 @@
 #define __BANNER_BUTTON_LAYER_H__
 
 #include "cocos2d.h"
-#include "../Clickable.h"
+#include "../../../Clickable.h"
 
 namespace QUAT {
 
@@ -14,6 +14,8 @@ private:
 
 	// The text label that shows the current rank
 	cocos2d::Label * textLabel;
+
+	cocos2d::DrawNode * node;
 
 	// Stores the integer value reflecting the rank text on the banner
 	int value;
@@ -33,12 +35,24 @@ private:
 	void updateText();
 
 	/**
+	 * @brief      Animates the banner moving up, changing the text, and then
+	 *             moving down.
+	 */
+	void animateChange(int toVal);
+
+	/**
 	 * @brief      Animate moving down in rank.
 	 *
 	 * @param[in]  toVal  The to value
 	 */
 	void rankDown(int toVal);
 
+	/**
+	 * @brief      Animate moving up in rank.
+	 *
+	 * @param[in]  toVal  The to value
+	 */
+	void rankUp(int toVal);
 	
 public:
 	bool init();

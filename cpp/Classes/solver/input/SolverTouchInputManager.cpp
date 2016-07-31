@@ -1,7 +1,7 @@
 #include "SolverTouchInputManager.h"
 
-#include "PuzzleLayer.h"
-#include "SolverStateController.h"
+#include "../PuzzleLayer.h"
+#include "../SolverStateController.h"
 
 
 

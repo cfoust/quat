@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "PuzzleLayer.h"
-#include "SolverStateController.h"
+#include "../PuzzleLayer.h"
+#include "../SolverStateController.h"
 
 namespace QUAT {
 

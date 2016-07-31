@@ -32,10 +32,20 @@ bool BannerButtonLayer::init() {
     this->background->setPositionY(height / 2);
     this->addChild(this->background, 1);
 
+    // Initialize the text label which shows the rank text
     this->textLabel = cocos2d::Label::createWithTTF("20", "fonts/Arimo-Regular.ttf", height * 0.3);
     this->textLabel->setPositionX(width / 2);
     this->textLabel->setPositionY(height * 0.58);
     this->addChild(this->textLabel, 2);
+
+    // Creates the draw node that's used for the rank up animation
+    this->node = cocos2d::DrawNode::create();
+    this->node->setPositionX(width / 2);
+    this->node->setPositionY(height / 2);
+    this->addChild(this->node);
+
+    // Fills the node with a circle
+    this->node->drawSolidCircle( cocos2d::Vec2(0,0), 40, CC_DEGREES_TO_RADIANS(360), 50, cocos2d::Color4F::WHITE);
 
     // Set up the bounds
     this->setHeight(height);
@@ -53,7 +63,7 @@ void BannerButtonLayer::updateText() {
     this->textLabel->setString(std::to_string(this->value));
 }
 
-void BannerButtonLayer::rankDown(int toVal) {
+void BannerButtonLayer::animateChange(int toVal) {
     this->value = toVal;
 
     auto moveUp = cocos2d::Sequence::create(
@@ -63,13 +73,36 @@ void BannerButtonLayer::rankDown(int toVal) {
         cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY())),
          nullptr
     );
-    
+
     this->runAction(moveUp);
+}
+
+void BannerButtonLayer::rankUp(int toVal) {
+    this->animateChange(toVal);
+
+    // this->node->setScale(0.01);
+    this->node->setOpacity(128);
+
+    auto spawn = cocos2d::Spawn::create(
+        cocos2d::FadeOut::create(0.75),
+        cocos2d::ScaleTo::create(0.75, 200),
+        nullptr
+    );
+
+    
+    // this->node->runAction(spawn);
+    
+}
+void BannerButtonLayer::rankDown(int toVal) {
+    this->animateChange(toVal);
 }
 
 void BannerButtonLayer::update(int newVal) {
     if (newVal < this->value) {
         this->rankDown(newVal);
+    }
+    else if (newVal > this->value) {
+        this->rankUp(newVal);
     }
 }
 

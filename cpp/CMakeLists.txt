@@ -133,19 +133,19 @@ set(GAME_SRC
   Classes/models/User.cpp
   Classes/models/Dictionary.cpp
   Classes/models/PuzzleManager.cpp
-  Classes/solver/PuzzleLayer.cpp
-  Classes/solver/WordNode.cpp
-  Classes/solver/BorderedWordNode.cpp
-  Classes/solver/KeyboardLayer.cpp
-  Classes/solver/SolverStateController.cpp
-  Classes/solver/SolverTouchInputManager.cpp
-  Classes/solver/SolverKeyboardManager.cpp
-  Classes/solver/StepsIndicatorLayer.cpp
-  Classes/solver/TextIndicatorLayer.cpp
-  Classes/solver/BannerButtonLayer.cpp
-  Classes/solver/DefinitionButtonLayer.cpp
-  Classes/solver/UndoButtonLayer.cpp
   Classes/solver/MenuButtonLayer.cpp
+  Classes/solver/PuzzleLayer.cpp
+  Classes/solver/SolverStateController.cpp
+  Classes/solver/input/BorderedWordNode.cpp
+  Classes/solver/input/KeyboardLayer.cpp
+  Classes/solver/input/SolverKeyboardManager.cpp
+  Classes/solver/input/SolverTouchInputManager.cpp
+  Classes/solver/input/UndoButtonLayer.cpp
+  Classes/solver/input/WordNode.cpp
+  Classes/solver/info/DefinitionButtonLayer.cpp
+  Classes/solver/info/StepsIndicatorLayer.cpp
+  Classes/solver/info/TextIndicatorLayer.cpp
+  Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/nodes/RectRadius.cpp
   Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -162,19 +162,19 @@ set(GAME_HEADERS
   Classes/models/User.h
   Classes/models/Dictionary.h
   Classes/models/PuzzleManager.h
-  Classes/solver/PuzzleLayer.h
-  Classes/solver/WordNode.h
-  Classes/solver/BorderedWordNode.h
-  Classes/solver/KeyboardLayer.h
-  Classes/solver/SolverStateController.h
-  Classes/solver/SolverTouchInputManager.h
-  Classes/solver/SolverKeyboardManager.h
-  Classes/solver/StepsIndicatorLayer.h
-  Classes/solver/TextIndicatorLayer.h
-  Classes/solver/BannerButtonLayer.h
-  Classes/solver/DefinitionButtonLayer.h
-  Classes/solver/UndoButtonLayer.h
   Classes/solver/MenuButtonLayer.h
+  Classes/solver/PuzzleLayer.h
+  Classes/solver/SolverStateController.h
+  Classes/solver/input/BorderedWordNode.h
+  Classes/solver/input/KeyboardLayer.h
+  Classes/solver/input/SolverKeyboardManager.h
+  Classes/solver/input/SolverTouchInputManager.h
+  Classes/solver/input/UndoButtonLayer.h
+  Classes/solver/input/WordNode.h
+  Classes/solver/info/DefinitionButtonLayer.h
+  Classes/solver/info/StepsIndicatorLayer.h
+  Classes/solver/info/TextIndicatorLayer.h
+  Classes/solver/info/banner/BannerButtonLayer.h
   Classes/nodes/RectRadius.h
   Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}

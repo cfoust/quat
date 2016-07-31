@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 
 #include "WordNode.h"
-#include "../nodes/RectRadius.h"
+#include "../../nodes/RectRadius.h"
 
 namespace QUAT {
 

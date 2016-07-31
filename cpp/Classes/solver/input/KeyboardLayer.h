@@ -5,7 +5,7 @@
 
 #include "WordNode.h"
 #include "BorderedWordNode.h"
-#include "../menu/MenuButton.h"
+#include "../../menu/MenuButton.h"
 
 namespace QUAT {
 

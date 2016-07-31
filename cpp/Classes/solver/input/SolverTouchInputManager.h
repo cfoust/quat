@@ -2,8 +2,8 @@
 #define __SOLVER_TOUCH_INPUT_MANAGER_H__
 
 #include "cocos2d.h"
-#include "../TouchInputManager.h"
-#include "../models/Game.h"
+#include "../../TouchInputManager.h"
+#include "../../models/Game.h"
 
 namespace QUAT {
 

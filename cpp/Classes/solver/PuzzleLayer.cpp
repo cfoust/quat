@@ -1,12 +1,12 @@
 #include "PuzzleLayer.h"
 #include "SolverStateController.h"
-#include "SolverTouchInputManager.h"
+#include "input/SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
 
 #include <string>
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-#include "SolverKeyboardManager.h"
+#include "input/SolverKeyboardManager.h"
 #endif
 
 namespace QUAT {
@@ -118,7 +118,8 @@ void PuzzleLayer::undoClick() {
 }
 
 void PuzzleLayer::definitionClick() {
-    cocos2d::log("Clicked on definition button"); 
+    cocos2d::log("Clicked on definition button");
+    this->bannerButton->update(255);
 }
 
 void PuzzleLayer::raiseKeyboard() {

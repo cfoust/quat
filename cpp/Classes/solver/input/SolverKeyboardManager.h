@@ -2,7 +2,7 @@
 #define __SOLVER_KEYBOARD_MANAGER_H__
 
 #include "cocos2d.h"
-#include "../models/Game.h"
+#include "../../models/Game.h"
 
 namespace QUAT {
 

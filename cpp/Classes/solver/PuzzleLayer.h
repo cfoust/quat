@@ -2,51 +2,77 @@
 #define __PUZZLE_LAYER_H__
 
 #include "cocos2d.h"
+
+// The game model
 #include "../models/Game.h"
-#include "WordNode.h"
-#include "BorderedWordNode.h"
-#include "BannerButtonLayer.h"
-#include "UndoButtonLayer.h"
-#include "StepsIndicatorLayer.h"
-#include "TextIndicatorLayer.h"
+
+// General menu button, not really sure if this should be used in this class
+// yet but it's fine for right now
 #include "MenuButtonLayer.h"
-#include "DefinitionButtonLayer.h"
-#include "KeyboardLayer.h"
+
+// All of the elements necessary for input to the game state
+#include "input/WordNode.h"
+#include "input/BorderedWordNode.h"
+#include "input/UndoButtonLayer.h"
+#include "input/KeyboardLayer.h"
+
+// info/ is for anything that just displays information to the user but is
+// mostly non-interactive. 
+#include "info/banner/BannerButtonLayer.h"
+#include "info/StepsIndicatorLayer.h"
+#include "info/TextIndicatorLayer.h"
+#include "info/DefinitionButtonLayer.h"
 
 namespace QUAT {
+
+// All of the classes that need to be predefined.
 class SolverStateController;
 class SolverTouchInputManager;
 class SolverKeyboardManager;
+
+/**
+ * @brief      PuzzleLayer is a layer that takes in the game bounds and builds
+ *             an instance of the playable game. It handles the actual gameplay
+ *             of QUAT and manipulates the game state in response to user input. 
+ */
 class PuzzleLayer : public cocos2d::Layer
 {
 private:
+	// A pointer to the game state.
 	Game * game;
-
-	// The goal word and current word
-	WordNode * goalWord;
-	BorderedWordNode * currentWord;
-
-	// The various layers that handle other aspects of the game UI
-	BannerButtonLayer * bannerButton;
-	MenuButtonLayer * menuButton;
-	DefinitionButtonLayer * definitionButton;
-	UndoButtonLayer * undo;
-	StepsIndicatorLayer * stepsLayer;
-	TextIndicatorLayer * textLayer;
-	
-	KeyboardLayer * keyboardLayer;
-	bool keyboardUp;
-
-
-	// Contains the bounds of the game (just the portrait part) handed down
-	// by the global context
-	cocos2d::Rect * gameBounds;
 
 	// Stores the font size given to us by the global context. Most graphical
 	// calculations are based on this so that you could adjust it if you wanted
 	// to.
 	float fontSize;
 
+	// Contains the bounds of the game (just the portrait part) handed down
+	// by the global context. All user interface elements in PuzzleLayer are
+	// built inside these bounds.
+	cocos2d::Rect * gameBounds;
+
+	/*----------  User Input  ----------*/
+	// The static UI element that shows the goal word of the puzzle.
+	WordNode * goalWord;
+
+	// The manipulatable element that the user changes to reach the word shown
+	// by the goal word.
+	BorderedWordNode * currentWord;
+
+	// Menu button that the user can press to reach the "menu", an about screen
+	// with statistics and other information about the game.
+	MenuButtonLayer * menuButton;
+
+	// Undo button which lets the user go back a step in the solution.
+	UndoButtonLayer * undo;
+
+	// Keyboard layer that lets the user enter letters to manipulate the
+	// current word. There is an animation that moves the keyboard up and down
+	// when it is shown and hidden.
+	KeyboardLayer * keyboardLayer;
+	// Whether or not the keyboard is in its "up" position. Ensures that we do
+	// not try and animate the keyboard upwards when it is already up.
+	bool keyboardUp;
 	float stepStart,   // The y-position of the steps indicator when the 
 	                   // keyboard is hidden.  
 		  stepFinish;  // The y-position of the steps indicator when the 
@@ -70,12 +96,28 @@ private:
     	// and to test things.
     	SolverKeyboardManager * solverKeyboardManager;
     #endif
+
+	/*----------  Information Display  ----------*/
+	// The banner that shows the user's rank.
+	BannerButtonLayer * bannerButton;
+
+	// The button that allows the user to see the definition of words.
+	DefinitionButtonLayer * definitionButton;
+
+	// Shows the number of steps the user has already played.
+	StepsIndicatorLayer * stepsLayer;
+
+	// A generic animated text indicator that we use to congratulate the user
+	// on completion of a puzzle and inform them when they attempt to use a word
+	// that does not exist.
+	TextIndicatorLayer * textLayer;
     
 public:
-	// ##################################################
-	// ######METHODS USED FOR STATE TRANSITIONS##########
-	// ##################################################
 
+	/*===================================================
+	=            UI State Transition Methods            =
+	===================================================*/
+	
 	/**
 	 * Resets the UI to the idle state.
 	 */
@@ -86,12 +128,59 @@ public:
 	 * @param column Column to choose.
 	 */
 	void chooseLetter(int column);
-
-	// ##################################################
-	// ##### METHODS USED FOR VIEW MANIPULATION #########
-	// ##################################################
 	
-	// Most of these are just passthroughs to other classes
+	/*=====  End of UI State Transition Methods  ======*/
+	
+	/*============================================================
+	=            Methods for Responding to User Input            =
+	============================================================*/
+
+	/**
+	 * @brief      Handles a touchBegan event. Passed as a callback to the
+	 *             layer's event listener.
+	 *
+	 * @param      touch  The touch
+	 * @param      event  The event
+	 *
+	 * @return     { description_of_the_return_value }
+	 */
+	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
+
+	/**
+	 * @brief      Handles a touchMoved event. Passed as a callback to the
+	 *             layer's event listener.
+	 *
+	 * @param      touch  The touch
+	 * @param      event  The event
+	 */
+    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+
+    /**
+     * @brief      Handles a touchEnded event. Passed as a callback to the
+	 *             layer's event listener.
+     *
+     * @param      touch  The touch
+     * @param      event  The event
+     */
+    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+
+    /**
+     * @brief      Handles a keyPressed event. Only used when we are running
+     *             natively on a desktop platform.
+     *
+     * @param[in]  keyCode  The key code
+     * @param      event    The event
+     */
+    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, 
+								      cocos2d::Event* event);
+	
+	/**
+	 * @brief      Changes a letter at @column in the current word to the letter
+	 *             given by @letter.
+	 *
+	 * @param[in]  column  The column
+	 * @param[in]  letter  The letter
+	 */
 	void changeCurrentLetter(int column, std::string letter);
 
 	/**
@@ -130,14 +219,12 @@ public:
 	std::string getKeyboardLetter(cocos2d::Vec2 * point);
 
 	/**
-	 * Finishes the word being chosen.
+	 * @brief      Grabs the word currently displayed by currentWord and tries
+	 *             to add it into the current solution. Whether or not the 
+	 *             attempt is successful, this method updates the view to match
+	 *             the game's model.
 	 */
 	void finishWord();
-
-	/**
-	 * Updates the game layer with information from the model.
-	 */
-	void updateFromModel();
 	
 	/**
 	 * @brief      Called when the user clicks the banner.
@@ -153,6 +240,19 @@ public:
 	 * @brief      Called when the user clicks on the definition button.
 	 */
 	void definitionClick();
+	
+	/*=====  End of Methods for Responding to User Input  ======*/
+	
+
+	/*=================================================
+	=            View Manipulation Methods            =
+	=================================================*/
+	
+	/**
+	 * Updates this layer with information from the model.
+	 */
+	void updateFromModel();
+	
 
 	/**
 	 * @brief      Animates the keyboard appearing and sets it to be 
@@ -165,25 +265,18 @@ public:
 	 *             interactability.
 	 */
 	void lowerKeyboard();
+	
+	/*=====  End of View Manipulation Methods  ======*/
 
-	// ##################################################
-	// ############# NORMAL CLASS METHODS ###############
-	// ##################################################
 
 	/**
-	 * Initialize the background layer.
+	 * Initialize this layer.
 	 * @return Whether or not the layer was initialized successfully.
 	 */
 	virtual bool init();
-
+	
 	PuzzleLayer(cocos2d::Rect * gameBounds, float fontSize);
 
-	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
-
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, 
-								      cocos2d::Event* event);
 	
 	/**
 	 * Creates a PuzzleLayer object.
