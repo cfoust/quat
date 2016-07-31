@@ -45,6 +45,8 @@ bool BannerButtonLayer::init() {
     this->circle->setOpacity(0);
     this->addChild(this->circle);
 
+    this->value = -1;
+
     // Set up the bounds
     this->setHeight(height);
     this->setWidth(width);
@@ -106,6 +108,13 @@ void BannerButtonLayer::rankDown(int toVal) {
 }
 
 void BannerButtonLayer::update(int newVal) {
+    // Handle the case where the game was just loaded
+    if (this->value == -1) {
+        this->value = newVal;
+        this->updateText();
+        return;
+    }
+
     if (newVal < this->value) {
         this->rankDown(newVal);
     }

@@ -1,11 +1,15 @@
 #include "AppDelegate.h"
+#include "Constants.h"
 #include "GameScene.h"
+
+// Include Quat's constants
 
 USING_NS_CC;
 
 // Half of iPhone 6's size, just keeps the aspect ratio nice for desktop
 // testing 
-static cocos2d::Size designResolutionSize = cocos2d::Size(562.5, 1000);
+static cocos2d::Size designResolutionSize = cocos2d::Size(Q_WINDOW_WIDTH, 
+                                                          Q_WINDOW_HEIGHT);
 
 AppDelegate::AppDelegate() {
 
@@ -41,19 +45,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
 // If we're native and on a desktop platform, just use an arbitrary size
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("cppquat", Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
+        glview = GLViewImpl::createWithRect(Q_EXE_NAME, Rect(0, 0, designResolutionSize.width, designResolutionSize.height));
 // Otherwise take the size from the openGL context
 #else
-        glview = GLViewImpl::create("cppquat");
+        glview = GLViewImpl::create(Q_EXE_NAME);
 #endif
         director->setOpenGLView(glview);
     }
 
     // turn on display FPS
-    director->setDisplayStats(false);
+    director->setDisplayStats(Q_DISPLAY_STATS);
 
     // set FPS. the default value is 1.0/60 if you don't call this
-    director->setAnimationInterval(1.0 / 60);
+    director->setAnimationInterval(1.0 / Q_MAX_FPS);
 
     // Set the design resolution
     Size frameSize = glview->getFrameSize();

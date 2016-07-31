@@ -1,4 +1,6 @@
 #include "GameScene.h"
+#include "Constants.h"
+
 #include "BackgroundLayer.h"
 #include "solver/PuzzleLayer.h"
 #include "menu/MenuButton.h"
@@ -43,7 +45,7 @@ bool GameScene::init()
     // Generate the bounds of the game space
     generateBounds();
 
-    float fontSize = gameBounds->size.width * 0.10;
+    float fontSize = gameBounds->size.width * Q_FONT_SIZE;
 
     // Create the background
     background = BackgroundLayer::create();

@@ -19,7 +19,6 @@ bool StepsIndicatorLayer::init() {
 
     // Creates the subtext (which always just says "steps")
     float subtextSize = fontSize * 0.4; // The smaller font size
-
     this->subtext = cocos2d::Label::createWithTTF("steps", "fonts/Arimo-Regular.ttf", subtextSize);
     this->subtext->setPositionX(0);
     this->subtext->setPositionY(subtextSize / 2);

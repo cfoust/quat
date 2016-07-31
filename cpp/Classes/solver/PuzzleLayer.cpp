@@ -1,4 +1,5 @@
 #include "PuzzleLayer.h"
+#include "../Constants.h"
 #include "SolverStateController.h"
 #include "input/SolverTouchInputManager.h"
 #include "../nodes/RectRadius.h"
@@ -106,7 +107,6 @@ std::string * PuzzleLayer::getCurrentWord() {
 }
 
 void PuzzleLayer::bannerClick() {
-    cocos2d::log("Clicked on banner");    
 }
 
 void PuzzleLayer::undoClick() {
@@ -119,7 +119,6 @@ void PuzzleLayer::undoClick() {
 
 void PuzzleLayer::definitionClick() {
     cocos2d::log("Clicked on definition button");
-    this->bannerButton->update(255);
 }
 
 void PuzzleLayer::raiseKeyboard() {
@@ -169,7 +168,7 @@ bool PuzzleLayer::init() {
     float width = gameBounds->size.width,
           height = gameBounds->size.height,
           wordSize = fontSize,
-          gap = wordSize * 1.8;
+          gap = wordSize * Q_LETTER_GAP;
     
     // Initializes the goal word, which is the word the user is trying to change
     // the start word into.
@@ -177,7 +176,7 @@ bool PuzzleLayer::init() {
     goalWord->changeWord(new std::string("GOAL"));
     // Set its position to be horizontally centered
     goalWord->setPosition(gameBounds->origin.x + (width / 2), 
-                          height * 0.55);
+                          height * Q_GOAL_Y);
     this->addChild(goalWord);
 
     
@@ -186,7 +185,7 @@ bool PuzzleLayer::init() {
     this->currentWord = BorderedWordNode::create(wordSize, gap);
     currentWord->changeWord(new std::string("WORD"));
     currentWord->setPosition(gameBounds->origin.x + (width / 2), 
-                             goalWord->getPositionY() + wordSize * 1.6);
+                             goalWord->getPositionY() + wordSize * Q_WORDS_GAP);
     // Since this word is interactable, we have to recalculate the bounds
     // in which we track touches
     currentWord->recalculateBounds();
@@ -194,36 +193,36 @@ bool PuzzleLayer::init() {
 
     // Initialize the banner, which is used to show the rank the user is 
     // currently at
-    float bannerHeight = height * 0.08; 
+    float bannerHeight = height * Q_BANNER_HEIGHT; 
     this->bannerButton = BannerButtonLayer::create(bannerHeight);
 
     // The callback called when the user taps on the banner
     this->bannerButton->upCallback = CC_CALLBACK_0(PuzzleLayer::bannerClick, this);
     
     // Sets up the proper positioning of the banner
-    this->bannerButton->setPositionX(gameBounds->origin.x + (width * 0.88));
+    this->bannerButton->setPositionX(gameBounds->origin.x + (width * Q_BANNER_X));
     this->bannerButton->setPositionY(height - bannerHeight);
     this->addChild(this->bannerButton);
 
     // Create and size the undo button
-    float undoSize = fontSize * 0.8;
+    float undoSize = fontSize * Q_UNDO_SIZE;
     this->undo = UndoButtonLayer::create(undoSize);
     this->undo->upCallback = CC_CALLBACK_0(PuzzleLayer::undoClick, this);
-    this->undo->setPositionX(gameBounds->origin.x + width * 0.05);
+    this->undo->setPositionX(gameBounds->origin.x + width * Q_UNDO_X);
     this->undo->setPositionY(currentWord->getPositionY() - undoSize / 2);
     this->addChild(this->undo);
 
     // Create and size the definition button
-    float defSize = fontSize * 0.7;
+    float defSize = fontSize * Q_DEFINITIONBTN_SIZE;
     this->definitionButton = DefinitionButtonLayer::create(defSize);
     this->definitionButton->upCallback = CC_CALLBACK_0(PuzzleLayer::definitionClick, this);
-    this->definitionButton->setPositionX(gameBounds->origin.x + width * 0.88);
+    this->definitionButton->setPositionX(gameBounds->origin.x + width * Q_DEFINITIONBTN_X);
     this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
     this->addChild(this->definitionButton);
 
     this->textLayer = TextIndicatorLayer::create(fontSize);
     this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->textLayer->setPositionY(currentWord->getPositionY() + width * 0.15);
+    this->textLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     
     this->addChild(this->textLayer);
 
@@ -237,7 +236,7 @@ bool PuzzleLayer::init() {
     this->keyboardUp = false;
 
     // Grab the proper positions for the step counter
-    this->stepStart = height * 0.05;
+    this->stepStart = height * Q_STEPTEXT_DOWN_Y;
     this->stepFinish = this->keyboardLayer->getHeight();
 
     this->stepsLayer = StepsIndicatorLayer::create(fontSize);
