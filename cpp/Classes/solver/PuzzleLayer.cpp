@@ -123,11 +123,11 @@ void PuzzleLayer::definitionClick() {
 
 void PuzzleLayer::raiseKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepFinish));
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepFinish));
     this->stepsLayer->setPositionY(this->stepStart);
     
     // Set up the keyboard to move
-    auto keyboardAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
+    auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
     
     // Move the keyboard underground
     this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
@@ -141,11 +141,11 @@ void PuzzleLayer::raiseKeyboard() {
 
 void PuzzleLayer::lowerKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepStart));
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepStart));
     this->stepsLayer->setPositionY(this->stepFinish);
     
     // Set up the keyboard to move
-    auto keyboardAction = cocos2d::MoveTo::create(0.08, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
+    auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
     this->keyboardLayer->setPositionY(0);
     
     this->stepsLayer->runAction(stepsTextAction);
@@ -244,8 +244,8 @@ bool PuzzleLayer::init() {
     this->stepsLayer->setPositionY(this->stepStart);
     this->addChild(this->stepsLayer);
 
-    float menuButtonSize   = width * 0.035,
-          menuButtonOffset = width * 0.07;
+    float menuButtonSize   = width * Q_MENUBTN_SIZE,
+          menuButtonOffset = width * Q_MENUBTN_OFFSET;
     this->menuButton = MenuButtonLayer::create(menuButtonSize);
     this->menuButton->setPositionX(menuButtonOffset);
     this->menuButton->setPositionY(height - menuButtonOffset);

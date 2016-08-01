@@ -2,7 +2,7 @@
 #define __BORDERED_WORD_NODE_H__
 
 #include "cocos2d.h"
-
+#include "../../Constants.h"
 #include "WordNode.h"
 #include "../../nodes/RectRadius.h"
 

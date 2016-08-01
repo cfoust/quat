@@ -40,10 +40,10 @@ bool KeyboardLayer::init() {
     // Calculates all of the necessary ratios
     float width = gameBounds->size.width,
     	  height = gameBounds->size.height,
-    	  keyboardHeight = height * 0.3,
-          keyboardY = 0,
-          ratio = 2.265,
-          keyboardWidth = ratio * keyboardHeight;
+    	  keyboardHeight = height * Q_KEYBOARD_HEIGHT,
+        keyboardY = 0,
+        ratio = Q_KEYBOARD_X_Y_RATIO,
+        keyboardWidth = ratio * keyboardHeight;
 
     this->keyboardHeight = keyboardHeight;
 
@@ -54,11 +54,11 @@ bool KeyboardLayer::init() {
 
     // Calculates the rest of them
     float halfWidth = keyboardWidth / 2,
-          keyHeight = keyboardHeight * 0.27,
-          keyFontSize = keyHeight * 0.5,
-          keyWidth = keyboardWidth * 0.080,
-          verticalGap = keyboardHeight * 0.07,
-          horizontalGap = keyboardWidth * 0.02;
+          keyHeight = keyboardHeight * Q_KEYBOARD_KEY_HEIGHT,
+          keyFontSize = keyHeight * Q_KEYBOARD_KEY_FONT,
+          keyWidth = keyboardWidth * Q_KEYBOARD_KEY_WIDTH,
+          verticalGap = keyboardHeight * Q_KEYBOARD_KEY_Y_GAP,
+          horizontalGap = keyboardWidth * Q_KEYBOARD_KEY_X_GAP;
 
     this->buttons = new std::vector<MenuButton*>();
 

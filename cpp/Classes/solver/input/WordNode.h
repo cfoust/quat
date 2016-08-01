@@ -2,6 +2,7 @@
 #define __WORD_NODE_H__
 
 #include "cocos2d.h"
+#include "../../Constants.h"
 
 namespace QUAT {
 

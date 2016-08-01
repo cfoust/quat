@@ -19,7 +19,7 @@ bool UndoButtonLayer::init() {
     }
 
     // Initialize the background
-    this->background = cocos2d::Sprite::create("undo.png");
+    this->background = cocos2d::Sprite::create(Q_UNDO_SPRITEFILE);
 
     this->enterCallback = CC_CALLBACK_0(UndoButtonLayer::entered, this);
     this->leaveCallback = CC_CALLBACK_0(UndoButtonLayer::left, this);

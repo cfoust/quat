@@ -18,21 +18,20 @@ bool StepsIndicatorLayer::init() {
     }
 
     // Creates the subtext (which always just says "steps")
-    float subtextSize = fontSize * 0.4; // The smaller font size
-    this->subtext = cocos2d::Label::createWithTTF("steps", "fonts/Arimo-Regular.ttf", subtextSize);
+    float subtextSize = fontSize * Q_STEPTEXT_SUB_FONT; // The smaller font size
+    this->subtext = cocos2d::Label::createWithTTF("steps", Q_FONT_PATH, subtextSize);
     this->subtext->setPositionX(0);
     this->subtext->setPositionY(subtextSize / 2);
     this->addChild(this->subtext, 2);
 
-
     // Creates the main text
-    float stepTextSize = subtextSize * 1.5;
-    this->stepText = cocos2d::Label::createWithTTF("5", "fonts/Arimo-Regular.ttf", stepTextSize);
+    float stepTextSize = subtextSize * Q_STEPTEXT_STEP_FONT;
+    this->stepText = cocos2d::Label::createWithTTF("5", Q_FONT_PATH, stepTextSize);
     this->stepText->setPositionX(0);
     this->stepText->setPositionY(this->subtext->getPositionY() + (stepTextSize * 0.9));
     this->addChild(this->stepText, 2);
 
-    this->overText = cocos2d::Label::createWithTTF("This puzzle can be solved in fewer steps.", "fonts/Arimo-Regular.ttf", subtextSize);
+    this->overText = cocos2d::Label::createWithTTF("This puzzle can be solved in fewer steps.", Q_FONT_PATH, subtextSize);
     this->overText->setPositionX(0);
     this->overText->setPositionY(this->stepText->getPositionY() + (stepTextSize));
     this->overText->setColor(cocos2d::Color3B(255,255,255));

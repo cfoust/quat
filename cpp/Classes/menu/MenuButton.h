@@ -2,6 +2,8 @@
 #define __MENU_BUTTON_H__
 
 #include "cocos2d.h"
+#include "../Constants.h"
+
 #include "../Clickable.h"
 #include "../nodes/RectRadius.h"
 

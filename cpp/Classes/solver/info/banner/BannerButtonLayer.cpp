@@ -17,7 +17,7 @@ bool BannerButtonLayer::init() {
     }
 
     // Initialize the background
-    this->background = cocos2d::Sprite::create("banner.png");
+    this->background = cocos2d::Sprite::create(Q_BANNER_SPRITEFILE);
 
     this->enterCallback = CC_CALLBACK_0(BannerButtonLayer::entered, this);
     this->leaveCallback = CC_CALLBACK_0(BannerButtonLayer::left, this);
@@ -33,9 +33,9 @@ bool BannerButtonLayer::init() {
     this->addChild(this->background, 1);
 
     // Initialize the text label which shows the rank text
-    this->textLabel = cocos2d::Label::createWithTTF("20", "fonts/Arimo-Regular.ttf", height * 0.3);
+    this->textLabel = cocos2d::Label::createWithTTF("20", Q_FONT_PATH, height * Q_BANNER_FONT);
     this->textLabel->setPositionX(width / 2);
-    this->textLabel->setPositionY(height * 0.58);
+    this->textLabel->setPositionY(height * Q_BANNER_RANK_Y);
     this->addChild(this->textLabel, 2);
 
     // Creates the draw node that's used for the rank up animation
@@ -67,10 +67,10 @@ void BannerButtonLayer::animateChange(int toVal) {
     this->value = toVal;
 
     auto moveUp = cocos2d::Sequence::create(
-        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY() + this->_height * 1.2)),
+        cocos2d::MoveTo::create(Q_BANNER_SLIDE, cocos2d::Vec2(this->getPositionX(), this->getPositionY() + this->_height * 1.2)),
         // Updates the text
         cocos2d::CallFunc::create( CC_CALLBACK_0(BannerButtonLayer::updateText, this)),
-        cocos2d::MoveTo::create(0.75, cocos2d::Vec2(this->getPositionX(), this->getPositionY())),
+        cocos2d::MoveTo::create(Q_BANNER_SLIDE, cocos2d::Vec2(this->getPositionX(), this->getPositionY())),
          nullptr
     );
 
@@ -86,15 +86,15 @@ void BannerButtonLayer::rankUp(int toVal) {
 
     // The simultaneous growth and fade of the exploding circle
     auto spawn = cocos2d::Spawn::create(
-        cocos2d::FadeOut::create(1.0f),
-        cocos2d::ScaleTo::create(1.0f, 200),
+        cocos2d::FadeOut::create(Q_BANNER_EXPLODE),
+        cocos2d::ScaleTo::create(Q_BANNER_EXPLODE, 200),
         nullptr
     );
 
     // The sequence that makes it happen after the banner has finished
     // animating
     auto wait = cocos2d::Sequence::create(
-        cocos2d::DelayTime::create(1.5f),
+        cocos2d::DelayTime::create(Q_BANNER_SLIDE * 2),
         spawn,
         nullptr
     );

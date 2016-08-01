@@ -12,9 +12,9 @@ bool BorderedWordNode::init() {
     this->defaultColor = new cocos2d::Color4B(255,255,255,64);
     this->selectedColor = new cocos2d::Color4B(255,255,255,153);
 
-    float size       = this->fontSize * 1.5,
-    	  radius     = this->fontSize * 0.24,
-    	  width      = this->fontSize * 0.040;
+    float size       = this->fontSize * Q_CURRENT_PADDING,
+    	  radius     = this->fontSize * Q_CURRENT_BORDER_RADIUS,
+    	  width      = this->fontSize * Q_CURRENT_BORDER_WIDTH;
 
     this->difference = size - (*this->bounds)[0]->size.width;
 

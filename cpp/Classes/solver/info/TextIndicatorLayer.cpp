@@ -7,9 +7,9 @@ void TextIndicatorLayer::display(std::string str) {
 	this->setText(str);
 	this->text->stopAllActions();
 	this->text->setOpacity(0);
-	auto fade = cocos2d::Sequence::create(cocos2d::FadeTo::create(0.75, 255),
-								   cocos2d::DelayTime::create(0.75),
-								   cocos2d::FadeTo::create(0.75, 0),
+	auto fade = cocos2d::Sequence::create(cocos2d::FadeTo::create(Q_TEXT_INDICATOR_FADE, 255),
+								   cocos2d::DelayTime::create(Q_TEXT_INDICATOR_FADE),
+								   cocos2d::FadeTo::create(Q_TEXT_INDICATOR_FADE, 0),
 								   nullptr);
 
 	this->text->runAction(fade);
@@ -26,7 +26,7 @@ bool TextIndicatorLayer::init() {
         return false;
     }
 
-    this->text = cocos2d::Label::createWithTTF("Done!", "fonts/Arimo-Regular.ttf", this->fontSize);
+    this->text = cocos2d::Label::createWithTTF("Done!", Q_FONT_PATH, this->fontSize);
     this->text->setOpacity(0);
     this->addChild(this->text);
 
@@ -35,7 +35,7 @@ bool TextIndicatorLayer::init() {
 
 
 TextIndicatorLayer::TextIndicatorLayer(float fontSize) {
-    this->fontSize = fontSize * 0.40;
+    this->fontSize = fontSize * Q_TEXT_INDICATOR_FONT;
 }
 
 

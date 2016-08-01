@@ -2,6 +2,7 @@
 #define __STEPS_INDICATOR_LAYER_H__
 
 #include "cocos2d.h"
+#include "../../Constants.h"
 
 namespace QUAT {
 

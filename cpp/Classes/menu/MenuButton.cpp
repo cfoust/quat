@@ -87,7 +87,7 @@ bool MenuButton::init() {
     this->enterCallback = CC_CALLBACK_0(MenuButton::entered, this);
     this->leaveCallback = CC_CALLBACK_0(MenuButton::left, this);
 
-    this->textLabel = cocos2d::Label::createWithTTF(this->title, "fonts/Arimo-Regular.ttf", this->fontSize);
+    this->textLabel = cocos2d::Label::createWithTTF(this->title, Q_FONT_PATH, this->fontSize);
     this->textLabel->setPositionX(this->width * 0.48);
     this->textLabel->setPositionY(this->height / 2);
     this->addChild(this->textLabel, 2);

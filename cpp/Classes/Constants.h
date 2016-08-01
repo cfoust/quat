@@ -92,6 +92,8 @@
  */
 #define Q_FONT_SIZE 0.10
 
+#define Q_FONT_PATH "fonts/Arimo-Regular.ttf"
+
 /*----------  Main gameplay adjustments  ----------*/
 /**
  * All of the ratios specific to solving puzzles, but not any of
@@ -113,6 +115,31 @@
 #define Q_LETTER_GAP 1.8
 
 /**
+ * The amount of padding around each letter in the current word as
+ * a multiplier of the global font size. Essentially controls how
+ * big the border/background is around each letter.
+ * 
+ * Value is a float.
+ */
+#define Q_CURRENT_PADDING 1.5
+
+/**
+ * The corner radius of the border around each letter as a multiplier
+ * of the global font size. 
+ * 
+ * Value is a float.
+ */
+#define Q_CURRENT_BORDER_RADIUS 0.24
+
+/**
+ * The thickness of the border around each letter of the current word
+ * as a multiplier of the global font size.
+ * 
+ * Value is a float.
+ */
+#define Q_CURRENT_BORDER_WIDTH 0.04
+
+/**
  * The y-position of the goal word as a proportion of the screen's
  * height.
  * 
@@ -125,9 +152,16 @@
  * of the global font size. A larger multiplier puts the goal word
  * and the current word further apart.
  * 
- * Vale is a float.
+ * Value is a float.
  */
 #define Q_WORDS_GAP 1.6
+
+/**
+ * File path for the banner sprite. 
+ * 
+ * Value is a constant string.
+ */
+#define Q_BANNER_SPRITEFILE "banner.png"
 
 /**
  * Size of the banner that display's the user's rank as a proportion
@@ -138,12 +172,35 @@
 #define Q_BANNER_HEIGHT 0.08
 
 /**
+ * Size of the rank text on the banner as a proportion of the banner's
+ * height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_BANNER_FONT 0.3
+
+/**
+ * The y-coordinate of the rank text as a proportion of the banner's
+ * height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_BANNER_RANK_Y 0.58
+
+/**
  * Position of the banner's x-coordinate as a proportion of the 
  * screen's width.
  * 
  * Value is a float between 0 and 1. 
  */
 #define Q_BANNER_X 0.88
+
+/**
+ * Name of the file that has the undo sprite.
+ * 
+ * Value is a constant string.
+ */
+#define Q_UNDO_SPRITEFILE "undo.png"
 
 /**
  * Size of the undo button sprite as a multiplier of the game's
@@ -178,6 +235,15 @@
 #define Q_DEFINITIONBTN_X 0.88
 
 /**
+ * Font size of the text indicator, which shows
+ * when a user enters an invalid word or finishes a puzzle,
+ * as a multiplier of the global font size.
+ * 
+ * Value is a float.
+ */
+#define Q_TEXT_INDICATOR_FONT 0.40
+
+/**
  * Position of the text indicator's y-coordinate as a proportion
  * of the screen's height PLUS the y-coordinate of the current
  * word. The text indicator shows the "Done!" and "Perfect!" text
@@ -190,8 +256,25 @@
  */
 #define Q_TEXT_INDICATOR_Y 0.10
 
+
 /**
- * Positiion of the step text's y-coordinate as a proportion
+ * The font size of the step indicator's subtext (it just says "steps")
+ * as a proportion of the global font size.
+ * 
+ * Value is a float.
+ */
+#define Q_STEPTEXT_SUB_FONT 0.4
+
+/**
+ * The font size of the text that shows the number of steps as a
+ * multiplier of the subtext font size above.
+ * 
+ * Value is a float.
+ */
+#define Q_STEPTEXT_STEP_FONT 1.5
+
+/**
+ * Position of the step text's y-coordinate as a proportion
  * of the screen's height. The step text shows the number
  * of steps the user has taken towards the solution and
  * whether they could solve the solution in fewer steps.
@@ -200,7 +283,140 @@
  */
 #define Q_STEPTEXT_DOWN_Y 0.05
 
+/**
+ * Size (diameter) of the menu button as a proportion of the 
+ * screen's width. The menu button is just an empty circle.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_MENUBTN_SIZE 0.035
+
+/**
+ * Distance of center of menu button from top-left corner of
+ * screen as a proportion of the screen's width. Distance is not
+ * diagonal but is the same distance for x and y. (i.e, a distance
+ * of 10px means that the menu button is at y = screenHeight - 10
+ * and x = screenWidth - 10).
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_MENUBTN_OFFSET 0.07
+
+/**
+ * Thickness of the line that delineates the menu button's circle
+ * as a multiplier of the menu button's size.
+ * 
+ * Value is a float.
+ */
+#define Q_MENUBTN_THICKNESS 0.1
+
+/**
+ * Opacity of the menu button circle's line.
+ * 
+ * Value is an integer from 0 to 255.
+ */
+#define Q_MENUBTN_OPACITY 180
+
+/**
+ * Height of the keyboard as a proportion of the screen's height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_HEIGHT 0.3
+
+/**
+ * Height of each individual key on the keyboard as a proportion
+ * of the keyboard's total height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_KEY_HEIGHT 0.27
+
+/**
+ * Width of each individual key as a proportion of the width of the
+ * whole keyboard.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_KEY_WIDTH 0.08
+
+/**
+ * Horizontal gap between each key on the keyboard as a proportion
+ * of the width of the keyboard.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_KEY_X_GAP 0.02
+
+/**
+ * Gap between the rows of keys as a proportion of the keyboard's
+ * height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_KEY_Y_GAP 0.07
+
+/**
+ * Size of the font on each key as a proportion of the key's height.
+ * 
+ * Value is a float between 0 and 1.
+ */
+#define Q_KEYBOARD_KEY_FONT 0.5
+
+/**
+ * Ratio of the keyboard's height to the keyboard's width.
+ * 
+ * keyboardWidth = keyboardHeight * Q_KEYBOARD_X_Y_RATIO
+ * 
+ * This is only used when we're on a pretty wide device. For the
+ * most part we match keyboard width to screen width.
+ * 
+ * Value is a float.
+ */
+#define Q_KEYBOARD_X_Y_RATIO 2.265
+
 /*=====  End of Ratios and Scaling  ======*/
+
+/*=========================================
+=            Animation Timings            =
+=========================================*/
+
+/**
+ * Amount of time it takes for keyboard to slide up 
+ * and down.
+ * 
+ * Value is a float in seconds.
+ */
+#define Q_KEYBOARD_SLIDE 0.08
+
+/**
+ * Amount of time it takes for the text indicator, which shows
+ * when a user enters an invalid word or finishes a puzzle, to
+ * fade away or fade in.
+ * 
+ * Value is a float in seconds.
+ */
+#define Q_TEXT_INDICATOR_FADE 0.75
+
+/**
+ * Amount of time it takes for the banner to slide up
+ * in order to change the displayed rating. In other words,
+ * it takes double this value in seconds for the full animation
+ * of changing the rank.
+ * 
+ * Value is a float in seconds.
+ */
+#define Q_BANNER_SLIDE 0.75
+
+/**
+ * Amount of time it takes for the exploding circle to grow
+ * large and dissipate.
+ * 
+ * Value is a float in seconds.
+ */
+#define Q_BANNER_EXPLODE 1.0f
+
+/*=====  End of Animation Timings  ======*/
 
 
 #endif // _QUAT_CONSTANTS_H_

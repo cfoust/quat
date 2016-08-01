@@ -2,6 +2,7 @@
 #define __MENU_BUTTON_LAYER_H__
 
 #include "cocos2d.h"
+#include "../Constants.h"
 #include "../nodes/RectRadius.h"
 #include "../Clickable.h"
 

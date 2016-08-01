@@ -2,6 +2,7 @@
 #define __KEYBOARD_LAYER_H__
 
 #include "cocos2d.h"
+#include "../../Constants.h"
 
 #include "WordNode.h"
 #include "BorderedWordNode.h"

@@ -23,9 +23,9 @@ bool MenuButtonLayer::init() {
     this->circle = RectRadius::create(this->_size, 
                                       this->_size, 
                                       this->_size / 2, 
-                                      this->_size * 0.10, 
+                                      this->_size * Q_MENUBTN_THICKNESS, 
                                       false);
-    this->circle->setColor(cocos2d::Color4B(255,255,255,180));
+    this->circle->setColor(cocos2d::Color4B(255, 255, 255, Q_MENUBTN_OPACITY));
     this->addChild(this->circle);
 
     // Set up the bounds
