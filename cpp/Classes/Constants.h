@@ -129,7 +129,7 @@
  * 
  * Value is a float.
  */
-#define Q_CURRENT_BORDER_RADIUS 0.24
+#define Q_CURRENT_BORDER_RADIUS 0.40
 
 /**
  * The thickness of the border around each letter of the current word
@@ -137,7 +137,7 @@
  * 
  * Value is a float.
  */
-#define Q_CURRENT_BORDER_WIDTH 0.04
+#define Q_CURRENT_BORDER_WIDTH 0.06
 
 /**
  * The y-position of the goal word as a proportion of the screen's

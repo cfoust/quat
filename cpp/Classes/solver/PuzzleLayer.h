@@ -59,10 +59,6 @@ private:
 	// by the goal word.
 	BorderedWordNode * currentWord;
 
-	// Menu button that the user can press to reach the "menu", an about screen
-	// with statistics and other information about the game.
-	MenuButtonLayer * menuButton;
-
 	// Undo button which lets the user go back a step in the solution.
 	UndoButtonLayer * undo;
 

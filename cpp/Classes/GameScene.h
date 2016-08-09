@@ -2,7 +2,11 @@
 #define __GAME_SCENE_H__
 
 #include "cocos2d.h"
+#include "Constants.h"
+
 #include "BackgroundLayer.h"
+#include "MenuButtonLayer.h"
+#include "menu/MenuLayer.h"
 #include "solver/PuzzleLayer.h"
 
 namespace QUAT {
@@ -17,9 +21,17 @@ private:
     // Layer for actually playing the game
 	PuzzleLayer * puzzleLayer;
 
+    // Layer for actually playing the game
+    MenuLayer * menuLayer;
+
     // Stores the boundaries of the game
     cocos2d::Rect * gameBounds;
 
+    // Menu button that the user can press to reach the "menu", an about screen
+    // with statistics and other information about the game.
+    MenuButtonLayer * menuButton;
+
+    bool onMenu;
 
     /**
      * Generates the bounds of the game used to render everything.

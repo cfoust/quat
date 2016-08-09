@@ -4,6 +4,182 @@
 		"selected_items":
 		[
 			[
+				"menu",
+				"menuLayer"
+			],
+			[
+				"me",
+				"menuButton"
+			],
+			[
+				"puz",
+				"puzzleLayer"
+			],
+			[
+				"key",
+				"keyboardTexture"
+			],
+			[
+				"keyboar",
+				"keyboardLayer"
+			],
+			[
+				"setP",
+				"setPositionX"
+			],
+			[
+				"keybo",
+				"keyboardLayer"
+			],
+			[
+				"Q_KEYBOARD_",
+				"Q_KEYBOARD_KEY_Y_GAP"
+			],
+			[
+				"Q_KE",
+				"Q_KEYBOARD_KEY_HEIGHT"
+			],
+			[
+				"Q_BA",
+				"Q_BANNER_HEIGHT"
+			],
+			[
+				"Q_MEN",
+				"Q_MENUBTN_SIZE"
+			],
+			[
+				"Q_CU",
+				"Q_CURRENT_BORDER_RADIUS"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"comm",
+				"comm-section	Comment - Full section comment"
+			],
+			[
+				"cmm",
+				"comm-block	Comment - Block style comment"
+			],
+			[
+				"update",
+				"updateText"
+			],
+			[
+				"scale",
+				"scaleY"
+			],
+			[
+				"setS",
+				"setScaleY"
+			],
+			[
+				"sca",
+				"scaleX"
+			],
+			[
+				"COL",
+				"Color4B"
+			],
+			[
+				"draw",
+				"drawColor"
+			],
+			[
+				"new",
+				"newVal"
+			],
+			[
+				"anim",
+				"animateChange"
+			],
+			[
+				"gam",
+				"gameBounds"
+			],
+			[
+				"get",
+				"getPositionY"
+			],
+			[
+				"men",
+				"menuButtonOffset"
+			],
+			[
+				"add",
+				"addChild"
+			],
+			[
+				"updat",
+				"updateFromModel"
+			],
+			[
+				"keyb",
+				"keyboardUp"
+			],
+			[
+				"start",
+				"stepStart"
+			],
+			[
+				"step",
+				"stepsLayer"
+			],
+			[
+				"ste",
+				"stepsTextAction"
+			],
+			[
+				"setPo",
+				"setPositionY"
+			],
+			[
+				"getPo",
+				"getPositionY"
+			],
+			[
+				"ove",
+				"overPar"
+			],
+			[
+				"sub",
+				"subtextSize"
+			],
+			[
+				"set",
+				"setPositionY"
+			],
+			[
+				"undo",
+				"undoSize"
+			],
+			[
+				"banne",
+				"bannerButton"
+			],
+			[
+				"bann",
+				"bannerButton"
+			],
+			[
+				"he",
+				"_height"
+			],
+			[
+				"comm-",
+				"comm-section	Comment - Full section comment"
+			],
+			[
+				"puzz",
+				"puzzleManager"
+			],
+			[
+				"par",
+				"parDifferenceRating"
+			],
+			[
 				"ran",
 				"randomIndex"
 			],
@@ -28,20 +204,12 @@
 				"startIndex"
 			],
 			[
-				"puz",
-				"puzzleBytes"
-			],
-			[
 				"puzzl",
 				"puzzleBytes"
 			],
 			[
 				"pu",
 				"puzzleBytes"
-			],
-			[
-				"add",
-				"address"
 			],
 			[
 				"hea",
@@ -96,10 +264,6 @@
 				"pointInKeyboard"
 			],
 			[
-				"key",
-				"keyboardLayer"
-			],
-			[
 				"pointIn",
 				"pointInCurrentWord"
 			],
@@ -124,24 +288,12 @@
 				"keyboardLayer"
 			],
 			[
-				"gam",
-				"gameBounds"
-			],
-			[
 				"le",
 				"letterForPoint"
 			],
 			[
-				"keyb",
-				"KeyboardLayer"
-			],
-			[
 				"game",
 				"gameBounds"
-			],
-			[
-				"getPo",
-				"getPositionY"
 			],
 			[
 				"sel",
@@ -154,10 +306,6 @@
 			[
 				"font",
 				"fontSize"
-			],
-			[
-				"def",
-				"defaultColor"
 			],
 			[
 				"Rec",
@@ -264,10 +412,6 @@
 				"sliderEnabled"
 			],
 			[
-				"set",
-				"setVisible"
-			],
-			[
 				"gap",
 				"horizontalGap"
 			],
@@ -278,10 +422,6 @@
 			[
 				"right",
 				"rightIcon"
-			],
-			[
-				"puzz",
-				"puzzlesLeft"
 			],
 			[
 				"selecte",
@@ -308,24 +448,8 @@
 				"leftIcon"
 			],
 			[
-				"men",
-				"menuIcon"
-			],
-			[
-				"me",
-				"menuIcon"
-			],
-			[
-				"undo",
-				"undoIcon"
-			],
-			[
 				"sele",
 				"_selected"
-			],
-			[
-				"draw",
-				"drawRect"
 			],
 			[
 				"ind",
@@ -346,10 +470,6 @@
 			[
 				"_cu",
 				"_currentIndex"
-			],
-			[
-				"new",
-				"newIndex"
 			],
 			[
 				"_tim",
@@ -394,258 +514,32 @@
 			[
 				"righ",
 				"rightLabel"
-			],
-			[
-				"po",
-				"pointsLabel"
-			],
-			[
-				"colo",
-				"colorBackground"
-			],
-			[
-				"stas",
-				"statsLayer"
-			],
-			[
-				"spe",
-				"specialText"
-			],
-			[
-				"pro",
-				"progress"
-			],
-			[
-				"getTheme",
-				"getThemeProgress"
-			],
-			[
-				"_the",
-				"_themeProgress"
-			],
-			[
-				"move",
-				"movePercent"
-			],
-			[
-				"mov",
-				"movePercent"
-			],
-			[
-				"cur",
-				"currentWord"
-			],
-			[
-				"current",
-				"currentWord"
-			],
-			[
-				"fa",
-				"fadeOutPercent"
-			],
-			[
-				"se",
-				"selectedButton"
-			],
-			[
-				"nex",
-				"nextTheme"
-			],
-			[
-				"pre",
-				"prevTheme"
-			],
-			[
-				"delt",
-				"deltaTheme"
-			],
-			[
-				"theme",
-				"themeName"
-			],
-			[
-				"them",
-				"themeName"
-			],
-			[
-				"sti",
-				"sticky"
-			],
-			[
-				"get",
-				"getPuzzle"
-			],
-			[
-				"_",
-				"_stickyVisible"
-			],
-			[
-				"stick",
-				"_stickyVisible"
-			],
-			[
-				"di",
-				"_displayingSticky"
-			],
-			[
-				"s",
-				"sequence"
-			],
-			[
-				"for",
-				"foreword"
-			],
-			[
-				"_mess",
-				"_addMessage"
-			],
-			[
-				"_them",
-				"_themeProgress"
-			],
-			[
-				"is",
-				"isSelected"
-			],
-			[
-				"goal",
-				"goalWord"
-			],
-			[
-				"te",
-				"textColor"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "js/app/src/GameScene.js",
+			"file": "cpp/Classes/Constants.h",
 			"settings":
 			{
-				"buffer_size": 8363,
+				"buffer_size": 10457,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/app/src/solver/KeyboardLayer.js",
+			"file": "/home/artemis/.i3/config",
 			"settings":
 			{
-				"buffer_size": 3009,
+				"buffer_size": 5441,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/app/src/solver/KeyboardInputManager.js",
+			"file": "cpp/cocos2d/cocos/renderer/ccShader_PositionColorLengthTexture.frag",
 			"settings":
 			{
-				"buffer_size": 4316,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/Game.js",
-			"settings":
-			{
-				"buffer_size": 12608,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Searching 66 files for \"toBytes\"\n\n0 matches\n\nSearching 27 files for \"log\"\n\n/home/caleb/Developer/quat-mobile/cpp/Classes/GameScene.cpp:\n   30  \n   31  void GameScene::menuCallback() {\n   32:     log(\"This is a test\");\n   33  }\n   34  \n\n/home/caleb/Developer/quat-mobile/cpp/Classes/models/Puzzle.cpp:\n   25  	this->steps = new std::vector<std::string>();\n   26  \n   27: 	log(\"%ld\\n\", this->epochMs());\n   28  \n   29  	// Kind of superfluous, but this can't hurt \n\n/home/caleb/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.cpp:\n   25  \n   26  void SolutionLayer::menu() {\n   27:     log(\"Test\");\n   28  }\n   29  \n\n3 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 647,
-				"line_ending": "Unix",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "js/app/src/solver/PuzzleLayer.js",
-			"settings":
-			{
-				"buffer_size": 4767,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/solver/SolverTouchInputManager.js",
-			"settings":
-			{
-				"buffer_size": 6787,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/solver/SolverStateController.js",
-			"settings":
-			{
-				"buffer_size": 2676,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/StateController.js",
-			"settings":
-			{
-				"buffer_size": 1085,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/solver/SolutionLayer.js",
-			"settings":
-			{
-				"buffer_size": 5247,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/nodes/IconButton.js",
-			"settings":
-			{
-				"buffer_size": 3540,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/menu/MenuButton.js",
-			"settings":
-			{
-				"buffer_size": 4385,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/nodes/RectRadius.js",
-			"settings":
-			{
-				"buffer_size": 3371,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/app/src/solver/BorderedWordNode.js",
-			"settings":
-			{
-				"buffer_size": 2503,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/TouchInputManager.h",
-			"settings":
-			{
-				"buffer_size": 681,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/TouchInputManager.cpp",
-			"settings":
-			{
-				"buffer_size": 668,
+				"buffer_size": 1755,
 				"line_ending": "Unix"
 			}
 		},
@@ -653,79 +547,31 @@
 			"file": "cpp/CMakeLists.txt",
 			"settings":
 			{
-				"buffer_size": 6533,
+				"buffer_size": 7235,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/PuzzleLayer.h",
+			"file": "cpp/Classes/solver/input/KeyboardLayer.h",
 			"settings":
 			{
-				"buffer_size": 3579,
+				"buffer_size": 1262,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/SolverTouchInputManager.cpp",
+			"file": "cpp/Classes/GameScene.cpp",
 			"settings":
 			{
-				"buffer_size": 1955,
+				"buffer_size": 1865,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/PuzzleManager.h",
+			"file": "cpp/Classes/MenuButtonLayer.h",
 			"settings":
 			{
-				"buffer_size": 3425,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/models/PuzzleManager.cpp",
-			"settings":
-			{
-				"buffer_size": 4678,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/solver/SolverStateController.cpp",
-			"settings":
-			{
-				"buffer_size": 644,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/solver/KeyboardLayer.h",
-			"settings":
-			{
-				"buffer_size": 1085,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/solver/KeyboardLayer.cpp",
-			"settings":
-			{
-				"buffer_size": 3660,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/solver/SolutionLayer.h",
-			"settings":
-			{
-				"buffer_size": 746,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "cpp/Classes/solver/SolutionLayer.cpp",
-			"settings":
-			{
-				"buffer_size": 2006,
+				"buffer_size": 484,
 				"line_ending": "Unix"
 			}
 		},
@@ -733,103 +579,153 @@
 			"file": "cpp/Classes/solver/PuzzleLayer.cpp",
 			"settings":
 			{
-				"buffer_size": 5595,
+				"buffer_size": 13068,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/menu/MenuButton.h",
+			"file": "cpp/Classes/menu/MenuLayer.h",
 			"settings":
 			{
-				"buffer_size": 1840,
+				"buffer_size": 1006,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/menu/MenuButton.cpp",
+			"file": "cpp/Classes/menu/MenuLayer.cpp",
 			"settings":
 			{
-				"buffer_size": 5540,
+				"buffer_size": 1359,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/WordNode.h",
+			"file": "cpp/Classes/solver/PuzzleLayer.h",
 			"settings":
 			{
-				"buffer_size": 1910,
+				"buffer_size": 8824,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/WordNode.cpp",
+			"file": "cpp/Classes/GameScene.h",
 			"settings":
 			{
-				"buffer_size": 3228,
+				"buffer_size": 1472,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/BorderedWordNode.cpp",
+			"file": "cpp/Classes/solver/input/BorderedWordNode.cpp",
 			"settings":
 			{
-				"buffer_size": 1993,
+				"buffer_size": 3198,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/solver/SolverTouchInputManager.h",
+			"file": "cpp/Classes/solver/input/BorderedWordNode.h",
 			"settings":
 			{
-				"buffer_size": 662,
+				"buffer_size": 806,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Game.h",
+			"file": "cpp/Classes/solver/input/WordNode.cpp",
 			"settings":
 			{
-				"buffer_size": 854,
+				"buffer_size": 3214,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Dictionary.h",
+			"file": "cpp/Classes/solver/input/UndoButtonLayer.h",
 			"settings":
 			{
-				"buffer_size": 594,
+				"buffer_size": 427,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Dictionary.cpp",
+			"file": "cpp/Classes/solver/input/KeyboardLayer.cpp",
 			"settings":
 			{
-				"buffer_size": 1077,
+				"buffer_size": 3878,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Game.cpp",
+			"file": "cpp/Classes/solver/info/banner/BannerButtonLayer.cpp",
 			"settings":
 			{
-				"buffer_size": 567,
+				"buffer_size": 3784,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Puzzle.cpp",
+			"file": "cpp/Classes/solver/input/WordNode.h",
 			"settings":
 			{
-				"buffer_size": 2613,
+				"buffer_size": 1939,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "cpp/Classes/models/Puzzle.h",
+			"contents": "Searching 53 files for \"MenuButton\"\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/GameScene.cpp:\n    4  #include \"BackgroundLayer.h\"\n    5  #include \"solver/PuzzleLayer.h\"\n    6: #include \"menu/MenuButton.h\"\n    7  \n    8  namespace QUAT {\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.cpp:\n    1: #include \"MenuButton.h\"\n    2  \n    3  #include <string>\n    .\n    7  namespace QUAT {\n    8  \n    9: void MenuButton::entered() {\n   10      this->selected(true);\n   11  }\n   12  \n   13: void MenuButton::left() {\n   14      this->selected(false);\n   15  }\n   16  \n   17: cocos2d::Rect * MenuButton::getBounds() {\n   18      return this->bounds;\n   19  }\n   ..\n   23  * is highlighted.\n   24  */\n   25: void MenuButton::selected(bool selected) {\n   26      this->background->setColor(selected ? *this->selectedColor : *this->defaultColor);\n   27      this->_selected = selected;\n   ..\n   29  \n   30  \n   31: bool MenuButton::isSelected() {\n   32      return this->_selected;\n   33  }\n   34  \n   35: void MenuButton::showBorder(bool showBorder) {\n   36      this->border->setVisible(showBorder);\n   37      this->background->setVisible(showBorder);\n   ..\n   41  * Sets the text of the button.\n   42  */\n   43: void MenuButton::setText(std::string text) {\n   44      this->textLabel->setString(text);\n   45  }\n   46  \n   47: const std::string MenuButton::getText() {\n   48      return this->textLabel->getString();\n   49  }\n   50  \n   51: MenuButton * MenuButton::create(std::string title, \n   52                 float fontSize, \n   53                 float width, \n   ..\n   55                 std::function<void(void)> callback)\n   56  {\n   57:     MenuButton *pRet = new(std::nothrow) MenuButton(title, \n   58                                                      fontSize, \n   59                                                      width, \n   ..\n   74  \n   75  \n   76: bool MenuButton::init() {\n   77  	// Init the super class\n   78      if ( !Clickable::init() )\n   ..\n   85  \n   86      this->upCallback = this->callback;\n   87:     this->enterCallback = CC_CALLBACK_0(MenuButton::entered, this);\n   88:     this->leaveCallback = CC_CALLBACK_0(MenuButton::left, this);\n   89  \n   90      this->textLabel = cocos2d::Label::createWithTTF(this->title, Q_FONT_PATH, this->fontSize);\n   ..\n  114  }\n  115  \n  116: MenuButton::MenuButton(std::string title, \n  117                 float fontSize, \n  118                 float width, \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.h:\n   10  namespace QUAT {\n   11  \n   12: class MenuButton : public Clickable\n   13  {\n   14  private:\n   ..\n   70  	const std::string getText();\n   71  	\n   72: 	MenuButton(std::string title, \n   73  			   float fontSize, \n   74  			   float width, \n   ..\n   76  			   std::function<void(void)> callback);\n   77  	\n   78: 	static MenuButton * create(std::string title, \n   79  							   float fontSize, \n   80  							   float width, \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.cpp:\n    1: #include \"MenuButtonLayer.h\"\n    2  \n    3  namespace QUAT {\n    4: void MenuButtonLayer::up() {\n    5  	cocos2d::log(\"Clicked menu button\");\n    6  }\n    7  \n    8: void MenuButtonLayer::entered() {\n    9  }\n   10: void MenuButtonLayer::left() {\n   11  }\n   12: bool MenuButtonLayer::init() {\n   13  	// Init the super class\n   14      if ( !Clickable::init() )\n   ..\n   17      }\n   18  \n   19:     this->enterCallback = CC_CALLBACK_0(MenuButtonLayer::entered, this);\n   20:     this->leaveCallback = CC_CALLBACK_0(MenuButtonLayer::left, this);\n   21:     this->upCallback = CC_CALLBACK_0(MenuButtonLayer::up, this);\n   22  \n   23      this->circle = RectRadius::create(this->_size, \n   ..\n   38  }\n   39  \n   40: void MenuButtonLayer::recalculateBounds() {\n   41      this->bounds->setRect(this->getPositionX() - this->_size, \n   42                            this->getPositionY() - this->_size, \n   ..\n   46  \n   47  \n   48: MenuButtonLayer::MenuButtonLayer(float size) {\n   49  	this->_size = size;\n   50  }\n   51  \n   52: MenuButtonLayer * MenuButtonLayer::create(float size)\n   53  {\n   54:     MenuButtonLayer *pRet = new(std::nothrow) MenuButtonLayer(size);\n   55      if (pRet && pRet->init())\n   56      {\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.h:\n    9  namespace QUAT {\n   10  \n   11: class MenuButtonLayer : public Clickable\n   12  {\n   13  private:\n   ..\n   23  	bool init();\n   24  	\n   25: 	MenuButtonLayer(float size);\n   26  	\n   27: 	static MenuButtonLayer * create(float size);\n   28  };\n   29  \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.cpp:\n  245      this->addChild(this->stepsLayer);\n  246  \n  247:     float menuButtonSize   = width * Q_MENUBTN_SIZE,\n  248:           menuButtonOffset = width * Q_MENUBTN_OFFSET;\n  249:     this->menuButton = MenuButtonLayer::create(menuButtonSize);\n  250:     this->menuButton->setPositionX(menuButtonOffset);\n  251:     this->menuButton->setPositionY(height - menuButtonOffset);\n  252:     this->addChild(this->menuButton);\n  253      \n  254      /*=====  End of Initialization of GUI elements  ======*/\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.h:\n    9  // General menu button, not really sure if this should be used in this class\n   10  // yet but it's fine for right now\n   11: #include \"MenuButtonLayer.h\"\n   12  \n   13  // All of the elements necessary for input to the game state\n   ..\n   62  	// Menu button that the user can press to reach the \"menu\", an about screen\n   63  	// with statistics and other information about the game.\n   64: 	MenuButtonLayer * menuButton;\n   65  \n   66  	// Undo button which lets the user go back a step in the solution.\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.cpp:\n   61            horizontalGap = keyboardWidth * Q_KEYBOARD_KEY_X_GAP;\n   62  \n   63:     this->buttons = new std::vector<MenuButton*>();\n   64  \n   65      std::string rows[] = {\n   ..\n   76      for (int i = 0; i < 3; i++) {\n   77          for (int j = 0; j < rows[i].length(); j++) {\n   78:             auto button = MenuButton::create(std::string(1, rows[i].at(j)),\n   79                                           keyFontSize,\n   80                                           keyWidth,\n   ..\n  108  \n  109  int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {\n  110:     for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {\n  111:         MenuButton * button = (*this->buttons)[i];\n  112          if (button->getBounds()->containsPoint(*point)) {\n  113              return (int) i;\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.h:\n    7  #include \"WordNode.h\"\n    8  #include \"BorderedWordNode.h\"\n    9: #include \"../../menu/MenuButton.h\"\n   10  \n   11  namespace QUAT {\n   ..\n   19  	cocos2d::Rect * bounds;\n   20  \n   21: 	std::vector<MenuButton*> * buttons;\n   22  \n   23  	float fontSize, keyboardHeight;\n\n59 matches across 9 files\n\n\nSearching 53 files for \"MenuButton\"\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.cpp:\n    1: #include \"MenuButton.h\"\n    2  \n    3  #include <string>\n    .\n    7  namespace QUAT {\n    8  \n    9: void MenuButton::entered() {\n   10      this->selected(true);\n   11  }\n   12  \n   13: void MenuButton::left() {\n   14      this->selected(false);\n   15  }\n   16  \n   17: cocos2d::Rect * MenuButton::getBounds() {\n   18      return this->bounds;\n   19  }\n   ..\n   23  * is highlighted.\n   24  */\n   25: void MenuButton::selected(bool selected) {\n   26      this->background->setColor(selected ? *this->selectedColor : *this->defaultColor);\n   27      this->_selected = selected;\n   ..\n   29  \n   30  \n   31: bool MenuButton::isSelected() {\n   32      return this->_selected;\n   33  }\n   34  \n   35: void MenuButton::showBorder(bool showBorder) {\n   36      this->border->setVisible(showBorder);\n   37      this->background->setVisible(showBorder);\n   ..\n   41  * Sets the text of the button.\n   42  */\n   43: void MenuButton::setText(std::string text) {\n   44      this->textLabel->setString(text);\n   45  }\n   46  \n   47: const std::string MenuButton::getText() {\n   48      return this->textLabel->getString();\n   49  }\n   50  \n   51: MenuButton * MenuButton::create(std::string title, \n   52                 float fontSize, \n   53                 float width, \n   ..\n   55                 std::function<void(void)> callback)\n   56  {\n   57:     MenuButton *pRet = new(std::nothrow) MenuButton(title, \n   58                                                      fontSize, \n   59                                                      width, \n   ..\n   74  \n   75  \n   76: bool MenuButton::init() {\n   77  	// Init the super class\n   78      if ( !Clickable::init() )\n   ..\n   85  \n   86      this->upCallback = this->callback;\n   87:     this->enterCallback = CC_CALLBACK_0(MenuButton::entered, this);\n   88:     this->leaveCallback = CC_CALLBACK_0(MenuButton::left, this);\n   89  \n   90      this->textLabel = cocos2d::Label::createWithTTF(this->title, Q_FONT_PATH, this->fontSize);\n   ..\n  114  }\n  115  \n  116: MenuButton::MenuButton(std::string title, \n  117                 float fontSize, \n  118                 float width, \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.h:\n   10  namespace QUAT {\n   11  \n   12: class MenuButton : public Clickable\n   13  {\n   14  private:\n   ..\n   70  	const std::string getText();\n   71  	\n   72: 	MenuButton(std::string title, \n   73  			   float fontSize, \n   74  			   float width, \n   ..\n   76  			   std::function<void(void)> callback);\n   77  	\n   78: 	static MenuButton * create(std::string title, \n   79  							   float fontSize, \n   80  							   float width, \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.cpp:\n    1: #include \"MenuButtonLayer.h\"\n    2  \n    3  namespace QUAT {\n    4: void MenuButtonLayer::up() {\n    5  	cocos2d::log(\"Clicked menu button\");\n    6  }\n    7  \n    8: void MenuButtonLayer::entered() {\n    9  }\n   10: void MenuButtonLayer::left() {\n   11  }\n   12: bool MenuButtonLayer::init() {\n   13  	// Init the super class\n   14      if ( !Clickable::init() )\n   ..\n   17      }\n   18  \n   19:     this->enterCallback = CC_CALLBACK_0(MenuButtonLayer::entered, this);\n   20:     this->leaveCallback = CC_CALLBACK_0(MenuButtonLayer::left, this);\n   21:     this->upCallback = CC_CALLBACK_0(MenuButtonLayer::up, this);\n   22  \n   23      this->circle = RectRadius::create(this->_size, \n   ..\n   38  }\n   39  \n   40: void MenuButtonLayer::recalculateBounds() {\n   41      this->bounds->setRect(this->getPositionX() - this->_size, \n   42                            this->getPositionY() - this->_size, \n   ..\n   46  \n   47  \n   48: MenuButtonLayer::MenuButtonLayer(float size) {\n   49  	this->_size = size;\n   50  }\n   51  \n   52: MenuButtonLayer * MenuButtonLayer::create(float size)\n   53  {\n   54:     MenuButtonLayer *pRet = new(std::nothrow) MenuButtonLayer(size);\n   55      if (pRet && pRet->init())\n   56      {\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.h:\n    9  namespace QUAT {\n   10  \n   11: class MenuButtonLayer : public Clickable\n   12  {\n   13  private:\n   ..\n   23  	bool init();\n   24  	\n   25: 	MenuButtonLayer(float size);\n   26  	\n   27: 	static MenuButtonLayer * create(float size);\n   28  };\n   29  \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.cpp:\n  245      this->addChild(this->stepsLayer);\n  246  \n  247:     float menuButtonSize   = width * Q_MENUBTN_SIZE,\n  248:           menuButtonOffset = width * Q_MENUBTN_OFFSET;\n  249:     this->menuButton = MenuButtonLayer::create(menuButtonSize);\n  250:     this->menuButton->setPositionX(menuButtonOffset);\n  251:     this->menuButton->setPositionY(height - menuButtonOffset);\n  252:     this->addChild(this->menuButton);\n  253      \n  254      /*=====  End of Initialization of GUI elements  ======*/\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.h:\n    9  // General menu button, not really sure if this should be used in this class\n   10  // yet but it's fine for right now\n   11: #include \"MenuButtonLayer.h\"\n   12  \n   13  // All of the elements necessary for input to the game state\n   ..\n   62  	// Menu button that the user can press to reach the \"menu\", an about screen\n   63  	// with statistics and other information about the game.\n   64: 	MenuButtonLayer * menuButton;\n   65  \n   66  	// Undo button which lets the user go back a step in the solution.\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.cpp:\n   61            horizontalGap = keyboardWidth * Q_KEYBOARD_KEY_X_GAP;\n   62  \n   63:     this->buttons = new std::vector<MenuButton*>();\n   64  \n   65      std::string rows[] = {\n   ..\n   76      for (int i = 0; i < 3; i++) {\n   77          for (int j = 0; j < rows[i].length(); j++) {\n   78:             auto button = MenuButton::create(std::string(1, rows[i].at(j)),\n   79                                           keyFontSize,\n   80                                           keyWidth,\n   ..\n  108  \n  109  int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {\n  110:     for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {\n  111:         MenuButton * button = (*this->buttons)[i];\n  112          if (button->getBounds()->containsPoint(*point)) {\n  113              return (int) i;\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.h:\n    7  #include \"WordNode.h\"\n    8  #include \"BorderedWordNode.h\"\n    9: #include \"../../menu/MenuButton.h\"\n   10  \n   11  namespace QUAT {\n   ..\n   19  	cocos2d::Rect * bounds;\n   20  \n   21: 	std::vector<MenuButton*> * buttons;\n   22  \n   23  	float fontSize, keyboardHeight;\n\n58 matches across 8 files\n\n\nSearching 53 files for \"MenuButton\"\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/GameScene.cpp:\n    4  #include \"BackgroundLayer.h\"\n    5  #include \"solver/PuzzleLayer.h\"\n    6: #include \"menu/MenuButton.h\"\n    7  \n    8  namespace QUAT {\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.cpp:\n    1: #include \"MenuButtonLayer.h\"\n    2  \n    3  namespace QUAT {\n    4: void MenuButtonLayer::up() {\n    5  	cocos2d::log(\"Clicked menu button\");\n    6  }\n    7  \n    8: void MenuButtonLayer::entered() {\n    9  }\n   10: void MenuButtonLayer::left() {\n   11  }\n   12: bool MenuButtonLayer::init() {\n   13  	// Init the super class\n   14      if ( !Clickable::init() )\n   ..\n   17      }\n   18  \n   19:     this->enterCallback = CC_CALLBACK_0(MenuButtonLayer::entered, this);\n   20:     this->leaveCallback = CC_CALLBACK_0(MenuButtonLayer::left, this);\n   21:     this->upCallback = CC_CALLBACK_0(MenuButtonLayer::up, this);\n   22  \n   23      this->circle = RectRadius::create(this->_size, \n   ..\n   38  }\n   39  \n   40: void MenuButtonLayer::recalculateBounds() {\n   41      this->bounds->setRect(this->getPositionX() - this->_size, \n   42                            this->getPositionY() - this->_size, \n   ..\n   46  \n   47  \n   48: MenuButtonLayer::MenuButtonLayer(float size) {\n   49  	this->_size = size;\n   50  }\n   51  \n   52: MenuButtonLayer * MenuButtonLayer::create(float size)\n   53  {\n   54:     MenuButtonLayer *pRet = new(std::nothrow) MenuButtonLayer(size);\n   55      if (pRet && pRet->init())\n   56      {\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.h:\n    9  namespace QUAT {\n   10  \n   11: class MenuButtonLayer : public Clickable\n   12  {\n   13  private:\n   ..\n   23  	bool init();\n   24  	\n   25: 	MenuButtonLayer(float size);\n   26  	\n   27: 	static MenuButtonLayer * create(float size);\n   28  };\n   29  \n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.cpp:\n  245      this->addChild(this->stepsLayer);\n  246  \n  247:     float menuButtonSize   = width * Q_MENUBTN_SIZE,\n  248:           menuButtonOffset = width * Q_MENUBTN_OFFSET;\n  249:     this->menuButton = MenuButtonLayer::create(menuButtonSize);\n  250:     this->menuButton->setPositionX(menuButtonOffset);\n  251:     this->menuButton->setPositionY(height - menuButtonOffset);\n  252:     this->addChild(this->menuButton);\n  253      \n  254      /*=====  End of Initialization of GUI elements  ======*/\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.h:\n    9  // General menu button, not really sure if this should be used in this class\n   10  // yet but it's fine for right now\n   11: #include \"MenuButtonLayer.h\"\n   12  \n   13  // All of the elements necessary for input to the game state\n   ..\n   62  	// Menu button that the user can press to reach the \"menu\", an about screen\n   63  	// with statistics and other information about the game.\n   64: 	MenuButtonLayer * menuButton;\n   65  \n   66  	// Undo button which lets the user go back a step in the solution.\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.cpp:\n   61            horizontalGap = keyboardWidth * Q_KEYBOARD_KEY_X_GAP;\n   62  \n   63:     this->buttons = new std::vector<MenuButton*>();\n   64  \n   65      std::string rows[] = {\n   ..\n   76      for (int i = 0; i < 3; i++) {\n   77          for (int j = 0; j < rows[i].length(); j++) {\n   78:             auto button = MenuButton::create(std::string(1, rows[i].at(j)),\n   79                                           keyFontSize,\n   80                                           keyWidth,\n   ..\n  108  \n  109  int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {\n  110:     for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {\n  111:         MenuButton * button = (*this->buttons)[i];\n  112          if (button->getBounds()->containsPoint(*point)) {\n  113              return (int) i;\n\n/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.h:\n    7  #include \"WordNode.h\"\n    8  #include \"BorderedWordNode.h\"\n    9: #include \"../../menu/MenuButton.h\"\n   10  \n   11  namespace QUAT {\n   ..\n   19  	cocos2d::Rect * bounds;\n   20  \n   21: 	std::vector<MenuButton*> * buttons;\n   22  \n   23  	float fontSize, keyboardHeight;\n\n38 matches across 7 files\n",
 			"settings":
 			{
-				"buffer_size": 2821,
+				"buffer_size": 18179,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/info/banner/BannerButtonLayer.h",
+			"settings":
+			{
+				"buffer_size": 1385,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/info/StepsIndicatorLayer.h",
+			"settings":
+			{
+				"buffer_size": 821,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/info/StepsIndicatorLayer.cpp",
+			"settings":
+			{
+				"buffer_size": 1931,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/info/TextIndicatorLayer.cpp",
+			"settings":
+			{
+				"buffer_size": 1278,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/solver/info/TextIndicatorLayer.h",
+			"settings":
+			{
+				"buffer_size": 806,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "cpp/Classes/AppDelegate.cpp",
+			"settings":
+			{
+				"buffer_size": 2950,
 				"line_ending": "Unix"
 			}
 		}
@@ -873,13 +769,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 96.0,
-		"last_filter": "git push",
+		"height": 117.0,
+		"last_filter": "install",
 		"selected_items":
 		[
 			[
-				"git push",
-				"Git: Push"
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git status",
+				"Git: Status"
 			],
 			[
 				"git comm",
@@ -890,20 +790,20 @@
 				"Git: Add All"
 			],
 			[
-				"git ad",
-				"Git: Add All"
+				"it comm",
+				"Git: Commit"
 			],
 			[
-				"git status",
-				"Git: Status"
+				"git ad",
+				"Git: Add All"
 			],
 			[
 				"git com",
 				"Git: Commit"
 			],
 			[
-				"it comm",
-				"Git: Commit"
+				"git push",
+				"Git: Push"
 			],
 			[
 				"Git comm",
@@ -974,10 +874,6 @@
 				"Package Control: Remove Package"
 			],
 			[
-				"install",
-				"Package Control: Install Package"
-			],
-			[
 				"git in",
 				"Git: Init"
 			],
@@ -990,7 +886,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 629.0
 	},
 	"console":
 	{
@@ -1011,10 +907,101 @@
 	},
 	"expanded_folders":
 	[
-		"/home/artemis/Developer/quat-mobile"
+		"/home/artemis/Developer/quat-mobile",
+		"/home/artemis/Developer/quat-mobile/cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/menu",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input",
+		"/home/artemis/Developer/quat-mobile/cpp/cocos2d",
+		"/home/artemis/Developer/quat-mobile/cpp/cocos2d/cocos",
+		"/home/artemis/Developer/quat-mobile/cpp/cocos2d/cocos/renderer",
+		"/home/artemis/Developer/quat-mobile/js",
+		"/home/artemis/Developer/quat-mobile/js/app",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver"
 	],
 	"file_history":
 	[
+		"/home/artemis/Developer/quat-mobile/cpp/cocos2d/cocos/renderer/ccShader_PositionColorLengthTexture.vert",
+		"/home/artemis/Developer/quat-mobile/cpp/cocos2d/cocos/renderer/ccShader_PositionColorLengthTexture.frag",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/MenuButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/menu/TextButton.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/menu/TextButton.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/KeyboardLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/UndoButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/banner/BannerButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/banner/BannerButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/TextIndicatorLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/StepsIndicatorLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/AppDelegate.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/BorderedWordNode.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/SolverKeyboardManager.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/SolverTouchInputManager.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/banner/ExplodingCircle.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/banner/ExplodingCircle.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/SolverTouchInputManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/SolverKeyboardManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/info/DefinitionButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/CMakeLists.txt",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input/UndoButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/nodes/FixedDrawNode.h",
+		"/home/artemis/Developer/quat-mobile/js/app/src/GameScene.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/KeyboardLayer.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/KeyboardInputManager.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/Game.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/PuzzleLayer.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/SolverTouchInputManager.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/SolverStateController.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/StateController.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/SolutionLayer.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/nodes/IconButton.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/menu/MenuButton.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/nodes/RectRadius.js",
+		"/home/artemis/Developer/quat-mobile/js/app/src/solver/BorderedWordNode.js",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/TouchInputManager.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/PuzzleLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/DefinitionButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/DefinitionButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/TextIndicatorLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/TextIndicatorLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/GameScene.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/KeyboardLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/KeyboardLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolverKeyboardManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/UndoButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/UndoButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/StepsIndicatorLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/StepsIndicatorLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolverTouchInputManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/User.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/User.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolverStateController.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/menu/MenuButton.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/BannerButtonLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/BannerButtonLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/Clickable.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/Clickable.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/WordNode.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/WordNode.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/BorderedWordNode.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/BorderedWordNode.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolverTouchInputManager.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Game.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Dictionary.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Dictionary.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Game.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Puzzle.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/Puzzle.h",
+		"/home/artemis/.i3/config",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/TouchInputManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.h",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/SolutionLayer.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/PuzzleManager.cpp",
+		"/home/artemis/Developer/quat-mobile/cpp/Classes/models/PuzzleManager.h",
+		"/home/artemis/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/artemis/.i3status.conf",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/User.h",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/User.cpp",
 		"/home/caleb/Developer/quat-mobile/cpp/Classes/models/Puzzle.h",
@@ -1061,88 +1048,7 @@
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/DependInfo.cmake",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/build.make",
 		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/cmake_clean.cmake",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/depend.internal",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/depend.make",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_CORE_PRE_BUILD.dir/build.make",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_CORE_PRE_BUILD.dir/cmake_clean.cmake",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_PRE_BUILD.dir/build.make",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame_PRE_BUILD.dir/cmake_clean.cmake",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/TargetDirectories.txt",
-		"/home/caleb/Developer/quat-mobile/cpp/proj.ios_mac/ios/AppController.mm",
-		"/home/caleb/Developer/quat-mobile/cpp/linux-build/Makefile",
-		"/home/caleb/.config/sublime-text-3/Packages/User/cocos.sublime-build",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/PuzzleLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuButton.js",
-		"/home/caleb/Developer/quat-mobile/app/src/nodes/RectRadius.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/SolverTouchInputManager.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/SolverStateController.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/TextIndicatorLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/FinishedLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/look/LookLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/Game.js",
-		"/home/caleb/Developer/quat-mobile/app/src/BackgroundLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/SolutionLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/nodes/IconButton.js",
-		"/home/caleb/Developer/quat-mobile/data/puzzlegen.py",
-		"/home/caleb/Developer/quat-mobile/app/src/themes.js",
-		"/home/caleb/Developer/quat-mobile/app/project.json",
-		"/home/caleb/Developer/quat-mobile/app/src/GameScene.js",
-		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/KeyboardLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/BorderedWordNode.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/WordNode.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/KeyboardInputManager.js",
-		"/home/caleb/Developer/quat-mobile/app/src/GameStateController.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/SliderLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/GameTouchInputManager.js",
-		"/home/caleb/Developer/quat-mobile/app/src/puzzles.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/ChooseLetterLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/main.js",
-		"/home/caleb/Developer/hoofers/membership.html",
-		"/home/caleb/Developer/quat-mobile/app/COMPILATION.MD",
-		"/home/caleb/Developer/quat-mobile/app/simulator/html5/build.xml",
-		"/home/caleb/Developer/quat-mobile/app/simulator/html5/index.html",
-		"/home/caleb/Developer/quat-mobile/app/publish/html5/build.xml",
-		"/home/caleb/Developer/quat-mobile/app/publish/html5/index.html",
-		"/home/caleb/Developer/math340/p1/p1.tex",
-		"/home/caleb/Developer/quat-mobile/app/simulator/html5/game.min.js",
-		"/home/caleb/Developer/quat-mobile/app/publish/html5/game.min.js",
-		"/home/caleb/Developer/quat-mobile/app/publish/html5/game.out.js",
-		"/home/caleb/Developer/quat-mobile/data/dict.js",
-		"/home/caleb/Developer/quat-mobile/app/src/dict.js",
-		"/home/caleb/Developer/quat-mobile/data/words2.js",
-		"/home/caleb/Developer/quat-mobile/app/src/stats/StatLayer.js",
-		"/home/caleb/Developer/quat-mobile/data/words.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/ThemeChangeLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/stats/StatsLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/about/AboutLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/StateController.js",
-		"/home/caleb/Developer/quat-mobile/app/src/menu/MenuStateController.js",
-		"/home/caleb/Developer/quat-mobile/app/src/TouchInputManager.js",
-		"/home/caleb/Developer/quat-mobile/app/src/GameInfo.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/TouchInputManager.js",
-		"/home/caleb/Developer/quat-mobile/app/index.html",
-		"/home/caleb/Developer/quat-mobile/app/CLOSURE-COMPILATION.MD",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/StateController.js",
-		"/home/caleb/Developer/quat-mobile/app/src/model.js",
-		"/home/caleb/Developer/quat-mobile/app/quat.js",
-		"/home/caleb/Developer/quat-mobile/app/src/quat.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/solver.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/BackgroundLayer.js",
-		"/home/caleb/Developer/quat-mobile/app/src/words.js",
-		"/home/caleb/Developer/quat-mobile/app/src/solver/PuzzleScene.js",
-		"/home/caleb/Developer/quat-mobile/app/src/PuzzleScene.js",
-		"/home/caleb/Developer/quat-mobile/app/src/app.js",
-		"/home/caleb/Developer/quat-mobile/app/src/SolvingScene/WordNode.js",
-		"/home/caleb/Developer/quat-mobile/app/src/game/WordNode.js",
-		"/home/caleb/Developer/quat-mobile/app/test.html",
-		"/home/caleb/Developer/quat-mobile/app/quat.manifest",
-		"/home/caleb/Developer/quat-mobile/data/dump.sh",
-		"/home/caleb/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/caleb/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/caleb/Developer/quat-mobile/app/manifest.webapp",
-		"/home/caleb/.jwmrc",
-		"/home/caleb/Developer/words/test2"
+		"/home/caleb/Developer/quat-mobile/cpp/linux-build/CMakeFiles/MyGame.dir/depend.internal"
 	],
 	"find":
 	{
@@ -1153,6 +1059,10 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/home/artemis/Developer/quat-mobile/cpp/Classes",
+			"/home/artemis/Developer/quat-mobile/cpp/Classes/solver/input",
+			"/home/artemis/Developer/quat-mobile/cpp/Classes/menu",
+			"/home/artemis/Developer/quat-mobile/cpp/Classes",
 			"/home/caleb/Developer/quat-mobile/cpp/Classes",
 			"/home/caleb/Developer/quat-mobile/js/app",
 			"/home/caleb/Developer/quat-mobile/cpp/Classes",
@@ -1186,134 +1096,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"PUZZLE_LAYER",
+			"quatLogo",
+			"currentWord",
+			"PuzzleLayer",
+			"MenuButtonLayer",
+			"MenuButton",
+			"1.25",
+			"Q_KEYBOARD_SLIDE",
+			"renderTexture",
+			"RenderTexture",
+			"renderTexture",
+			"MenuButton",
+			"\"fonts/Arimo-Regular.ttf\"",
+			"Q_KEYBRD_SLIDE",
+			"0.08",
+			"\"cppquat\"",
+			"APP_DELEGATE",
+			"_APP_DELEGATE_H_",
+			"APP_DELEGATE",
+			"MyGame",
+			"Classes",
+			"bannerButton",
+			"0.75",
+			";",
+			");\n",
+			";",
+			");\n",
+			";",
+			"	",
+			"RectRadius",
+			"node",
+			"Node",
+			"node",
+			"Node",
+			"node",
+			"ExplodingCircle::",
+			"Node",
+			"node",
+			"RectRadius",
+			"FixedDrawNode",
+			"FIXED_DRAW_NODE",
+			".cpp",
+			"View Manipulation Methods",
+			"float fontSize",
+			"TextIndicatorLayer",
+			"__TEXT_INDICATOR_LAYER_H__",
+			"TEXT_INDICATOR_LAYER",
+			"__TEXT_INDICATOR_LAYER_H__",
+			"TEXT_INDICATOR_LAYER",
+			"this->banner",
+			"WHITE",
+			"Done",
+			"Done!",
+			"raise",
+			"newVal",
+			"->(",
+			"this->undo",
+			"subtext",
+			"StepsIndicatorLayer",
+			"KeyboardLayer",
+			"KEYBOARD_LAYER",
+			"undoSize",
+			"this->undo",
+			"(\".",
+			"BannerButtonLayer",
+			"height",
+			"BannerButtonLayer",
+			"ANNER_BUTTON",
+			"size",
+			"height",
+			"BannerButtonLayer",
+			"BANNER_BUTTON_LAYER",
+			"0.25",
+			";",
+			"puzzle->getStepCount()",
+			"this->stepText",
+			"this->subtext",
+			"fontSize",
+			"textLabel",
+			"this->textLabel",
+			"float size",
+			"UndoButtonLayer",
+			"float size",
+			"UNDO_LAYER",
+			"left",
+			"\");\n",
+			"undo",
+			"Undo",
+			"undo",
+			"Undo",
+			"undo",
+			"float height",
+			"BannerButtonLayer",
+			";",
+			"float height",
+			"BannerButtonLayer",
+			"BANNER_BUTTON_LAYER_H",
+			"log",
+			"this->_height",
+			"banner",
+			"Banner",
+			"banner",
+			"undo",
+			"fontSize",
+			"BorderedWordNode",
+			"BORDERED_WORD_NODE_H",
+			");\n",
+			"downCallback",
+			"PuzzleLayer",
+			"Width",
+			"width",
+			"MenuButton",
+			";",
+			"*",
+			"// ",
+			"solutionLayer",
+			"this->solutionLayer",
+			"->solutionLayer",
+			"this->solutionLayer",
+			"->solutionLayer",
+			"this._savePath",
 			"startIndex",
 			"//",
 			" // ",
 			"Byte",
 			"firstBytes",
 			";",
-			"puzzles",
-			"DICTIONARY_H",
-			"data",
-			"spr",
-			"Frommod",
-			"MenuButton",
-			";",
-			"StateController",
-			"substring",
-			";",
-			"user",
-			"User",
-			"USER",
-			";",
-			"Puzzle",
-			"PUZZLE",
-			"__PUZZLE",
-			"result",
-			";",
-			"// ",
-			"currentWordPos",
-			";",
-			" = 0",
-			"virtual ",
-			";",
-			"SolverStateController",
-			"SOLVER_TOUCH_INPUT_MANAGER",
-			"SOLVER_STATE_CONTROLLER",
-			"log",
-			"last",
-			"first",
-			"vector",
-			";",
-			"toBytes",
-			"SSC_STATE",
-			"Solution",
-			"SOLUTION",
-			"STATE_CONTROLLER",
-			"BORDERED_WORD_NODE",
-			"origin",
-			"box->origin",
-			"->",
-			"origin",
-			"box->origin",
-			"box->",
-			"box->origin",
-			"box->",
-			"origin",
-			"box->origin",
-			"box->",
-			"fontSize",
-			"Ubuntu",
-			"letterForPoint",
-			"'",
-			"SolutionLayer",
-			"SOLUTION_LAYER",
-			"alse",
-			"windowWidth",
-			"this->border",
-			"border",
-			"listener1",
-			"SolutionLayer",
-			"MENU_BUTTON",
-			"Clickable",
-			"CLICKABLE",
-			"SolutionLayer",
-			"SOLUTION_LAYER",
-			"Paddle",
-			"listener",
-			"Sprite*",
-			"Color4B",
-			"border",
-			"WordNode",
-			"__WORD_NODE_H__",
-			"WORD_NODE",
-			"SolutionLayer",
-			"cocos2d::Rect * gameBounds, float fontSize",
-			"SolutionLayer",
-			"SOLUTION_LAYER",
-			"drawRect",
-			"goalWord",
-			"ttf0",
-			"cocos2d::Vec2",
-			"Vec2",
-			"point",
-			"fontSize",
-			"SolutionLayer",
-			"SOLUTION_LAYER",
-			"PuzzleLayer",
-			"Background",
-			"background",
-			"__TYPE__",
-			"PuzzleLayer",
-			"PUZZLE_LAYER",
-			"BackgroundLayer",
-			"BACKGROUND_LAYER",
-			"first",
-			"Game",
-			"GAME_H",
-			"Game",
-			"GAME",
-			"GAME_SCENE",
-			"bg",
-			"layer1",
-			"GameScene",
-			"GAME_SCENE",
-			"GameScene",
-			"GAME_SCENE",
-			"layer.",
-			"scene",
-			"HelloWorld",
-			"HelloWorldScene",
-			"HelloWorld",
-			"HELLOWORLD_SCENE",
-			"MyGame",
-			"s_sharedApplication",
-			"AppDelegate",
-			"app",
-			"fontSize",
-			"textLabel",
-			"colorBackground",
-			"is not a word"
+			"puzzles"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1321,6 +1231,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"TextButton",
+			"Q_FONT_PATH",
 			"finish",
 			"start",
 			"Arimo-Regular",
@@ -1347,337 +1259,193 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/app/src/GameScene.js",
+					"file": "cpp/Classes/Constants.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8363,
+						"buffer_size": 10457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								7197,
-								7197
+								920,
+								920
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3060.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 28,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/app/src/solver/KeyboardLayer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3009,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2283,
-								2283
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1666.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 34,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "js/app/src/solver/KeyboardInputManager.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4316,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 35,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "js/app/src/Game.js",
+					"buffer": 1,
+					"file": "/home/artemis/.i3/config",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12608,
+						"buffer_size": 5441,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5043,
-								5043
+								834,
+								834
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3876.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 29,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 647,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										195,
-										198
-									],
-									[
-										371,
-										374
-									],
-									[
-										591,
-										594
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								401,
-								401
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 51.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 31,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "js/app/src/solver/PuzzleLayer.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4767,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4045,
-								4045
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 8,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1479.0,
+						"translation.y": 119.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "js/app/src/solver/SolverTouchInputManager.js",
+					"buffer": 2,
+					"file": "cpp/cocos2d/cocos/renderer/ccShader_PositionColorLengthTexture.frag",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6787,
+						"buffer_size": 1755,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5879,
-								5879
+								1203,
+								1203
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2193.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"file": "js/app/src/solver/SolverStateController.js",
+					"buffer": 3,
+					"file": "cpp/CMakeLists.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2676,
+						"buffer_size": 7235,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								711,
-								711
+								5142,
+								5142
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1938.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "js/app/src/StateController.js",
+					"buffer": 4,
+					"file": "cpp/Classes/solver/input/KeyboardLayer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1085,
+						"buffer_size": 1262,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
+								702,
+								702
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 255.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 32,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
-					"file": "js/app/src/solver/SolutionLayer.js",
+					"buffer": 5,
+					"file": "cpp/Classes/GameScene.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5247,
+						"buffer_size": 1865,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4678,
-								4678
+								708,
+								708
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1887.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "js/app/src/nodes/IconButton.js",
+					"buffer": 6,
+					"file": "cpp/Classes/MenuButtonLayer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3540,
+						"buffer_size": 484,
 						"regions":
 						{
 						},
@@ -1690,132 +1458,6 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 102.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 36,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "js/app/src/menu/MenuButton.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4385,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3333,
-								3333
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1538.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 33,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "js/app/src/nodes/RectRadius.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3371,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								573,
-								573
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 38,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "js/app/src/solver/BorderedWordNode.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2503,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								766,
-								766
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 816.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 37,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 6,
-			"sheets":
-			[
-				{
-					"buffer": 14,
-					"file": "cpp/Classes/TouchInputManager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 681,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								144,
-								144
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
@@ -1823,349 +1465,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
-					"file": "cpp/Classes/TouchInputManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 668,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								639,
-								639
-							],
-							[
-								655,
-								655
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 30,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "cpp/CMakeLists.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6533,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2057.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
-					"file": "cpp/Classes/solver/PuzzleLayer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3579,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 646.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 18,
-					"file": "cpp/Classes/solver/SolverTouchInputManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1955,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 561.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "cpp/Classes/models/PuzzleManager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3425,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2456,
-								2456
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "cpp/Classes/models/PuzzleManager.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4678,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1946.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "cpp/Classes/solver/SolverStateController.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 644,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								255,
-								255
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "cpp/Classes/solver/KeyboardLayer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1085,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								935,
-								935
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 102.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 26,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "cpp/Classes/solver/KeyboardLayer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3660,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3537,
-								3537
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1650.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 25,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "cpp/Classes/solver/SolutionLayer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 746,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								363,
-								363
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 25,
-					"file": "cpp/Classes/solver/SolutionLayer.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2006,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1499,
-								1499
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 26,
+					"buffer": 7,
 					"file": "cpp/Classes/solver/PuzzleLayer.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5595,
+						"buffer_size": 13068,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								5427,
+								5427
 							]
 						],
 						"settings":
@@ -2175,232 +1492,94 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1071.0,
+						"translation.y": 2745.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "cpp/Classes/menu/MenuLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1006,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14,
+								14
+							],
+							[
+								39,
+								39
+							],
+							[
+								995,
+								995
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "cpp/Classes/menu/MenuLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1073,
+								1073
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 27,
-					"file": "cpp/Classes/menu/MenuButton.h",
+					"buffer": 10,
+					"file": "cpp/Classes/solver/PuzzleLayer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1840,
+						"buffer_size": 8824,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1602,
-								1602
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 816.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				},
-				{
-					"buffer": 28,
-					"file": "cpp/Classes/menu/MenuButton.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5540,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4598,
-								4598
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2448.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 29,
-					"file": "cpp/Classes/solver/WordNode.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1113,
-								1113
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 103.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 30,
-					"file": "cpp/Classes/solver/WordNode.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3228,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								139,
-								139
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 31,
-					"file": "cpp/Classes/solver/BorderedWordNode.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1993,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1467,
-								1467
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 459.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 32,
-					"file": "cpp/Classes/solver/SolverTouchInputManager.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 662,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 33,
-					"file": "cpp/Classes/models/Game.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 854,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								218,
-								218
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 34,
-					"file": "cpp/Classes/models/Dictionary.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 594,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								594,
-								594
+								8824,
+								8824
 							]
 						],
 						"settings":
@@ -2416,54 +1595,27 @@
 					"type": "text"
 				},
 				{
-					"buffer": 35,
-					"file": "cpp/Classes/models/Dictionary.cpp",
+					"buffer": 11,
+					"file": "cpp/Classes/GameScene.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1077,
+						"buffer_size": 1472,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								804,
-								804
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 306.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 36,
-					"file": "cpp/Classes/models/Game.cpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 567,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								765,
+								765
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2473,49 +1625,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 37,
-					"file": "cpp/Classes/models/Puzzle.cpp",
+					"buffer": 12,
+					"file": "cpp/Classes/solver/input/BorderedWordNode.cpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2613,
+						"buffer_size": 3198,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2041,
+								2041
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 894.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 38,
-					"file": "cpp/Classes/models/Puzzle.h",
+					"buffer": 13,
+					"file": "cpp/Classes/solver/input/BorderedWordNode.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2821,
+						"buffer_size": 806,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								116,
+								116
 							]
 						],
 						"settings":
@@ -2527,7 +1680,993 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 25,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "cpp/Classes/solver/input/WordNode.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3214,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1245,
+								1245
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 357.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "cpp/Classes/solver/input/UndoButtonLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 427,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								97,
+								97
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "cpp/Classes/solver/input/KeyboardLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1737,
+								1737
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "cpp/Classes/solver/info/banner/BannerButtonLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3784,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								334,
+								334
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 561.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "cpp/Classes/solver/input/WordNode.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1939,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								871,
+								871
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18179,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										197,
+										207
+									],
+									[
+										330,
+										340
+									],
+									[
+										427,
+										437
+									],
+									[
+										513,
+										523
+									],
+									[
+										608,
+										618
+									],
+									[
+										728,
+										738
+									],
+									[
+										933,
+										943
+									],
+									[
+										1024,
+										1034
+									],
+									[
+										1234,
+										1244
+									],
+									[
+										1361,
+										1371
+									],
+									[
+										1457,
+										1467
+									],
+									[
+										1470,
+										1480
+									],
+									[
+										1668,
+										1678
+									],
+									[
+										1705,
+										1715
+									],
+									[
+										1895,
+										1905
+									],
+									[
+										2092,
+										2102
+									],
+									[
+										2167,
+										2177
+									],
+									[
+										2332,
+										2342
+									],
+									[
+										2344,
+										2354
+									],
+									[
+										2563,
+										2573
+									],
+									[
+										2678,
+										2688
+									],
+									[
+										2846,
+										2856
+									],
+									[
+										3045,
+										3055
+									],
+									[
+										3108,
+										3118
+									],
+									[
+										3206,
+										3216
+									],
+									[
+										3256,
+										3266
+									],
+									[
+										3303,
+										3313
+									],
+									[
+										3472,
+										3482
+									],
+									[
+										3552,
+										3562
+									],
+									[
+										3626,
+										3636
+									],
+									[
+										3756,
+										3766
+									],
+									[
+										3964,
+										3974
+									],
+									[
+										3981,
+										3991
+									],
+									[
+										4063,
+										4073
+									],
+									[
+										4081,
+										4091
+									],
+									[
+										4137,
+										4147
+									],
+									[
+										4179,
+										4189
+									],
+									[
+										4372,
+										4382
+									],
+									[
+										4476,
+										4486
+									],
+									[
+										4529,
+										4539
+									],
+									[
+										4728,
+										4738
+									],
+									[
+										4788,
+										4798
+									],
+									[
+										4850,
+										4860
+									],
+									[
+										4863,
+										4873
+									],
+									[
+										4887,
+										4897
+									],
+									[
+										4921,
+										4931
+									],
+									[
+										4946,
+										4956
+									],
+									[
+										4982,
+										4992
+									],
+									[
+										5016,
+										5026
+									],
+									[
+										5067,
+										5077
+									],
+									[
+										5374,
+										5384
+									],
+									[
+										5632,
+										5642
+									],
+									[
+										5650,
+										5660
+									],
+									[
+										5948,
+										5958
+									],
+									[
+										6146,
+										6156
+									],
+									[
+										6421,
+										6431
+									],
+									[
+										6503,
+										6513
+									],
+									[
+										6819,
+										6829
+									],
+									[
+										6931,
+										6941
+									],
+									[
+										7155,
+										7165
+									],
+									[
+										7252,
+										7262
+									],
+									[
+										7338,
+										7348
+									],
+									[
+										7433,
+										7443
+									],
+									[
+										7553,
+										7563
+									],
+									[
+										7758,
+										7768
+									],
+									[
+										7849,
+										7859
+									],
+									[
+										8059,
+										8069
+									],
+									[
+										8186,
+										8196
+									],
+									[
+										8282,
+										8292
+									],
+									[
+										8295,
+										8305
+									],
+									[
+										8493,
+										8503
+									],
+									[
+										8530,
+										8540
+									],
+									[
+										8720,
+										8730
+									],
+									[
+										8917,
+										8927
+									],
+									[
+										8992,
+										9002
+									],
+									[
+										9157,
+										9167
+									],
+									[
+										9169,
+										9179
+									],
+									[
+										9388,
+										9398
+									],
+									[
+										9503,
+										9513
+									],
+									[
+										9671,
+										9681
+									],
+									[
+										9870,
+										9880
+									],
+									[
+										9933,
+										9943
+									],
+									[
+										10031,
+										10041
+									],
+									[
+										10081,
+										10091
+									],
+									[
+										10128,
+										10138
+									],
+									[
+										10297,
+										10307
+									],
+									[
+										10377,
+										10387
+									],
+									[
+										10451,
+										10461
+									],
+									[
+										10581,
+										10591
+									],
+									[
+										10789,
+										10799
+									],
+									[
+										10806,
+										10816
+									],
+									[
+										10888,
+										10898
+									],
+									[
+										10906,
+										10916
+									],
+									[
+										10962,
+										10972
+									],
+									[
+										11004,
+										11014
+									],
+									[
+										11197,
+										11207
+									],
+									[
+										11301,
+										11311
+									],
+									[
+										11354,
+										11364
+									],
+									[
+										11553,
+										11563
+									],
+									[
+										11613,
+										11623
+									],
+									[
+										11675,
+										11685
+									],
+									[
+										11688,
+										11698
+									],
+									[
+										11712,
+										11722
+									],
+									[
+										11746,
+										11756
+									],
+									[
+										11771,
+										11781
+									],
+									[
+										11807,
+										11817
+									],
+									[
+										11841,
+										11851
+									],
+									[
+										11892,
+										11902
+									],
+									[
+										12199,
+										12209
+									],
+									[
+										12457,
+										12467
+									],
+									[
+										12475,
+										12485
+									],
+									[
+										12773,
+										12783
+									],
+									[
+										12971,
+										12981
+									],
+									[
+										13246,
+										13256
+									],
+									[
+										13328,
+										13338
+									],
+									[
+										13644,
+										13654
+									],
+									[
+										13756,
+										13766
+									],
+									[
+										14054,
+										14064
+									],
+									[
+										14194,
+										14204
+									],
+									[
+										14257,
+										14267
+									],
+									[
+										14355,
+										14365
+									],
+									[
+										14405,
+										14415
+									],
+									[
+										14452,
+										14462
+									],
+									[
+										14621,
+										14631
+									],
+									[
+										14701,
+										14711
+									],
+									[
+										14775,
+										14785
+									],
+									[
+										14905,
+										14915
+									],
+									[
+										15113,
+										15123
+									],
+									[
+										15130,
+										15140
+									],
+									[
+										15212,
+										15222
+									],
+									[
+										15230,
+										15240
+									],
+									[
+										15286,
+										15296
+									],
+									[
+										15328,
+										15338
+									],
+									[
+										15521,
+										15531
+									],
+									[
+										15625,
+										15635
+									],
+									[
+										15678,
+										15688
+									],
+									[
+										15877,
+										15887
+									],
+									[
+										15937,
+										15947
+									],
+									[
+										15999,
+										16009
+									],
+									[
+										16012,
+										16022
+									],
+									[
+										16036,
+										16046
+									],
+									[
+										16070,
+										16080
+									],
+									[
+										16095,
+										16105
+									],
+									[
+										16131,
+										16141
+									],
+									[
+										16165,
+										16175
+									],
+									[
+										16216,
+										16226
+									],
+									[
+										16523,
+										16533
+									],
+									[
+										16781,
+										16791
+									],
+									[
+										16799,
+										16809
+									],
+									[
+										17097,
+										17107
+									],
+									[
+										17295,
+										17305
+									],
+									[
+										17570,
+										17580
+									],
+									[
+										17652,
+										17662
+									],
+									[
+										17968,
+										17978
+									],
+									[
+										18080,
+										18090
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								13857,
+								13857
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 3,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ 	].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7361.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "cpp/Classes/solver/info/banner/BannerButtonLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1385,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								151,
+								151
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "cpp/Classes/solver/info/StepsIndicatorLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								285,
+								285
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "cpp/Classes/solver/info/StepsIndicatorLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1931,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								728,
+								728
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "cpp/Classes/solver/info/TextIndicatorLayer.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1278,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								103,
+								103
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "cpp/Classes/solver/info/TextIndicatorLayer.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 806,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								121,
+								121
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "cpp/Classes/AppDelegate.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2950,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								792,
+								792
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
@@ -2550,18 +2689,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.437387116195,
 			1.0
 		],
 		"rows":
@@ -2596,6 +2728,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"menu",
+				"cpp/Classes/menu/MenuButton.cpp"
+			],
 			[
 				"stim",
 				"cpp/Classes/solver/SolverTouchInputManager.h"
@@ -2725,7 +2861,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 259.0,
+	"side_bar_width": 494.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

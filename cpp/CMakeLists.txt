@@ -124,16 +124,17 @@ endif( WIN32 )
 
 set(GAME_SRC
   Classes/AppDelegate.cpp
+  Classes/Clickable.cpp
   Classes/GameScene.cpp
   Classes/BackgroundLayer.cpp
+  Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
-  Classes/Clickable.cpp
+  Classes/menu/MenuLayer.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
   Classes/models/User.cpp
   Classes/models/Dictionary.cpp
   Classes/models/PuzzleManager.cpp
-  Classes/solver/MenuButtonLayer.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
   Classes/solver/input/BorderedWordNode.cpp
@@ -154,16 +155,17 @@ set(GAME_SRC
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
+  Classes/Clickable.h
   Classes/GameScene.h
   Classes/BackgroundLayer.h
+  Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h
-  Classes/Clickable.h
+  Classes/menu/MenuLayer.h
   Classes/models/Game.h
   Classes/models/Puzzle.h
   Classes/models/User.h
   Classes/models/Dictionary.h
   Classes/models/PuzzleManager.h
-  Classes/solver/MenuButtonLayer.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h
   Classes/solver/input/BorderedWordNode.h

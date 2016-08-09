@@ -244,12 +244,7 @@ bool PuzzleLayer::init() {
     this->stepsLayer->setPositionY(this->stepStart);
     this->addChild(this->stepsLayer);
 
-    float menuButtonSize   = width * Q_MENUBTN_SIZE,
-          menuButtonOffset = width * Q_MENUBTN_OFFSET;
-    this->menuButton = MenuButtonLayer::create(menuButtonSize);
-    this->menuButton->setPositionX(menuButtonOffset);
-    this->menuButton->setPositionY(height - menuButtonOffset);
-    this->addChild(this->menuButton);
+    
     
     /*=====  End of Initialization of GUI elements  ======*/
     

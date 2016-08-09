@@ -1,9 +1,4 @@
 #include "GameScene.h"
-#include "Constants.h"
-
-#include "BackgroundLayer.h"
-#include "solver/PuzzleLayer.h"
-#include "menu/MenuButton.h"
 
 namespace QUAT {
 
@@ -31,7 +26,9 @@ void GameScene::generateBounds() {
 }
 
 void GameScene::menuCallback() {
-    log("This is a test");
+    this->onMenu = !this->onMenu;
+    this->puzzleLayer->setVisible(!this->onMenu);
+    this->menuLayer->setVisible(this->onMenu);
 }
 
 bool GameScene::init()
@@ -45,15 +42,31 @@ bool GameScene::init()
     // Generate the bounds of the game space
     generateBounds();
 
-    float fontSize = gameBounds->size.width * Q_FONT_SIZE;
+    this->onMenu = false;
+
+    float width    = gameBounds->size.width,
+          height   = gameBounds->size.height,
+          fontSize = width * Q_FONT_SIZE;
 
     // Create the background
     background = BackgroundLayer::create();
     addChild(background, 0);
 
     // Create the puzzle layer
-    puzzleLayer = PuzzleLayer::create(gameBounds, fontSize);
-    addChild(puzzleLayer, 1);
+    this->puzzleLayer = PuzzleLayer::create(gameBounds, fontSize);
+    addChild(this->puzzleLayer, 1);
+
+    this->menuLayer = MenuLayer::create(gameBounds, fontSize);
+    this->menuLayer->setVisible(false);
+    addChild(this->menuLayer, 1);
+
+    float menuButtonSize   = width * Q_MENUBTN_SIZE,
+          menuButtonOffset = width * Q_MENUBTN_OFFSET;
+    this->menuButton = MenuButtonLayer::create(menuButtonSize);
+    this->menuButton->setPositionX(menuButtonOffset);
+    this->menuButton->setPositionY(height - menuButtonOffset);
+    this->menuButton->upCallback = CC_CALLBACK_0(GameScene::menuCallback, this);
+    this->addChild(this->menuButton);
     
     return true;
 }
