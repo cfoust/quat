@@ -16,6 +16,12 @@ void SolverStateController::to_CHOOSING_LETTER(int column) {
 	this->puzzleLayer->chooseLetter(column);
 	this->setState(CHOOSING_LETTER);
 }
+
+void SolverStateController::to_DEFINITIONS() {
+	this->puzzleLayer->showDefinitions();
+	this->setState(DEFINITIONS);
+}
+
 SolverStateController::STATE SolverStateController::state() {
 	return this->_state;
 }

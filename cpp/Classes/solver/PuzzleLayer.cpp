@@ -36,6 +36,9 @@ void PuzzleLayer::goIdle() {
     if (this->keyboardUp) {
         this->lowerKeyboard();
     }
+
+    // Make the game interactable
+    this->setEnabled(true);
 }
 
 void PuzzleLayer::chooseLetter(int column) {
@@ -46,7 +49,19 @@ void PuzzleLayer::chooseLetter(int column) {
 
     if (!this->keyboardUp) {
         this->raiseKeyboard();
-    } 
+    }
+
+    // Make the game interactable
+    this->setEnabled(true);
+}
+
+void PuzzleLayer::showDefinitions() {
+    // Show the definition dialog
+    this->shadeLayer->setVisible(true);
+    this->definitionLayer->setVisible(true);
+
+    // Make the rest of the game noninteractable
+    this->setEnabled(false);
 }
 
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
@@ -119,6 +134,15 @@ void PuzzleLayer::undoClick() {
 
 void PuzzleLayer::definitionClick() {
     cocos2d::log("Clicked on definition button");
+
+    // Transition to definitions
+    this->solverStateController->to_DEFINITIONS();
+}
+
+void PuzzleLayer::setEnabled(bool enabled) {
+    this->enabled = enabled;
+    this->definitionButton->setEnabled(enabled);
+    this->bannerButton->setEnabled(enabled);
 }
 
 void PuzzleLayer::raiseKeyboard() {
@@ -220,6 +244,14 @@ bool PuzzleLayer::init() {
     this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
     this->addChild(this->definitionButton);
 
+    this->shadeLayer = BackgroundLayer::create();
+    this->shadeLayer->setVisible(false);
+    this->addChild(this->shadeLayer, 10);
+
+    this->definitionLayer = DefinitionLayer::create(gameBounds, fontSize);
+    this->definitionLayer->setVisible(false);
+    this->addChild(this->definitionLayer, 11);
+
     this->textLayer = TextIndicatorLayer::create(fontSize);
     this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->textLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
@@ -257,7 +289,9 @@ bool PuzzleLayer::init() {
     // Initializes the game's model here (should probably be more global)
     this->solverStateController = new SolverStateController(this);
     this->solverTouchInputManager = new SolverTouchInputManager(this->solverStateController, this->game, this);
+    this->enabled = true;
     this->trackingTouch = false;
+
 
     auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
     // Means that other touch listeners can grab touches
@@ -343,6 +377,10 @@ void PuzzleLayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
 }
 
 bool PuzzleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
+    if (!this->enabled) {
+        return false;
+    }
+
     if (!this->isVisible()) {
         return false;
     }

@@ -6,6 +6,12 @@
 // The game model
 #include "../models/Game.h"
 
+// The Definition Layer
+#include "../defs/DefinitionLayer.h"
+
+// For the shade layer
+#include "../BackgroundLayer.h"
+
 // General menu button, not really sure if this should be used in this class
 // yet but it's fine for right now
 #include "MenuButtonLayer.h"
@@ -59,6 +65,13 @@ private:
 	// by the goal word.
 	BorderedWordNode * currentWord;
 
+	// Layer that shows the user the meaning of the current words
+	DefinitionLayer * definitionLayer;
+
+	// Background layer that lets us hide the rest of the game while another
+	// screen, like the definition screen, is open
+	BackgroundLayer * shadeLayer;
+
 	// Undo button which lets the user go back a step in the solution.
 	UndoButtonLayer * undo;
 
@@ -82,6 +95,9 @@ private:
 	// Manages all of the touches that come into the layer as a whole, but not
 	// necessarily on specific elements.
 	SolverTouchInputManager * solverTouchInputManager;
+
+	// If true, process touch inputs
+	bool enabled;
 
 	// Whether or not this layer is tracking a specific touch at a given time. 
 	bool trackingTouch;
@@ -124,6 +140,8 @@ public:
 	 * @param column Column to choose.
 	 */
 	void chooseLetter(int column);
+
+	void showDefinitions();
 	
 	/*=====  End of UI State Transition Methods  ======*/
 	
@@ -213,6 +231,13 @@ public:
 	 * @return       String representation of the letter the point is in.
 	 */
 	std::string getKeyboardLetter(cocos2d::Vec2 * point);
+
+	/**
+	 * @brief      Turns input on and off for most parts of this layer.
+	 *
+	 * @param[in]  enabled  Whether or not this layer should process input.
+	 */
+	void setEnabled(bool enabled);
 
 	/**
 	 * @brief      Grabs the word currently displayed by currentWord and tries

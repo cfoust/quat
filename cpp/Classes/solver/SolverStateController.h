@@ -11,7 +11,8 @@ class SolverStateController
 public:
 	enum STATE {
 		IDLE,
-		CHOOSING_LETTER
+		CHOOSING_LETTER,
+		DEFINITIONS
 	};
 
 private:
@@ -34,6 +35,8 @@ public:
 	 * can choose a new letter for that column.
 	 */
 	void to_CHOOSING_LETTER(int column);
+
+	void to_DEFINITIONS();
 
 	/**
 	 * Gets the current state.
