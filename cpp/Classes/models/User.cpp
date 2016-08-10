@@ -12,7 +12,8 @@ User::User() {
 }
 
 int User::getRank() {
-	return (this->subRank - (this->subRank % 64)) / 64;
+	int rank = ((this->subRank - (this->subRank % 64)) / 64);
+	return ((rank - (rank % 22)) / 22) + 1;
 }
 
 int User::getSubRank() {
