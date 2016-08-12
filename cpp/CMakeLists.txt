@@ -124,19 +124,22 @@ endif( WIN32 )
 
 set(GAME_SRC
   Classes/AppDelegate.cpp
+  Classes/BackgroundLayer.cpp
   Classes/Clickable.cpp
   Classes/GameScene.cpp
-  Classes/BackgroundLayer.cpp
+  Classes/GameStateController.cpp
   Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
   Classes/defs/Definition.cpp
   Classes/defs/DefinitionLayer.cpp
+  Classes/menu/MenuButton.cpp
   Classes/menu/MenuLayer.cpp
+  Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
-  Classes/models/User.cpp
-  Classes/models/Dictionary.cpp
   Classes/models/PuzzleManager.cpp
+  Classes/models/User.cpp
+  Classes/nodes/RectRadius.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
   Classes/solver/input/BorderedWordNode.cpp
@@ -150,26 +153,27 @@ set(GAME_SRC
   Classes/solver/info/TextIndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/solver/info/banner/ExplodingCircle.cpp
-  Classes/nodes/RectRadius.cpp
-  Classes/menu/MenuButton.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
 set(GAME_HEADERS
   Classes/AppDelegate.h
+  Classes/BackgroundLayer.h
   Classes/Clickable.h
   Classes/GameScene.h
-  Classes/BackgroundLayer.h
+  Classes/GameStateController.h
   Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h
   Classes/defs/Definition.h
   Classes/defs/DefinitionLayer.h
+  Classes/menu/MenuButton.h
   Classes/menu/MenuLayer.h
+  Classes/models/Dictionary.h
   Classes/models/Game.h
   Classes/models/Puzzle.h
-  Classes/models/User.h
-  Classes/models/Dictionary.h
   Classes/models/PuzzleManager.h
+  Classes/models/User.h
+  Classes/nodes/RectRadius.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h
   Classes/solver/input/BorderedWordNode.h
@@ -183,8 +187,6 @@ set(GAME_HEADERS
   Classes/solver/info/TextIndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
   Classes/solver/info/banner/ExplodingCircle.h
-  Classes/nodes/RectRadius.h
-  Classes/menu/MenuButton.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

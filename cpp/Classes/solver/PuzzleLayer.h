@@ -35,6 +35,7 @@ namespace QUAT {
 class SolverStateController;
 class SolverTouchInputManager;
 class SolverKeyboardManager;
+class GameStateController;
 
 /**
  * @brief      PuzzleLayer is a layer that takes in the game bounds and builds
@@ -46,6 +47,9 @@ class PuzzleLayer : public cocos2d::Layer
 private:
 	// A pointer to the game state.
 	Game * game;
+
+	// Controls the entire game so we can move to other screens
+	GameStateController * GSC;
 
 	// Stores the font size given to us by the global context. Most graphical
 	// calculations are based on this so that you could adjust it if you wanted
@@ -65,8 +69,6 @@ private:
 	// by the goal word.
 	BorderedWordNode * currentWord;
 
-	// Layer that shows the user the meaning of the current words
-	DefinitionLayer * definitionLayer;
 
 	// Background layer that lets us hide the rest of the game while another
 	// screen, like the definition screen, is open
@@ -296,13 +298,19 @@ public:
 	 */
 	virtual bool init();
 	
-	PuzzleLayer(cocos2d::Rect * gameBounds, float fontSize);
+	PuzzleLayer(cocos2d::Rect * gameBounds, 
+				float fontSize, 
+				Game * game,
+				GameStateController * GSC);
 
 	
 	/**
 	 * Creates a PuzzleLayer object.
 	 */
-	static PuzzleLayer * create(cocos2d::Rect * gameBounds, float fontSize);
+	static PuzzleLayer * create(cocos2d::Rect * gameBounds, 
+								float fontSize, 
+								Game * game,
+								GameStateController * GSC);
 };
 
 }

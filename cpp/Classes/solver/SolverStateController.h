@@ -1,8 +1,6 @@
 #ifndef __SOLVER_STATE_CONTROLLER_H__
 #define __SOLVER_STATE_CONTROLLER_H__
 
-// #include "PuzzleLayer.h"
-
 namespace QUAT {
 class PuzzleLayer;
 

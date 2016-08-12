@@ -2,6 +2,7 @@
 #include "../Constants.h"
 #include "SolverStateController.h"
 #include "input/SolverTouchInputManager.h"
+#include "../GameStateController.h"
 #include "../nodes/RectRadius.h"
 
 #include <string>
@@ -13,9 +14,12 @@
 namespace QUAT {
 
 
-PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, float fontSize)
+PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, 
+                                    float fontSize, 
+                                    Game * game,
+                                    GameStateController * GSC)
 {
-    PuzzleLayer *pRet = new(std::nothrow) PuzzleLayer(gameBounds, fontSize);
+    PuzzleLayer *pRet = new(std::nothrow) PuzzleLayer(gameBounds, fontSize, game, GSC);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -58,7 +62,6 @@ void PuzzleLayer::chooseLetter(int column) {
 void PuzzleLayer::showDefinitions() {
     // Show the definition dialog
     this->shadeLayer->setVisible(true);
-    this->definitionLayer->setVisible(true);
 
     // Make the rest of the game noninteractable
     this->setEnabled(false);
@@ -134,9 +137,7 @@ void PuzzleLayer::undoClick() {
 
 void PuzzleLayer::definitionClick() {
     cocos2d::log("Clicked on definition button");
-
-    // Transition to definitions
-    this->solverStateController->to_DEFINITIONS();
+    this->GSC->to_GAME_DEFS();
 }
 
 void PuzzleLayer::setEnabled(bool enabled) {
@@ -183,8 +184,6 @@ bool PuzzleLayer::init() {
     {
         return false;
     }
-
-    this->game = new Game();
 
     /*======================================================
     =            Initialization of GUI elements            =
@@ -249,10 +248,6 @@ bool PuzzleLayer::init() {
     this->shadeLayer = BackgroundLayer::create();
     this->shadeLayer->setVisible(false);
     this->addChild(this->shadeLayer, 10);
-
-    this->definitionLayer = DefinitionLayer::create(gameBounds, fontSize, this->game);
-    this->definitionLayer->setVisible(false);
-    this->addChild(this->definitionLayer, 11);
 
     this->textLayer = TextIndicatorLayer::create(fontSize);
     this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
@@ -408,10 +403,15 @@ void PuzzleLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     this->trackingTouch = false;
 }
 
-PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds, float fontSize) {
+PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds, 
+                                float fontSize, 
+                                Game * game,
+                                GameStateController * GSC) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
+    this->game = game;
+    this->GSC = GSC;
 }
 
 

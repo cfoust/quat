@@ -1,5 +1,7 @@
 #include "GameScene.h"
 
+#include "GameStateController.h"
+
 namespace QUAT {
 
 USING_NS_CC;
@@ -19,6 +21,31 @@ Scene* GameScene::createScene()
     return scene;
 }
 
+void GameScene::to_GAME() {
+    this->menuLayer->setVisible(false);
+    this->definitionLayer->setVisible(false);
+    
+    this->puzzleLayer->setVisible(true);
+}
+
+void GameScene::to_INFO() {
+    this->puzzleLayer->setVisible(false);
+    this->definitionLayer->setVisible(false);
+
+    this->menuLayer->setVisible(true);
+}
+
+void GameScene::to_GAME_DEFS() {
+    this->menuLayer->setVisible(false);
+    this->puzzleLayer->setVisible(false);
+    
+    this->definitionLayer->setVisible(true);
+}
+
+void GameScene::to_WB_DEFS() {
+
+}
+
 void GameScene::generateBounds() {
     Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -26,9 +53,15 @@ void GameScene::generateBounds() {
 }
 
 void GameScene::menuCallback() {
-    this->onMenu = !this->onMenu;
-    this->puzzleLayer->setVisible(!this->onMenu);
-    this->menuLayer->setVisible(this->onMenu);
+    if (this->GSC->state() == GameStateController::GAME) {
+        this->GSC->to_INFO();
+    }
+    else if (this->GSC->state() == GameStateController::INFO) {
+        this->GSC->to_GAME();
+    }
+    else if (this->GSC->state() == GameStateController::GAME_DEFS) {
+        this->GSC->to_GAME();
+    }
 }
 
 bool GameScene::init()
@@ -39,10 +72,13 @@ bool GameScene::init()
         return false;
     }
 
+    // Initialize the game model
+    this->game = new Game();
+
+    this->GSC = new GameStateController(this);
+
     // Generate the bounds of the game space
     generateBounds();
-
-    this->onMenu = false;
 
     float width    = gameBounds->size.width,
           height   = gameBounds->size.height,
@@ -53,12 +89,20 @@ bool GameScene::init()
     addChild(background, 0);
 
     // Create the puzzle layer
-    this->puzzleLayer = PuzzleLayer::create(gameBounds, fontSize);
+    this->puzzleLayer = PuzzleLayer::create(gameBounds, fontSize, this->game,
+                                                    this->GSC);
     addChild(this->puzzleLayer, 1);
 
+    // Create the menu layer
     this->menuLayer = MenuLayer::create(gameBounds, fontSize);
     this->menuLayer->setVisible(false);
     addChild(this->menuLayer, 1);
+
+    this->definitionLayer = DefinitionLayer::create(gameBounds, 
+                                                    fontSize, 
+                                                    this->game);
+    this->definitionLayer->setVisible(false);
+    this->addChild(this->definitionLayer, 1);
 
     float menuButtonSize   = width * Q_MENUBTN_SIZE,
           menuButtonOffset = width * Q_MENUBTN_OFFSET;

@@ -11,12 +11,12 @@ namespace QUAT {
 class Definition : public cocos2d::Layer
 {
 private:
-	cocos2d::Label * word,
-				   * pos,
-				   * definition;
+	cocos2d::Label * word,       // Holds the text for the actual word
+				   * pos,        // The word's part of speech
+				   * definition; // The word's definition
 
-	float fontSize,
-		  width;
+	float fontSize, // The global font size
+		  width;	// The width of this definition
 
 public:
 

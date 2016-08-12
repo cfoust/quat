@@ -4,21 +4,19 @@
 namespace QUAT {
 
 float Definition::getTotalHeight() {
+           // Gets the word's line height
     return this->word->getLineHeight()
-           // + this->wordSize
-           + this->definition->getLineHeight() * this->definition->getStringNumLines();
+           // Then adds in the definition's height
+           + this->definition->getLineHeight() 
+           * this->definition->getStringNumLines();
 }
 
-Definition * Definition::create(float fontSize, float width)
-{
+Definition * Definition::create(float fontSize, float width) {
     Definition *pRet = new(std::nothrow) Definition(fontSize, width);
-    if (pRet && pRet->init())
-    {
+    if (pRet && pRet->init()) {
         pRet->autorelease();
         return pRet;
-    }
-    else
-    {
+    } else {
         delete pRet;
         pRet = NULL;
         return NULL;
@@ -72,7 +70,8 @@ bool Definition::init() {
 
     // Create the actual definition
     float defSize = this->fontSize * 0.5;
-    this->definition = cocos2d::Label::createWithTTF("absent from one's post but without intent to desert.", Q_FONT_PATH, defSize);
+    this->definition = cocos2d::Label::createWithTTF(
+        "absent from one's post but without intent to desert.", Q_FONT_PATH, defSize);
     
     // Sets the anchor point to the top left
     this->definition->setAnchorPoint(cocos2d::Vec2(0.0f, 1.0f));

@@ -4,22 +4,38 @@
 #include "cocos2d.h"
 #include "Constants.h"
 
-#include "BackgroundLayer.h"
 #include "MenuButtonLayer.h"
+
+#include "BackgroundLayer.h"
 #include "menu/MenuLayer.h"
+#include "defs/DefinitionLayer.h"
 #include "solver/PuzzleLayer.h"
 
+#include "models/Game.h"
+
+
 namespace QUAT {
+
+// The state controller needs to be predefined
+class GameStateController;
 
 class GameScene : public cocos2d::Layer
 {
 
 private:
+    // The game's full model
+    Game * game;
+
+    // Holds information about the game state
+    GameStateController * GSC;
+
 	// The colorful global background of the game.
     BackgroundLayer * background;
 
     // Layer for actually playing the game
 	PuzzleLayer * puzzleLayer;
+
+    DefinitionLayer * definitionLayer;
 
     // Layer for actually playing the game
     MenuLayer * menuLayer;
@@ -31,8 +47,6 @@ private:
     // with statistics and other information about the game.
     MenuButtonLayer * menuButton;
 
-    bool onMenu;
-
     /**
      * Generates the bounds of the game used to render everything.
      * @return Rect representing the game area.
@@ -42,6 +56,15 @@ private:
     void menuCallback();
 
 public:
+
+    void to_GAME();
+
+    void to_INFO();
+
+    void to_GAME_DEFS();
+
+    void to_WB_DEFS();
+
 	/**
 	 * Creates a scene object with a game scene that is used by the director 
 	 * for rendering.
