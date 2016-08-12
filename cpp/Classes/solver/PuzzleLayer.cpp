@@ -184,6 +184,8 @@ bool PuzzleLayer::init() {
         return false;
     }
 
+    this->game = new Game();
+
     /*======================================================
     =            Initialization of GUI elements            =
     ======================================================*/
@@ -248,7 +250,7 @@ bool PuzzleLayer::init() {
     this->shadeLayer->setVisible(false);
     this->addChild(this->shadeLayer, 10);
 
-    this->definitionLayer = DefinitionLayer::create(gameBounds, fontSize);
+    this->definitionLayer = DefinitionLayer::create(gameBounds, fontSize, this->game);
     this->definitionLayer->setVisible(false);
     this->addChild(this->definitionLayer, 11);
 
@@ -280,7 +282,7 @@ bool PuzzleLayer::init() {
     
     /*=====  End of Initialization of GUI elements  ======*/
     
-    this->game = new Game();
+    
 
     /*========================================
     =            Input management            =

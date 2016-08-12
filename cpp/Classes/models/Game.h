@@ -35,6 +35,8 @@ public:
 	 */
 	User * getUser();
 
+	Dictionary * getDictionary();
+
 	/**
 	 * Load in a game state from a local store of it.
 	 */

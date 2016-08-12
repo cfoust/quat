@@ -129,6 +129,7 @@ set(GAME_SRC
   Classes/BackgroundLayer.cpp
   Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
+  Classes/defs/Definition.cpp
   Classes/defs/DefinitionLayer.cpp
   Classes/menu/MenuLayer.cpp
   Classes/models/Game.cpp
@@ -161,6 +162,7 @@ set(GAME_HEADERS
   Classes/BackgroundLayer.h
   Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h
+  Classes/defs/Definition.h
   Classes/defs/DefinitionLayer.h
   Classes/menu/MenuLayer.h
   Classes/models/Game.h

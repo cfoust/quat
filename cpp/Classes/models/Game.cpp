@@ -27,6 +27,10 @@ User * Game::getUser() {
 	return this->user;
 }
 
+Dictionary * Game::getDictionary() {
+	return this->dictionary;
+}
+
 void Game::loadFromLocal() {
 
 }
