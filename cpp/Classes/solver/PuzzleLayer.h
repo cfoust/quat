@@ -28,6 +28,7 @@
 #include "info/StepsIndicatorLayer.h"
 #include "info/TextIndicatorLayer.h"
 #include "info/DefinitionButtonLayer.h"
+#include "info/StepsLayer.h"
 
 namespace QUAT {
 
@@ -119,12 +120,14 @@ private:
 	DefinitionButtonLayer * definitionButton;
 
 	// Shows the number of steps the user has already played.
-	StepsIndicatorLayer * stepsLayer;
+	StepsIndicatorLayer * stepsIndicatorLayer;
 
 	// A generic animated text indicator that we use to congratulate the user
 	// on completion of a puzzle and inform them when they attempt to use a word
 	// that does not exist.
 	TextIndicatorLayer * textLayer;
+
+	StepsLayer * stepsLayer;
     
 public:
 
@@ -142,8 +145,6 @@ public:
 	 * @param column Column to choose.
 	 */
 	void chooseLetter(int column);
-
-	void showDefinitions();
 	
 	/*=====  End of UI State Transition Methods  ======*/
 	

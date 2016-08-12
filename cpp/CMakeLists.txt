@@ -150,6 +150,7 @@ set(GAME_SRC
   Classes/solver/input/WordNode.cpp
   Classes/solver/info/DefinitionButtonLayer.cpp
   Classes/solver/info/StepsIndicatorLayer.cpp
+  Classes/solver/info/StepsLayer.cpp
   Classes/solver/info/TextIndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/solver/info/banner/ExplodingCircle.cpp
@@ -184,6 +185,7 @@ set(GAME_HEADERS
   Classes/solver/input/WordNode.h
   Classes/solver/info/DefinitionButtonLayer.h
   Classes/solver/info/StepsIndicatorLayer.h
+  Classes/solver/info/StepsLayer.h
   Classes/solver/info/TextIndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
   Classes/solver/info/banner/ExplodingCircle.h

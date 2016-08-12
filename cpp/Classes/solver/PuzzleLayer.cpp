@@ -59,14 +59,6 @@ void PuzzleLayer::chooseLetter(int column) {
     this->setEnabled(true);
 }
 
-void PuzzleLayer::showDefinitions() {
-    // Show the definition dialog
-    this->shadeLayer->setVisible(true);
-
-    // Make the rest of the game noninteractable
-    this->setEnabled(false);
-}
-
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
     this->currentWord->changeLetter(column, letter);
 }
@@ -99,15 +91,17 @@ void PuzzleLayer::updateFromModel() {
 
     // Shows the undo button only if the user has added more than one word
     this->undo->setVisible(stepCount > 0);
+
+    this->stepsLayer->update(puzzle->getSteps());
     
     // Same with the steps layer
-    this->stepsLayer->setVisible(stepCount > 0);
+    this->stepsIndicatorLayer->setVisible(stepCount > 0);
     
     // Updates the count of steps
-    this->stepsLayer->update(stepCount);
+    this->stepsIndicatorLayer->update(stepCount);
 
     // Shows the over indicator if the user is over par
-    this->stepsLayer->setOverPar(puzzle->getStepCount() >= puzzle->getPar());
+    this->stepsIndicatorLayer->setOverPar(puzzle->getStepCount() >= puzzle->getPar());
 
     // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
@@ -148,8 +142,8 @@ void PuzzleLayer::setEnabled(bool enabled) {
 
 void PuzzleLayer::raiseKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepFinish));
-    this->stepsLayer->setPositionY(this->stepStart);
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsIndicatorLayer->getPositionX(), this->stepFinish));
+    this->stepsIndicatorLayer->setPositionY(this->stepStart);
     
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
@@ -158,7 +152,7 @@ void PuzzleLayer::raiseKeyboard() {
     this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
 
     // Run the animations for both the step indicator and the keyboard
-    this->stepsLayer->runAction(stepsTextAction);
+    this->stepsIndicatorLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
 
     this->keyboardUp = true;
@@ -166,14 +160,14 @@ void PuzzleLayer::raiseKeyboard() {
 
 void PuzzleLayer::lowerKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsLayer->getPositionX(), this->stepStart));
-    this->stepsLayer->setPositionY(this->stepFinish);
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsIndicatorLayer->getPositionX(), this->stepStart));
+    this->stepsIndicatorLayer->setPositionY(this->stepFinish);
     
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
     this->keyboardLayer->setPositionY(0);
     
-    this->stepsLayer->runAction(stepsTextAction);
+    this->stepsIndicatorLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
     this->keyboardUp = false;
 }
@@ -216,6 +210,12 @@ bool PuzzleLayer::init() {
     currentWord->recalculateBounds();
     this->addChild(currentWord);
 
+    this->stepsLayer = StepsLayer::create(fontSize);
+    this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
+    this->stepsLayer->setPositionY(currentWord->getPositionY() 
+                                   + wordSize * Q_WORDS_GAP);
+    this->addChild(this->stepsLayer);
+
     // Initialize the banner, which is used to show the rank the user is 
     // currently at
     float bannerHeight = height * Q_BANNER_HEIGHT; 
@@ -245,10 +245,6 @@ bool PuzzleLayer::init() {
     this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
     this->addChild(this->definitionButton);
 
-    this->shadeLayer = BackgroundLayer::create();
-    this->shadeLayer->setVisible(false);
-    this->addChild(this->shadeLayer, 10);
-
     this->textLayer = TextIndicatorLayer::create(fontSize);
     this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->textLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
@@ -268,10 +264,12 @@ bool PuzzleLayer::init() {
     this->stepStart = height * Q_STEPTEXT_DOWN_Y;
     this->stepFinish = this->keyboardLayer->getHeight();
 
-    this->stepsLayer = StepsIndicatorLayer::create(fontSize);
-    this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->stepsLayer->setPositionY(this->stepStart);
-    this->addChild(this->stepsLayer);
+    this->stepsIndicatorLayer = StepsIndicatorLayer::create(fontSize);
+    this->stepsIndicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
+    this->stepsIndicatorLayer->setPositionY(this->stepStart);
+    this->addChild(this->stepsIndicatorLayer);
+
+    
 
     
     

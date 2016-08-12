@@ -120,6 +120,15 @@ void WordNode::recalculateBounds() {
 				   first->size.height);
 }
 
+void WordNode::setOpacity(GLubyte opacity) {
+	Layer::setOpacity(opacity);
+
+	for (int i = 0; i < 4; i++) {
+		auto label = (*this->letterPool)[i];
+		label->setOpacity(opacity);
+	}
+}
+
 WordNode::WordNode(float fontSize, float fontGap) {
 	this->fontSize = fontSize;
 	this->fontGap = fontGap;

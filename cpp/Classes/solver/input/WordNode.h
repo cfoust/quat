@@ -70,6 +70,7 @@ public:
 	 */
 	int pointInWord(cocos2d::Point * point);
 
+	void setOpacity(GLubyte opacity);
 
 	/**
 	 * Recalculate the bounding boxes for the letters.
