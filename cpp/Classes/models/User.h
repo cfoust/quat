@@ -21,9 +21,16 @@ public:
 	User();
 
 	/**
-	 * Get the user's rank in terms of 0-256.
+	 * Get the user's rank in terms of 1-12.
 	 */
-	int getRank();
+	int getDisplayRank();
+
+	/**
+	 * @brief      Gets the user's rank in terms of 0-256.
+	 *
+	 * @return     The real rank.
+	 */
+	int getRealRank();
 
 	/**
 	 * Gets the user's rank in terms of 0-16384.

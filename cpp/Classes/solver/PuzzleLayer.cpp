@@ -92,7 +92,7 @@ void PuzzleLayer::updateFromModel() {
     // Shows the undo button only if the user has added more than one word
     this->undo->setVisible(stepCount > 0);
 
-    this->stepsLayer->update(puzzle->getSteps());
+    // this->stepsLayer->update(puzzle->getSteps());
     
     // Same with the steps layer
     this->stepsIndicatorLayer->setVisible(stepCount > 0);
@@ -110,7 +110,7 @@ void PuzzleLayer::updateFromModel() {
     this->goalWord->changeWord(puzzle->getGoal());
     
     // Update the rank display
-    this->bannerButton->update(this->game->getUser()->getRank());
+    this->bannerButton->update(this->game->getUser()->getDisplayRank());
 
 }
 
@@ -214,6 +214,7 @@ bool PuzzleLayer::init() {
     this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->stepsLayer->setPositionY(currentWord->getPositionY() 
                                    + wordSize * Q_WORDS_GAP);
+    this->stepsLayer->setVisible(false);
     this->addChild(this->stepsLayer);
 
     // Initialize the banner, which is used to show the rank the user is 

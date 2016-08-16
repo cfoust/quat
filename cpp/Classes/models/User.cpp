@@ -11,9 +11,13 @@ User::User() {
 	this->subRank = 8192 + 63;
 }
 
-int User::getRank() {
-	int rank = ((this->subRank - (this->subRank % 64)) / 64);
+int User::getDisplayRank() {
+	int rank = this->getRealRank();
 	return ((rank - (rank % 22)) / 22) + 1;
+}
+
+int User::getRealRank() {
+	return ((this->subRank - (this->subRank % 64)) / 64);
 }
 
 int User::getSubRank() {
@@ -56,7 +60,7 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	// Increase the number of puzzles played
 	this->puzzlesPlayed++;
 
-	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRank(), this->subRank);
+	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRealRank(), this->subRank);
 	
 	return difference == 0;
 }

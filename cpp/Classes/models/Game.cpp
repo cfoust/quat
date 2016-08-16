@@ -36,7 +36,7 @@ void Game::loadFromLocal() {
 }
 
 void Game::newPuzzle() {
-	this->puzzleManager->fill(this->user->getRank());
+	this->puzzleManager->fill(this->user->getRealRank());
 }
 
 void Game::saveToLocal() {
