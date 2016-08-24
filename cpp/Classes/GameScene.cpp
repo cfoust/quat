@@ -89,8 +89,11 @@ bool GameScene::init()
     addChild(background, 0);
 
     // Create the puzzle layer
-    this->puzzleLayer = PuzzleLayer::create(gameBounds, fontSize, this->game,
-                                                    this->GSC);
+    this->puzzleLayer = PuzzleLayer::create(gameBounds,
+                                            this->background, 
+                                            fontSize, 
+                                            this->game,
+                                            this->GSC);
     addChild(this->puzzleLayer, 1);
 
     // Create the menu layer

@@ -8,7 +8,10 @@ namespace QUAT {
 using namespace cocos2d;
 
 User::User() {
-	this->subRank = 8192 + 63;
+	this->subRank = 1408;
+	this->puzzlesPlayed = 0;
+	this->timePlayed = 0;
+	this->showAd = false;
 }
 
 int User::getDisplayRank() {
@@ -63,6 +66,10 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRealRank(), this->subRank);
 	
 	return difference == 0;
+}
+
+bool User::shouldShowAd() {
+	return this->showAd;
 }
 
 void User::toBytes(char * bytes) {

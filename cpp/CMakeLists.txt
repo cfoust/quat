@@ -138,6 +138,8 @@ set(GAME_SRC
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
   Classes/models/PuzzleManager.cpp
+  Classes/models/themes/RankTheme.cpp
+  Classes/models/Theme.cpp
   Classes/models/User.cpp
   Classes/nodes/RectRadius.cpp
   Classes/solver/PuzzleLayer.cpp
@@ -173,6 +175,8 @@ set(GAME_HEADERS
   Classes/models/Game.h
   Classes/models/Puzzle.h
   Classes/models/PuzzleManager.h
+  Classes/models/themes/RankTheme.h
+  Classes/models/Theme.h
   Classes/models/User.h
   Classes/nodes/RectRadius.h
   Classes/solver/PuzzleLayer.h

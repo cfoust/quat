@@ -12,10 +12,15 @@ namespace QUAT {
 class User
 {
 private:
-	int subRank,
-		puzzlesPlayed;
+	int subRank,		  // The user's sub-rank between 0 and 16834
+		puzzlesPlayed;    // The number of puzzles the user has completed
 
-	long int timePlayed;
+	bool isPaid,  		  // Whether or not the user has paid to remove ads
+	     showAd;	      // Whether the UI should show the user an ad
+
+	long int timePlayed,  // The total time (in seconds) the user has played 
+			 lastShownAd; // The timePlayed value in seconds at which the user
+			              // last saw an ad
 public:
 
 	User();
@@ -56,6 +61,12 @@ public:
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.
 	 */
 	bool registerPuzzle(Puzzle * puzzle);
+
+	/**
+	 * @brief      Whether the UI should show the user an ad.
+	 *
+	 */
+	bool shouldShowAd();
 
 	/**
 	 * Exports the user's info to bytes. 

@@ -15,11 +15,12 @@ namespace QUAT {
 
 
 PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, 
+                                    BackgroundLayer * background,
                                     float fontSize, 
                                     Game * game,
                                     GameStateController * GSC)
 {
-    PuzzleLayer *pRet = new(std::nothrow) PuzzleLayer(gameBounds, fontSize, game, GSC);
+    PuzzleLayer *pRet = new(std::nothrow) PuzzleLayer(gameBounds, background, fontSize, game, GSC);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -111,6 +112,10 @@ void PuzzleLayer::updateFromModel() {
     
     // Update the rank display
     this->bannerButton->update(this->game->getUser()->getDisplayRank());
+
+    this->game->getTheme()->update(this->game);
+
+    this->background->animateScheme(this->game->getTheme()->getColorScheme());
 
 }
 
@@ -269,9 +274,6 @@ bool PuzzleLayer::init() {
     this->stepsIndicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->stepsIndicatorLayer->setPositionY(this->stepStart);
     this->addChild(this->stepsIndicatorLayer);
-
-    
-
     
     
     /*=====  End of Initialization of GUI elements  ======*/
@@ -326,6 +328,8 @@ bool PuzzleLayer::init() {
 
     // Updates the view with information from the model
     this->updateFromModel();
+
+    this->background->setScheme(this->game->getTheme()->getColorScheme());
     
     /*=====  End of Model Handling and Initialization  ======*/
     
@@ -403,12 +407,14 @@ void PuzzleLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
 }
 
 PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds, 
-                                float fontSize, 
-                                Game * game,
-                                GameStateController * GSC) {
+                         BackgroundLayer * background,
+                         float fontSize, 
+                         Game * game,
+                         GameStateController * GSC) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
+    this->background = background;
     this->game = game;
     this->GSC = GSC;
 }

@@ -9,7 +9,7 @@
 // The Definition Layer
 #include "../defs/DefinitionLayer.h"
 
-// For the shade layer
+// So we can control the background
 #include "../BackgroundLayer.h"
 
 // General menu button, not really sure if this should be used in this class
@@ -49,6 +49,9 @@ private:
 	// A pointer to the game state.
 	Game * game;
 
+	// The background of the game. It is not in this object, but game-wide
+	BackgroundLayer * background;
+
 	// Controls the entire game so we can move to other screens
 	GameStateController * GSC;
 
@@ -70,10 +73,6 @@ private:
 	// by the goal word.
 	BorderedWordNode * currentWord;
 
-
-	// Background layer that lets us hide the rest of the game while another
-	// screen, like the definition screen, is open
-	BackgroundLayer * shadeLayer;
 
 	// Undo button which lets the user go back a step in the solution.
 	UndoButtonLayer * undo;
@@ -299,7 +298,8 @@ public:
 	 */
 	virtual bool init();
 	
-	PuzzleLayer(cocos2d::Rect * gameBounds, 
+	PuzzleLayer(cocos2d::Rect * gameBounds,
+				BackgroundLayer * background, 
 				float fontSize, 
 				Game * game,
 				GameStateController * GSC);
@@ -309,6 +309,7 @@ public:
 	 * Creates a PuzzleLayer object.
 	 */
 	static PuzzleLayer * create(cocos2d::Rect * gameBounds, 
+						        BackgroundLayer * background,
 								float fontSize, 
 								Game * game,
 								GameStateController * GSC);
