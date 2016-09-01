@@ -10,6 +10,7 @@
 #include "menu/MenuLayer.h"
 #include "defs/DefinitionLayer.h"
 #include "solver/PuzzleLayer.h"
+#include "ads/AdLayer.h"
 
 #include "models/Game.h"
 
@@ -40,6 +41,8 @@ private:
     // Layer for actually playing the game
     MenuLayer * menuLayer;
 
+    AdLayer * adLayer;
+
     // Stores the boundaries of the game
     cocos2d::Rect * gameBounds;
 
@@ -64,6 +67,8 @@ public:
     void to_GAME_DEFS();
 
     void to_WB_DEFS();
+
+    void to_AD();
 
 	/**
 	 * Creates a scene object with a game scene that is used by the director 

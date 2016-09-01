@@ -13,7 +13,8 @@ public:
 		GAME,
 		INFO,
 		GAME_DEFS,
-		WB_DEFS
+		WB_DEFS,
+		AD
 	};
 
 private:
@@ -33,6 +34,8 @@ public:
 	void to_GAME_DEFS();
 
 	void to_WB_DEFS();
+	
+	void to_AD();
 
 	/**
 	 * Gets the current state.

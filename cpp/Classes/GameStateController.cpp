@@ -23,6 +23,11 @@ void GameStateController::to_INFO() {
 	this->setState(INFO);
 }
 
+void GameStateController::to_AD() {
+	this->gameScene->to_AD();
+	this->setState(INFO);
+}
+
 void GameStateController::to_GAME_DEFS() {
 	this->gameScene->to_GAME_DEFS();
 	this->setState(GAME_DEFS);

@@ -130,6 +130,7 @@ set(GAME_SRC
   Classes/GameStateController.cpp
   Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
+  Classes/ads/AdLayer.cpp
   Classes/defs/Definition.cpp
   Classes/defs/DefinitionLayer.cpp
   Classes/menu/MenuButton.cpp
@@ -167,6 +168,7 @@ set(GAME_HEADERS
   Classes/GameStateController.h
   Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h
+  Classes/ads/AdLayer.h
   Classes/defs/Definition.h
   Classes/defs/DefinitionLayer.h
   Classes/menu/MenuButton.h

@@ -24,21 +24,29 @@ Scene* GameScene::createScene()
 void GameScene::to_GAME() {
     this->menuLayer->setVisible(false);
     this->definitionLayer->setVisible(false);
-    
+    this->adLayer->setVisible(false);
     this->puzzleLayer->setVisible(true);
 }
 
 void GameScene::to_INFO() {
     this->puzzleLayer->setVisible(false);
     this->definitionLayer->setVisible(false);
-
+    this->adLayer->setVisible(false);
     this->menuLayer->setVisible(true);
+}
+
+void GameScene::to_AD() {
+    this->puzzleLayer->setVisible(false);
+    this->definitionLayer->setVisible(false);
+    this->menuLayer->setVisible(false);
+    this->adLayer->setVisible(true);
+    this->adLayer->startTimer();
 }
 
 void GameScene::to_GAME_DEFS() {
     this->menuLayer->setVisible(false);
     this->puzzleLayer->setVisible(false);
-    
+    this->adLayer->setVisible(false);
     this->definitionLayer->setVisible(true);
 }
 
@@ -100,6 +108,10 @@ bool GameScene::init()
     this->menuLayer = MenuLayer::create(gameBounds, fontSize);
     this->menuLayer->setVisible(false);
     addChild(this->menuLayer, 1);
+
+    this->adLayer = AdLayer::create(gameBounds, fontSize);
+    this->adLayer->setVisible(false);
+    addChild(this->adLayer, 1);
 
     this->definitionLayer = DefinitionLayer::create(gameBounds, 
                                                     fontSize, 

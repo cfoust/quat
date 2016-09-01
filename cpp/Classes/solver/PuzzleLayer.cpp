@@ -110,12 +110,26 @@ void PuzzleLayer::updateFromModel() {
     // Gets the new goal word from the puzzle model
     this->goalWord->changeWord(puzzle->getGoal());
     
-    // Update the rank display
-    this->bannerButton->update(this->game->getUser()->getDisplayRank());
 
+    auto user = this->game->getUser();
+
+    // Update the rank display
+    this->bannerButton->update(user->getDisplayRank());
+
+    auto theme = this->game->getTheme();
+
+    // Update the theme with data from the game state
     this->game->getTheme()->update(this->game);
 
-    this->background->animateScheme(this->game->getTheme()->getColorScheme());
+    // Check to see if we have to update the background's colors
+    if (theme->getColorSchemeChanged()) {
+        this->background->animateScheme(theme->getColorScheme());
+    }
+
+    // Transition to the ad screen if we need to
+    if (user->shouldShowAd()) {
+        this->GSC->to_AD();
+    }
 
 }
 

@@ -8,9 +8,10 @@ namespace QUAT {
 using namespace cocos2d;
 
 User::User() {
-	this->subRank = 1408;
+	this->subRank = 0;
 	this->puzzlesPlayed = 0;
 	this->timePlayed = 0;
+	this->lastShownAd = 0;
 	this->showAd = false;
 }
 
@@ -60,6 +61,11 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	// Add in the time the user played this puzzle
 	this->timePlayed += puzzle->getTime();
 
+	// Show an ad every 30 seconds for testing
+	if ((this->timePlayed - this->lastShownAd) > 10) {
+		this->showAd = true;
+	}
+
 	// Increase the number of puzzles played
 	this->puzzlesPlayed++;
 
@@ -69,7 +75,13 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 }
 
 bool User::shouldShowAd() {
-	return this->showAd;
+	if (this->showAd) {
+		this->showAd = false;
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 void User::toBytes(char * bytes) {
