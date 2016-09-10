@@ -4,9 +4,9 @@
 namespace QUAT {
 
 
-AdLayer * AdLayer::create(cocos2d::Rect * gameBounds, float fontSize)
+AdLayer * AdLayer::create(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton)
 {
-    AdLayer *pRet = new(std::nothrow) AdLayer(gameBounds, fontSize);
+    AdLayer *pRet = new(std::nothrow) AdLayer(gameBounds, fontSize, closeButton);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -70,6 +70,8 @@ bool AdLayer::init() {
 void AdLayer::startTimer() {
     this->secondsRemaining = 10;
     this->schedule(schedule_selector(AdLayer::updateTime), 1.0f);
+    this->skipText->setString("You can skip this ad in 10 seconds.");
+    this->closeButton->setVisible(false);
 }
 
 void AdLayer::updateTime(float dt) {
@@ -83,14 +85,17 @@ void AdLayer::updateTime(float dt) {
 
     if (this->secondsRemaining == 0) {
         this->unschedule( schedule_selector(AdLayer::updateTime));
+        this->closeButton->setVisible(true);
+        this->skipText->setString("Tap the X in the upper left to close.");
     }
 
 }
 
-AdLayer::AdLayer(cocos2d::Rect * gameBounds, float fontSize) {
+AdLayer::AdLayer(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
+    this->closeButton = closeButton;
 }
 
 

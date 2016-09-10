@@ -22,6 +22,9 @@ Scene* GameScene::createScene()
 }
 
 void GameScene::to_GAME() {
+    this->menuButton->setVisible(true);
+    this->closeButton->setVisible(false);
+
     this->menuLayer->setVisible(false);
     this->definitionLayer->setVisible(false);
     this->adLayer->setVisible(false);
@@ -29,6 +32,9 @@ void GameScene::to_GAME() {
 }
 
 void GameScene::to_INFO() {
+    this->menuButton->setVisible(true);
+    this->closeButton->setVisible(false);
+
     this->puzzleLayer->setVisible(false);
     this->definitionLayer->setVisible(false);
     this->adLayer->setVisible(false);
@@ -36,6 +42,9 @@ void GameScene::to_INFO() {
 }
 
 void GameScene::to_AD() {
+    this->menuButton->setVisible(false);
+    this->closeButton->setVisible(true);
+
     this->puzzleLayer->setVisible(false);
     this->definitionLayer->setVisible(false);
     this->menuLayer->setVisible(false);
@@ -44,6 +53,9 @@ void GameScene::to_AD() {
 }
 
 void GameScene::to_GAME_DEFS() {
+    this->menuButton->setVisible(false);
+    this->closeButton->setVisible(true);
+
     this->menuLayer->setVisible(false);
     this->puzzleLayer->setVisible(false);
     this->adLayer->setVisible(false);
@@ -92,6 +104,20 @@ bool GameScene::init()
           height   = gameBounds->size.height,
           fontSize = width * Q_FONT_SIZE;
 
+    float menuButtonSize   = width * Q_MENUBTN_SIZE,
+          menuButtonOffset = width * Q_MENUBTN_OFFSET;
+    this->menuButton = MenuButtonLayer::create(menuButtonSize);
+    this->menuButton->setPositionX(menuButtonOffset);
+    this->menuButton->setPositionY(height - menuButtonOffset);
+    this->menuButton->upCallback = CC_CALLBACK_0(GameScene::menuCallback, this);
+    this->addChild(this->menuButton, 10);
+
+    this->closeButton = CloseButton::create(menuButtonSize);
+    this->closeButton->setPositionX(menuButtonOffset);
+    this->closeButton->setPositionY(height - menuButtonOffset);
+    this->closeButton->upCallback = CC_CALLBACK_0(GameScene::menuCallback, this);
+    this->addChild(this->closeButton, 10);
+
     // Create the background
     background = BackgroundLayer::create();
     addChild(background, 0);
@@ -109,7 +135,7 @@ bool GameScene::init()
     this->menuLayer->setVisible(false);
     addChild(this->menuLayer, 1);
 
-    this->adLayer = AdLayer::create(gameBounds, fontSize);
+    this->adLayer = AdLayer::create(gameBounds, fontSize, this->closeButton);
     this->adLayer->setVisible(false);
     addChild(this->adLayer, 1);
 
@@ -119,13 +145,8 @@ bool GameScene::init()
     this->definitionLayer->setVisible(false);
     this->addChild(this->definitionLayer, 1);
 
-    float menuButtonSize   = width * Q_MENUBTN_SIZE,
-          menuButtonOffset = width * Q_MENUBTN_OFFSET;
-    this->menuButton = MenuButtonLayer::create(menuButtonSize);
-    this->menuButton->setPositionX(menuButtonOffset);
-    this->menuButton->setPositionY(height - menuButtonOffset);
-    this->menuButton->upCallback = CC_CALLBACK_0(GameScene::menuCallback, this);
-    this->addChild(this->menuButton);
+
+    this->to_GAME();
     
     return true;
 }

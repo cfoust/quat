@@ -126,6 +126,7 @@ set(GAME_SRC
   Classes/AppDelegate.cpp
   Classes/BackgroundLayer.cpp
   Classes/Clickable.cpp
+  Classes/CloseButton.cpp
   Classes/GameScene.cpp
   Classes/GameStateController.cpp
   Classes/MenuButtonLayer.cpp
@@ -164,6 +165,7 @@ set(GAME_HEADERS
   Classes/AppDelegate.h
   Classes/BackgroundLayer.h
   Classes/Clickable.h
+  Classes/CloseButton.h
   Classes/GameScene.h
   Classes/GameStateController.h
   Classes/MenuButtonLayer.h

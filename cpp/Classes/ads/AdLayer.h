@@ -2,6 +2,7 @@
 #define __AD_LAYER_H__
 
 #include "cocos2d.h"
+#include "../CloseButton.h"
 #include "../solver/input/BorderedWordNode.h"
 #include "../nodes/RectRadius.h"
 
@@ -21,6 +22,8 @@ private:
 	// built inside these bounds.
 	cocos2d::Rect * gameBounds;
 
+	CloseButton * closeButton;
+
 	// Yeah, this element is a "live" element -- not a sprite
 	BorderedWordNode * quatLogo;
 
@@ -38,7 +41,7 @@ public:
 	 */
 	virtual bool init();
 	
-	AdLayer(cocos2d::Rect * gameBounds, float fontSize);
+	AdLayer(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton);
 
 	void startTimer();
 
@@ -47,7 +50,7 @@ public:
 	/**
 	 * Creates a AdLayer object.
 	 */
-	static AdLayer * create(cocos2d::Rect * gameBounds, float fontSize);
+	static AdLayer * create(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton);
 };
 
 }

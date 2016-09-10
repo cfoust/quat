@@ -5,6 +5,7 @@
 #include "Constants.h"
 
 #include "MenuButtonLayer.h"
+#include "CloseButton.h"
 
 #include "BackgroundLayer.h"
 #include "menu/MenuLayer.h"
@@ -49,6 +50,8 @@ private:
     // Menu button that the user can press to reach the "menu", an about screen
     // with statistics and other information about the game.
     MenuButtonLayer * menuButton;
+
+    CloseButton * closeButton;
 
     /**
      * Generates the bounds of the game used to render everything.

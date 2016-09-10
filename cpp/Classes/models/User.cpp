@@ -61,8 +61,8 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	// Add in the time the user played this puzzle
 	this->timePlayed += puzzle->getTime();
 
-	// Show an ad every 30 seconds for testing
-	if ((this->timePlayed - this->lastShownAd) > 10) {
+	// Show an ad every 5 minutes
+	if ((this->timePlayed - this->lastShownAd) > 300000) {
 		this->showAd = true;
 	}
 
@@ -77,6 +77,7 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 bool User::shouldShowAd() {
 	if (this->showAd) {
 		this->showAd = false;
+		this->lastShownAd = this->timePlayed;
 		return true;
 	}
 	else {
