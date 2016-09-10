@@ -224,7 +224,7 @@
  * 
  * Value is a float.
  */
-#define Q_DEFINITIONBTN_SIZE 0.7
+#define Q_DEFINITIONBTN_SIZE 0.9
 
 /**
  * Position of the definition button's x-coordinate as a proportion

@@ -24,12 +24,13 @@ bool DefinitionButtonLayer::init() {
 
     // Rescale it to the proper size
     float height = this->_height,
-    	  width = height * 1.15,
+    	  width = height,
     	  scale = height / this->background->getBoundingBox().size.height;
 
     this->background->setScale(scale,scale);
     this->background->setPositionX(width / 2);
     this->background->setPositionY(height / 2);
+    this->background->setOpacity(140);
     this->addChild(this->background, 1);
 
     // Set up the bounds
