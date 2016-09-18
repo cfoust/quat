@@ -14,7 +14,6 @@ cpp/bin/**
 
 js/data/words.js
 js/data/math/out/**
-**.quat
 js/workspace.xml
 
 **/.DS_Store
