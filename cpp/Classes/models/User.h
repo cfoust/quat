@@ -18,9 +18,17 @@ private:
 	bool isPaid,  		  // Whether or not the user has paid to remove ads
 	     showAd;	      // Whether the UI should show the user an ad
 
-	long int timePlayed,  // The total time (in seconds) the user has played 
+	long int timePlayed,  // The total time (in seconds) the user has played
 			 lastShownAd; // The timePlayed value in seconds at which the user
 			              // last saw an ad
+
+  int displayToSubRank(int displayRank);
+
+  // Turn a display rank into a real rank.
+  int displayToRealRank(int displayRank);
+
+  // Turn a real rank (0-255) into a sub rank (0-16384)
+  int realToSubRank(int realRank);
 public:
 
 	User();
@@ -41,6 +49,12 @@ public:
 	 * Gets the user's rank in terms of 0-16384.
 	 */
 	int getSubRank();
+
+  /**
+   * Gets how far the user is in their current rank as
+   * a percentage between 0 and 1.
+   */
+  float getRankProgress();
 
 	/**
 	 * Get the number of puzzles the user has completed.
@@ -69,7 +83,7 @@ public:
 	bool shouldShowAd();
 
 	/**
-	 * Exports the user's info to bytes. 
+	 * Exports the user's info to bytes.
 	 * @param bytes Location in memory to put the user's bytes.
 	 */
 	void toBytes(char * bytes);

@@ -93,7 +93,6 @@ void PuzzleLayer::updateFromModel() {
     // Shows the undo button only if the user has added more than one word
     this->undo->setVisible(stepCount > 0);
 
-    // this->stepsLayer->update(puzzle->getSteps());
     
     // Same with the steps layer
     this->stepsIndicatorLayer->setVisible(stepCount > 0);
@@ -130,7 +129,6 @@ void PuzzleLayer::updateFromModel() {
     if (user->shouldShowAd()) {
         this->GSC->to_AD();
     }
-
 }
 
 std::string * PuzzleLayer::getCurrentWord() {

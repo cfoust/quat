@@ -176,6 +176,7 @@ set(GAME_HEADERS
   Classes/defs/Definition.h
   Classes/defs/DefinitionLayer.h
   Classes/menu/DrawnBanner.h
+  Classes/menu/DrawnBanner.cpp
   Classes/menu/MenuButton.h
   Classes/menu/MenuLayer.h
   Classes/menu/RankCard.h

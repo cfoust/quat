@@ -15,6 +15,16 @@ User::User() {
 	this->showAd = false;
 }
 
+int User::displayToSubRank(int displayRank) {
+  return this->realToSubRank(this->displayToRealRank(displayRank));
+}
+int User::displayToRealRank(int displayRank) {
+  return 22 * (displayRank - 1);
+}
+
+int User::realToSubRank(int realRank) {
+  return 64 * realRank;
+}
 int User::getDisplayRank() {
 	int rank = this->getRealRank();
 	return ((rank - (rank % 22)) / 22) + 1;
@@ -28,6 +38,14 @@ int User::getSubRank() {
 	return this->subRank;
 }
 
+float User::getRankProgress() {
+  int currentRank = this->getDisplayRank(),
+      lowerBound = this->displayToSubRank(currentRank),
+      upperBound = this->displayToSubRank(currentRank + 1);
+
+  return (float) (this->subRank - lowerBound) /
+         (float) (upperBound - lowerBound); 
+}
 int User::getPuzzlesPlayed() {
 	return this->puzzlesPlayed;
 }
