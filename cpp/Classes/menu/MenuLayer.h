@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "../solver/input/BorderedWordNode.h"
 #include "RankCard.h"
+#include "../models/Game.h"
+
 
 namespace QUAT {
 
@@ -33,7 +35,9 @@ public:
 	virtual bool init();
 	
 	MenuLayer(cocos2d::Rect * gameBounds, float fontSize);
-	
+  
+  void updateFromModel(Game * game);
+
 	/**
 	 * Creates a MenuLayer object.
 	 */

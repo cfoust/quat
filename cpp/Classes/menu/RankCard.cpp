@@ -26,7 +26,13 @@ RankCard * RankCard::create(float fontSize,
     }
 }
 
+
+void RankCard::update(int currentRank, float progressPercent) {
+  this->displayRank(currentRank);
+  this->setProgressPercent(progressPercent);
+}
 void RankCard::displayRank(int currentRank) {
+   this->drawnBanner->update(currentRank);
    this->leftLabel->setString(std::to_string(currentRank)); 
    this->rightLabel->setString(std::to_string(currentRank + 1)); 
 }

@@ -42,6 +42,8 @@ public:
   // Sets the filled % of the progress bar we use for
   // showing rank progress
 	void setProgressPercent(float percent);
+ 
+  void update(int currentRank, float progressPercent);
 
 	static RankCard * create(float fontSize,
 							   float width,

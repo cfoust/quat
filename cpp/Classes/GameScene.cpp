@@ -32,6 +32,7 @@ void GameScene::to_GAME() {
 }
 
 void GameScene::to_INFO() {
+    this->menuLayer->updateFromModel(this->game);
     this->menuButton->setVisible(true);
     this->closeButton->setVisible(false);
 

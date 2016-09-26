@@ -20,6 +20,10 @@ MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds, float fontSize)
     }
 }
 
+void MenuLayer::updateFromModel(Game * game) {
+  auto user = game->getUser();
+  this->rankCard->update(user->getDisplayRank(), user->getRankProgress());
+}
 bool MenuLayer::init() {
 	// Init the super class
     if ( !Layer::init() )
