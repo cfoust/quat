@@ -8,6 +8,7 @@ js/app/frameworks/cocos2d-html5/**
 cpp/linux-build/**
 cpp/bin/**
 
+**.swp
 **.pyc
 **.o
 **.log

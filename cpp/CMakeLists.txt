@@ -134,8 +134,10 @@ set(GAME_SRC
   Classes/ads/AdLayer.cpp
   Classes/defs/Definition.cpp
   Classes/defs/DefinitionLayer.cpp
+  Classes/menu/DrawnBanner.cpp
   Classes/menu/MenuButton.cpp
   Classes/menu/MenuLayer.cpp
+  Classes/menu/RankCard.cpp
   Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
   Classes/models/Puzzle.cpp
@@ -173,8 +175,10 @@ set(GAME_HEADERS
   Classes/ads/AdLayer.h
   Classes/defs/Definition.h
   Classes/defs/DefinitionLayer.h
+  Classes/menu/DrawnBanner.h
   Classes/menu/MenuButton.h
   Classes/menu/MenuLayer.h
+  Classes/menu/RankCard.h
   Classes/models/Dictionary.h
   Classes/models/Game.h
   Classes/models/Puzzle.h

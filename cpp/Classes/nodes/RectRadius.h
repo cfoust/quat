@@ -22,6 +22,8 @@ private:
 	 */
 	void drawRect();
 
+	void generateVertices();
+
 	cocos2d::Vec2 vertices[RECT_POINT_COUNT * 4];
 
 	cocos2d::DrawNode * node;
@@ -48,6 +50,9 @@ public:
 	 */
 	void setColor(const cocos2d::Color4B &color);
 
+	void setWidth(float width);
+
+	void setHeight(float height);
 	/**
 	 * Sets the opacity of the rect.
 	 * @param opacity [description]

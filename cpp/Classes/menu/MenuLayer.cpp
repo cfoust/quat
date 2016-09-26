@@ -42,6 +42,12 @@ bool MenuLayer::init() {
                                 height * 0.9);
     this->addChild(this->quatLogo);
     
+    float cardWidth = width * 0.8,
+          cardHeight = cardWidth * 0.32;
+    this->rankCard = RankCard::create(wordSize, cardWidth, cardHeight);
+    this->rankCard->setPosition(gameBounds->origin.x + (width / 2) - (cardWidth / 2), 
+                                height * 0.7);
+    this->addChild(this->rankCard);
     // Indicates we initialized successfully
     return true;
 }

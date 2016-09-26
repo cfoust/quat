@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 #include "../solver/input/BorderedWordNode.h"
-
+#include "RankCard.h"
 
 namespace QUAT {
 
@@ -23,7 +23,8 @@ private:
 	// Yeah, this element is a "live" element -- not a sprite
 	BorderedWordNode * quatLogo;
 
-
+  // Displayes information about the current user's rank
+  RankCard * rankCard;
 public:
 	/**
 	 * Initialize this layer.
