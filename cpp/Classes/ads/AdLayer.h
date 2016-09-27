@@ -5,7 +5,8 @@
 #include "../CloseButton.h"
 #include "../solver/input/BorderedWordNode.h"
 #include "../nodes/RectRadius.h"
-
+#include "../menu/RankCard.h"
+#include "../models/Game.h"
 
 namespace QUAT {
 
@@ -27,13 +28,14 @@ private:
 	// Yeah, this element is a "live" element -- not a sprite
 	BorderedWordNode * quatLogo;
 
-	cocos2d::Label * adTitle,   // The text that says "Advertisement"
-	               * skipText;
+	cocos2d::Label * skipText;
 	 
 	RectRadius * adPlaceholder; // Placeholder for the ad rectangle
 
 	int secondsRemaining; // Counts the number of seconds remaining in the
 	                      // counter
+
+  RankCard * rankCard;
 public:
 	/**
 	 * Initialize this layer.
@@ -47,6 +49,7 @@ public:
 
 	void updateTime(float dt);
 	
+  void updateFromModel(Game * game);
 	/**
 	 * Creates a AdLayer object.
 	 */

@@ -43,6 +43,8 @@ void GameScene::to_INFO() {
 }
 
 void GameScene::to_AD() {
+    this->menuLayer->updateFromModel(this->game);
+
     this->menuButton->setVisible(false);
     this->closeButton->setVisible(true);
 
