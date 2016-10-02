@@ -149,6 +149,7 @@ set(GAME_SRC
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
   Classes/solver/input/BorderedWordNode.cpp
+  Classes/solver/input/ButtonsLayer.cpp
   Classes/solver/input/KeyboardLayer.cpp
   Classes/solver/input/SolverKeyboardManager.cpp
   Classes/solver/input/SolverTouchInputManager.cpp
@@ -191,6 +192,7 @@ set(GAME_HEADERS
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h
   Classes/solver/input/BorderedWordNode.h
+  Classes/solver/input/ButtonsLayer.h
   Classes/solver/input/KeyboardLayer.h
   Classes/solver/input/SolverKeyboardManager.h
   Classes/solver/input/SolverTouchInputManager.h

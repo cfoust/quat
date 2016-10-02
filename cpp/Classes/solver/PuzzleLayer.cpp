@@ -92,24 +92,14 @@ void PuzzleLayer::updateFromModel() {
 
     // Shows the undo button only if the user has added more than one word
     this->undo->setVisible(stepCount > 0);
-
     
-    // Same with the steps layer
-    this->stepsIndicatorLayer->setVisible(stepCount > 0);
+    // Update the buttons layer
+    this->buttonsLayer->updateFromModel(this->game);
     
-    // Updates the count of steps
-    this->stepsIndicatorLayer->update(stepCount);
-
-    // Shows the over indicator if the user is over par
-    this->stepsIndicatorLayer->setOverPar(puzzle->getStepCount() >= puzzle->getPar());
-
     // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
 
     // Gets the new goal word from the puzzle model
-    this->goalWord->changeWord(puzzle->getGoal());
-    
-
     auto user = this->game->getUser();
 
     // Update the rank display
@@ -159,8 +149,8 @@ void PuzzleLayer::setEnabled(bool enabled) {
 
 void PuzzleLayer::raiseKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsIndicatorLayer->getPositionX(), this->stepFinish));
-    this->stepsIndicatorLayer->setPositionY(this->stepStart);
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->buttonsLayer->getPositionX(), this->buttonsFinish));
+    this->buttonsLayer->setPositionY(this->buttonsStart);
     
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
@@ -169,7 +159,7 @@ void PuzzleLayer::raiseKeyboard() {
     this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
 
     // Run the animations for both the step indicator and the keyboard
-    this->stepsIndicatorLayer->runAction(stepsTextAction);
+    this->buttonsLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
 
     this->keyboardUp = true;
@@ -177,14 +167,14 @@ void PuzzleLayer::raiseKeyboard() {
 
 void PuzzleLayer::lowerKeyboard() {
     // Set up the steps to move
-    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->stepsIndicatorLayer->getPositionX(), this->stepStart));
-    this->stepsIndicatorLayer->setPositionY(this->stepFinish);
+    auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->buttonsLayer->getPositionX(), this->buttonsStart));
+    this->buttonsLayer->setPositionY(this->buttonsFinish);
     
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
     this->keyboardLayer->setPositionY(0);
     
-    this->stepsIndicatorLayer->runAction(stepsTextAction);
+    this->buttonsLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
     this->keyboardUp = false;
 }
@@ -279,13 +269,13 @@ bool PuzzleLayer::init() {
     this->keyboardUp = false;
 
     // Grab the proper positions for the step counter
-    this->stepStart = height * Q_STEPTEXT_DOWN_Y;
-    this->stepFinish = this->keyboardLayer->getHeight();
+    this->buttonsStart = 0;
+    this->buttonsFinish = this->keyboardLayer->getHeight();
 
-    this->stepsIndicatorLayer = StepsIndicatorLayer::create(fontSize);
-    this->stepsIndicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->stepsIndicatorLayer->setPositionY(this->stepStart);
-    this->addChild(this->stepsIndicatorLayer);
+    this->buttonsLayer = ButtonsLayer::create(gameBounds, fontSize);
+    this->buttonsLayer->setPositionX(gameBounds->origin.x);
+    this->buttonsLayer->setPositionY(this->buttonsStart);
+    this->addChild(this->buttonsLayer);
     
     
     /*=====  End of Initialization of GUI elements  ======*/

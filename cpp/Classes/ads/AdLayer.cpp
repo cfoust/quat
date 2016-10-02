@@ -44,7 +44,7 @@ bool AdLayer::init() {
 
 
     float menuButtonOffset = width * Q_MENUBTN_OFFSET;  // Where the close button is
-    this->skipText = cocos2d::Label::createWithTTF("10", Q_FONT_PATH, titleSize * 0.8);
+    this->skipText = cocos2d::Label::createWithTTF("10", Q_FONT_PATH, wordSize * 0.8);
     this->skipText->setPosition(gameBounds->origin.x + menuButtonOffset,
                                height - menuButtonOffset);
     this->addChild(this->skipText);
