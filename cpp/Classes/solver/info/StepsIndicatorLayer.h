@@ -3,15 +3,16 @@
 
 #include "cocos2d.h"
 #include "../../Constants.h"
-
+#include "../../nodes/RectRadius.h"
 namespace QUAT {
 
 class StepsIndicatorLayer : public cocos2d::Layer
 {
 private:
-	cocos2d::Label * subtext,
-				   * stepText,
+	cocos2d::Label * stepText,
 				   * overText;
+
+  RectRadius * circle;
 
 	float fontSize;
 public:
@@ -31,9 +32,9 @@ public:
 	 * @param[in]  num   The number.
 	 */
 	void update(int num);
-	
+
 	StepsIndicatorLayer(float fontSize);
-	
+
 	static StepsIndicatorLayer * create(float fontSize);
 
 };
