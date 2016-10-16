@@ -168,26 +168,26 @@ public:
 	 * @param      touch  The touch
 	 * @param      event  The event
 	 */
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+  void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 
-    /**
-     * @brief      Handles a touchEnded event. Passed as a callback to the
-	 *             layer's event listener.
-     *
-     * @param      touch  The touch
-     * @param      event  The event
-     */
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+  /**
+   * @brief      Handles a touchEnded event. Passed as a callback to the
+   *             layer's event listener.
+   *
+   * @param      touch  The touch
+   * @param      event  The event
+   */
+  void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
-    /**
-     * @brief      Handles a keyPressed event. Only used when we are running
-     *             natively on a desktop platform.
-     *
-     * @param[in]  keyCode  The key code
-     * @param      event    The event
-     */
-    void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
-								      cocos2d::Event* event);
+  /**
+   * @brief      Handles a keyPressed event. Only used when we are running
+   *             natively on a desktop platform.
+   *
+   * @param[in]  keyCode  The key code
+   * @param      event    The event
+   */
+  void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
+                    cocos2d::Event* event);
 
 	/**
 	 * @brief      Changes a letter at @column in the current word to the letter
@@ -262,6 +262,11 @@ public:
 	 * @brief      Called when the user clicks on the definition button.
 	 */
 	void definitionClick();
+
+	/**
+	 * @brief      Called when the user clicks on the skip button.
+	 */
+	void skipClick();
 
 	/*=====  End of Methods for Responding to User Input  ======*/
 

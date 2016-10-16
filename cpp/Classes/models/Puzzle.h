@@ -33,6 +33,7 @@ private:
 	 * Clears any stored data about this puzzle and reverts to an empty puzzle.
 	 */
 	void clear(); 
+
 public:
 	/**
 	 * Standard constructor that initializes steps.
@@ -53,6 +54,11 @@ public:
 	 */
 	bool atGoal();
 
+  /**
+   * Whether or not this puzzle was skipped.
+   * Adjusts some stuff in the heuristics for rank.
+   **/
+  bool skipped;
 	/**
 	 * Gets the last step in the puzzle solution (the current end word.)
 	 * @return The last step in the puzzle solution.

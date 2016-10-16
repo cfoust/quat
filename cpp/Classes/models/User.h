@@ -76,6 +76,7 @@ public:
 	 */
 	bool registerPuzzle(Puzzle * puzzle);
 
+
 	/**
 	 * @brief      Whether the UI should show the user an ad.
 	 *

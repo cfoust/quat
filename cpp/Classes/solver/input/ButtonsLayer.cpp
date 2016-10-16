@@ -47,12 +47,20 @@ bool ButtonsLayer::init() {
     // Calculates all of the necessary ratios
     float width = gameBounds->size.width,
           height = gameBounds->size.height,
-          wordSize = fontSize;
+          wordSize = fontSize,
+          outerDistance = (width / 2) * 0.8;
 
     this->stepsIndicatorLayer = StepsIndicatorLayer::create(fontSize);
     this->stepsIndicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->stepsIndicatorLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
     this->addChild(this->stepsIndicatorLayer);
+
+
+    float skipSize = fontSize * 0.7;
+    this->skipButtonLayer = SkipButtonLayer::create(skipSize);
+    this->skipButtonLayer->setPositionX((width / 2) + outerDistance);
+    this->skipButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
+    this->addChild(this->skipButtonLayer);
 
     // Indicates we initialized successfully
     return true;

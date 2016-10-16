@@ -1,15 +1,15 @@
-#include "DefinitionButtonLayer.h"
+#include "SkipButtonLayer.h"
 
 namespace QUAT {
-void DefinitionButtonLayer::up() {
+void SkipButtonLayer::up() {
 	cocos2d::log("test");
 }
 
-void DefinitionButtonLayer::entered() {
+void SkipButtonLayer::entered() {
 }
-void DefinitionButtonLayer::left() {
+void SkipButtonLayer::left() {
 }
-bool DefinitionButtonLayer::init() {
+bool SkipButtonLayer::init() {
 	// Init the super class
     if ( !Clickable::init() )
     {
@@ -19,8 +19,8 @@ bool DefinitionButtonLayer::init() {
     // Initialize the background
     this->background = cocos2d::Sprite::create("definition.png");
 
-    this->enterCallback = CC_CALLBACK_0(DefinitionButtonLayer::entered, this);
-    this->leaveCallback = CC_CALLBACK_0(DefinitionButtonLayer::left, this);
+    this->enterCallback = CC_CALLBACK_0(SkipButtonLayer::entered, this);
+    this->leaveCallback = CC_CALLBACK_0(SkipButtonLayer::left, this);
 
     // Rescale it to the proper size
     float height = this->_height,
@@ -30,6 +30,7 @@ bool DefinitionButtonLayer::init() {
     this->background->setScale(scale,scale);
     this->background->setPositionX(0);
     this->background->setPositionY(0);
+    this->setOffset(-1 * width / 2, -1 * height / 2);
     this->background->setOpacity(140);
     this->addChild(this->background, 1);
 
@@ -41,14 +42,14 @@ bool DefinitionButtonLayer::init() {
 }
 
 
-DefinitionButtonLayer::DefinitionButtonLayer(float height) {
+SkipButtonLayer::SkipButtonLayer(float height) {
 	this->_height = height;
 }
 
 
-DefinitionButtonLayer * DefinitionButtonLayer::create(float height)
+SkipButtonLayer * SkipButtonLayer::create(float height)
 {
-    DefinitionButtonLayer *pRet = new(std::nothrow) DefinitionButtonLayer(height);
+    SkipButtonLayer *pRet = new(std::nothrow) SkipButtonLayer(height);
     if (pRet && pRet->init())
     {
         pRet->autorelease();

@@ -6,7 +6,10 @@ USING_NS_CC;
 namespace QUAT {
 
 void Clickable::recalculateBounds() {
-    this->bounds->setRect(this->getPositionX(), this->getPositionY(), this->width, this->height);
+    this->bounds->setRect(this->getPositionX() + this->xOffset, 
+                          this->getPositionY() + this->yOffset, 
+                          this->width, 
+                          this->height);
     if (this->debug) {
         cocos2d::log("Regenerated bounds (D) (%f,%f,%f,%f)", this->bounds->origin.x,
                                                  this->bounds->origin.y,
@@ -94,6 +97,8 @@ bool Clickable::init() {
     this->width = 0;
     this->height = 0;
 
+    this->xOffset = 0;
+    this->yOffset = 0;
     // Initialize the bounds
     this->bounds = new cocos2d::Rect(0,0,0,0);
 
@@ -151,6 +156,10 @@ void Clickable::setPositionY(float y) {
     this->recalculateBounds();
 }
 
+void Clickable::setOffset(float x, float y) {
+  this->xOffset = x;
+  this->yOffset = y;
+}
 void Clickable::setLeaveCallback(std::function<void(void)> & callback) {
     this->leaveCallback = callback;
 }

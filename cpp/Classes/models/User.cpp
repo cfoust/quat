@@ -67,6 +67,9 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	// the difference between the number of steps and the par
 	int difference = steps->size() - puzzle->getPar();
 
+  // Set difference to be pretty high if the puzzle was skipped
+  if (puzzle->skipped) difference = 10;
+
 	// An exponential relationship that reduces the user's rating
 	// if they don't play very well, or increases it if they do
 	float parDifferenceRating = (pow(0.7, difference) * 255.0) - 127.0;

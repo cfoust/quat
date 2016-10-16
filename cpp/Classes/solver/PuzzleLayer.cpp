@@ -128,6 +128,9 @@ std::string * PuzzleLayer::getCurrentWord() {
 void PuzzleLayer::bannerClick() {
 }
 
+void PuzzleLayer::skipClick() {
+  cocos2d::log("Clicked on skip");
+}
 void PuzzleLayer::undoClick() {
     // Tries to go back one in the solution
     this->game->getPuzzle()->goBack();
@@ -273,11 +276,15 @@ bool PuzzleLayer::init() {
     this->buttonsStart = 0;
     this->buttonsFinish = this->keyboardLayer->getHeight();
 
+    // Initialize the buttons layer, which holds all of the buttons we use
+    // at the bottom of the screen
     this->buttonsLayer = ButtonsLayer::create(gameBounds, fontSize);
     this->buttonsLayer->setPositionX(gameBounds->origin.x);
     this->buttonsLayer->setPositionY(this->buttonsStart);
     this->addChild(this->buttonsLayer);
     
+    this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
+
     
     /*=====  End of Initialization of GUI elements  ======*/
     

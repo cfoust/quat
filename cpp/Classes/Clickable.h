@@ -18,6 +18,9 @@ protected:
 		 debug; 
 
 	float width, height;
+
+  // The offsets for the click boundaries
+  float xOffset, yOffset;
 	
 
 	// Called by this class to regenerate the click bounds when this layer
@@ -47,6 +50,11 @@ public:
 	void setPosition(float x, float y);
 	void setPositionX(float x);
 	void setPositionY(float y);
+
+  /**
+   * Sets the offset for the click boundaries. These are added to the origin.
+   * */
+  void setOffset(float x, float y);
 
 	/**
 	 * @brief      Whether or not to print debug log for this clickable.

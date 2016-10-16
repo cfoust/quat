@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "BorderedWordNode.h"
+#include "SkipButtonLayer.h"
 #include "../../models/Game.h"
 #include "../info/StepsIndicatorLayer.h"
 
@@ -25,7 +26,11 @@ private:
 
 	// Shows the number of steps the user has already played.
 	StepsIndicatorLayer * stepsIndicatorLayer;
+
 public:
+  // Allows the user to skip
+	SkipButtonLayer * skipButtonLayer;
+
 	/**
 	 * Initialize this layer.
 	 * @return Whether or not the layer was initialized successfully.

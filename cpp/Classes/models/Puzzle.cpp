@@ -23,6 +23,7 @@ void Puzzle::clear() {
 	this->totalMs = 0;
 	this->timeStarted = false;
 	this->_startTime = 0;
+  this->skipped = false;
 }
 
 Puzzle::Puzzle(Dictionary * d) {
