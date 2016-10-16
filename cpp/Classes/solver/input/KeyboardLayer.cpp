@@ -45,12 +45,12 @@ bool KeyboardLayer::init() {
         ratio = Q_KEYBOARD_X_Y_RATIO,
         keyboardWidth = ratio * keyboardHeight;
 
-    this->keyboardHeight = keyboardHeight;
-
     if (width < keyboardWidth) {
         keyboardWidth = width;
         keyboardHeight = (1 / ratio) * keyboardWidth;
     }
+
+    this->keyboardHeight = keyboardHeight;
 
     // Calculates the rest of them
     float halfWidth = keyboardWidth / 2,

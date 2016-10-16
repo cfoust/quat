@@ -86,9 +86,9 @@ private:
 	bool keyboardUp;
 	float buttonsStart,   // The y-position of the steps indicator when the
 	                   // keyboard is hidden.
-		  buttonsFinish;  // The y-position of the steps indicator when the
+		    buttonsFinish,  // The y-position of the steps indicator when the
 		               // keyboard is shown.
-
+        keyboardDownPos;  // The y-position of the keyboard when it is down.
 	// Handles various aspects of UI state control. Usually used for
 	// larger-scale view manipulation while still staying within the game.
 	// Things like displaying a definition, the keyboard being shown,

@@ -156,7 +156,7 @@ void PuzzleLayer::raiseKeyboard() {
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
     
     // Move the keyboard underground
-    this->keyboardLayer->setPositionY(-1 * this->keyboardLayer->getHeight());
+    this->keyboardLayer->setPositionY(this->keyboardDownPos);
 
     // Run the animations for both the step indicator and the keyboard
     this->buttonsLayer->runAction(stepsTextAction);
@@ -171,7 +171,7 @@ void PuzzleLayer::lowerKeyboard() {
     this->buttonsLayer->setPositionY(this->buttonsFinish);
     
     // Set up the keyboard to move
-    auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), -1 * this->keyboardLayer->getHeight()));
+    auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), this->keyboardDownPos));
     this->keyboardLayer->setPositionY(0);
     
     this->buttonsLayer->runAction(stepsTextAction);
@@ -262,7 +262,8 @@ bool PuzzleLayer::init() {
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
-    this->keyboardLayer->setPositionY(this->keyboardLayer->getHeight() * -1);
+    this->keyboardDownPos = this->keyboardLayer->getHeight() * -1.2;
+    this->keyboardLayer->setPositionY(this->keyboardDownPos);
     this->addChild(keyboardLayer);
 
     // Initialize the keyboard to down
