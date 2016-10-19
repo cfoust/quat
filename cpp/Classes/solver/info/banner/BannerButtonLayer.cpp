@@ -17,7 +17,7 @@ bool BannerButtonLayer::init() {
     }
 
     // Initialize the background
-    this->background = cocos2d::Sprite::create(Q_BANNER_SPRITEFILE);
+    this->background = cocos2d::Sprite::create("banner.png");
 
     this->enterCallback = CC_CALLBACK_0(BannerButtonLayer::entered, this);
     this->leaveCallback = CC_CALLBACK_0(BannerButtonLayer::left, this);

@@ -178,7 +178,7 @@ public:
      * @param      event  The event
      */
     void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
-
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
     /**
      * @brief      Handles a keyPressed event. Only used when we are running
      *             natively on a desktop platform.
@@ -187,7 +187,9 @@ public:
      * @param      event    The event
      */
     void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
-								      cocos2d::Event* event);
+                      cocos2d::Event* event);
+#endif
+    
 
 	/**
 	 * @brief      Changes a letter at @column in the current word to the letter

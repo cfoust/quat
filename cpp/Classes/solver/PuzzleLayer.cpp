@@ -98,6 +98,8 @@ void PuzzleLayer::updateFromModel() {
     
     // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
+    
+    this->goalWord->changeWord(puzzle->getGoal());
 
     // Gets the new goal word from the puzzle model
     auto user = this->game->getUser();
@@ -374,10 +376,13 @@ void PuzzleLayer::finishWord() {
     this->updateFromModel();
 }
 
-void PuzzleLayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, 
-                                      cocos2d::Event* event) {
-    this->solverKeyboardManager->input(keyCode, event);
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
+void PuzzleLayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
+                                   cocos2d::Event* event) {
+        this->solverKeyboardManager->input(keyCode, event);
 }
+#endif
+
 
 bool PuzzleLayer::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
     if (!this->enabled) {
