@@ -152,6 +152,7 @@ set(GAME_SRC
   Classes/solver/input/ButtonsLayer.cpp
   Classes/solver/input/KeyboardLayer.cpp
   Classes/solver/input/SkipButtonLayer.cpp
+  Classes/solver/input/FutureSightButtonLayer.cpp
   Classes/solver/input/SolverKeyboardManager.cpp
   Classes/solver/input/SolverTouchInputManager.cpp
   Classes/solver/input/UndoButtonLayer.cpp
@@ -196,6 +197,7 @@ set(GAME_HEADERS
   Classes/solver/input/ButtonsLayer.h
   Classes/solver/input/KeyboardLayer.h
   Classes/solver/input/SkipButtonLayer.h
+  Classes/solver/input/FutureSightButtonLayer.h
   Classes/solver/input/SolverKeyboardManager.h
   Classes/solver/input/SolverTouchInputManager.h
   Classes/solver/input/UndoButtonLayer.h

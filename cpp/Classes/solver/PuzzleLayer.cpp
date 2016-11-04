@@ -99,6 +99,9 @@ void PuzzleLayer::updateFromModel() {
     // Updates the current word
     this->currentWord->changeWord(puzzle->getCurrent());
 
+    // Updates the current word
+    this->goalWord->changeWord(puzzle->getGoal());
+    
     // Gets the new goal word from the puzzle model
     auto user = this->game->getUser();
 
@@ -283,7 +286,7 @@ bool PuzzleLayer::init() {
     this->buttonsLayer->setPositionY(this->buttonsStart);
     this->addChild(this->buttonsLayer);
     
-    this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
+    this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::definitionClick, this);
 
     
     /*=====  End of Initialization of GUI elements  ======*/

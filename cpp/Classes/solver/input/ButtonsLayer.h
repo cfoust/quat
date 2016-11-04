@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "BorderedWordNode.h"
 #include "SkipButtonLayer.h"
+#include "FutureSightButtonLayer.h"
 #include "../../models/Game.h"
 #include "../info/StepsIndicatorLayer.h"
 
@@ -28,17 +29,22 @@ private:
 	StepsIndicatorLayer * stepsIndicatorLayer;
 
 public:
+
   // Allows the user to skip
 	SkipButtonLayer * skipButtonLayer;
 
+  // Allows the user to skip
+	FutureSightButtonLayer * futureSightButtonLayer;
+
 	/**
+   *
 	 * Initialize this layer.
 	 * @return Whether or not the layer was initialized successfully.
 	 */
 	virtual bool init();
-	
+
 	ButtonsLayer(cocos2d::Rect * gameBounds, float fontSize);
-  
+
   void updateFromModel(Game * game);
 
 	/**
