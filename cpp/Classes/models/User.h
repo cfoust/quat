@@ -16,7 +16,7 @@ private:
 		puzzlesPlayed;    // The number of puzzles the user has completed
 
 	bool isPaid,  		  // Whether or not the user has paid to remove ads
-	     showAd;	      // Whether the UI should show the user an ad
+         showAd;	      // Whether the UI should show the user an ad
 
 	long int timePlayed,  // The total time (in seconds) the user has played
 			 lastShownAd; // The timePlayed value in seconds at which the user

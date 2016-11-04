@@ -69,8 +69,8 @@ bool KeyboardLayer::init() {
     };
     float offsets[3] = {
         0,
-        keyboardWidth * 0.05,
-        keyboardWidth * 0.16
+        static_cast<float>(keyboardWidth * 0.05),
+        static_cast<float>(keyboardWidth * 0.16)
     };
 
     for (int i = 0; i < 3; i++) {

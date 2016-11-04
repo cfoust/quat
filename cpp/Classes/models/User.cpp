@@ -13,6 +13,7 @@ User::User() {
 	this->timePlayed = 0;
 	this->lastShownAd = 0;
 	this->showAd = false;
+    this->isPaid = true;
 }
 
 int User::displayToSubRank(int displayRank) {
@@ -83,8 +84,7 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	this->timePlayed += puzzle->getTime();
 
 	// Show an ad every 5 minutes
-	//if ((this->timePlayed - this->lastShownAd) > 300000) {
-	if ((this->timePlayed - this->lastShownAd) > 0) {
+	if (((this->timePlayed - this->lastShownAd) > 300000) && !this->isPaid) {
 		this->showAd = true;
 	}
 
