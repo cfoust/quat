@@ -23,7 +23,6 @@ private:
 	void left();
 
 	void drawCross();
-	void recalculateBounds();
 public:
 	virtual bool init();
 	

@@ -18,7 +18,6 @@ private:
 	void up();
 	void entered();
 	void left();
-	void recalculateBounds();
 public:
 	bool init();
 	

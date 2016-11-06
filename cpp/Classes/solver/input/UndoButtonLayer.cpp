@@ -26,7 +26,6 @@ bool UndoButtonLayer::init() {
 
     // Rescale it to the proper size
     float scale = this->size / this->background->getBoundingBox().size.height;
-
     this->background->setScale(scale,scale);
     this->background->setPositionX(this->size / 2);
     this->background->setPositionY(this->size / 2);
@@ -35,6 +34,8 @@ bool UndoButtonLayer::init() {
     // Set up the bounds
     this->setHeight(this->size);
     this->setWidth(this->size);
+    this->setOffset(this->size / -2, this->size / -2);
+    this->setDebug(true);
 
 	return true;
 }

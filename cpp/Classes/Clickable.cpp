@@ -10,7 +10,7 @@ bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
         return false;
     }
 
-    if (this->contains(touch)) {
+    if (this->containsTouch(touch)) {
         this->enterCallback();
     }
 
@@ -24,12 +24,12 @@ void Clickable::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
     }
 
     // If the touch wasn't inside before, but dragged inwards
-    if (this->contains(touch) && !this->inside) {
+    if (this->containsTouch(touch) && !this->inside) {
         this->inside = true;
         this->enterCallback();
     }
 
-    if (!this->contains(touch) && this->inside) {
+    if (!this->containsTouch(touch) && this->inside) {
         this->inside = false;
         this->leaveCallback();
     }
@@ -38,25 +38,39 @@ void Clickable::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
 void Clickable::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     this->tracking = false;
 
-    if (this->contains(touch)) {
+    if (this->containsTouch(touch)) {
         this->leaveCallback();
         this->upCallback();
     }
 
 }
+bool Clickable::containsNodePoint(cocos2d::Vec2 * point) {
+  float halfWidth = this->width / 2,
+        halfHeight = this->height / 2;
 
-bool Clickable::contains(cocos2d::Touch* touch) {
-    auto nodeTouch = this->convertTouchToNodeSpace(touch);
-    
-    float halfWidth = this->width / 2,
-          halfHeight = this->height / 2;
+  point->x += this->xOffset;
+  point->y += this->yOffset;
 
-    if (this->debug) cocos2d::log("T(%f,%f)", nodeTouch.x, nodeTouch.y);
-
-    return (((nodeTouch.x < halfWidth) && (nodeTouch.x > (-1 * halfWidth))) &&
-           ((nodeTouch.y < halfHeight) && (nodeTouch.y > (-1 * halfHeight))));
+  if (this->debug) {
+    int ux = (point->x < halfWidth),
+        lx = (point->x > (-1 * halfWidth)),
+        ly = (point->y > (-1 * halfHeight)),
+        uy = (point->y < halfHeight);
+    cocos2d::log("O(%f,%f) T(%f,%f) %d%d%d%d",this->xOffset, this->yOffset, point->x, point->y, lx, ux, ly, uy);
+  }
+  return (((point->x < halfWidth) && (point->x > (-1 * halfWidth))) &&
+         ((point->y < halfHeight) && (point->y > (-1 * halfHeight))));
 }
 
+bool Clickable::containsTouch(cocos2d::Touch* touch) {
+  auto nodeTouch = this->convertTouchToNodeSpace(touch);
+  return this->containsNodePoint(&nodeTouch);
+}
+
+bool Clickable::containsPoint(cocos2d::Vec2* point) {
+  auto nodePoint = this->convertToNodeSpace(*point);
+  return this->containsNodePoint(&nodePoint);
+}
 bool Clickable::init() {
     if ( !Layer::init() )
     {
@@ -73,8 +87,6 @@ bool Clickable::init() {
 
     this->xOffset = 0;
     this->yOffset = 0;
-    // Initialize the bounds
-    this->bounds = new cocos2d::Rect(0,0,0,0);
 
     // Register for clicks
     auto touchListener = cocos2d::EventListenerTouchOneByOne::create();

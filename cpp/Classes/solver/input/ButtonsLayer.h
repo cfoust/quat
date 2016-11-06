@@ -28,8 +28,6 @@ private:
 	// Shows the number of steps the user has already played.
 	StepsIndicatorLayer * stepsIndicatorLayer;
 
-  // Regenerate the bounds of this layer's children
-  void regenerateChildBounds();
 public:
 
   // Allows the user to skip
@@ -48,7 +46,6 @@ public:
 	ButtonsLayer(cocos2d::Rect * gameBounds, float fontSize);
 
   void updateFromModel(Game * game);
-
 
 	/**
 	 * Creates a ButtonsLayer object.

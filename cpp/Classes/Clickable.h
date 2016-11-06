@@ -8,8 +8,6 @@ namespace QUAT {
 class Clickable : public cocos2d::Layer
 {
 protected:
-	// The bounds of the clickable area to check against
-	cocos2d::Rect * bounds;
 
 
 	bool inside,  // Whether or not the touch is inside
@@ -27,9 +25,11 @@ protected:
   void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
   void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
-  bool contains(cocos2d::Touch* touch);
-
+  bool containsNodePoint(cocos2d::Vec2* point);
 public:
+  bool containsTouch(cocos2d::Touch* touch);
+  bool containsPoint(cocos2d::Vec2* point);
+
 	std::function<void(void)> leaveCallback, // When the click leaves (even if not down)
 							  enterCallback,	 // When the click is down and in the bounds
 							  upCallback; 	 // When the click goes up and was in the bounds

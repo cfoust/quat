@@ -86,6 +86,7 @@ bool KeyboardLayer::init() {
                                  - halfWidth + (horizontalGap / 2));
             button->setPositionY(((3 - (i + 1)) * (keyHeight + verticalGap))
                                  + (height * 0.02) + keyboardY);
+            button->setOffset(keyWidth / -2, keyHeight / -2);
             this->addChild(button);
             this->buttons->push_back(button);
         }
@@ -94,7 +95,7 @@ bool KeyboardLayer::init() {
     this->bounds = new cocos2d::Rect((width / 2) - keyboardWidth / 2,
                                      keyboardY,
                                      keyboardWidth,
-                                     keyboardHeight);
+                                     keyboardHeight * 1.4);
 
 
     return true;
@@ -109,7 +110,7 @@ KeyboardLayer::KeyboardLayer(cocos2d::Rect * gameBounds, float fontSize) {
 int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {
     for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {
         MenuButton * button = (*this->buttons)[i];
-        if (button->getBounds()->containsPoint(*point)) {
+        if (button->containsPoint(point)) {
             return (int) i;
         }
     }

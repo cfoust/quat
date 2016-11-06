@@ -30,7 +30,6 @@ bool SkipButtonLayer::init() {
     this->background->setScale(scale,scale);
     this->background->setPositionX(0);
     this->background->setPositionY(0);
-    this->setOffset(-1 * width / 2, -1 * height / 2);
     this->background->setOpacity(140);
     this->addChild(this->background, 1);
 

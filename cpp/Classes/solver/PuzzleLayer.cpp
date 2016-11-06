@@ -134,9 +134,15 @@ void PuzzleLayer::bannerClick() {
 }
 
 void PuzzleLayer::skipClick() {
+  cocos2d::log("Clicked on skip");
   this->game->newPuzzle();
   this->updateFromModel();
 }
+
+void PuzzleLayer::futureSightClick() {
+  cocos2d::log("Clicked on futureSight");
+}
+
 void PuzzleLayer::undoClick() {
     // Tries to go back one in the solution
     this->game->getPuzzle()->goBack();
@@ -291,6 +297,9 @@ bool PuzzleLayer::init() {
     
     // Set up the callbacks for the bottom buttons
     this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
+    this->buttonsLayer->futureSightButtonLayer->upCallback = 
+          CC_CALLBACK_0(PuzzleLayer::futureSightClick, this);
+
     /*=====  End of Initialization of GUI elements  ======*/
 
     /*========================================
@@ -430,9 +439,9 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
-    this->background = background;
-    this->game = game;
-    this->GSC = GSC;
+  this->background = background;
+  this->game = game;
+  this->GSC = GSC;
 }
 
 

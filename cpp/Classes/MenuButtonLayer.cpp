@@ -32,16 +32,8 @@ bool MenuButtonLayer::init() {
     this->setHeight(this->_size * 2);
     this->setWidth(this->_size * 2);
 
-    this->recalculateBounds();
 
 	return true;
-}
-
-void MenuButtonLayer::recalculateBounds() {
-    this->bounds->setRect(this->getPositionX() - this->_size, 
-                          this->getPositionY() - this->_size, 
-                          this->width, 
-                          this->height);
 }
 
 

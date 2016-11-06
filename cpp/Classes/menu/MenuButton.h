@@ -46,8 +46,6 @@ private:
 public:
 	virtual bool init();
 
-	cocos2d::Rect * getBounds();
-
 	/**
 	 * Sets the selected status of the button. Selected means that the border
 	 * is highlighted.

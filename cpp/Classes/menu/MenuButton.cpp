@@ -14,9 +14,6 @@ void MenuButton::left() {
     this->selected(false);
 }
 
-cocos2d::Rect * MenuButton::getBounds() {
-    return this->bounds;
-}
 
 /**
 * Sets the selected status of the button. Selected means that the border

@@ -269,6 +269,8 @@ public:
 	 */
 	void skipClick();
 
+  void futureSightClick();
+
 	/*=====  End of Methods for Responding to User Input  ======*/
 
 

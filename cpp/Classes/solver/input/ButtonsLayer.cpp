@@ -19,7 +19,6 @@ ButtonsLayer * ButtonsLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 }
 
 void ButtonsLayer::updateFromModel(Game * game) {
-    auto user = game->getUser();
     auto puzzle = game->getPuzzle();
 
     // We have to adjust the step count in the UI by one
@@ -45,14 +44,12 @@ bool ButtonsLayer::init() {
     // Calculates all of the necessary ratios
     float width = gameBounds->size.width,
           height = gameBounds->size.height,
-          wordSize = fontSize,
           outerDistance = (width / 2) * 0.8;
 
     this->stepsIndicatorLayer = StepsIndicatorLayer::create(fontSize);
     this->stepsIndicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->stepsIndicatorLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
     this->addChild(this->stepsIndicatorLayer);
-
 
     float skipSize = fontSize * 0.55;
     this->skipButtonLayer = SkipButtonLayer::create(skipSize);
@@ -64,12 +61,12 @@ bool ButtonsLayer::init() {
     this->futureSightButtonLayer = FutureSightButtonLayer::create(futureSize);
     this->futureSightButtonLayer->setPositionX((width / 2) - outerDistance);
     this->futureSightButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
+    this->futureSightButtonLayer->setVisible(false);
     this->addChild(this->futureSightButtonLayer);
 
     // Indicates we initialized successfully
     return true;
 }
-
 
 
 ButtonsLayer::ButtonsLayer(cocos2d::Rect * gameBounds, float fontSize) {

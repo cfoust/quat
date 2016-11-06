@@ -45,12 +45,6 @@ void CloseButton::drawCross() {
                          cocos2d::Color4F::WHITE);
 }
 
-void CloseButton::recalculateBounds() {
-    this->bounds->setRect(this->getPositionX() - this->size, 
-                          this->getPositionY() - this->size, 
-                          this->width, 
-                          this->height);
-}
 	
 bool CloseButton::init() {
 	// Init the super class
@@ -72,7 +66,6 @@ bool CloseButton::init() {
     this->setHeight(this->size * 4);
     this->setWidth(this->size * 4);
 
-    this->recalculateBounds();
 
     return true;
 }
