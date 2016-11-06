@@ -134,7 +134,8 @@ void PuzzleLayer::bannerClick() {
 }
 
 void PuzzleLayer::skipClick() {
-  cocos2d::log("Clicked on skip");
+  this->game->newPuzzle();
+  this->updateFromModel();
 }
 void PuzzleLayer::undoClick() {
     // Tries to go back one in the solution
@@ -288,12 +289,9 @@ bool PuzzleLayer::init() {
     this->buttonsLayer->setPositionY(this->buttonsStart);
     this->addChild(this->buttonsLayer);
     
-    this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::definitionClick, this);
-
-    
+    // Set up the callbacks for the bottom buttons
+    this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
     /*=====  End of Initialization of GUI elements  ======*/
-    
-    
 
     /*========================================
     =            Input management            =

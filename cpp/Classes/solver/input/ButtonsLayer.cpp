@@ -1,8 +1,6 @@
 #include "ButtonsLayer.h"
 
-
 namespace QUAT {
-
 
 ButtonsLayer * ButtonsLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 {
@@ -56,26 +54,28 @@ bool ButtonsLayer::init() {
     this->addChild(this->stepsIndicatorLayer);
 
 
-    float skipSize = fontSize * 0.7;
+    float skipSize = fontSize * 0.55;
     this->skipButtonLayer = SkipButtonLayer::create(skipSize);
     this->skipButtonLayer->setPositionX((width / 2) + outerDistance);
     this->skipButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
     this->addChild(this->skipButtonLayer);
 
-    this->futureSightButtonLayer = FutureSightButtonLayer::create(skipSize);
+    float futureSize = skipSize * 1.4;
+    this->futureSightButtonLayer = FutureSightButtonLayer::create(futureSize);
     this->futureSightButtonLayer->setPositionX((width / 2) - outerDistance);
     this->futureSightButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
     this->addChild(this->futureSightButtonLayer);
+
     // Indicates we initialized successfully
     return true;
 }
+
+
 
 ButtonsLayer::ButtonsLayer(cocos2d::Rect * gameBounds, float fontSize) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
 }
-
-
 
 }

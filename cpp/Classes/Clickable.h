@@ -11,28 +11,23 @@ protected:
 	// The bounds of the clickable area to check against
 	cocos2d::Rect * bounds;
 
-	
+
 	bool inside,  // Whether or not the touch is inside
-		 tracking,// Whether we're tracking a click 
+		 tracking,// Whether we're tracking a click
 		 enabled, // Whether or not this layer is accepting clicks
-		 debug; 
+		 debug;
 
 	float width, height;
 
   // The offsets for the click boundaries
   float xOffset, yOffset;
-	
-
-	// Called by this class to regenerate the click bounds when this layer
-	// is moved and resized
-	virtual void recalculateBounds();
 
 	// Handle all of the touch events for this object
 	bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
-    void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+  void onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
+  void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
-    bool contains(cocos2d::Touch* touch);
+  bool contains(cocos2d::Touch* touch);
 
 public:
 	std::function<void(void)> leaveCallback, // When the click leaves (even if not down)
@@ -40,16 +35,10 @@ public:
 							  upCallback; 	 // When the click goes up and was in the bounds
 
 	bool init();
-	
-	Clickable();
-	
-	static Clickable * create();
 
-	// We override these methods (from Layer) to regenerate the bounds
-	void setPosition(const cocos2d::Vec2 & position);
-	void setPosition(float x, float y);
-	void setPositionX(float x);
-	void setPositionY(float y);
+	Clickable();
+
+	static Clickable * create();
 
   /**
    * Sets the offset for the click boundaries. These are added to the origin.
@@ -108,7 +97,7 @@ public:
 	 * @param[in]  height  The height
 	 */
 	void setHeight(float height);
-	
+
 	void setVisible(bool visible);
 };
 

@@ -1,6 +1,5 @@
 #include "CloseButton.h"
 
-
 namespace QUAT {
 
 void CloseButton::up() {
@@ -70,8 +69,8 @@ bool CloseButton::init() {
 
     this->drawCross();
 
-    this->setHeight(this->size * 2);
-    this->setWidth(this->size * 2);
+    this->setHeight(this->size * 4);
+    this->setWidth(this->size * 4);
 
     this->recalculateBounds();
 

@@ -1,23 +1,9 @@
 #include "Clickable.h"
 
-
 USING_NS_CC;
 
 namespace QUAT {
 
-void Clickable::recalculateBounds() {
-    this->bounds->setRect(this->getPositionX() + this->xOffset, 
-                          this->getPositionY() + this->yOffset, 
-                          this->width, 
-                          this->height);
-    if (this->debug) {
-        cocos2d::log("Regenerated bounds (D) (%f,%f,%f,%f)", this->bounds->origin.x,
-                                                 this->bounds->origin.y,
-                                                 this->bounds->size.width,
-                                                 this->bounds->size.height);
-    }
-    
-}
 
 bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
     if (!this->enabled) {
@@ -29,11 +15,6 @@ bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
     }
 
     this->tracking = true;
-
-    if (this->debug) {
-        Vec2 loc = touch->getLocation();
-        cocos2d::log("B%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
-    }
 
     return true;
 }
@@ -53,10 +34,6 @@ void Clickable::onTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event) {
         this->leaveCallback();
     }
 
-    if (this->debug) {
-        Vec2 loc = touch->getLocation();
-        cocos2d::log("M%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
-    }
 }
 void Clickable::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     this->tracking = false;
@@ -64,23 +41,20 @@ void Clickable::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     if (this->contains(touch)) {
         this->leaveCallback();
         this->upCallback();
-
-        if (this->debug) {
-            cocos2d::log("Click in rect: (%f,%f,%f,%f)", this->bounds->origin.x,
-                                                         this->bounds->origin.y,
-                                                         this->bounds->size.width,
-                                                         this->bounds->size.height);
-        }
     }
 
-    if (this->debug) {
-        Vec2 loc = touch->getLocation();
-        cocos2d::log("E%d: (%f, %f)", this->contains(touch), loc.x, loc.y);
-    }
 }
 
 bool Clickable::contains(cocos2d::Touch* touch) {
-    return this->bounds->containsPoint(touch->getLocation());
+    auto nodeTouch = this->convertTouchToNodeSpace(touch);
+    
+    float halfWidth = this->width / 2,
+          halfHeight = this->height / 2;
+
+    if (this->debug) cocos2d::log("T(%f,%f)", nodeTouch.x, nodeTouch.y);
+
+    return (((nodeTouch.x < halfWidth) && (nodeTouch.x > (-1 * halfWidth))) &&
+           ((nodeTouch.y < halfHeight) && (nodeTouch.y > (-1 * halfHeight))));
 }
 
 bool Clickable::init() {
@@ -139,23 +113,6 @@ void Clickable::setDebug(bool debug) {
     this->debug = debug;
 }
 
-void Clickable::setPosition(const cocos2d::Vec2 & position) {
-    Layer::setPosition(position);
-    this->recalculateBounds();
-}
-void Clickable::setPosition(float x, float y) {
-    Layer::setPosition(x, y);
-    this->recalculateBounds();
-}
-void Clickable::setPositionX(float x) {
-    Layer::setPositionX(x);
-    this->recalculateBounds();
-}
-void Clickable::setPositionY(float y) {
-    Layer::setPositionY(y);
-    this->recalculateBounds();
-}
-
 void Clickable::setOffset(float x, float y) {
   this->xOffset = x;
   this->yOffset = y;
@@ -174,17 +131,14 @@ void Clickable::setUpCallback(std::function<void(void)> & callback) {
 
 void Clickable::setEnabled(bool enabled) {
     this->enabled = enabled;
-    this->recalculateBounds();
 }
 
 void Clickable::setWidth(float width) {
     this->width = width;
-    this->recalculateBounds();
 }
 
 void Clickable::setHeight(float height) {
     this->height = height;
-    this->recalculateBounds();
 }
 
 void Clickable::setVisible(bool visible) {

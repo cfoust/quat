@@ -17,7 +17,7 @@ bool SkipButtonLayer::init() {
     }
 
     // Initialize the background
-    this->background = cocos2d::Sprite::create("definition.png");
+    this->background = cocos2d::Sprite::create("skip.png");
 
     this->enterCallback = CC_CALLBACK_0(SkipButtonLayer::entered, this);
     this->leaveCallback = CC_CALLBACK_0(SkipButtonLayer::left, this);

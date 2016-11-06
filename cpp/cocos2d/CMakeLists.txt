@@ -97,15 +97,15 @@ endif()
 include(BuildModules)
 BuildModules()
 
-# build cpp-empty-test
-if(BUILD_CPP_EMPTY_TEST)
-  add_subdirectory(tests/cpp-empty-test)
-endif(BUILD_CPP_EMPTY_TEST)
-
-# build cpp-tests
-if(BUILD_CPP_TESTS)
-  add_subdirectory(tests/cpp-tests)
-endif(BUILD_CPP_TESTS)
+## build cpp-empty-test
+#if(BUILD_CPP_EMPTY_TEST)
+#  add_subdirectory(tests/cpp-empty-test)
+#endif(BUILD_CPP_EMPTY_TEST)
+#
+## build cpp-tests
+#if(BUILD_CPP_TESTS)
+#  add_subdirectory(tests/cpp-tests)
+#endif(BUILD_CPP_TESTS)
 
 ## Scripting
 if(BUILD_LUA_LIBS)

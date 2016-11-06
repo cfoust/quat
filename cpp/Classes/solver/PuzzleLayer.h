@@ -281,7 +281,6 @@ public:
 	 */
 	void updateFromModel();
 
-
 	/**
 	 * @brief      Animates the keyboard appearing and sets it to be
 	 *             interactable.
