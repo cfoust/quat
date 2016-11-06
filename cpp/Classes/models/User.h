@@ -31,7 +31,9 @@ private:
   int realToSubRank(int realRank);
 public:
 
+
 	User();
+
 
 	/**
 	 * Get the user's rank in terms of 1-12.

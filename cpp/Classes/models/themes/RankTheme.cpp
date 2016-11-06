@@ -2,8 +2,18 @@
 #include "../Game.h"
 
 namespace QUAT {
+
+RankTheme::RankTheme() : Theme::Theme() {
+  this->currentRank = -1;
+}
+
 void RankTheme::update(Game * model) {
-	switch (model->getUser()->getDisplayRank()) {
+  int rank = model->getUser()->getDisplayRank();
+
+  // Rank has not changed since the last time this was called
+  this->colorSchemeChanged = this->currentRank != rank;
+
+	switch (rank) {
 		case 1:
 			this->scheme.top = cocos2d::Color3B(242,37,180);
 			this->scheme.bottom = cocos2d::Color3B(80,80,255);
@@ -53,7 +63,11 @@ void RankTheme::update(Game * model) {
 			this->scheme.bottom = cocos2d::Color3B(156,87,0);
 			break;
 	}
-	
+
+  // Initialize to the first number we get on call
+  if (this->currentRank == -1) {
+    this->currentRank = rank;
+  }
 }
 
 };

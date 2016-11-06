@@ -9,7 +9,10 @@ class Game;
 
 class RankTheme : public Theme
 {
+private:
+  int currentRank;
 public:
+  RankTheme();
 	/**
 	 * @brief      Reads values on the game state to determine changes to the
 	 *             color scheme or other members. 

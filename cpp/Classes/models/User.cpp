@@ -8,12 +8,12 @@ namespace QUAT {
 using namespace cocos2d;
 
 User::User() {
-	this->subRank = 0;
+	this->subRank = 1407;
 	this->puzzlesPlayed = 0;
 	this->timePlayed = 0;
 	this->lastShownAd = 0;
 	this->showAd = false;
-    this->isPaid = true;
+  this->isPaid = true;
 }
 
 int User::displayToSubRank(int displayRank) {
