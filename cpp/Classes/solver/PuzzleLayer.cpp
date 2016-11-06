@@ -266,6 +266,7 @@ bool PuzzleLayer::init() {
     this->definitionButton->upCallback = CC_CALLBACK_0(PuzzleLayer::definitionClick, this);
     this->definitionButton->setPositionX(gameBounds->origin.x + width * Q_DEFINITIONBTN_X);
     this->definitionButton->setPositionY(currentWord->getPositionY() - defSize / 2);
+    this->definitionButton->setVisible(false);
     this->addChild(this->definitionButton);
 
     this->textLayer = TextIndicatorLayer::create(fontSize);

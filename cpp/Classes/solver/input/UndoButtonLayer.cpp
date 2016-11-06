@@ -35,7 +35,6 @@ bool UndoButtonLayer::init() {
     this->setHeight(this->size);
     this->setWidth(this->size);
     this->setOffset(this->size / -2, this->size / -2);
-    this->setDebug(true);
 
 	return true;
 }
