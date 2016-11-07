@@ -5,9 +5,11 @@
 #include <string>
 
 #include "Dictionary.h"
+#include "QuatStream.h"
 
 namespace QUAT {
 
+using namespace std;
 class Puzzle
 {
 private:
@@ -136,6 +138,9 @@ public:
 	 * @param bytes Address of the place to write in memory.
 	 */
 	void toBytes(char * bytes);
+
+  friend QuatStream& operator<<(QuatStream& qs, const Puzzle& pzl);
+  friend QuatStream& operator>>(QuatStream& qs, Puzzle& pzl);
 };
 
 }

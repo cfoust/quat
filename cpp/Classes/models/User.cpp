@@ -8,7 +8,7 @@ namespace QUAT {
 using namespace cocos2d;
 
 User::User() {
-	this->subRank = 1407;
+	this->subRank = 0;
 	this->puzzlesPlayed = 0;
 	this->timePlayed = 0;
 	this->lastShownAd = 0;
@@ -55,9 +55,6 @@ long int User::getTimePlayed() {
 	return this->timePlayed;
 }
 
-void User::loadFromBytes(char * bytes) {
-	
-}
 
 bool User::registerPuzzle(Puzzle * puzzle) {
 	// Gets the steps the user took to the solution
@@ -107,8 +104,11 @@ bool User::shouldShowAd() {
 	}
 }
 
-void User::toBytes(char * bytes) {
-	// cocos2d::FileUtils::getInstance()->getWritablePath()
+QuatStream& operator<<(QuatStream& qs, const User& pzl) {
+  return qs;
+}
+QuatStream& operator>>(QuatStream& qs, User& pzl) {
+  return qs;
 }
 
 }

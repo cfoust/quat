@@ -34,7 +34,8 @@ Game::Game() {
 }
 
 bool Game::canLoadFromLocal() {
-	return false;
+  string path = this->getSaveFileName();
+  return cocos2d::FileUtils::getInstance()->isFileExist(path);
 }
 
 Puzzle * Game::getPuzzle() {
@@ -49,8 +50,14 @@ Dictionary * Game::getDictionary() {
 	return this->dictionary;
 }
 
+std::string Game::getSaveFileName() {
+  string path = cocos2d::FileUtils::getInstance()->getWritablePath();
+  return std::string(path + "save.quat");
+}
 void Game::loadFromLocal() {
-
+  string path = this->getSaveFileName();
+  ifstream input(path);
+  input.close();
 }
 
 Theme * Game::getTheme() {
@@ -70,7 +77,9 @@ void Game::newPuzzle() {
 }
 
 void Game::saveToLocal() {
-
+  string path = this->getSaveFileName();
+  ofstream output(path);
+  output.close();
 }
 
 }

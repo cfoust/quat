@@ -5,9 +5,12 @@
 #include <string>
 
 #include "Puzzle.h"
+#include "QuatStream.h"
 #include "cocos2d.h"
 
 namespace QUAT {
+
+using namespace std;
 
 class User
 {
@@ -30,10 +33,7 @@ private:
   // Turn a real rank (0-255) into a sub rank (0-16384)
   int realToSubRank(int realRank);
 public:
-
-
 	User();
-
 
 	/**
 	 * Get the user's rank in terms of 1-12.
@@ -69,15 +69,9 @@ public:
 	long int getTimePlayed();
 
 	/**
-	 * Load the user's info from a given set of bytes.
-	 */
-	void loadFromBytes(char * bytes);
-
-	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.
 	 */
 	bool registerPuzzle(Puzzle * puzzle);
-
 
 	/**
 	 * @brief      Whether the UI should show the user an ad.
@@ -85,11 +79,8 @@ public:
 	 */
 	bool shouldShowAd();
 
-	/**
-	 * Exports the user's info to bytes.
-	 * @param bytes Location in memory to put the user's bytes.
-	 */
-	void toBytes(char * bytes);
+  friend QuatStream& operator<<(QuatStream& qs, const User& pzl);
+  friend QuatStream& operator>>(QuatStream& qs, User& pzl);
 };
 
 }

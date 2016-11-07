@@ -10,6 +10,7 @@
 namespace QUAT {
 class Theme;
 
+using namespace std;
 class Game
 {
 private:
@@ -31,6 +32,7 @@ private:
 	// Current theme
 	Theme * theme;
 
+  std::string getSaveFileName();
 public:
 	Game();
 
