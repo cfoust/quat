@@ -2,9 +2,12 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "GameScene.h"
 
 class  AppDelegate : private cocos2d::Application
 {
+private:
+    QUAT::GameScene * scene;
 public:
     AppDelegate();
     virtual ~AppDelegate();

@@ -20,7 +20,13 @@ Scene* GameScene::createScene()
     // return the scene
     return scene;
 }
-
+void GameScene::enteredBackground() {
+    this->game->saveToLocal();
+    this->game->getPuzzle()->stopTime();
+}
+void GameScene::enteredForeground() {
+    this->game->getPuzzle()->startTime();
+}
 void GameScene::to_GAME() {
     this->menuButton->setVisible(true);
     this->closeButton->setVisible(false);

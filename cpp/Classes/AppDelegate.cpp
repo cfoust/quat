@@ -1,6 +1,5 @@
 #include "AppDelegate.h"
 #include "Constants.h"
-#include "GameScene.h"
 
 // Include Quat's constants
 
@@ -67,9 +66,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
     glview->setDesignResolutionSize(frameSize.width, frameSize.height, ResolutionPolicy::SHOW_ALL);
 
     register_all_packages();
+    
+    // 'scene' is an autorelease object
+    auto scene = Scene::create();
 
     // create a scene. it's an autorelease object
-    auto scene = QUAT::GameScene::createScene();
+    this->scene = QUAT::GameScene::create();
+    scene->addChild(this->scene);
 
     // run
     director->runWithScene(scene);
@@ -80,6 +83,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
 void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
+    
+    this->scene->enteredBackground();
 
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
@@ -88,6 +93,8 @@ void AppDelegate::applicationDidEnterBackground() {
 // this function will be called when the app is active again
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
+    
+    this->scene->enteredForeground();
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();

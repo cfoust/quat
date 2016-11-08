@@ -62,16 +62,16 @@ private:
     void menuCallback();
 
 public:
-
+    
+    // State transition functions
     void to_GAME();
-
     void to_INFO();
-
     void to_GAME_DEFS();
-
     void to_WB_DEFS();
-
     void to_AD();
+    
+    void enteredBackground();
+    void enteredForeground();
 
 	/**
 	 * Creates a scene object with a game scene that is used by the director 
