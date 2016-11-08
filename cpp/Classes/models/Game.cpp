@@ -31,6 +31,9 @@ Game::Game() {
 	// This, too, can be moved at some point. It probably should not be in
 	// the constructor. 
 	this->theme->update(this);
+
+  this->saveToLocal();
+  this->loadFromLocal();
 }
 
 bool Game::canLoadFromLocal() {
@@ -57,6 +60,7 @@ std::string Game::getSaveFileName() {
 void Game::loadFromLocal() {
   string path = this->getSaveFileName();
   ifstream input(path);
+
   input.close();
 }
 

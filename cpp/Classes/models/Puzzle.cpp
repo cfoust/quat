@@ -13,11 +13,7 @@ long int Puzzle::epochMs() {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
-QuatStream& operator<<(QuatStream& qs, const Puzzle& pzl) {
-  return qs;
-}
-QuatStream& operator>>(QuatStream& qs, Puzzle& pzl) {
-  return qs;
+void Puzzle::serialize(QuatStream & qs) {
 }
 
 void Puzzle::clear() {

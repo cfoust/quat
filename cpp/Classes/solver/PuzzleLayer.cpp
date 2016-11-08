@@ -389,7 +389,6 @@ void PuzzleLayer::finishWord() {
         } else {
             this->textLayer->display(std::string("Done!"));
         }
-        this->game->saveToLocal();
     }
 
     this->updateFromModel();

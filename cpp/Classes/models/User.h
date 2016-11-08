@@ -79,8 +79,7 @@ public:
 	 */
 	bool shouldShowAd();
 
-  friend QuatStream& operator<<(QuatStream& qs, const User& pzl);
-  friend QuatStream& operator>>(QuatStream& qs, User& pzl);
+  void serialize(QuatStream & qs);
 };
 
 }

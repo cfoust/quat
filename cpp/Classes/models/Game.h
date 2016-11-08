@@ -5,6 +5,7 @@
 #include "Puzzle.h"
 #include "Dictionary.h"
 #include "PuzzleManager.h"
+#include "QuatStream.h"
 #include "User.h"
 
 namespace QUAT {

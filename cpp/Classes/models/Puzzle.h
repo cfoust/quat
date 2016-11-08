@@ -139,8 +139,8 @@ public:
 	 */
 	void toBytes(char * bytes);
 
-  friend QuatStream& operator<<(QuatStream& qs, const Puzzle& pzl);
-  friend QuatStream& operator>>(QuatStream& qs, Puzzle& pzl);
+  // Serialize the object (or read from a stream)
+  void serialize(QuatStream & qs);
 };
 
 }

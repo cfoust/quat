@@ -104,11 +104,8 @@ bool User::shouldShowAd() {
 	}
 }
 
-QuatStream& operator<<(QuatStream& qs, const User& pzl) {
-  return qs;
-}
-QuatStream& operator>>(QuatStream& qs, User& pzl) {
-  return qs;
+
+void User::serialize(QuatStream & qs) {
 }
 
 }

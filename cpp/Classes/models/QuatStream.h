@@ -1,12 +1,17 @@
 #ifndef __QUAT_STREAM_H__
 #define __QUAT_STREAM_H__
 
-#include <map>
 #include <string>
+#include <fstream>
 
 namespace QUAT {
 
 using namespace std;
+
+enum MODE {
+  READ,
+  WRITE
+};
 
 class QuatStream 
 {
@@ -20,7 +25,7 @@ private:
   //
   // This doesn't change the behavior of functions,
   // it's just a marker of sorts.
-  int mode;
+  MODE mode;
 
   // Read n bytes from the in stream and store them in
   // the memory pointed to by bytes.
@@ -40,21 +45,19 @@ public:
   // Works when writing and reading. Outputs a version number
   // into the file and verifies it on read.
   //
+  // Returns 0 when writing.
+  //
   // Returns 0 if the version numbers matched on read, otherwise
   // returns the alternate version number.
   int version(int versionNumber);
 
-  // ###### OUTPUT FUNCTIONS #######
-  void boolean(bool flag); 
-  void integer(int number); 
-  void linteger(long int number);
-  void word(string s);  // Takes a four-letter word
-  
-  // ####### INPUT FUNCTIONS #######
-  bool boolean(); 
-  int integer(); 
-  long int linteger();
-  string word();  // Reads a four-letter word
+  // Stream writes to pointers on read and reads from them on write.
+  // Thus you don't need a separate method for reading and writing
+  // to a class.
+  void boolean(bool * flag); 
+  void integer(int * number); 
+  void linteger(long int * number);
+  void word(string * s);
 };
 
 }
