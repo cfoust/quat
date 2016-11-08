@@ -55,6 +55,7 @@ bool ButtonsLayer::init() {
     this->skipButtonLayer = SkipButtonLayer::create(skipSize);
     this->skipButtonLayer->setPositionX((width / 2) + outerDistance);
     this->skipButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
+    this->skipButtonLayer->setVisible(false);
     this->addChild(this->skipButtonLayer);
 
     float futureSize = skipSize * 1.4;

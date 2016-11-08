@@ -13,6 +13,10 @@ long int Puzzle::epochMs() {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+bool Puzzle::isStruggling() {
+  return (MS_SEC(this->totalMs) >= 30);
+}
+
 #define PUZZLE_VERSION 1
 void Puzzle::serialize(QuatStream & qs) {
   int version;
@@ -51,7 +55,6 @@ void Puzzle::serialize(QuatStream & qs) {
     std::string word;
     for (int i = 0; i < steps; i++) {
       qs.word(&word);
-      
       this->steps->push_back(word);      
     }
   }
@@ -173,7 +176,7 @@ void Puzzle::startTime() {
 }
 
 void Puzzle::stopTime() {
-	if (!this->timeStarted) {
+	if (!this->timeStarted){
 		return;
 	}
 
@@ -182,10 +185,5 @@ void Puzzle::stopTime() {
 	this->timeStarted = false;
 	this->totalMs += difference;
 }
-
-void Puzzle::toBytes(char * bytes) {
-	// todo: implement
-}
-
 
 }

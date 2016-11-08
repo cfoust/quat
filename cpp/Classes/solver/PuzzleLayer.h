@@ -150,6 +150,11 @@ public:
 	=            Methods for Responding to User Input            =
 	============================================================*/
 
+  /**
+   * Method that runs once a second.
+   */
+  void onSecond(float dt);
+
 	/**
 	 * @brief      Handles a touchBegan event. Passed as a callback to the
 	 *             layer's event listener.
@@ -178,6 +183,7 @@ public:
      * @param      event  The event
      */
     void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
     /**
      * @brief      Handles a keyPressed event. Only used when we are running

@@ -60,6 +60,13 @@ void PuzzleLayer::chooseLetter(int column) {
     this->setEnabled(true);
 }
 
+void PuzzleLayer::onSecond(float dt) {
+  auto puzzle = this->game->getPuzzle();
+  puzzle->stopTime();
+  puzzle->startTime();
+  this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
+}
+
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
     this->currentWord->changeLetter(column, letter);
 }
@@ -124,6 +131,8 @@ void PuzzleLayer::updateFromModel() {
     if (user->shouldShowAd()) {
         this->GSC->to_AD();
     }
+
+    // Save the game state to a file
     this->game->saveToLocal();
 }
 
@@ -299,8 +308,7 @@ bool PuzzleLayer::init() {
     
     // Set up the callbacks for the bottom buttons
     this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
-    this->buttonsLayer->futureSightButtonLayer->upCallback = 
-          CC_CALLBACK_0(PuzzleLayer::futureSightClick, this);
+    this->buttonsLayer->futureSightButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::futureSightClick, this);
 
     /*=====  End of Initialization of GUI elements  ======*/
 
@@ -338,6 +346,9 @@ bool PuzzleLayer::init() {
         // Add the event listener to the global context
         _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
     #endif
+
+    // Register us for second ticks
+    this->schedule(schedule_selector(PuzzleLayer::onSecond), 1.0f);
     
     /*=====  End of Input management  ======*/
     

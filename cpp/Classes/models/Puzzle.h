@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <math.h>
 
 #include "Dictionary.h"
 #include "QuatStream.h"
@@ -10,6 +11,9 @@
 namespace QUAT {
 
 using namespace std;
+
+#define MS_SEC(A) (int) floor((double) A / (double) 1000)
+
 class Puzzle
 {
 private:
@@ -61,6 +65,9 @@ public:
    * Adjusts some stuff in the heuristics for rank.
    **/
   bool skipped;
+
+  bool isStruggling();
+
 	/**
 	 * Gets the last step in the puzzle solution (the current end word.)
 	 * @return The last step in the puzzle solution.
@@ -132,12 +139,6 @@ public:
 	 * Stops recording time for this puzzle.
 	 */
 	void stopTime();
-
-	/**
-	 * Writes the puzzle (and its progress) to a place in memory.
-	 * @param bytes Address of the place to write in memory.
-	 */
-	void toBytes(char * bytes);
 
   // Serialize the object (or read from a stream)
   void serialize(QuatStream & qs);

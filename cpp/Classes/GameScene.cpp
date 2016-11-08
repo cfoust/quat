@@ -106,7 +106,11 @@ bool GameScene::init()
 
     // Load our game file if we can
     if (this->game->canLoadFromLocal()) {
+      // Load the local game save
       this->game->loadFromLocal();
+
+      // Start the timer for the puzzle
+      this->game->getPuzzle()->startTime();
     }
 
     this->GSC = new GameStateController(this);
@@ -149,10 +153,12 @@ bool GameScene::init()
     this->menuLayer->setVisible(false);
     addChild(this->menuLayer, 1);
 
+    // Initialize the ad layer
     this->adLayer = AdLayer::create(gameBounds, fontSize, this->closeButton);
     this->adLayer->setVisible(false);
     addChild(this->adLayer, 1);
 
+    // Initialize the definition layer
     this->definitionLayer = DefinitionLayer::create(gameBounds, 
                                                     fontSize, 
                                                     this->game);
@@ -160,6 +166,7 @@ bool GameScene::init()
     this->addChild(this->definitionLayer, 1);
 
 
+    // Transition to the main game screen
     this->to_GAME();
     
     return true;
