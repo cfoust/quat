@@ -2,6 +2,10 @@
 
 namespace QUAT {
 
+bool QuatStream::isWriting() {
+  return this->mode == WRITE;
+}
+
 QuatStream::QuatStream(ofstream * out) {
   this->out = out;
   this->mode = WRITE;
@@ -51,26 +55,21 @@ int QuatStream::version(int versionNumber) {
 }
 
 void QuatStream::boolean(bool * flag) tprim(bool, flag);
+void QuatStream::character(char * c) tprim(char, c);
 void QuatStream::integer(int * number) tprim(int, number); 
 void QuatStream::linteger(long int * number) tprim(long int, number);
 
 void QuatStream::word(string * s) {
   if (this->mode == READ) {
-    // Clear the string so we can write new characters to it
-    s->clear();
 
-    char letter;
-    int source;
+    char newWord[5];
+    newWord[4] = 0;
     for (int i = 0; i < 4; i++) {
       // Read a letter
-      this->integer(&source);
-
-      // Change it into a normal char
-      letter = source + 65;
-
-      // Adds it to the string
-      s->append(&letter);
+      this->character(&newWord[i]);
     }
+
+    s->assign(newWord, 4);
   } else if (this->mode == WRITE) {
     char letter;
     int source;
@@ -78,10 +77,9 @@ void QuatStream::word(string * s) {
     for (int i = 0; i < 4; i++) {
       // Grab a letter from the actual string
       letter = (*s)[i];
-      source = letter - 65;
 
       // Write a letter
-      this->integer(&source);
+      this->character(&letter);
     }
   }
 }

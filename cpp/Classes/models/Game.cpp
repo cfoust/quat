@@ -31,9 +31,6 @@ Game::Game() {
 	// This, too, can be moved at some point. It probably should not be in
 	// the constructor. 
 	this->theme->update(this);
-
-  this->saveToLocal();
-  this->loadFromLocal();
 }
 
 bool Game::canLoadFromLocal() {
@@ -60,6 +57,11 @@ std::string Game::getSaveFileName() {
 void Game::loadFromLocal() {
   string path = this->getSaveFileName();
   ifstream input(path);
+  
+  // Initialize a quat stream
+  QuatStream inStream(&input);
+  this->user->serialize(inStream);
+  this->puzzle->serialize(inStream);
 
   input.close();
 }
@@ -83,6 +85,12 @@ void Game::newPuzzle() {
 void Game::saveToLocal() {
   string path = this->getSaveFileName();
   ofstream output(path);
+  
+  // Initialize a quat stream
+  QuatStream outStream(&output);
+  this->user->serialize(outStream);
+  this->puzzle->serialize(outStream);
+
   output.close();
 }
 

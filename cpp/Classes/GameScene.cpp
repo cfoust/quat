@@ -98,6 +98,11 @@ bool GameScene::init()
     // Initialize the game model
     this->game = new Game();
 
+    // Load our game file if we can
+    if (this->game->canLoadFromLocal()) {
+      this->game->loadFromLocal();
+    }
+
     this->GSC = new GameStateController(this);
 
     // Generate the bounds of the game space

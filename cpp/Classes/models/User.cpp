@@ -105,7 +105,19 @@ bool User::shouldShowAd() {
 }
 
 
+// The version of the User class's persistent data
+#define USER_VERSION 1
 void User::serialize(QuatStream & qs) {
+  int version;
+  
+  // Check to see whether this is an old version
+  bool old = ((version = qs.version(USER_VERSION)) != 0);
+
+  // All of the primitives
+  qs.integer(&this->puzzlesPlayed);
+  qs.integer(&this->subRank);
+  qs.linteger(&this->timePlayed);
+  qs.linteger(&this->lastShownAd);
 }
 
 }

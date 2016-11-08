@@ -13,7 +13,49 @@ long int Puzzle::epochMs() {
 	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 }
 
+#define PUZZLE_VERSION 1
 void Puzzle::serialize(QuatStream & qs) {
+  int version;
+  
+  // Check to see whether this is an old version
+  bool old = ((version = qs.version(PUZZLE_VERSION)) != 0);
+
+  // The ints
+  qs.integer(&this->par);
+  qs.integer(&this->undos);
+  qs.integer(&this->rank);
+
+  // The long timestamps
+  qs.linteger(&this->_startTime);
+  qs.linteger(&this->totalMs);
+
+  qs.word(&this->start);
+  qs.word(&this->finish);
+
+  int steps = this->steps->size();
+
+  // Write the number of steps
+  qs.integer(&steps);
+
+  if (qs.isWriting()) {
+    // Write out each step
+    for (int i = 0; i < steps; i++) {
+      std::string word(this->steps->at(i));
+      qs.word(&word);
+    }
+  } else {
+    // Clear the vector
+    this->steps->clear();
+
+    // Read in each step
+    std::string word;
+    for (int i = 0; i < steps; i++) {
+      qs.word(&word);
+      
+      this->steps->push_back(word);      
+    }
+  }
+
 }
 
 void Puzzle::clear() {

@@ -3,6 +3,7 @@
 
 #include <string>
 #include <fstream>
+#include "cocos2d.h"
 
 namespace QUAT {
 
@@ -55,9 +56,12 @@ public:
   // Thus you don't need a separate method for reading and writing
   // to a class.
   void boolean(bool * flag); 
+  void character(char * c); 
   void integer(int * number); 
   void linteger(long int * number);
   void word(string * s);
+
+  bool isWriting();
 };
 
 }

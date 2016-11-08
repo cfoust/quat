@@ -124,6 +124,7 @@ void PuzzleLayer::updateFromModel() {
     if (user->shouldShowAd()) {
         this->GSC->to_AD();
     }
+    this->game->saveToLocal();
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
