@@ -137,6 +137,7 @@ set(GAME_SRC
   Classes/menu/DrawnBanner.cpp
   Classes/menu/MenuButton.cpp
   Classes/menu/MenuLayer.cpp
+  Classes/menu/NavButtonLayer.cpp
   Classes/menu/RankCard.cpp
   Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
@@ -182,6 +183,7 @@ set(GAME_HEADERS
   Classes/menu/DrawnBanner.h
   Classes/menu/DrawnBanner.cpp
   Classes/menu/MenuButton.h
+  Classes/menu/NavButtonLayer.h
   Classes/menu/MenuLayer.h
   Classes/menu/RankCard.h
   Classes/models/Dictionary.h

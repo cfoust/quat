@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "../solver/input/BorderedWordNode.h"
 #include "RankCard.h"
+#include "NavButtonLayer.h"
 #include "../models/Game.h"
 
 
@@ -27,6 +28,13 @@ private:
 
   // Displayes information about the current user's rank
   RankCard * rankCard;
+
+  NavButtonLayer * storeButton,
+                 * creditsButton;
+  
+  // Callbacks for nav buttons
+  void storeCallback();
+  void creditsCallback();
 public:
 	/**
 	 * Initialize this layer.

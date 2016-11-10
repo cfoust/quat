@@ -24,6 +24,14 @@ void MenuLayer::updateFromModel(Game * game) {
   auto user = game->getUser();
   this->rankCard->update(user->getDisplayRank(), user->getRankProgress());
 }
+
+
+void MenuLayer::storeCallback() {
+}
+
+void MenuLayer::creditsCallback() {
+}
+
 bool MenuLayer::init() {
 	// Init the super class
     if ( !Layer::init() )
@@ -52,6 +60,20 @@ bool MenuLayer::init() {
     this->rankCard->setPosition(gameBounds->origin.x + (width / 2) - (cardWidth / 2), 
                                 height * 0.7);
     this->addChild(this->rankCard);
+
+    float buttonIconSize = wordSize * 1.2,
+          buttonTextSize = buttonIconSize * 0.3;
+
+    this->storeButton = NavButtonLayer::create("menu-buttons/store.png", "Store", buttonIconSize, buttonTextSize);
+    this->storeButton->setPosition(width / 2, height /2);
+    this->storeButton->upCallback = CC_CALLBACK_0(MenuLayer::storeCallback, this);
+    this->addChild(this->storeButton);
+
+    this->creditsButton = NavButtonLayer::create("menu-buttons/credits.png", "Credits", buttonIconSize, buttonTextSize * 0.7);
+    this->creditsButton->setPosition(width / 2, (height / 2) - (buttonIconSize * 2 + buttonTextSize));
+    this->creditsButton->upCallback = CC_CALLBACK_0(MenuLayer::creditsCallback, this);
+    this->addChild(this->creditsButton);
+
     // Indicates we initialized successfully
     return true;
 }
