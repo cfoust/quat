@@ -56,8 +56,9 @@ void GameScene::toState(GAME_STATE state) {
   this->showLayer(state);
 
   if (state == S_Ad) {
-    this->menuLayer->updateFromModel(this->game);
     this->adLayer->startTimer();
+  } else if (state == S_MainMenu) {
+    this->menuLayer->updateFromModel(this->game);
   }
 }
 
