@@ -166,8 +166,6 @@ void PuzzleLayer::definitionClick() {
 
 void PuzzleLayer::setEnabled(bool enabled) {
     this->enabled = enabled;
-    this->definitionButton->setEnabled(enabled);
-    this->bannerButton->setEnabled(enabled);
 }
 
 void PuzzleLayer::raiseKeyboard() {
