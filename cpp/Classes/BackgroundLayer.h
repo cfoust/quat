@@ -4,12 +4,14 @@
 #include "cocos2d.h"
 #include "models/Theme.h"
 
+USING_NS_CC;
 namespace QUAT {
 
 class BackgroundLayer : public cocos2d::Layer
 {
 private:
 	cocos2d::LayerGradient * gradient;
+	cocos2d::LayerColor * shade;
 public:
 	/**
 	 * Initialize the background layer.
@@ -30,6 +32,9 @@ public:
 	 * @param      scheme  The scheme
 	 */
 	void animateScheme(ColorScheme scheme);
+
+  // Shows or hides the background shade
+  void shadeVisible(bool visible);
 	
 	/**
 	 * Syntactic sugar for hooking the creation function.

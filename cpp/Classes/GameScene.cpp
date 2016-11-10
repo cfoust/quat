@@ -30,6 +30,9 @@ void GameScene::enteredForeground() {
 }
 
 void GameScene::showLayer(GAME_STATE state) {
+    // Show or hide the background shade so other interfaces are clear
+    this->background->shadeVisible(state != S_PuzzleSolver);
+
     // The main menu layer
     this->menuLayer->setVisible(state == S_MainMenu);
 
