@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "Constants.h"
+#include "States.h"
 
 #include "MenuButtonLayer.h"
 #include "CloseButton.h"
@@ -31,11 +32,11 @@ private:
     // Holds information about the game state
     GameStateController * GSC;
 
-	// The colorful global background of the game.
+    // The colorful global background of the game.
     BackgroundLayer * background;
 
     // Layer for actually playing the game
-	PuzzleLayer * puzzleLayer;
+    PuzzleLayer * puzzleLayer;
 
     DefinitionLayer * definitionLayer;
 
@@ -61,23 +62,27 @@ private:
 
     void menuCallback();
 
+    /*
+     * Does all the showing and hiding
+     * necessary to fulfill a state transition.
+     */
+    void showLayer(GAME_STATE state);
+
 public:
+
+    // Transitions the user interface to a new state.
+    void toState(GAME_STATE state);
     
-    // State transition functions
-    void to_GAME();
-    void to_INFO();
-    void to_GAME_DEFS();
-    void to_WB_DEFS();
-    void to_AD();
-    
+    // Functions that get called when the app enters the background
+    // and foreground.
     void enteredBackground();
     void enteredForeground();
 
-	/**
-	 * Creates a scene object with a game scene that is used by the director 
-	 * for rendering.
-	 * @return Pointer to created scene object.
-	 */
+    /**
+     * Creates a scene object with a game scene that is used by the director 
+     * for rendering.
+     * @return Pointer to created scene object.
+     */
     static cocos2d::Scene* createScene();
 
     /**

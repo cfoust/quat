@@ -129,7 +129,7 @@ void PuzzleLayer::updateFromModel() {
 
     // Transition to the ad screen if we need to
     if (user->shouldShowAd()) {
-        this->GSC->to_AD();
+        this->GSC->setState(S_Ad);
     }
 
     // Save the game state to a file
@@ -144,7 +144,6 @@ void PuzzleLayer::bannerClick() {
 }
 
 void PuzzleLayer::skipClick() {
-  cocos2d::log("Clicked on skip");
   this->game->newPuzzle();
   this->updateFromModel();
 }
@@ -162,8 +161,7 @@ void PuzzleLayer::undoClick() {
 }
 
 void PuzzleLayer::definitionClick() {
-    cocos2d::log("Clicked on definition button");
-    this->GSC->to_GAME_DEFS();
+    this->GSC->setState(S_GameDefinitions);
 }
 
 void PuzzleLayer::setEnabled(bool enabled) {
@@ -456,7 +454,5 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
   this->game = game;
   this->GSC = GSC;
 }
-
-
 
 }
