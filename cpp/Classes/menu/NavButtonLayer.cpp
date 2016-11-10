@@ -27,7 +27,7 @@ bool NavButtonLayer::init() {
   float height = this->iconSize,
       width = height,
       scale = height / this->icon->getBoundingBox().size.height,
-      textOffset = this->textSize;
+      textOffset = this->textSize * 1.2;
 
   // Initialize and scale the icon
   this->icon->setScale(scale,scale);

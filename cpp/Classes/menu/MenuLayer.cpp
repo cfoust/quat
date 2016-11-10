@@ -69,7 +69,7 @@ bool MenuLayer::init() {
     this->storeButton->upCallback = CC_CALLBACK_0(MenuLayer::storeCallback, this);
     this->addChild(this->storeButton);
 
-    this->creditsButton = NavButtonLayer::create("menu-buttons/credits.png", "Credits", buttonIconSize, buttonTextSize * 0.7);
+    this->creditsButton = NavButtonLayer::create("menu-buttons/credits.png", "Credits", buttonIconSize * 0.7, buttonTextSize);
     this->creditsButton->setPosition(width / 2, (height / 2) - (buttonIconSize * 2 + buttonTextSize));
     this->creditsButton->upCallback = CC_CALLBACK_0(MenuLayer::creditsCallback, this);
     this->addChild(this->creditsButton);

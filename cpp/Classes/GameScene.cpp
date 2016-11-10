@@ -45,10 +45,10 @@ void GameScene::showLayer(GAME_STATE state) {
     // The layer that controls the actual game
     this->puzzleLayer->setVisible(state == S_PuzzleSolver);
 
-    this->menuButton->setVisible((state == S_PuzzleSolver) ||
-                                 (state == S_MainMenu));
+    this->menuButton->setVisible(state == S_PuzzleSolver);
     this->closeButton->setVisible((state == S_Ad) ||
-                                  (state == S_GameDefinitions));
+                                  (state == S_GameDefinitions) ||
+                                  (state == S_MainMenu));
 
 }
 
