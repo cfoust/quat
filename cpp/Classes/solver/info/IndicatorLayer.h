@@ -20,7 +20,7 @@ private:
          * perfectSprite;
   
   // Holds the dimensions of the game
-  Rect * gameBounds;
+    cocos2d::Rect * gameBounds;
 
 	float fontSize;
 
@@ -41,9 +41,9 @@ public:
 	 */
 	virtual bool init();
 
-	IndicatorLayer(Rect * gameBounds, float fontSize);
+	IndicatorLayer(cocos2d::Rect * gameBounds, float fontSize);
 
-	static IndicatorLayer * create(Rect * gameBounds, float fontSize);
+	static IndicatorLayer * create(cocos2d::Rect * gameBounds, float fontSize);
 };
 
 }
