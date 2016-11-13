@@ -275,11 +275,11 @@ bool PuzzleLayer::init() {
     this->definitionButton->setVisible(false);
     this->addChild(this->definitionButton);
 
-    this->textLayer = TextIndicatorLayer::create(fontSize);
-    this->textLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->textLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
+    this->indicatorLayer = IndicatorLayer::create(this->gameBounds, fontSize);
+    this->indicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
+    this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     
-    this->addChild(this->textLayer);
+    this->addChild(this->indicatorLayer);
 
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
@@ -380,7 +380,7 @@ void PuzzleLayer::finishWord() {
 
     // If the new word was not a word, tell the user about it
     if (!result) {
-        this->textLayer->display((*newWord) + std::string(" is not a word"));
+        this->indicatorLayer->notAWord(*newWord);
     }
 
     // Checks to see if the puzzle has been completed because of this new word
@@ -393,9 +393,9 @@ void PuzzleLayer::finishWord() {
         this->game->getPuzzle()->startTime();
 
         if (result) {
-            this->textLayer->display(std::string("Perfect!"));
+          this->indicatorLayer->perfect();
         } else {
-            this->textLayer->display(std::string("Done!"));
+          this->indicatorLayer->done();
         }
     }
 

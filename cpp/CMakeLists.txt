@@ -162,7 +162,7 @@ set(GAME_SRC
   Classes/solver/info/DefinitionButtonLayer.cpp
   Classes/solver/info/StepsIndicatorLayer.cpp
   Classes/solver/info/StepsLayer.cpp
-  Classes/solver/info/TextIndicatorLayer.cpp
+  Classes/solver/info/IndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/solver/info/banner/ExplodingCircle.cpp
   ${PLATFORM_SPECIFIC_SRC}
@@ -209,7 +209,7 @@ set(GAME_HEADERS
   Classes/solver/info/DefinitionButtonLayer.h
   Classes/solver/info/StepsIndicatorLayer.h
   Classes/solver/info/StepsLayer.h
-  Classes/solver/info/TextIndicatorLayer.h
+  Classes/solver/info/IndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
   Classes/solver/info/banner/ExplodingCircle.h
   ${PLATFORM_SPECIFIC_HEADERS}

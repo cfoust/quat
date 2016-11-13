@@ -36,9 +36,9 @@ public:
 	 * @return Whether or not the layer was initialized successfully.
 	 */
 	virtual bool init();
-	
+
 	TextIndicatorLayer(float fontSize);
-	
+
 	static TextIndicatorLayer * create(float fontSize);
 };
 

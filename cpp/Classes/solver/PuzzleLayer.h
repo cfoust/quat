@@ -26,7 +26,7 @@
 // info/ is for anything that just displays information to the user but is
 // mostly non-interactive.
 #include "info/banner/BannerButtonLayer.h"
-#include "info/TextIndicatorLayer.h"
+#include "info/IndicatorLayer.h"
 #include "info/DefinitionButtonLayer.h"
 #include "info/StepsLayer.h"
 
@@ -121,7 +121,7 @@ private:
 	// A generic animated text indicator that we use to congratulate the user
 	// on completion of a puzzle and inform them when they attempt to use a word
 	// that does not exist.
-	TextIndicatorLayer * textLayer;
+	IndicatorLayer * indicatorLayer;
 
   ButtonsLayer * buttonsLayer;
 
