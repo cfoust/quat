@@ -19,3 +19,7 @@ js/data/math/out/**
 js/workspace.xml
 
 **/.DS_Store
+
+cpp/cocos2d/build/cocos2d_libs.xcodeproj/xcuserdata/*
+cpp/proj.ios_mac/QUAT.xcodeproj/project.xcworkspace/xcuserdata/*
+cpp/proj.ios_mac/QUAT.xcodeproj/xcuserdata/*
