@@ -38,12 +38,9 @@ void PuzzleLayer::goIdle() {
     // Clear any selections on the current word
 	  this->currentWord->unselect();
 
-    //if (this->keyboardUp) {
-        //this->lowerKeyboard();
-    //}
-
     // Make the game interactable
     this->setEnabled(true);
+    this->keyboardLayer->setEnabled(false);
 }
 
 void PuzzleLayer::chooseLetter(int column) {
@@ -58,6 +55,10 @@ void PuzzleLayer::chooseLetter(int column) {
 
     // Make the game interactable
     this->setEnabled(true);
+    
+    // Enable the keyboard
+    this->keyboardLayer->setEnabled(true);
+    this->keyboardLayer->setLetterEnabled(*word->getLetter(column), false);
 }
 
 void PuzzleLayer::onSecond(float dt) {
@@ -405,7 +406,6 @@ void PuzzleLayer::finishWord() {
 
     this->updateFromModel();
 }
-
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
 void PuzzleLayer::onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode,
                                    cocos2d::Event* event) {

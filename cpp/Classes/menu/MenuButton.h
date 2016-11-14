@@ -24,8 +24,8 @@ private:
 
 	cocos2d::Label * textLabel;
 	// The default and selected colors for the borders
-	cocos2d::Color4B * defaultColor,
-					 * selectedColor;
+	cocos2d::Color4B defaultColor,
+        					 selectedColor;
 
 
 	RectRadius * border,
@@ -52,8 +52,11 @@ public:
 	 */
 	void selected(bool selected);
 
-
 	bool isSelected();
+
+  /** Controls whether the button is accepting input.
+   */
+	void setEnabled(bool enabled);
 
 	void showBorder(bool showBorder);
 

@@ -84,6 +84,8 @@ public:
 	 */
 	void setEnabled(bool enabled);
 
+  bool getEnabled();
+
 	/**
 	 * @brief      Set the width of the bound area.
 	 *

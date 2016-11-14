@@ -52,6 +52,12 @@ public:
 	 */
 	bool pointInLetter(cocos2d::Vec2 * point);
 
+  // Sets all of the keys enabled or disabled
+  void setEnabled(bool enabled);
+
+  // Enabled and disables a specific letter
+  void setLetterEnabled(std::string letter, bool enabled);
+
 	/**
 	 * Gets the string for the letter the point is in.
 	 */

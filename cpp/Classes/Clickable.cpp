@@ -145,6 +145,10 @@ void Clickable::setEnabled(bool enabled) {
     this->enabled = enabled;
 }
 
+bool Clickable::getEnabled() {
+    return this->enabled;
+}
+
 void Clickable::setWidth(float width) {
     this->width = width;
 }

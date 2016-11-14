@@ -29,6 +29,21 @@ float KeyboardLayer::getHeight() {
 void KeyboardLayer::none() {
 }
 
+void KeyboardLayer::setLetterEnabled(std::string letter, bool enabled) {
+    for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {
+        MenuButton * button = (*this->buttons)[i];
+        if (letter.compare(button->getText()) == 0) {
+          button->setEnabled(enabled);
+        }
+    }
+}
+
+void KeyboardLayer::setEnabled(bool enabled) {
+    for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {
+        MenuButton * button = (*this->buttons)[i];
+        button->setEnabled(enabled);
+    }
+}
 
 bool KeyboardLayer::init() {
 	// Init the super class
@@ -110,7 +125,7 @@ KeyboardLayer::KeyboardLayer(cocos2d::Rect * gameBounds, float fontSize) {
 int KeyboardLayer::indexForPoint(cocos2d::Vec2 * point) {
     for(std::vector<MenuButton *>::size_type i = 0; i != this->buttons->size(); i++) {
         MenuButton * button = (*this->buttons)[i];
-        if (button->containsPoint(point)) {
+        if (button->containsPoint(point) && button->getEnabled()) {
             return (int) i;
         }
     }

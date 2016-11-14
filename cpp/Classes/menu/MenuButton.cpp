@@ -15,12 +15,38 @@ void MenuButton::left() {
 }
 
 
+void MenuButton::setEnabled(bool enabled) {
+    Clickable::setEnabled(enabled);
+
+    // Set the disabled as a proportion of default color
+    float ratio = 0.7;
+    auto normalBG = this->defaultColor,
+         normalBorder = cocos2d::Color4B::WHITE; 
+
+    // The background color
+    cocos2d::Color4B adjustedBG(normalBG.r * ratio,
+                                   normalBG.g * ratio,
+                                   normalBG.b * ratio,
+                                   normalBG.a),
+    // The border color
+                     adjustedBorder(normalBorder.r * ratio,
+                                   normalBorder.g * ratio,
+                                   normalBorder.b * ratio,
+                                   normalBorder.a);
+
+    this->background->setColor(enabled ? normalBG : adjustedBG);
+    this->border->setColor(enabled ? normalBorder : adjustedBorder);
+    this->textLabel->setTextColor(enabled ? normalBorder : adjustedBorder);
+}
+
+
 /**
 * Sets the selected status of the button. Selected means that the border
 * is highlighted.
 */
 void MenuButton::selected(bool selected) {
-    this->background->setColor(selected ? *this->selectedColor : *this->defaultColor);
+    if (!this->enabled && selected) return;
+    this->background->setColor(selected ? this->selectedColor : this->defaultColor);
     this->_selected = selected;
 }
 
@@ -45,15 +71,15 @@ const std::string MenuButton::getText() {
     return this->textLabel->getString();
 }
 
-MenuButton * MenuButton::create(std::string title, 
-               float fontSize, 
-               float width, 
+MenuButton * MenuButton::create(std::string title,
+               float fontSize,
+               float width,
                float height,
                std::function<void(void)> callback)
 {
-    MenuButton *pRet = new(std::nothrow) MenuButton(title, 
-                                                    fontSize, 
-                                                    width, 
+    MenuButton *pRet = new(std::nothrow) MenuButton(title,
+                                                    fontSize,
+                                                    width,
                                                     height,
                                                     callback);
     if (pRet && pRet->init())
@@ -89,8 +115,8 @@ bool MenuButton::init() {
     this->textLabel->setPositionY(this->height / 2);
     this->addChild(this->textLabel, 2);
 
-    this->defaultColor = new cocos2d::Color4B(255,255,255,64);
-    this->selectedColor = new cocos2d::Color4B(255,255,255,153);
+    this->defaultColor = cocos2d::Color4B(255,255,255,64);
+    this->selectedColor = cocos2d::Color4B(255,255,255,153);
 
     float borderRadius = this->fontSize * 0.3,
           borderWidth = this->fontSize * 0.06;
@@ -104,15 +130,15 @@ bool MenuButton::init() {
     this->background = RectRadius::create(this->width, this->height, borderRadius, borderWidth, true);
     this->background->setPositionX(this->width / 2);
     this->background->setPositionY(this->height / 2);
-    this->background->setColor(*this->defaultColor);
+    this->background->setColor(this->defaultColor);
     this->addChild(this->background, 0);
 
     return true;
 }
 
-MenuButton::MenuButton(std::string title, 
-               float fontSize, 
-               float width, 
+MenuButton::MenuButton(std::string title,
+               float fontSize,
+               float width,
                float height,
                std::function<void(void)> callback) {
     this->title = title;
