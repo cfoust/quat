@@ -81,9 +81,11 @@ private:
 	// current word. There is an animation that moves the keyboard up and down
 	// when it is shown and hidden.
 	KeyboardLayer * keyboardLayer;
+
 	// Whether or not the keyboard is in its "up" position. Ensures that we do
 	// not try and animate the keyboard upwards when it is already up.
 	bool keyboardUp;
+
 	float buttonsStart,   // The y-position of the steps indicator when the
 	                   // keyboard is hidden.
 		    buttonsFinish,  // The y-position of the steps indicator when the
@@ -288,6 +290,8 @@ public:
 	 * Updates this layer with information from the model.
 	 */
 	void updateFromModel();
+
+  bool isKeyboardUp();
 
 	/**
 	 * @brief      Animates the keyboard appearing and sets it to be

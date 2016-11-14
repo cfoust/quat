@@ -36,11 +36,11 @@ PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds,
 
 void PuzzleLayer::goIdle() {
     // Clear any selections on the current word
-	this->currentWord->unselect();
+	  this->currentWord->unselect();
 
-    if (this->keyboardUp) {
-        this->lowerKeyboard();
-    }
+    //if (this->keyboardUp) {
+        //this->lowerKeyboard();
+    //}
 
     // Make the game interactable
     this->setEnabled(true);
@@ -184,6 +184,10 @@ void PuzzleLayer::raiseKeyboard() {
     this->keyboardLayer->runAction(keyboardAction);
 
     this->keyboardUp = true;
+}
+
+bool PuzzleLayer::isKeyboardUp() {
+  return this->keyboardUp;
 }
 
 void PuzzleLayer::lowerKeyboard() {

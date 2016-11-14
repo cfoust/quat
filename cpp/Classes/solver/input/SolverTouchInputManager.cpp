@@ -24,7 +24,14 @@ void SolverTouchInputManager::began(cocos2d::Vec2 * point) {
 			this->lastColumn = currentLetter;
 			this->sc->to_CHOOSING_LETTER(currentLetter);
 			this->puzzleLayer->updateFromModel();
+      return;
 		}
+
+    // Make the keyboard lower if the user clicked outside of it
+    if (!this->puzzleLayer->pointInKeyboard(point) && 
+        this->puzzleLayer->isKeyboardUp()) {
+      this->puzzleLayer->lowerKeyboard();
+    }
 	}
 	else if (this->sc->state() == SolverStateController::CHOOSING_LETTER) {
 		int currentLetter = this->puzzleLayer->pointInCurrentWord(point);
