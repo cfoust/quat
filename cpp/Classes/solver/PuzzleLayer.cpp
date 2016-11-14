@@ -65,6 +65,8 @@ void PuzzleLayer::onSecond(float dt) {
   auto puzzle = this->game->getPuzzle();
   puzzle->stopTime();
   puzzle->startTime();
+
+  // Set the skip button to be visible if the user is struggling
   this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
 }
 
@@ -145,6 +147,7 @@ void PuzzleLayer::bannerClick() {
 }
 
 void PuzzleLayer::skipClick() {
+  this->buttonsLayer->skipButtonLayer->setVisible(false);
   this->game->newPuzzle();
   this->updateFromModel();
 }
