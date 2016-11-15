@@ -16,19 +16,29 @@ User::User() {
   this->isPaid = true;
 }
 
-int User::displayToSubRank(int displayRank) {
-  return this->realToSubRank(this->displayToRealRank(displayRank));
+int User::displayRankStart(int displayRank) {
+  if (displayRank <= 0) return 0;
+  return this->displayRankStart(displayRank - 1) + ((displayRank - 1) * 3);
 }
+
+int User::displayToSubRank(int displayRank) {
+  return this->realToSubRank(this->displayRankStart(displayRank));
+}
+
 int User::displayToRealRank(int displayRank) {
-  return 22 * (displayRank - 1);
+  return this->displayRankStart(displayRank);
 }
 
 int User::realToSubRank(int realRank) {
   return 64 * realRank;
 }
+
 int User::getDisplayRank() {
 	int rank = this->getRealRank();
-	return ((rank - (rank % 22)) / 22) + 1;
+
+  for (int i = 1; i < 13; i++) {
+   if (rank < this->displayRankStart(i)) return i - 1;
+  }
 }
 
 int User::getRealRank() {
@@ -88,7 +98,8 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	// Increase the number of puzzles played
 	this->puzzlesPlayed++;
 
-	log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRealRank(), this->subRank);
+  // Tracks the change in rank and prints it
+	//log("SOP: %d dRank: %d Rank: %d Subrank: %d", difference, change, this->getRealRank(), this->subRank);
 	
 	return difference == 0;
 }

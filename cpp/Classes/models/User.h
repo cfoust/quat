@@ -25,6 +25,10 @@ private:
 			 lastShownAd; // The timePlayed value in seconds at which the user
 			              // last saw an ad
 
+  // The lower bound (in terms of real rank) for the display rank
+  int displayRankStart(int displayRank);
+
+  // Converts a display rank into its corresponding subrank
   int displayToSubRank(int displayRank);
 
   // Turn a display rank into a real rank.
