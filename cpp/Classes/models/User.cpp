@@ -18,6 +18,8 @@ User::User() {
 
 int User::displayRankStart(int displayRank) {
   if (displayRank <= 0) return 0;
+
+  // Recursive algorithm calculates the size of the ranks before this one
   return this->displayRankStart(displayRank - 1) + ((displayRank - 1) * 3);
 }
 
@@ -36,9 +38,12 @@ int User::realToSubRank(int realRank) {
 int User::getDisplayRank() {
 	int rank = this->getRealRank();
 
+  // Iterate through the ranks and see which one we fall into
   for (int i = 1; i < 13; i++) {
    if (rank < this->displayRankStart(i)) return i - 1;
   }
+
+  return 12;
 }
 
 int User::getRealRank() {
