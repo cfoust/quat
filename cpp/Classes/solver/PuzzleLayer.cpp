@@ -312,7 +312,6 @@ bool PuzzleLayer::init() {
     
     // Set up the callbacks for the bottom buttons
     this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
-    this->buttonsLayer->futureSightButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::futureSightClick, this);
 
     /*=====  End of Initialization of GUI elements  ======*/
 

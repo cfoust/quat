@@ -148,13 +148,13 @@ set(GAME_SRC
   Classes/models/Theme.cpp
   Classes/models/User.cpp
   Classes/nodes/RectRadius.cpp
+  Classes/nodes/ProgressBar.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
   Classes/solver/input/BorderedWordNode.cpp
   Classes/solver/input/ButtonsLayer.cpp
   Classes/solver/input/KeyboardLayer.cpp
   Classes/solver/input/SkipButtonLayer.cpp
-  Classes/solver/input/FutureSightButtonLayer.cpp
   Classes/solver/input/SolverKeyboardManager.cpp
   Classes/solver/input/SolverTouchInputManager.cpp
   Classes/solver/input/UndoButtonLayer.cpp
@@ -195,13 +195,13 @@ set(GAME_HEADERS
   Classes/models/Theme.h
   Classes/models/User.h
   Classes/nodes/RectRadius.h
+  Classes/nodes/ProgressBar.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h
   Classes/solver/input/BorderedWordNode.h
   Classes/solver/input/ButtonsLayer.h
   Classes/solver/input/KeyboardLayer.h
   Classes/solver/input/SkipButtonLayer.h
-  Classes/solver/input/FutureSightButtonLayer.h
   Classes/solver/input/SolverKeyboardManager.h
   Classes/solver/input/SolverTouchInputManager.h
   Classes/solver/input/UndoButtonLayer.h

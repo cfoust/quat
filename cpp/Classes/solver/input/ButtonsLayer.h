@@ -4,7 +4,6 @@
 #include "cocos2d.h"
 #include "BorderedWordNode.h"
 #include "SkipButtonLayer.h"
-#include "FutureSightButtonLayer.h"
 #include "../../models/Game.h"
 #include "../info/StepsIndicatorLayer.h"
 
@@ -33,8 +32,6 @@ public:
   // Allows the user to skip
 	SkipButtonLayer * skipButtonLayer;
 
-  // Allows the user to skip
-	FutureSightButtonLayer * futureSightButtonLayer;
 
 	/**
    *

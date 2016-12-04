@@ -38,13 +38,7 @@ void RankCard::displayRank(int currentRank) {
 }
 
 void RankCard::setProgressPercent(float percent) {
-    percent = percent < 0.08 ? 0.08 : percent;
-    float newWidth = percent * this->progressBarWidth;
-
-    this->progressFG->setWidth(newWidth);
-    this->progressFG->setPositionX((this->_width / 2) -
-                                   (this->progressBarWidth / 2) +
-                                   (newWidth / 2));
+  this->progress->setPercent(percent);
 }
 
 bool RankCard::init() {
@@ -81,19 +75,13 @@ bool RankCard::init() {
           progressBarHeight = this->_height * 0.05,
           progressBarY = this->_height * 0.2;
 
-    this->progressBarWidth = progressBarWidth;
-    this->progressBG = RectRadius::create(progressBarWidth, progressBarHeight, progressBarHeight * 0.6, 0,  true);
-    this->progressBG->setPositionX(this->_width / 2);
-    this->progressBG->setPositionY(progressBarY);
-    this->progressBG->setColor(*this->fillInColor);
-    this->addChild(this->progressBG, 1);
-
-    this->progressFG = RectRadius::create(progressBarWidth, progressBarHeight, progressBarHeight * 0.6, 0,  true);
-    this->progressFG->setPositionX(this->_width / 2);
-    this->progressFG->setPositionY(progressBarY);
-    this->progressFG->setColor(cocos2d::Color4B::WHITE);
-    this->addChild(this->progressFG, 1);
-    this->setProgressPercent(0.6);
+    this->progress = ProgressBar::create(progressBarWidth, progressBarHeight);
+    this->progress->setPositionX(this->_width / 2);
+    this->progress->setPositionY(progressBarY);
+    this->progress->setBackgroundColor(*this->fillInColor);
+    this->progress->setForegroundColor(cocos2d::Color4B::WHITE);
+    this->progress->setPercent(0.6);
+    this->addChild(this->progress, 1);
 
     float labelSize = this->fontSize * 0.32;
     this->leftLabel = cocos2d::Label::createWithTTF("1", Q_FONT_PATH, labelSize);

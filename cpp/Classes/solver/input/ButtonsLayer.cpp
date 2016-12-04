@@ -58,13 +58,6 @@ bool ButtonsLayer::init() {
     this->skipButtonLayer->setVisible(false);
     this->addChild(this->skipButtonLayer);
 
-    float futureSize = skipSize * 1.4;
-    this->futureSightButtonLayer = FutureSightButtonLayer::create(futureSize);
-    this->futureSightButtonLayer->setPositionX((width / 2) - outerDistance);
-    this->futureSightButtonLayer->setPositionY(height * Q_STEPTEXT_DOWN_Y);
-    this->futureSightButtonLayer->setVisible(false);
-    this->addChild(this->futureSightButtonLayer);
-
     // Indicates we initialized successfully
     return true;
 }

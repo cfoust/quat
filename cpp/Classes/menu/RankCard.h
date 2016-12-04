@@ -5,6 +5,7 @@
 #include "../Constants.h"
 #include "DrawnBanner.h"
 #include "../nodes/RectRadius.h"
+#include "../nodes/ProgressBar.h"
 
 namespace QUAT {
 
@@ -22,9 +23,8 @@ private:
                   * fillInColor;
 
 	RectRadius * border,
-			       * background,
-			       * progressBG,
-			       * progressFG;
+			       * background;
+  ProgressBar * progress;
   DrawnBanner * drawnBanner;
 
   // The width of the experience progress
