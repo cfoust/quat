@@ -126,12 +126,14 @@ RectRadius::RectRadius(float width, float height, float borderRadius, float bord
 void RectRadius::setColor(const cocos2d::Color4B &color) {
 	Layer::setColor(cocos2d::Color3B(color));
 	this->drawColor = cocos2d::Color4F(color);
-
 	this->drawRect();
 }
 
 void RectRadius::setOpacity(GLubyte opacity) {
-	this->node->setOpacity(opacity);
+  cocos2d::Layer::setOpacity(opacity);
+  auto color = cocos2d::Color4B(this->drawColor);
+  color.a = opacity;
+  this->setColor(color);
 }
 
 }

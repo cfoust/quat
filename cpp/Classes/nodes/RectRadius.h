@@ -53,6 +53,7 @@ public:
 	void setWidth(float width);
 
 	void setHeight(float height);
+
 	/**
 	 * Sets the opacity of the rect.
 	 * @param opacity [description]

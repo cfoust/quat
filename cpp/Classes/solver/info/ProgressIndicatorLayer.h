@@ -27,10 +27,17 @@ public:
 
   void update(int currentRank, float progressPercent);
 
+  void animate();
+
 	ProgressIndicatorLayer(float fontSize, float barWidth);
 
 	static ProgressIndicatorLayer * create(float fontSize, float barWidth);
 
+	/**
+	 * Sets the opacity of the rect.
+	 * @param opacity [description]
+	 */
+	void setOpacity(GLubyte opacity);
 };
 
 }

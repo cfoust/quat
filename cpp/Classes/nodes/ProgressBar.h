@@ -16,6 +16,9 @@ private:
   // The foreground and background rects that make up the progress bar
 	RectRadius * foreground,
 			       * background;
+
+	cocos2d::Color4B foregroundColor,
+                   backgroundColor;
 public:
 
 	/**

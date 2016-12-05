@@ -45,10 +45,12 @@ ProgressBar::ProgressBar(float width, float height) {
 }
 
 void ProgressBar::setForegroundColor(const cocos2d::Color4B &color) {
+  this->foregroundColor = color;
 	this->foreground->setColor(color);
 }
 
 void ProgressBar::setBackgroundColor(const cocos2d::Color4B &color) {
+  this->backgroundColor = color;
 	this->background->setColor(color);
 }
 
@@ -64,9 +66,11 @@ void ProgressBar::setPercent(float percent) {
   this->foreground->setPositionX((this->width/ -2) + 
                                  (newWidth / 2));
 }
+
 void ProgressBar::setOpacity(GLubyte opacity) {
-	this->foreground->setOpacity(opacity);
-	this->background->setOpacity(opacity);
+  Layer::setOpacity(opacity);
+	this->foreground->setOpacity((opacity > foregroundColor.a) ? foregroundColor.a : opacity);
+	this->background->setOpacity((opacity > backgroundColor.a) ? backgroundColor.a : opacity);
 }
 
 }

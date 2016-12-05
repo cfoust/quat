@@ -291,6 +291,7 @@ bool PuzzleLayer::init() {
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->progressIndicator->setPositionY(height - (bannerHeight / 2));
+    this->progressIndicator->setOpacity(0);
     this->addChild(this->progressIndicator);
     
     // Initializes the keyboard layer, the means by which users can select
@@ -385,6 +386,7 @@ void PuzzleLayer::finishWord() {
     this->solverStateController->to_IDLE();
 
     auto puzzle = this->game->getPuzzle();
+    auto user   = this->game->getUser();
 
     // Attempts to add the word to the solution
     bool result = puzzle->addWord(newWord);
@@ -408,6 +410,9 @@ void PuzzleLayer::finishWord() {
         } else {
           this->indicatorLayer->done();
         }
+
+        this->progressIndicator->update(user->getDisplayRank(), user->getRankProgress());
+        this->progressIndicator->animate();
     }
 
     this->updateFromModel();

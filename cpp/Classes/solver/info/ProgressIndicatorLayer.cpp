@@ -7,6 +7,25 @@ void ProgressIndicatorLayer::update(int currentRank, float progressPercent) {
   this->setProgressPercent(progressPercent);
 }
 
+void ProgressIndicatorLayer::animate() {
+  // Stop all of the actions
+	leftText->stopAllActions();
+	rightText->stopAllActions();
+	progress->stopAllActions();
+
+  // Reset the opacity
+  this->setOpacity(0);
+
+	auto fade = cocos2d::Sequence::create(cocos2d::FadeTo::create(Q_TEXT_INDICATOR_FADE, 255),
+								   cocos2d::DelayTime::create(Q_TEXT_INDICATOR_FADE),
+								   cocos2d::FadeTo::create(Q_TEXT_INDICATOR_FADE, 0),
+								   nullptr);
+
+  leftText->runAction(fade);
+  rightText->runAction(fade->clone());
+  progress->runAction(fade->clone());
+}
+
 void ProgressIndicatorLayer::displayRank(int currentRank) {
    this->leftText->setString(std::to_string(currentRank));
    this->rightText->setString(std::to_string(currentRank + 1));
@@ -70,5 +89,11 @@ ProgressIndicatorLayer * ProgressIndicatorLayer::create(float fontSize, float ba
     }
 }
 
+void ProgressIndicatorLayer::setOpacity(GLubyte opacity) {
+  cocos2d::Layer::setOpacity(opacity);
+  this->leftText->setOpacity(opacity);
+  this->rightText->setOpacity(opacity);
+  this->progress->setOpacity(opacity);
+}
 
 }
