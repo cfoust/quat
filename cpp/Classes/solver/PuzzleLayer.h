@@ -28,6 +28,7 @@
 #include "info/banner/BannerButtonLayer.h"
 #include "info/IndicatorLayer.h"
 #include "info/DefinitionButtonLayer.h"
+#include "info/ProgressIndicatorLayer.h"
 #include "info/StepsLayer.h"
 
 namespace QUAT {
@@ -124,6 +125,8 @@ private:
 	// on completion of a puzzle and inform them when they attempt to use a word
 	// that does not exist.
 	IndicatorLayer * indicatorLayer;
+
+	ProgressIndicatorLayer * progressIndicator;
 
   ButtonsLayer * buttonsLayer;
 

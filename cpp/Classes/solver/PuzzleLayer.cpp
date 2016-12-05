@@ -286,9 +286,13 @@ bool PuzzleLayer::init() {
     this->indicatorLayer = IndicatorLayer::create(this->gameBounds, fontSize);
     this->indicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
-    
     this->addChild(this->indicatorLayer);
 
+    this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
+    this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
+    this->progressIndicator->setPositionY(height - (bannerHeight / 2));
+    this->addChild(this->progressIndicator);
+    
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
