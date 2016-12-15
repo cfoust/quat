@@ -117,9 +117,6 @@ void PuzzleLayer::updateFromModel() {
     // Gets the new goal word from the puzzle model
     auto user = this->game->getUser();
 
-    // Update the rank display
-    this->bannerButton->update(user->getDisplayRank());
-
     auto theme = this->game->getTheme();
 
     // Update the theme with data from the game state
@@ -141,9 +138,6 @@ void PuzzleLayer::updateFromModel() {
 
 std::string * PuzzleLayer::getCurrentWord() {
     return this->currentWord->getWord();
-}
-
-void PuzzleLayer::bannerClick() {
 }
 
 void PuzzleLayer::skipClick() {
@@ -253,19 +247,6 @@ bool PuzzleLayer::init() {
     this->stepsLayer->setVisible(false);
     this->addChild(this->stepsLayer);
 
-    // Initialize the banner, which is used to show the rank the user is 
-    // currently at
-    float bannerHeight = height * Q_BANNER_HEIGHT; 
-    this->bannerButton = BannerButtonLayer::create(bannerHeight);
-
-    // The callback called when the user taps on the banner
-    this->bannerButton->upCallback = CC_CALLBACK_0(PuzzleLayer::bannerClick, this);
-    
-    // Sets up the proper positioning of the banner
-    this->bannerButton->setPositionX(gameBounds->origin.x + (width * Q_BANNER_X));
-    this->bannerButton->setPositionY(height - bannerHeight);
-    this->addChild(this->bannerButton);
-
     // Create and size the undo button
     float undoSize = fontSize * Q_UNDO_SIZE;
     this->undo = UndoButtonLayer::create(undoSize);
@@ -288,6 +269,7 @@ bool PuzzleLayer::init() {
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     this->addChild(this->indicatorLayer);
 
+    float bannerHeight = height * Q_BANNER_HEIGHT;
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->progressIndicator->setPositionY(height - (bannerHeight / 2));

@@ -25,7 +25,6 @@
 
 // info/ is for anything that just displays information to the user but is
 // mostly non-interactive.
-#include "info/banner/BannerButtonLayer.h"
 #include "info/IndicatorLayer.h"
 #include "info/DefinitionButtonLayer.h"
 #include "info/ProgressIndicatorLayer.h"
@@ -115,8 +114,6 @@ private:
     #endif
 
 	/*----------  Information Display  ----------*/
-	// The banner that shows the user's rank.
-	BannerButtonLayer * bannerButton;
 
 	// The button that allows the user to see the definition of words.
 	DefinitionButtonLayer * definitionButton;
@@ -259,11 +256,6 @@ public:
 	 *             the game's model.
 	 */
 	void finishWord();
-
-	/**
-	 * @brief      Called when the user clicks the banner.
-	 */
-	void bannerClick();
 
 	/**
 	 * @brief      Called when the user clicks on the undo button.
