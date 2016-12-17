@@ -142,8 +142,19 @@ std::string * PuzzleLayer::getCurrentWord() {
 
 void PuzzleLayer::skipClick() {
   this->buttonsLayer->skipButtonLayer->setVisible(false);
-  this->game->newPuzzle();
+
+  auto puzzle = this->game->getPuzzle();
+  auto user   = this->game->getUser();
+
+  // Mark that the puzzle was skipped
+  puzzle->skipped = true;
+  game->getUser()->registerPuzzle(puzzle);
+  game->newPuzzle();
   this->updateFromModel();
+
+  // Animate the change in rank
+  this->progressIndicator->update(user->getDisplayRank(), user->getRankProgress());
+  this->progressIndicator->animate();
 }
 
 void PuzzleLayer::futureSightClick() {
