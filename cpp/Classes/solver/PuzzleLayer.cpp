@@ -269,10 +269,9 @@ bool PuzzleLayer::init() {
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     this->addChild(this->indicatorLayer);
 
-    float bannerHeight = height * Q_BANNER_HEIGHT;
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
-    this->progressIndicator->setPositionY(height - (bannerHeight / 2));
+    this->progressIndicator->setPositionY(height - ((height * Q_BANNER_HEIGHT) / 2));
     this->progressIndicator->setOpacity(0);
     this->addChild(this->progressIndicator);
     
