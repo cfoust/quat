@@ -6,6 +6,7 @@
 #include <cmath>
 
 #include "Puzzle.h"
+#include "Blitzer.h"
 #include "QuatStream.h"
 #include "cocos2d.h"
 
@@ -16,15 +17,18 @@ using namespace std;
 class User
 {
 private:
-	int subRank,		  // The user's sub-rank between 0 and 16834
-		puzzlesPlayed;    // The number of puzzles the user has completed
+  Blitzer * blitzer;
 
-	bool isPaid,  		  // Whether or not the user has paid to remove ads
-         showAd;	      // Whether the UI should show the user an ad
+	int subRank,		      // The user's sub-rank between 0 and 16834
+  		puzzlesPlayed,    // The number of puzzles the user has completed
+      multiplier;       // The current multiplier
 
-	long int timePlayed,  // The total time (in seconds) the user has played
-			 lastShownAd; // The timePlayed value in seconds at which the user
-			              // last saw an ad
+	bool isPaid,  		    // Whether or not the user has paid to remove ads
+       showAd;	        // Whether the UI should show the user an ad
+
+	unsigned long timePlayed,  // The total time (in milliseconds) the user has played
+			          lastShownAd; // The timePlayed value in seconds at which the user
+			                       // last saw an ad
 
   // The lower bound (in terms of real rank) for the display rank
   int displayRankStart(int displayRank);
@@ -37,8 +41,16 @@ private:
 
   // Turn a real rank (0-255) into a sub rank (0-16384)
   int realToSubRank(int realRank);
+
+
 public:
 	User();
+
+  // Method that adjusts the user's subrank.
+  // difference is the number of subrank points to change the rank.
+  //
+  // If we're on a blitz, multiplies the difference by the current multiplier.
+  void adjust(int difference);
 
 	/**
 	 * Get the user's rank in terms of 1-12.
@@ -71,7 +83,7 @@ public:
 	/**
 	 * Gets the user's total time played in ms.
 	 */
-	long int getTimePlayed();
+	unsigned long getTimePlayed();
 
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.

@@ -59,6 +59,7 @@ public:
   void character(char * c); 
   void integer(int * number); 
   void linteger(long int * number);
+  void luinteger(unsigned long * number);
   void word(string * s);
 
   bool isWriting();

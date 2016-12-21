@@ -58,6 +58,7 @@ void QuatStream::boolean(bool * flag) tprim(bool, flag);
 void QuatStream::character(char * c) tprim(char, c);
 void QuatStream::integer(int * number) tprim(int, number); 
 void QuatStream::linteger(long int * number) tprim(long int, number);
+void QuatStream::luinteger(unsigned long * number) tprim(unsigned long, number);
 
 void QuatStream::word(string * s) {
   if (this->mode == READ) {

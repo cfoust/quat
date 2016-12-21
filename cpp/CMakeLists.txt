@@ -145,6 +145,7 @@ set(GAME_SRC
   Classes/models/PuzzleManager.cpp
   Classes/models/QuatStream.cpp
   Classes/models/themes/RankTheme.cpp
+  Classes/models/Blitzer.cpp
   Classes/models/Theme.cpp
   Classes/models/User.cpp
   Classes/nodes/RectRadius.cpp
@@ -193,6 +194,7 @@ set(GAME_HEADERS
   Classes/models/PuzzleManager.h
   Classes/models/QuatStream.h
   Classes/models/themes/RankTheme.h
+  Classes/models/Blitzer.h
   Classes/models/Theme.h
   Classes/models/User.h
   Classes/nodes/RectRadius.h
