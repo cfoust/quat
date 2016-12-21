@@ -30,6 +30,9 @@ int Blitzer::puzzlesComplete() {
   return this->occupied;
 }
 
+int Blitzer::getMultiplier() {
+  return this->multiplier;
+}
 void Blitzer::reset() {
   // Clean the array
   for (int i = 0; i < BLITZER_PUZZLE_MAX; i++) {

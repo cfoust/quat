@@ -14,7 +14,6 @@ User::User() {
 	this->lastShownAd = 0;
 	this->showAd = false;
   this->isPaid = true;
-  this->multiplier = 8;
   this->blitzer = new Blitzer();
 }
 
@@ -77,7 +76,7 @@ void User::adjust(int difference) {
   // If the difference is positive, use the multiplier.
   // Otherwise we don't multiply losses.
   if (difference > 0) {
-    difference *= this->multiplier;
+    difference *= this->blitzer->getMultiplier();
   }
 
   this->subRank += difference;
@@ -98,8 +97,7 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 
   // Set difference to be pretty high if the puzzle was skipped
   if (puzzle->isSkipped()) difference = 10;
-
-	// An exponential relationship that reduces the user's rating
+// An exponential relationship that reduces the user's rating
 	// if they don't play very well, or increases it if they do
 	float parDifferenceRating = (pow(0.7, difference) * 255.0) - 127.0;
 
