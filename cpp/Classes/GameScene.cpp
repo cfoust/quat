@@ -22,11 +22,9 @@ Scene* GameScene::createScene()
 
 void GameScene::enteredBackground() {
     this->game->saveToLocal();
-    this->game->getPuzzle()->stopTime();
 }
 
 void GameScene::enteredForeground() {
-    this->game->getPuzzle()->startTime();
 }
 
 void GameScene::showLayer(GAME_STATE state) {
@@ -93,9 +91,6 @@ bool GameScene::init()
     if (this->game->canLoadFromLocal()) {
       // Load the local game save
       this->game->loadFromLocal();
-
-      // Start the timer for the puzzle
-      this->game->getPuzzle()->startTime();
     }
 
     this->GSC = new GameStateController(this);
@@ -153,7 +148,13 @@ bool GameScene::init()
     // Transition to the main game screen
     this->GSC->setState(S_PuzzleSolver);
 
+    this->scheduleUpdate();
+
     return true;
+}
+
+void GameScene::update(float delta) {
+  this->game->update(delta);
 }
 
 }

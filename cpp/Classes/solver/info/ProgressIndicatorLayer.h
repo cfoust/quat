@@ -4,6 +4,8 @@
 #include "cocos2d.h"
 #include "../../Constants.h"
 #include "../../nodes/ProgressBar.h"
+#include "../../models/Game.h"
+
 namespace QUAT {
 
 class ProgressIndicatorLayer : public cocos2d::Layer
@@ -25,7 +27,7 @@ public:
 
   void setProgressPercent(float percent);
 
-  void update(int currentRank, float progressPercent);
+  void updateFromModel(Game * game);
 
   void animate();
 

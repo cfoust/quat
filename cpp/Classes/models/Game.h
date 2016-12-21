@@ -95,6 +95,9 @@ public:
 	 * Dumps the entire current user state to a local file.
 	 */
 	void saveToLocal();
+
+  // Updates the model based on time delta
+  void update(float secs);
 };
 
 }

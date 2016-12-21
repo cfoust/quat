@@ -23,22 +23,21 @@ private:
 	int par,   // The ideal number of steps to finish the puzzle
 		undos, // The number of times the user hit undo
 		rank; // The rank of the puzzle
-	
-	long int _startTime, // When we last started recording time
-			 totalMs;    // The number of milliseconds the user spent on this Puzzle
 
-	// Whether or not we're recording time
-	bool timeStarted;
+  float totalSec;
 
 	Dictionary * dictionary;
-
-	// Gets the current time in ms
-	long int epochMs();
 
 	/**
 	 * Clears any stored data about this puzzle and reverts to an empty puzzle.
 	 */
 	void clear(); 
+
+  /**
+   * Whether or not this puzzle was skipped.
+   * Adjusts some stuff in the heuristics for rank.
+   **/
+  bool skipped;
 
 public:
 	/**
@@ -60,13 +59,15 @@ public:
 	 */
 	bool atGoal();
 
-  /**
-   * Whether or not this puzzle was skipped.
-   * Adjusts some stuff in the heuristics for rank.
-   **/
-  bool skipped;
 
+  // Whether or not the user is struggling on the puzzle.
   bool isStruggling();
+
+  // Marks the puzzle to be skipped.
+  void markSkipped();
+
+  // Returns whether or not the puzzle has been skipped.
+  bool isSkipped();
 
 	/**
 	 * Gets the last step in the puzzle solution (the current end word.)
@@ -108,16 +109,6 @@ public:
 	int getStepCount();
 
 	/**
-	 * Get the number of milliseconds the user has spent in solving this puzzle.
-	 */
-	long int getTime();
-
-	/**
-	 * Gets whether we're recording time or not.
-	 */
-	bool getTimeStarted();
-
-	/**
 	 * Delete the most recent step in the solution.
 	 */
 	void goBack();
@@ -130,18 +121,11 @@ public:
 	 */
 	void set(std::string * first, std::string * last, int par, int rank);
 
-	/**
-	 * Starts (or continues) time recording for this puzzle.
-	 */
-	void startTime();
-
-	/**
-	 * Stops recording time for this puzzle.
-	 */
-	void stopTime();
-
   // Serialize the object (or read from a stream)
   void serialize(QuatStream & qs);
+
+  // Updates the model based on time delta
+  void update(float secs);
 };
 
 }

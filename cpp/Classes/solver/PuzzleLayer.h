@@ -324,6 +324,8 @@ public:
 								float fontSize,
 								Game * game,
 								GameStateController * GSC);
+
+  void update(float delta) override;
 };
 
 }

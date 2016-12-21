@@ -56,7 +56,6 @@ bool AdLayer::init() {
                                 height * 0.7);
     this->addChild(this->rankCard);
 
-    float adSize = height * .33;
     this->adPlaceholder = RectRadius::create(300,
                                              250,
                                              0,

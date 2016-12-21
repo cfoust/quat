@@ -2,9 +2,10 @@
 
 namespace QUAT {
 
-void ProgressIndicatorLayer::update(int currentRank, float progressPercent) {
-  this->displayRank(currentRank);
-  this->setProgressPercent(progressPercent);
+void ProgressIndicatorLayer::updateFromModel(Game * game) {
+  auto user = game->getUser();
+  this->displayRank(user->getDisplayRank());
+  this->setProgressPercent(user->getRankProgress());
 }
 
 void ProgressIndicatorLayer::animate() {

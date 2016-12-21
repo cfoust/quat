@@ -8,13 +8,16 @@ namespace QUAT {
 
 using namespace cocos2d;
 
-// Gets the current time in ms
-long int Puzzle::epochMs() {
-	return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+bool Puzzle::isStruggling() {
+  return (this->totalSec >= 30);
 }
 
-bool Puzzle::isStruggling() {
-  return (MS_SEC(this->totalMs) >= 30);
+void Puzzle::markSkipped() {
+  this->skipped = true;
+}
+
+bool Puzzle::isSkipped() {
+  return this->skipped;
 }
 
 #define PUZZLE_VERSION 1
@@ -28,10 +31,6 @@ void Puzzle::serialize(QuatStream & qs) {
   qs.integer(&this->par);
   qs.integer(&this->undos);
   qs.integer(&this->rank);
-
-  // The long timestamps
-  qs.linteger(&this->_startTime);
-  qs.linteger(&this->totalMs);
 
   qs.word(&this->start);
   qs.word(&this->finish);
@@ -66,11 +65,9 @@ void Puzzle::clear() {
 	this->par = 0;
 	this->rank = 0;
 	this->undos = 0;
+  this->totalSec = 0;
 	this->start = std::string("AAAA");
 	this->finish = std::string("AAAA");
-	this->totalMs = 0;
-	this->timeStarted = false;
-	this->_startTime = 0;
   this->skipped = false;
 }
 
@@ -106,10 +103,6 @@ bool Puzzle::addWord(std::string * word) {
 	// Push the word
 	this->steps->push_back(*word);
 
-	// Check if we're at the goal
-	if (this->atGoal()) {
-		this->stopTime();
-	}
 
 	return true;
 }
@@ -141,18 +134,10 @@ int Puzzle::getPar() {
 int Puzzle::getRank() {
 	return this->rank;
 }
-
 int Puzzle::getStepCount() {
 	return this->steps->size();
 }
 
-long int Puzzle::getTime() {
-	return this->totalMs;
-}
-
-bool Puzzle::getTimeStarted() {
-	return this->timeStarted;
-}
 
 void Puzzle::goBack() {
 	if (this->steps->size() > 1) {
@@ -170,20 +155,8 @@ void Puzzle::set(std::string * first, std::string * last, int par, int rank) {
 	this->rank = rank;
 }
 
-void Puzzle::startTime() {
-	this->timeStarted = true;
-	this->_startTime = this->epochMs();
-}
-
-void Puzzle::stopTime() {
-	if (!this->timeStarted){
-		return;
-	}
-
-	long int difference = this->epochMs() - this->_startTime;
-
-	this->timeStarted = false;
-	this->totalMs += difference;
+void Puzzle::update(float secs) {
+  this->totalSec += secs;
 }
 
 }

@@ -94,4 +94,9 @@ void Game::saveToLocal() {
   output.close();
 }
 
+void Game::update(float secs) {
+  this->puzzle->update(secs);
+  this->user->update(secs);
+}
+
 }

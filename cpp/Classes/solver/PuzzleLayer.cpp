@@ -61,15 +61,6 @@ void PuzzleLayer::chooseLetter(int column) {
     this->keyboardLayer->setLetterEnabled(*word->getLetter(column), false);
 }
 
-void PuzzleLayer::onSecond(float dt) {
-  auto puzzle = this->game->getPuzzle();
-  puzzle->stopTime();
-  puzzle->startTime();
-
-  // Set the skip button to be visible if the user is struggling
-  this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
-}
-
 void PuzzleLayer::changeCurrentLetter(int column, std::string letter) {
     this->currentWord->changeLetter(column, letter);
 }
@@ -92,10 +83,8 @@ std::string PuzzleLayer::getKeyboardLetter(cocos2d::Vec2 * point) {
 
 void PuzzleLayer::updateFromModel() {
     auto puzzle = this->game->getPuzzle();
-
-    if (!puzzle->getTimeStarted()) {
-        puzzle->startTime();
-    }
+    auto user = this->game->getUser();
+    auto theme = this->game->getTheme();
 
     // We have to adjust the step count in the UI by one
     int stepCount = puzzle->getStepCount() - 1;
@@ -106,18 +95,12 @@ void PuzzleLayer::updateFromModel() {
     // Update the buttons layer
     this->buttonsLayer->updateFromModel(this->game);
     
-    // Updates the current word
+    // Updates the current words
     this->currentWord->changeWord(puzzle->getCurrent());
-    
-    this->goalWord->changeWord(puzzle->getGoal());
-
-    // Updates the current word
     this->goalWord->changeWord(puzzle->getGoal());
     
-    // Gets the new goal word from the puzzle model
-    auto user = this->game->getUser();
-
-    auto theme = this->game->getTheme();
+    // Update the rank progress bar
+    this->progressIndicator->updateFromModel(this->game);
 
     // Update the theme with data from the game state
     this->game->getTheme()->update(this->game);
@@ -147,14 +130,16 @@ void PuzzleLayer::skipClick() {
   auto user   = this->game->getUser();
 
   // Mark that the puzzle was skipped
-  puzzle->skipped = true;
-  game->getUser()->registerPuzzle(puzzle);
-  game->newPuzzle();
-  this->updateFromModel();
+  puzzle->markSkipped();
 
-  // Animate the change in rank
-  this->progressIndicator->update(user->getDisplayRank(), user->getRankProgress());
-  this->progressIndicator->animate();
+  // Register it with the game
+  game->getUser()->registerPuzzle(puzzle);
+  
+  // Grab a new puzzle
+  game->newPuzzle();
+
+  // Update the view from the model
+  this->updateFromModel();
 }
 
 void PuzzleLayer::futureSightClick() {
@@ -283,7 +268,6 @@ bool PuzzleLayer::init() {
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->progressIndicator->setPositionY(height - ((height * Q_BANNER_HEIGHT) / 2));
-    this->progressIndicator->setOpacity(0);
     this->addChild(this->progressIndicator);
     
     // Initializes the keyboard layer, the means by which users can select
@@ -347,8 +331,6 @@ bool PuzzleLayer::init() {
         _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
     #endif
 
-    // Register us for second ticks
-    this->schedule(schedule_selector(PuzzleLayer::onSecond), 1.0f);
     
     /*=====  End of Input management  ======*/
     
@@ -367,6 +349,9 @@ bool PuzzleLayer::init() {
     this->background->setScheme(this->game->getTheme()->getColorScheme());
     
     /*=====  End of Model Handling and Initialization  ======*/
+
+    // Schedule the update() call
+    this->scheduleUpdate();
     
     // Indicates we initialized successfully
     return true;
@@ -395,16 +380,13 @@ void PuzzleLayer::finishWord() {
 
         this->game->newPuzzle();
 
-        this->game->getPuzzle()->startTime();
-
         if (result) {
           this->indicatorLayer->perfect();
         } else {
           this->indicatorLayer->done();
         }
 
-        this->progressIndicator->update(user->getDisplayRank(), user->getRankProgress());
-        this->progressIndicator->animate();
+        this->progressIndicator->updateFromModel(this->game);
     }
 
     this->updateFromModel();
@@ -458,6 +440,13 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
   this->background = background;
   this->game = game;
   this->GSC = GSC;
+}
+
+void PuzzleLayer::update(float delta) {
+  auto puzzle = this->game->getPuzzle();
+
+  // Set the skip button to be visible if the user is struggling
+  this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
 }
 
 }

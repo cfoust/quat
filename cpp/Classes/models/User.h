@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
 
 #include "Puzzle.h"
 #include "QuatStream.h"
@@ -84,6 +85,9 @@ public:
 	bool shouldShowAd();
 
   void serialize(QuatStream & qs);
+
+  // Updates the model based on time delta
+  void update(float secs);
 };
 
 }

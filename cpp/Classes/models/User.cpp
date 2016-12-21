@@ -81,7 +81,7 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	int difference = steps->size() - puzzle->getPar();
 
   // Set difference to be pretty high if the puzzle was skipped
-  if (puzzle->skipped) difference = 10;
+  if (puzzle->isSkipped()) difference = 10;
 
 	// An exponential relationship that reduces the user's rating
 	// if they don't play very well, or increases it if they do
@@ -91,9 +91,6 @@ bool User::registerPuzzle(Puzzle * puzzle) {
 	int change = (int) floor((parDifferenceRating / 128) * 10);
 
 	this->subRank = std::max(this->subRank + change, 0);
-
-	// Add in the time the user played this puzzle
-	this->timePlayed += puzzle->getTime();
 
 	// Show an ad every 5 minutes
 	if (((this->timePlayed - this->lastShownAd) > 300000) && !this->isPaid) {
@@ -134,6 +131,10 @@ void User::serialize(QuatStream & qs) {
   qs.integer(&this->subRank);
   qs.linteger(&this->timePlayed);
   qs.linteger(&this->lastShownAd);
+}
+
+void User::update(float secs) {
+  this->timePlayed += floor(secs * 1000);
 }
 
 }

@@ -95,6 +95,8 @@ public:
      * Syntactic sugar for cocos2dx's object creation scheme.
      */
     CREATE_FUNC(GameScene);
+    
+    void update(float delta) override;
 };
 
 }

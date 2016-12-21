@@ -71,6 +71,7 @@ bool IndicatorLayer::init() {
   float textSize = this->fontSize * Q_TEXT_INDICATOR_FONT;
   this->text = cocos2d::Label::createWithTTF("Done!", Q_FONT_PATH, textSize);
   this->text->setOpacity(0);
+  this->text->enableItalics();
   this->addChild(this->text);
 
   // Initialize the sprites
@@ -80,6 +81,9 @@ bool IndicatorLayer::init() {
   // Make sure they're scaled properly
   float iconHeight = gameBounds->size.height * 0.1,
         scale = iconHeight / this->doneSprite->getBoundingBox().size.height;
+  
+  // Adjust things to be a bit smaller
+  scale *= 0.8;
   
   // Set up the offset
   float textOffset = textSize + (iconHeight  * .6);
