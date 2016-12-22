@@ -66,6 +66,8 @@ public:
   // The amount of time remaining on this blitz.
   float blitzTimeRemaining();
 
+  float percentRemaining();
+
   // Updates the model based on time delta
   void update(float secs);
 };

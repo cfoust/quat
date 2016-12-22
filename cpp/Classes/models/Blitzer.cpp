@@ -33,6 +33,13 @@ int Blitzer::puzzlesComplete() {
 int Blitzer::getMultiplier() {
   return this->multiplier;
 }
+
+bool Blitzer::isBlitzing() {
+  return this->blitzing;
+}
+float Blitzer::percentRemaining() {
+  return this->remaining / BLITZER_PUZZLE_SECS;
+}
 void Blitzer::reset() {
   // Clean the array
   for (int i = 0; i < BLITZER_PUZZLE_MAX; i++) {

@@ -28,6 +28,7 @@
 #include "info/IndicatorLayer.h"
 #include "info/DefinitionButtonLayer.h"
 #include "info/ProgressIndicatorLayer.h"
+#include "info/BlitzIndicatorLayer.h"
 #include "info/StepsLayer.h"
 
 namespace QUAT {
@@ -124,6 +125,8 @@ private:
 	IndicatorLayer * indicatorLayer;
 
 	ProgressIndicatorLayer * progressIndicator;
+
+	BlitzIndicatorLayer * blitzIndicator;
 
   ButtonsLayer * buttonsLayer;
 

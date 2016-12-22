@@ -149,6 +149,7 @@ set(GAME_SRC
   Classes/models/Theme.cpp
   Classes/models/User.cpp
   Classes/nodes/RectRadius.cpp
+  Classes/nodes/CircleNode.cpp
   Classes/nodes/ProgressBar.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
@@ -162,6 +163,7 @@ set(GAME_SRC
   Classes/solver/input/WordNode.cpp
   Classes/solver/info/DefinitionButtonLayer.cpp
   Classes/solver/info/ProgressIndicatorLayer.cpp
+  Classes/solver/info/BlitzIndicatorLayer.cpp
   Classes/solver/info/StepsIndicatorLayer.cpp
   Classes/solver/info/StepsLayer.cpp
   Classes/solver/info/IndicatorLayer.cpp
@@ -198,6 +200,7 @@ set(GAME_HEADERS
   Classes/models/Theme.h
   Classes/models/User.h
   Classes/nodes/RectRadius.h
+  Classes/nodes/CircleNode.h
   Classes/nodes/ProgressBar.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h
@@ -211,6 +214,7 @@ set(GAME_HEADERS
   Classes/solver/input/WordNode.h
   Classes/solver/info/DefinitionButtonLayer.h
   Classes/solver/info/ProgressIndicatorLayer.h
+  Classes/solver/info/BlitzIndicatorLayer.h
   Classes/solver/info/StepsIndicatorLayer.h
   Classes/solver/info/StepsLayer.h
   Classes/solver/info/IndicatorLayer.h

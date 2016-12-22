@@ -224,7 +224,6 @@ bool PuzzleLayer::init() {
                           height * Q_GOAL_Y);
     this->addChild(goalWord);
 
-    
     // Initializes the current word, which is the word the user is currently
     // operating on
     this->currentWord = BorderedWordNode::create(wordSize, gap);
@@ -265,10 +264,16 @@ bool PuzzleLayer::init() {
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     this->addChild(this->indicatorLayer);
 
+    float progressY = height - ((height * Q_BANNER_HEIGHT) / 2);
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
-    this->progressIndicator->setPositionY(height - ((height * Q_BANNER_HEIGHT) / 2));
+    this->progressIndicator->setPositionY(progressY);
     this->addChild(this->progressIndicator);
+
+    this->blitzIndicator = BlitzIndicatorLayer::create(fontSize, 200);
+    this->blitzIndicator->setPositionX(gameBounds->origin.x + (width / 2));
+    this->blitzIndicator->setPositionY((progressY + this->currentWord->getPositionY()) / 2);
+    this->addChild(this->blitzIndicator);
     
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
@@ -387,6 +392,11 @@ void PuzzleLayer::finishWord() {
         }
 
         this->progressIndicator->updateFromModel(this->game);
+        
+        auto blitz = user->getBlitz();
+        if (blitz->isBlitzing()) {
+          this->blitzIndicator->setVisible(true);
+        }
     }
 
     this->updateFromModel();
@@ -443,10 +453,17 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
 }
 
 void PuzzleLayer::update(float delta) {
+  auto blitz = this->game->getUser()->getBlitz();
   auto puzzle = this->game->getPuzzle();
 
   // Set the skip button to be visible if the user is struggling
   this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
+
+  if (blitz->isBlitzing()) {
+    this->blitzIndicator->updateFromModel(this->game);
+  } else {
+    this->blitzIndicator->setVisible(false);
+  }
 }
 
 }

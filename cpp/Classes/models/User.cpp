@@ -47,6 +47,9 @@ int User::getDisplayRank() {
   return 12;
 }
 
+Blitzer * User::getBlitz() {
+	return this->blitzer;
+}
 int User::getRealRank() {
 	return ((this->subRank - (this->subRank % 64)) / 64);
 }

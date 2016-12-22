@@ -52,6 +52,8 @@ public:
   // If we're on a blitz, multiplies the difference by the current multiplier.
   void adjust(int difference);
 
+  Blitzer * getBlitz();
+
 	/**
 	 * Get the user's rank in terms of 1-12.
 	 */
