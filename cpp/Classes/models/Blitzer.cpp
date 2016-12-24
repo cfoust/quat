@@ -73,6 +73,11 @@ void Blitzer::puzzleComplete() {
   this->clean();
   this->occupied++;
 
+  // Safeguard against overflow
+  if (this->occupied > BLITZER_PUZZLE_MAX) {
+    this->occupied = BLITZER_PUZZLE_MAX;
+  }
+
   if (this->blitzing) {
     this->comboCount++;
   }
@@ -91,13 +96,11 @@ void Blitzer::puzzleComplete() {
       this->comboCount = 5;
     }     
     
-    cocos2d::log("BLITZ! x%d", this->multiplier);
 
     // Resets the count
     this->reset();
   }
 
-  cocos2d::log("At x%d! Combo of %d!", this->multiplier, this->comboCount);
 }
 
 void Blitzer::update(float secs) {
@@ -113,7 +116,6 @@ void Blitzer::update(float secs) {
       this->blitzing = false;
       this->comboCount = 0;
       this->multiplier = 1;
-      cocos2d::log("30 seconds passed and lost combo.");
     }
   }
 }

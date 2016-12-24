@@ -108,6 +108,7 @@ void PuzzleLayer::updateFromModel() {
     // Check to see if we have to update the background's colors
     if (theme->getColorSchemeChanged()) {
         this->background->animateScheme(theme->getColorScheme());
+        this->blitzIndicator->setScheme(theme->getColorScheme());
     }
 
     // Transition to the ad screen if we need to
@@ -127,7 +128,6 @@ void PuzzleLayer::skipClick() {
   this->buttonsLayer->skipButtonLayer->setVisible(false);
 
   auto puzzle = this->game->getPuzzle();
-  auto user   = this->game->getUser();
 
   // Mark that the puzzle was skipped
   puzzle->markSkipped();
@@ -262,7 +262,7 @@ bool PuzzleLayer::init() {
     this->indicatorLayer = IndicatorLayer::create(this->gameBounds, fontSize);
     this->indicatorLayer->setPositionX(gameBounds->origin.x + (width / 2));
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
-    this->addChild(this->indicatorLayer);
+    this->addChild(this->indicatorLayer, 3);
 
     float progressY = height - ((height * Q_BANNER_HEIGHT) / 2);
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
@@ -270,10 +270,10 @@ bool PuzzleLayer::init() {
     this->progressIndicator->setPositionY(progressY);
     this->addChild(this->progressIndicator);
 
-    this->blitzIndicator = BlitzIndicatorLayer::create(fontSize, 200);
+    this->blitzIndicator = BlitzIndicatorLayer::create(fontSize);
     this->blitzIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->blitzIndicator->setPositionY((progressY + this->currentWord->getPositionY()) / 2);
-    this->addChild(this->blitzIndicator);
+    this->addChild(this->blitzIndicator, 2);
     
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
@@ -351,7 +351,9 @@ bool PuzzleLayer::init() {
     // Updates the view with information from the model
     this->updateFromModel();
 
-    this->background->setScheme(this->game->getTheme()->getColorScheme());
+    auto scheme = this->game->getTheme()->getColorScheme();
+    this->background->setScheme(scheme);
+    this->blitzIndicator->setScheme(scheme);
     
     /*=====  End of Model Handling and Initialization  ======*/
 

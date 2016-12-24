@@ -5,6 +5,7 @@
 #include "../../Constants.h"
 #include "../../nodes/CircleNode.h"
 #include "../../models/Game.h"
+#include "../../models/Theme.h"
 
 #define PI 3.14159265
 
@@ -13,24 +14,25 @@ namespace QUAT {
 class BlitzIndicatorLayer : public cocos2d::Layer
 {
 private:
-	cocos2d::Label * multiplierText;
+	cocos2d::Label * topText,
+                 * bottomText;
   CircleNode * circle;
 
   float fontSize,
         percent;
 
-	cocos2d::Color4B * defaultColor,
-                  * fillInColor;
-
   void setPercent(float p);
+
 public:
+  void setScheme(ColorScheme scheme);
+
 	bool init();
   
   void updateFromModel(Game * game);
 
-	BlitzIndicatorLayer(float fontSize, float barWidth);
+	BlitzIndicatorLayer(float fontSize);
 
-	static BlitzIndicatorLayer * create(float fontSize, float barWidth);
+	static BlitzIndicatorLayer * create(float fontSize);
 
 	/**
 	 * Sets the opacity of the rect.

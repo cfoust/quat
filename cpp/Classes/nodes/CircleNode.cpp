@@ -21,12 +21,16 @@ CircleNode * CircleNode::create(float radius) {
     }
 }
 
+cocos2d::DrawNode * CircleNode::getNode() {
+  return this->node;
+}
+	
 void CircleNode::drawCircle() {
 	this->node->clear();
 	this->node->drawPolygon(vertices, 
                           this->points, 
                           this->drawColor, 
-                          1,
+                          0,
                           this->drawColor);
 }
 	

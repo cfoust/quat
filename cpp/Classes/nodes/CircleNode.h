@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-#define CIRCLE_POINT_COUNT 200
+#define CIRCLE_POINT_COUNT 220
 
 namespace QUAT {
 
@@ -43,6 +43,8 @@ public:
 	CircleNode(float radius);
 
   void setPercent(float percent);
+
+  cocos2d::DrawNode * getNode();
 
 	/**
 	 * Sets the draw color of the rect and redraws.

@@ -4,10 +4,17 @@ namespace QUAT {
 
 void BlitzIndicatorLayer::updateFromModel(Game * game) {
   auto blitz = game->getUser()->getBlitz();
-  this->multiplierText->setString(std::to_string(blitz->getMultiplier()) +
-                                  std::string("x"));
+
+  std::string multiplierText = std::to_string(blitz->getMultiplier()) +
+                                  std::string("X");
+  this->topText->setString(multiplierText);
+  this->bottomText->setString(multiplierText);
+
   this->percent = blitz->percentRemaining();
   this->circle->setPercent(this->percent);
+}
+
+void BlitzIndicatorLayer::setScheme(ColorScheme scheme) {
 }
 
 
@@ -19,30 +26,44 @@ bool BlitzIndicatorLayer::init() {
   }
 
 
-  // Set the default color
-  this->defaultColor = new cocos2d::Color4B(255,255,255,64);
-  this->fillInColor = new cocos2d::Color4B(255,255,255,120);
-
+  // Default to full
   this->percent = 1;
 
-  this->multiplierText = cocos2d::Label::createWithTTF("1X", Q_FONT_PATH, fontSize);
-  this->addChild(this->multiplierText, 2);
+  // The bottom and top text are used to clip and show the multiplier
+  // as it animates down
+  this->topText = cocos2d::Label::createWithTTF("1X", Q_FONT_PATH, fontSize);
+  this->topText->setOpacity(40);
+  this->topText->setColor(cocos2d::Color3B::WHITE);
 
+  this->bottomText = cocos2d::Label::createWithTTF("1X", Q_FONT_PATH, fontSize);
+  this->bottomText->setColor(cocos2d::Color3B::WHITE);
+  this->bottomText->setOpacity(40);
+  this->addChild(bottomText, 1);
+
+  // The circle that animates the time remaining in the combo
   this->circle = CircleNode::create(50);
-  this->addChild(this->circle);
+  this->circle->setColor(cocos2d::Color4B(255, 255, 255, 40));
+  this->addChild(this->circle, 2);
+
+  // Sets up the clipping for the main multiplier text
+  auto clip = cocos2d::ClippingNode::create();
+  clip->setStencil(this->circle->getNode());
+  clip->setInverted(false);
+  clip->addChild(this->topText);
+  this->addChild(clip, 3);
 
 	return true;
 }
 
 
-BlitzIndicatorLayer::BlitzIndicatorLayer(float fontSize, float barWidth) {
+BlitzIndicatorLayer::BlitzIndicatorLayer(float fontSize) {
     this->fontSize = fontSize;
 }
 
 
-BlitzIndicatorLayer * BlitzIndicatorLayer::create(float fontSize, float barWidth)
+BlitzIndicatorLayer * BlitzIndicatorLayer::create(float fontSize)
 {
-    BlitzIndicatorLayer *pRet = new(std::nothrow) BlitzIndicatorLayer(fontSize, barWidth);
+    BlitzIndicatorLayer *pRet = new(std::nothrow) BlitzIndicatorLayer(fontSize);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -61,7 +82,8 @@ void BlitzIndicatorLayer::setPercent(float p) {
 }
 void BlitzIndicatorLayer::setOpacity(GLubyte opacity) {
   cocos2d::Layer::setOpacity(opacity);
-  this->multiplierText->setOpacity(opacity);
+  this->topText->setOpacity(opacity);
+  this->bottomText->setOpacity(opacity);
 }
 
 }

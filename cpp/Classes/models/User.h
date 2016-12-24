@@ -42,7 +42,6 @@ private:
   // Turn a real rank (0-255) into a sub rank (0-16384)
   int realToSubRank(int realRank);
 
-
 public:
 	User();
 
