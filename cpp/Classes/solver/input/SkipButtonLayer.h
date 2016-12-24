@@ -10,6 +10,7 @@ class SkipButtonLayer : public Clickable
 {
 private:
 	cocos2d::Sprite * background;
+	cocos2d::DrawNode * line;
 
 	float _height;
 
