@@ -63,13 +63,6 @@ bool RankCard::init() {
     this->border->setColor(cocos2d::Color4B::WHITE);
     this->addChild(this->border, 1);
 
-    // Creates the background layer
-    this->background = RectRadius::create(this->_width, this->_height, borderRadius, borderWidth, true);
-    this->background->setPositionX(this->_width / 2);
-    this->background->setPositionY(this->_height / 2);
-    this->background->setColor(*this->defaultColor);
-    this->addChild(this->background, 0);
-
     // Create the progress bar
     float progressBarWidth = this->_width * 0.8,
           progressBarHeight = this->_height * 0.05,

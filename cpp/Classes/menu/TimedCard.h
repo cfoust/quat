@@ -19,8 +19,7 @@ private:
 	cocos2d::Color4B * defaultColor,
                   * fillInColor;
 
-	RectRadius * border,
-			       * background;
+	RectRadius * border;
 
 public:
 	virtual bool init();
