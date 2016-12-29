@@ -9,6 +9,7 @@ using namespace cocos2d;
 
 TimedState::TimedState(Dictionary * d) : GameState(d) {
   this->timePlayed = 0;
+  this->timesComplete = 0;
   this->running = false;
   this->done = false;
 }
@@ -55,6 +56,8 @@ void TimedState::serialize(QuatStream & qs) {
   // Check to see whether this is an old version
   bool old = ((version = qs.version(TIMED_STATE_VERSION)) != 0);
   qs.luinteger(&this->timePlayed);
+  qs.luinteger(&this->highScore);
+  qs.integer(&this->timesComplete);
 }
 
 void TimedState::update(float secs) {

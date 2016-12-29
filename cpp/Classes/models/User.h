@@ -48,7 +48,7 @@ public:
 
   // Get pointers to the individual states. 
   GameState * getEndlessState();
-  GameState * getTimedState();
+  TimedState * getTimedState();
 
 	/**
 	 * Get the number of puzzles the user has completed.

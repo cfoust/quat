@@ -14,8 +14,12 @@ using namespace std;
 class TimedState : public GameState
 {
 protected:
-  // Stores the time played
-  unsigned long timePlayed; 
+  // The number of times the user has completed the
+  // timed mode
+  int timesComplete;
+  
+  unsigned long timePlayed, // Stores the time played
+                highScore;  // The user's high score
 
   bool running, // Whether the timer is counting upwards
        done;    // Whether we've reached level 8

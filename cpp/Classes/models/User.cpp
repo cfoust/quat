@@ -39,7 +39,7 @@ GameState * User::getEndlessState() {
   return endlessState;
 }
 
-GameState * User::getTimedState() {
+TimedState * User::getTimedState() {
   return timedState;
 }
 
