@@ -3,7 +3,7 @@
 namespace QUAT {
 
 void BlitzIndicatorLayer::updateFromModel(Game * game) {
-  auto blitz = game->getUser()->getBlitz();
+  auto blitz = game->getBlitzer();
 
   std::string multiplierText = std::to_string(blitz->getMultiplier()) +
                                   std::string("X");

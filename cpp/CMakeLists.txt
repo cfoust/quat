@@ -133,7 +133,6 @@ set(GAME_SRC
   Classes/TouchInputManager.cpp
   Classes/ads/AdLayer.cpp
   Classes/defs/Definition.cpp
-  Classes/defs/DefinitionLayer.cpp
   Classes/menu/DrawnBanner.cpp
   Classes/menu/EndlessLayer.cpp
   Classes/menu/TimedLayer.cpp
@@ -144,6 +143,8 @@ set(GAME_SRC
   Classes/menu/TimedCard.cpp
   Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
+  Classes/models/GameState.cpp
+  Classes/models/TimedState.cpp
   Classes/models/Puzzle.cpp
   Classes/models/PuzzleManager.cpp
   Classes/models/QuatStream.cpp
@@ -186,7 +187,6 @@ set(GAME_HEADERS
   Classes/TouchInputManager.h
   Classes/ads/AdLayer.h
   Classes/defs/Definition.h
-  Classes/defs/DefinitionLayer.h
   Classes/menu/DrawnBanner.h
   Classes/menu/EndlessLayer.h
   Classes/menu/TimedLayer.h
@@ -197,6 +197,8 @@ set(GAME_HEADERS
   Classes/menu/TimedCard.h
   Classes/models/Dictionary.h
   Classes/models/Game.h
+  Classes/models/GameState.h
+  Classes/models/TimedState.h
   Classes/models/Puzzle.h
   Classes/models/PuzzleManager.h
   Classes/models/QuatStream.h

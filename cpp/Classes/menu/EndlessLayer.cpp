@@ -23,8 +23,7 @@ EndlessLayer * EndlessLayer::create(float fontSize,
 }
 
 void EndlessLayer::updateFromModel(Game * game) {
-  auto user = game->getUser();
-  this->card->update(user->getDisplayRank(), user->getRankProgress());
+  this->card->updateFromModel(game);
 }
 
 

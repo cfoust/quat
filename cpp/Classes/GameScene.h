@@ -10,7 +10,6 @@
 
 #include "BackgroundLayer.h"
 #include "menu/MenuLayer.h"
-#include "defs/DefinitionLayer.h"
 #include "solver/PuzzleLayer.h"
 #include "ads/AdLayer.h"
 
@@ -37,8 +36,6 @@ private:
 
     // Layer for actually playing the game
     PuzzleLayer * puzzleLayer;
-
-    DefinitionLayer * definitionLayer;
 
     // Layer for actually playing the game
     MenuLayer * menuLayer;

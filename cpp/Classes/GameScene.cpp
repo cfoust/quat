@@ -28,25 +28,22 @@ void GameScene::enteredForeground() {
 }
 
 void GameScene::showLayer(GAME_STATE state) {
-    // Show or hide the background shade so other interfaces are clear
-    this->background->shadeVisible(state != S_PuzzleSolver);
+  // Show or hide the background shade so other interfaces are clear
+  this->background->shadeVisible(state != S_PuzzleSolver);
 
-    // The main menu layer
-    this->menuLayer->setVisible(state == S_MainMenu);
+  // The main menu layer
+  this->menuLayer->setVisible(state == S_MainMenu);
 
-    // The layer for displaying game definitions
-    this->definitionLayer->setVisible(state == S_GameDefinitions);
+  // The layer for ads
+  this->adLayer->setVisible(state == S_Ad);
 
-    // The layer for ads
-    this->adLayer->setVisible(state == S_Ad);
+  // The layer that controls the actual game
+  this->puzzleLayer->setVisible(state == S_PuzzleSolver);
 
-    // The layer that controls the actual game
-    this->puzzleLayer->setVisible(state == S_PuzzleSolver);
-
-    this->menuButton->setVisible(state == S_PuzzleSolver);
-    this->closeButton->setVisible((state == S_Ad) ||
-                                  (state == S_GameDefinitions) ||
-                                  (state == S_MainMenu));
+  this->menuButton->setVisible(state == S_PuzzleSolver);
+  this->closeButton->setVisible((state == S_Ad) ||
+                                (state == S_GameDefinitions) ||
+                                (state == S_MainMenu));
 
 }
 
@@ -90,7 +87,7 @@ bool GameScene::init()
     // Load our game file if we can
     if (this->game->canLoadFromLocal()) {
       // Load the local game save
-      //this->game->loadFromLocal();
+      this->game->loadFromLocal();
     }
 
     this->GSC = new GameStateController(this);
@@ -137,13 +134,6 @@ bool GameScene::init()
     this->adLayer = AdLayer::create(gameBounds, fontSize, this->closeButton);
     this->adLayer->setVisible(false);
     addChild(this->adLayer, 1);
-
-    // Initialize the definition layer
-    this->definitionLayer = DefinitionLayer::create(gameBounds,
-                                                    fontSize,
-                                                    this->game);
-    this->definitionLayer->setVisible(false);
-    this->addChild(this->definitionLayer, 1);
 
     // Transition to the main game screen
     this->GSC->setState(S_PuzzleSolver);

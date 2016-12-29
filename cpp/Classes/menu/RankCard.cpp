@@ -27,9 +27,12 @@ RankCard * RankCard::create(float fontSize,
 }
 
 
-void RankCard::update(int currentRank, float progressPercent) {
-  this->displayRank(currentRank);
-  this->setProgressPercent(progressPercent);
+void RankCard::updateFromModel(Game * game) {
+  auto endlessState = game->getUser()->getEndlessState();
+
+  // Update from the endless model
+  this->displayRank(endlessState->getDisplayRank());
+  this->setProgressPercent(endlessState->getRankProgress());
 }
 void RankCard::displayRank(int currentRank) {
    this->drawnBanner->update(currentRank);

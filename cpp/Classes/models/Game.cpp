@@ -7,15 +7,6 @@
 namespace QUAT {
 
 Game::Game() {
-	this->dictionary = new Dictionary();
-	
-	this->dictionary->loadFromFile();
-
-	this->puzzle = new Puzzle(this->dictionary);
-
-	this->puzzleManager = new PuzzleManager(this->puzzle);
-	this->puzzleManager->init();
-
 	this->user = new User();
 
 	// Initialize the vector of themes
@@ -38,16 +29,21 @@ bool Game::canLoadFromLocal() {
   return cocos2d::FileUtils::getInstance()->isFileExist(path);
 }
 
-Puzzle * Game::getPuzzle() {
-	return this->puzzle;
-}
 
 User * Game::getUser() {
 	return this->user;
 }
 
-Dictionary * Game::getDictionary() {
-	return this->dictionary;
+GameState * Game::getState() {
+	return this->user->getGameState();
+}
+
+Puzzle * Game::getPuzzle() {
+	return this->user->getGameState()->getPuzzle();
+}
+
+Blitzer * Game::getBlitzer() {
+	return this->user->getGameState()->getBlitzer();
 }
 
 std::string Game::getSaveFileName() {
@@ -61,7 +57,6 @@ void Game::loadFromLocal() {
   // Initialize a quat stream
   QuatStream inStream(&input);
   this->user->serialize(inStream);
-  this->puzzle->serialize(inStream);
 
   input.close();
 }
@@ -78,9 +73,6 @@ void Game::setTheme(std::string * themeName) {
 	this->theme = (*this->themes)[*themeName];
 }
 
-void Game::newPuzzle() {
-	this->puzzleManager->fill(this->user->getRealRank());
-}
 
 void Game::saveToLocal() {
   string path = this->getSaveFileName();
@@ -89,13 +81,11 @@ void Game::saveToLocal() {
   // Initialize a quat stream
   QuatStream outStream(&output);
   this->user->serialize(outStream);
-  this->puzzle->serialize(outStream);
 
   output.close();
 }
 
 void Game::update(float secs) {
-  this->puzzle->update(secs);
   this->user->update(secs);
 }
 

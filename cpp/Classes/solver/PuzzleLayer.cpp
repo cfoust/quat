@@ -82,42 +82,43 @@ std::string PuzzleLayer::getKeyboardLetter(cocos2d::Vec2 * point) {
 }
 
 void PuzzleLayer::updateFromModel() {
-    auto puzzle = this->game->getPuzzle();
-    auto user = this->game->getUser();
-    auto theme = this->game->getTheme();
+  auto user = this->game->getUser();
+  auto state = user->getGameState();
+  auto puzzle = state->getPuzzle();
+  auto theme = this->game->getTheme();
 
-    // We have to adjust the step count in the UI by one
-    int stepCount = puzzle->getStepCount() - 1;
+  // We have to adjust the step count in the UI by one
+  int stepCount = puzzle->getStepCount() - 1;
 
-    // Shows the undo button only if the user has added more than one word
-    this->undo->setVisible(stepCount > 0);
-    
-    // Update the buttons layer
-    this->buttonsLayer->updateFromModel(this->game);
-    
-    // Updates the current words
-    this->currentWord->changeWord(puzzle->getCurrent());
-    this->goalWord->changeWord(puzzle->getGoal());
-    
-    // Update the rank progress bar
-    this->progressIndicator->updateFromModel(this->game);
+  // Shows the undo button only if the user has added more than one word
+  this->undo->setVisible(stepCount > 0);
+  
+  // Update the buttons layer
+  this->buttonsLayer->updateFromModel(this->game);
+  
+  // Updates the current words
+  this->currentWord->changeWord(puzzle->getCurrent());
+  this->goalWord->changeWord(puzzle->getGoal());
+  
+  // Update the rank progress bar
+  this->progressIndicator->updateFromModel(this->game);
 
-    // Update the theme with data from the game state
-    this->game->getTheme()->update(this->game);
+  // Update the theme with data from the game state
+  this->game->getTheme()->update(this->game);
 
-    // Check to see if we have to update the background's colors
-    if (theme->getColorSchemeChanged()) {
-        this->background->animateScheme(theme->getColorScheme());
-        this->blitzIndicator->setScheme(theme->getColorScheme());
-    }
+  // Check to see if we have to update the background's colors
+  if (theme->getColorSchemeChanged()) {
+      this->background->animateScheme(theme->getColorScheme());
+      this->blitzIndicator->setScheme(theme->getColorScheme());
+  }
 
-    // Transition to the ad screen if we need to
-    if (user->shouldShowAd()) {
-        this->GSC->setState(S_Ad);
-    }
+  // Transition to the ad screen if we need to
+  if (user->shouldShowAd()) {
+      this->GSC->setState(S_Ad);
+  }
 
-    // Save the game state to a file
-    this->game->saveToLocal();
+  // Save the game state to a file
+  this->game->saveToLocal();
 }
 
 std::string * PuzzleLayer::getCurrentWord() {
@@ -127,16 +128,21 @@ std::string * PuzzleLayer::getCurrentWord() {
 void PuzzleLayer::skipClick() {
   this->buttonsLayer->skipButtonLayer->setVisible(false);
 
-  auto puzzle = this->game->getPuzzle();
+  // Grab the current state and manipulate it.
+  // Should always be on endless, but maybe someone will try
+  // to skip on timed mode.
+  auto user = this->game->getUser();
+  auto state = user->getGameState();
+  auto puzzle = state->getPuzzle();
 
   // Mark that the puzzle was skipped
   puzzle->markSkipped();
 
   // Register it with the game
-  game->getUser()->registerPuzzle(puzzle);
+  user->registerPuzzle(puzzle);
   
   // Grab a new puzzle
-  game->newPuzzle();
+  state->newPuzzle();
 
   // Update the view from the model
   this->updateFromModel();
@@ -147,11 +153,11 @@ void PuzzleLayer::futureSightClick() {
 }
 
 void PuzzleLayer::undoClick() {
-    // Tries to go back one in the solution
-    this->game->getPuzzle()->goBack();
+  // Tries to go back one in the solution
+  this->game->getUser()->getGameState()->getPuzzle()->goBack();
 
-    // Updates the GUI from the model
-    this->updateFromModel();
+  // Updates the GUI from the model
+  this->updateFromModel();
 }
 
 void PuzzleLayer::definitionClick() {
@@ -385,7 +391,7 @@ void PuzzleLayer::finishWord() {
         // This returns true if the puzzle was finished with par steps
         result = this->game->getUser()->registerPuzzle(puzzle);
 
-        this->game->newPuzzle();
+        this->game->getState()->newPuzzle();
 
         if (result) {
           this->indicatorLayer->perfect();
@@ -395,7 +401,7 @@ void PuzzleLayer::finishWord() {
 
         this->progressIndicator->updateFromModel(this->game);
         
-        auto blitz = user->getBlitz();
+        auto blitz = this->game->getBlitzer();
         if (blitz->isBlitzing()) {
           this->blitzIndicator->setVisible(true);
         }
@@ -455,7 +461,7 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
 }
 
 void PuzzleLayer::update(float delta) {
-  auto blitz = this->game->getUser()->getBlitz();
+  auto blitz = this->game->getBlitzer();
   auto puzzle = this->game->getPuzzle();
 
   // Set the skip button to be visible if the user is struggling

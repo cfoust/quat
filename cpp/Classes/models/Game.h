@@ -2,8 +2,10 @@
 #define __GAME_H__
 
 
-#include "Puzzle.h"
+#include "cocos2d.h"
 #include "Dictionary.h"
+#include "Puzzle.h"
+#include "GameState.h"
 #include "PuzzleManager.h"
 #include "QuatStream.h"
 #include "User.h"
@@ -15,17 +17,11 @@ using namespace std;
 class Game
 {
 private:
-	// The puzzle the user is working on
-	Puzzle * puzzle;
-
 	// The puzzle manager, which grabs puzzles from the puzzle file
 	PuzzleManager * puzzleManager;
 
 	// The current user
 	User * user;
-	
-	// The dictionary that holds all of the definitions and valid words
-	Dictionary * dictionary;
 
 	// The map of strings to themes
 	std::map<std::string, Theme *> * themes;
@@ -34,6 +30,7 @@ private:
 	Theme * theme;
 
   std::string getSaveFileName();
+
 public:
 	Game();
 
@@ -43,14 +40,16 @@ public:
 	bool canLoadFromLocal();
 
 	/**
-	 * Returns a pointer to the current puzzle.
-	 */
-	Puzzle * getPuzzle();
-
-	/**
 	 * Returns a pointer to the current user.
 	 */
 	User * getUser();
+
+  // Some convenience functions for getting these properties of the
+  // CURRENT game state. The choice is automatically made based on
+  // whether the user is playing Timed Mode or not.
+  GameState * getState();
+  Puzzle * getPuzzle();
+  Blitzer * getBlitzer();
 
 	/**
 	 * @brief      Gets a pointer to the dictionary used by the game to 
@@ -85,11 +84,6 @@ public:
 	 */
 	void loadFromLocal();
 
-	/**
-	 * Grabs a new puzzle for the user to play and puts it into the puzzle
-	 * instance.
-	 */
-	void newPuzzle();
 
 	/**
 	 * Dumps the entire current user state to a local file.

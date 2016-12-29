@@ -5,6 +5,7 @@
 #include "../Constants.h"
 #include "DrawnBanner.h"
 #include "../nodes/RectRadius.h"
+#include "../models/Game.h"
 #include "../nodes/ProgressBar.h"
 
 namespace QUAT {
@@ -29,6 +30,7 @@ private:
   // The width of the experience progress
   // bar
   float progressBarWidth;
+
 public:
 	virtual bool init();
 
@@ -42,7 +44,7 @@ public:
   // showing rank progress
 	void setProgressPercent(float percent);
  
-  void update(int currentRank, float progressPercent);
+  void updateFromModel(Game * game);
 
 	static RankCard * create(float fontSize,
 							   float width,

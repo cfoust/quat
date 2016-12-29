@@ -3,9 +3,9 @@
 namespace QUAT {
 
 void ProgressIndicatorLayer::updateFromModel(Game * game) {
-  auto user = game->getUser();
-  this->displayRank(user->getDisplayRank());
-  this->setProgressPercent(user->getRankProgress());
+  auto state = game->getState();
+  this->displayRank(state->getDisplayRank());
+  this->setProgressPercent(state->getRankProgress());
 }
 
 void ProgressIndicatorLayer::animate() {

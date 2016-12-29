@@ -5,7 +5,10 @@
 #include <string>
 #include <cmath>
 
+#include "Dictionary.h"
 #include "Puzzle.h"
+#include "GameState.h"
+#include "TimedState.h"
 #include "Blitzer.h"
 #include "QuatStream.h"
 #include "cocos2d.h"
@@ -17,11 +20,7 @@ using namespace std;
 class User
 {
 private:
-  Blitzer * blitzer;
-
-	int subRank,		      // The user's sub-rank between 0 and 16834
-  		puzzlesPlayed,    // The number of puzzles the user has completed
-      multiplier;       // The current multiplier
+	int puzzlesPlayed;    // The number of puzzles the user has completed
 
 	bool isPaid,  		    // Whether or not the user has paid to remove ads
        showAd;	        // Whether the UI should show the user an ad
@@ -29,52 +28,27 @@ private:
 	unsigned long timePlayed,  // The total time (in milliseconds) the user has played
 			          lastShownAd; // The timePlayed value in seconds at which the user
 			                       // last saw an ad
-
-  // The lower bound (in terms of real rank) for the display rank
-  int displayRankStart(int displayRank);
-
-  // Converts a display rank into its corresponding subrank
-  int displayToSubRank(int displayRank);
-
-  // Turn a display rank into a real rank.
-  int displayToRealRank(int displayRank);
-
-  // Turn a real rank (0-255) into a sub rank (0-16384)
-  int realToSubRank(int realRank);
+  
+  // Whether or not the user is playing endless
+  bool playingEndless;
+  
+  // Stores the state for both game modes
+  GameState * endlessState;
+  TimedState * timedState;
+  
+  // Dictionary that holds valid words
+  Dictionary * dictionary;
 
 public:
 	User();
 
-  // Method that adjusts the user's subrank.
-  // difference is the number of subrank points to change the rank.
-  //
-  // If we're on a blitz, multiplies the difference by the current multiplier.
-  void adjust(int difference);
+  // Returns the current game state for the mode the user
+  // is playing.
+  GameState * getGameState();
 
-  Blitzer * getBlitz();
-
-	/**
-	 * Get the user's rank in terms of 1-12.
-	 */
-	int getDisplayRank();
-
-	/**
-	 * @brief      Gets the user's rank in terms of 0-256.
-	 *
-	 * @return     The real rank.
-	 */
-	int getRealRank();
-
-	/**
-	 * Gets the user's rank in terms of 0-16384.
-	 */
-	int getSubRank();
-
-  /**
-   * Gets how far the user is in their current rank as
-   * a percentage between 0 and 1.
-   */
-  float getRankProgress();
+  // Get pointers to the individual states. 
+  GameState * getEndlessState();
+  GameState * getTimedState();
 
 	/**
 	 * Get the number of puzzles the user has completed.
@@ -82,14 +56,20 @@ public:
 	int getPuzzlesPlayed();
 
 	/**
+	 * Returns the result of adding the puzzle to the current game state.
+   *
+   * Also increments puzzlesPlayed for bookkeeping.
+	 */
+	bool registerPuzzle(Puzzle * puzzle);
+
+	/**
 	 * Gets the user's total time played in ms.
 	 */
 	unsigned long getTimePlayed();
 
-	/**
-	 * Adjusts the user's rank and incorporates statistics from a puzzle.
-	 */
-	bool registerPuzzle(Puzzle * puzzle);
+  bool isPlayingEndless();
+
+  void setPlayingEndless(bool enabled);
 
 	/**
 	 * @brief      Whether the UI should show the user an ad.

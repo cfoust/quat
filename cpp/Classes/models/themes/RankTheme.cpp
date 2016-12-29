@@ -8,7 +8,7 @@ RankTheme::RankTheme() : Theme::Theme() {
 }
 
 void RankTheme::update(Game * model) {
-  int rank = model->getUser()->getDisplayRank();
+  int rank = model->getUser()->getGameState()->getDisplayRank();
 
   // Rank has not changed since the last time this was called
   this->colorSchemeChanged = this->currentRank != rank;

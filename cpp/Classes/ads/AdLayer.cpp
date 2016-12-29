@@ -91,8 +91,7 @@ void AdLayer::updateTime(float dt) {
 
 
 void AdLayer::updateFromModel(Game * game) {
-  auto user = game->getUser();
-  this->rankCard->update(user->getDisplayRank(), user->getRankProgress());
+  this->rankCard->updateFromModel(game);
 }
 AdLayer::AdLayer(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton) {
 	// Copy the gamebounds into the local object
