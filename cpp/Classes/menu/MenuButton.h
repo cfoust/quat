@@ -20,8 +20,6 @@ private:
        _selected,
        _showBorder;
 
-	std::function<void(void)> callback;
-
 	cocos2d::Label * textLabel;
 	// The default and selected colors for the borders
 	cocos2d::Color4B defaultColor,
@@ -73,14 +71,12 @@ public:
 	MenuButton(std::string title, 
 			   float fontSize, 
 			   float width, 
-			   float height,
-			   std::function<void(void)> callback);
+			   float height);
 	
 	static MenuButton * create(std::string title, 
 							   float fontSize, 
 							   float width, 
-							   float height,
-							   std::function<void(void)> callback);
+							   float height);
 };
 
 }

@@ -18,29 +18,32 @@ private:
   float fontSize,
   // The size of the card that displays information about
   // the user's endless mode progress
-        cardWidth,
-        cardHeight;
+        sectionWidth,
+        sectionHeight;
 
   // Timed Mode header
 	cocos2d::Label * headerLabel;
 
-  MenuButton * continueButton;
 
   // Shows progress information
   TimedCard * card;
 
 public:
+  MenuButton * continueButton,
+             * continueTopButton,
+             * restartButton;
+
 	virtual bool init();
 
 	TimedLayer(float fontSize,
-               float cardWidth,
-               float cardHeight);
+             float sectionWidth,
+             float sectionHeight);
 
   void updateFromModel(Game * game);
 
 	static TimedLayer * create(float fontSize,
-                               float cardWidth,
-                               float cardHeight);
+                             float sectionWidth,
+                             float sectionHeight);
 };
 
 }

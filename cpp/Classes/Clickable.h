@@ -31,8 +31,8 @@ public:
   bool containsPoint(cocos2d::Vec2* point);
 
 	std::function<void(void)> leaveCallback, // When the click leaves (even if not down)
-							  enterCallback,	 // When the click is down and in the bounds
-							  upCallback; 	 // When the click goes up and was in the bounds
+                            enterCallback,	 // When the click is down and in the bounds
+                            upCallback; 	 // When the click goes up and was in the bounds
 
 	bool init();
 

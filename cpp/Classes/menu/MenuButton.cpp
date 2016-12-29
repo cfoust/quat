@@ -74,14 +74,12 @@ const std::string MenuButton::getText() {
 MenuButton * MenuButton::create(std::string title,
                float fontSize,
                float width,
-               float height,
-               std::function<void(void)> callback)
+               float height)
 {
     MenuButton *pRet = new(std::nothrow) MenuButton(title,
                                                     fontSize,
                                                     width,
-                                                    height,
-                                                    callback);
+                                                    height);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -106,7 +104,6 @@ bool MenuButton::init() {
     this->setWidth(this->_width);
     this->setHeight(this->_height);
 
-    this->upCallback = this->callback;
     this->enterCallback = CC_CALLBACK_0(MenuButton::entered, this);
     this->leaveCallback = CC_CALLBACK_0(MenuButton::left, this);
 
@@ -144,13 +141,11 @@ bool MenuButton::init() {
 MenuButton::MenuButton(std::string title,
                float fontSize,
                float width,
-               float height,
-               std::function<void(void)> callback) {
+               float height) {
     this->title = title;
   	this->fontSize = fontSize;
     this->_width = width;
     this->_height = height;
-    this->callback = callback;
     this->_enabled = true;
 }
 

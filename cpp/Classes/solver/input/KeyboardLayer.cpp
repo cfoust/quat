@@ -93,8 +93,8 @@ bool KeyboardLayer::init() {
             auto button = MenuButton::create(std::string(1, rows[i].at(j)),
                                          keyFontSize,
                                          keyWidth,
-                                         keyHeight,
-                                         CC_CALLBACK_0(KeyboardLayer::none, this));
+                                         keyHeight);
+            button->upCallback = CC_CALLBACK_0(KeyboardLayer::none, this);
             button->setPositionX((width / 2) 
                                  + offsets[i] 
                                  + (j * (horizontalGap + keyWidth))

@@ -18,29 +18,29 @@ private:
   float fontSize,
   // The size of the card that displays information about
   // the user's endless mode progress
-        cardWidth,
-        cardHeight;
+        sectionWidth,
+        sectionHeight;
 
   // Endless Mode header
 	cocos2d::Label * headerLabel;
-
-  MenuButton * continueButton;
 
   // Shows progress information
   RankCard * card;
 
 public:
+  MenuButton * continueButton;
+
 	virtual bool init();
 
 	EndlessLayer(float fontSize,
-               float cardWidth,
-               float cardHeight);
+               float sectionWidth,
+               float sectionHeight);
 
   void updateFromModel(Game * game);
 
 	static EndlessLayer * create(float fontSize,
-                               float cardWidth,
-                               float cardHeight);
+                               float sectionWidth,
+                               float sectionHeight);
 };
 
 }

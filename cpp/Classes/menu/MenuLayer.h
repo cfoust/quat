@@ -41,7 +41,14 @@ private:
 
   // Callbacks for nav buttons
   void resetLayout();
+
 public:
+
+  // Three callbacks for the game modes
+  void continueEndless();
+  void continueTimed();
+  void restartTimed();
+
 	/**
 	 * Initialize this layer.
 	 * @return Whether or not the layer was initialized successfully.

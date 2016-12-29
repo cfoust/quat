@@ -26,6 +26,15 @@ void MenuLayer::updateFromModel(Game * game) {
 }
 
 
+void MenuLayer::continueEndless() {
+}
+
+void MenuLayer::continueTimed() {
+}
+
+void MenuLayer::restartTimed() {
+}
+
 void MenuLayer::resetLayout() {
   float width = gameBounds->size.width,
         height = gameBounds->size.height,
@@ -60,6 +69,7 @@ void MenuLayer::resetLayout() {
   totalHeight += padding * 2;
   
   scrollView->setInnerContainerSize( Size( width, totalHeight ) );
+
   // Adjust the scroll view if there's less stuff than is needed
   float difference = height - totalHeight;
   scrollView->setEnabled(difference < 0);
@@ -106,6 +116,12 @@ bool MenuLayer::init() {
 
   this->timedLayer = TimedLayer::create(wordSize, cardWidth, cardHeight);
   sv->addChild(this->timedLayer);
+
+  // Set up all the callbacks
+  this->endlessLayer->continueButton->upCallback = CC_CALLBACK_0(MenuLayer::continueEndless, this);
+  this->timedLayer->continueButton->upCallback = CC_CALLBACK_0(MenuLayer::continueTimed, this);
+  this->timedLayer->continueTopButton->upCallback = CC_CALLBACK_0(MenuLayer::continueTimed, this);
+  this->timedLayer->restartButton->upCallback = CC_CALLBACK_0(MenuLayer::restartTimed, this);
 
   // Add the scroll view to the layer
   this->addChild(sv);
