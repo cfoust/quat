@@ -13,12 +13,12 @@ class MenuButton : public Clickable
 {
 private:
 	float fontSize,
-		  _width,
-		  _height;
+        _width,
+        _height;
 
 	bool _enabled,
-		 _selected,
-		 _showBorder;
+       _selected,
+       _showBorder;
 
 	std::function<void(void)> callback;
 
@@ -29,7 +29,7 @@ private:
 
 
 	RectRadius * border,
-			   * background;
+             * background;
 
 	std::string title;
 

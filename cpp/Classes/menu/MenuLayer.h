@@ -9,13 +9,11 @@
 // For drawing the QUAT logo
 #include "../solver/input/BorderedWordNode.h"
 
-#include "RankCard.h"
-#include "TimedCard.h"
+#include "EndlessLayer.h"
+#include "TimedLayer.h"
 #include "NavButtonLayer.h"
 
-
 namespace QUAT {
-
 
 USING_NS_CC;
 
@@ -38,8 +36,8 @@ private:
 	BorderedWordNode * quatLogo;
 
   // Displayes information about the current user's rank
-  RankCard * rankCard;
-  TimedCard * timedCard;
+  EndlessLayer * endlessLayer;
+  TimedLayer * timedLayer;
 
   // Callbacks for nav buttons
   void resetLayout();

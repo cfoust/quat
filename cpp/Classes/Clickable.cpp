@@ -56,7 +56,7 @@ bool Clickable::containsNodePoint(cocos2d::Vec2 * point) {
         lx = (point->x > (-1 * halfWidth)),
         ly = (point->y > (-1 * halfHeight)),
         uy = (point->y < halfHeight);
-    cocos2d::log("O(%f,%f) T(%f,%f) %d%d%d%d",this->xOffset, this->yOffset, point->x, point->y, lx, ux, ly, uy);
+    cocos2d::log("O(%f,%f) T(%f,%f) %d%d%d%d", this->xOffset, this->yOffset, point->x, point->y, lx, ux, ly, uy);
   }
   return (((point->x < halfWidth) && (point->x > (-1 * halfWidth))) &&
          ((point->y < halfHeight) && (point->y > (-1 * halfHeight))));

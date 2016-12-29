@@ -22,7 +22,7 @@ MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 
 void MenuLayer::updateFromModel(Game * game) {
   auto user = game->getUser();
-  this->rankCard->update(user->getDisplayRank(), user->getRankProgress());
+  //this->rankCard->update(user->getDisplayRank(), user->getRankProgress());
 }
 
 
@@ -36,15 +36,16 @@ void MenuLayer::resetLayout() {
   totalHeight += padding;
 
   // Add the card for timed mode
-  auto size = this->timedCard->getContentSize();
-  this->timedCard->setPosition((width / 2) - (size.width / 2),
+  auto size = this->timedLayer->getContentSize();
+  this->timedLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
-  totalHeight += padding; // Some extra padding before the QUAT logo
+  totalHeight += padding * 4; // Some extra padding before the QUAT logo
 
-  // Add the rank card for endless mode
-  this->rankCard->setPosition((width / 2) - (size.width / 2),
-                              totalHeight);
+  // Add the layer for endless mode
+  size = this->endlessLayer->getContentSize();
+  this->endlessLayer->setPosition((width / 2) - (size.width / 2),
+                                  totalHeight);
   totalHeight += size.height;
   totalHeight += padding * 2;
   
@@ -100,11 +101,11 @@ bool MenuLayer::init() {
   
   float cardWidth = width * 0.8,
         cardHeight = cardWidth * 0.32;
-  this->rankCard = RankCard::create(wordSize, cardWidth, cardHeight);
-  sv->addChild(this->rankCard);
+  this->endlessLayer = EndlessLayer::create(wordSize, cardWidth, cardHeight);
+  sv->addChild(this->endlessLayer);
 
-  this->timedCard = TimedCard::create(wordSize, cardWidth, cardHeight);
-  sv->addChild(this->timedCard);
+  this->timedLayer = TimedLayer::create(wordSize, cardWidth, cardHeight);
+  sv->addChild(this->timedLayer);
 
   // Add the scroll view to the layer
   this->addChild(sv);

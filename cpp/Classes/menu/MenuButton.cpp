@@ -133,6 +133,11 @@ bool MenuButton::init() {
     this->background->setColor(this->defaultColor);
     this->addChild(this->background, 0);
 
+    // This needs to be here because we changed the Clickable API to track from
+    // the center of the bounds instead of the bottom-left corner as we used to do
+    // when this class was ported over from JS.
+    this->setOffset(this->_width / -2, this->_height / -2);
+
     return true;
 }
 
@@ -142,7 +147,7 @@ MenuButton::MenuButton(std::string title,
                float height,
                std::function<void(void)> callback) {
     this->title = title;
-	this->fontSize = fontSize;
+  	this->fontSize = fontSize;
     this->_width = width;
     this->_height = height;
     this->callback = callback;
