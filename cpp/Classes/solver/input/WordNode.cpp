@@ -118,6 +118,8 @@ void WordNode::recalculateBounds() {
 				   first->origin.y,
 				   ((last->origin.x + last->size.width) - first->origin.x),
 				   first->size.height);
+  this->setContentSize(cocos2d::Size(((last->origin.x + last->size.width) - first->origin.x),
+                                       first->size.height));
 }
 
 void WordNode::setOpacity(GLubyte opacity) {

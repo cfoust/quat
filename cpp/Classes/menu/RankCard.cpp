@@ -100,6 +100,9 @@ bool RankCard::init() {
     this->drawnBanner->setPositionX((this->_width / 2) - bannerWidth / 2);
     this->drawnBanner->setPositionY(this->_height - bannerHeight);
     this->addChild(this->drawnBanner, 1);
+
+    this->setContentSize(cocos2d::Size(this->_width, this->_height));
+
     return true;
 }
 

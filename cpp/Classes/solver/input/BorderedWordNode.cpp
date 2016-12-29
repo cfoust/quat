@@ -87,6 +87,9 @@ void BorderedWordNode::recalculateBounds() {
                    first->origin.y - delta,
                    ((last->origin.x + last->size.width) - first->origin.x + difference),
                    first->size.height + difference);
+
+    this->setContentSize(cocos2d::Size(((last->origin.x + last->size.width) - first->origin.x),
+                                       first->size.height));
 }
 
 
