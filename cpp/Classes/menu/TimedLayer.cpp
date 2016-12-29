@@ -41,8 +41,14 @@ bool TimedLayer::init() {
         buttonHeight   = cardHeight * 0.3,
         padding        = cardHeight * 0.1;
 
-  this->continueButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, buttonHeight, NULL);
-  this->continueButton->setPositionX((cardWidth - buttonWidth) / 2);
+  // Add a nice header
+  auto headerLabel = cocos2d::Label::createWithTTF("Timed Mode", Q_FONT_PATH, buttonFontSize);
+  headerLabel->setPositionX(cardWidth / 4);
+  headerLabel->setPositionY(buttonHeight / 2);
+  this->addChild(headerLabel);
+
+  this->continueButton = MenuButton::create("Play", buttonFontSize, buttonWidth, buttonHeight, NULL);
+  this->continueButton->setPositionX((cardWidth / 2) + (((cardWidth / 2)- buttonWidth) / 2));
   this->addChild(this->continueButton);
   totalHeight += buttonHeight + padding;
   
@@ -50,14 +56,7 @@ bool TimedLayer::init() {
   this->card = TimedCard::create(fontSize, cardWidth, cardHeight);
   this->card->setPositionY(totalHeight);
   this->addChild(this->card);
-  totalHeight += cardHeight + padding * 2;
-
-  // Add a nice header
-  auto headerLabel = cocos2d::Label::createWithTTF("Timed Mode", Q_FONT_PATH, buttonFontSize);
-  headerLabel->setPositionX(cardWidth / 2);
-  headerLabel->setPositionY(totalHeight);
-  this->addChild(headerLabel);
-  totalHeight += buttonFontSize;
+  totalHeight += cardHeight;
 
   this->setContentSize(cocos2d::Size(cardWidth,
                                      totalHeight));
