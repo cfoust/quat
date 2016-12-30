@@ -29,7 +29,7 @@ private:
   TimedCard * card;
 
 public:
-  MenuButton * continueButton,
+  MenuButton * playButton,
              * continueTopButton,
              * restartButton;
 

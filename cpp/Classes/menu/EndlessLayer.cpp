@@ -52,8 +52,8 @@ bool EndlessLayer::init() {
 
   // Add a nice header
   auto headerLabel = cocos2d::Label::createWithTTF("ENDLESS MODE", Q_FONT_PATH, buttonFontSize);
-  headerLabel->setPositionX(sectionWidth * 0.15);
-  headerLabel->setPositionY(sectionHeight + (buttonFontSize / 2));
+  headerLabel->setPositionX(cardWidth / 2);
+  headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
   this->addChild(headerLabel);
 
   this->continueButton = MenuButton::create("Continue", 

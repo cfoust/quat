@@ -45,8 +45,8 @@ bool TimedLayer::init() {
 
   // Add a nice header
   auto headerLabel = cocos2d::Label::createWithTTF("TIMED MODE", Q_FONT_PATH, buttonFontSize);
-  headerLabel->setPositionX(sectionWidth * 0.15);
-  headerLabel->setPositionY(sectionHeight + (buttonFontSize / 2));
+  headerLabel->setPositionX(cardWidth / 2);
+  headerLabel->setPositionY(sectionHeight + (buttonFontSize / 0.75));
   this->addChild(headerLabel);
 
   // Create the section
@@ -57,19 +57,34 @@ bool TimedLayer::init() {
         borderWidth  = this->card->getBorderWidth();
 
   // Full size continue button
-  this->continueButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, buttonHeight, borderRadius, borderWidth);
-  this->continueButton->setPositionX(cardWidth + padding);
-  this->addChild(this->continueButton);
+  this->playButton = MenuButton::create("Play", 
+                                        buttonFontSize, 
+                                        buttonWidth, 
+                                        buttonHeight, 
+                                        borderRadius, 
+                                        borderWidth);
+  this->playButton->setPositionX(cardWidth + padding);
+  this->addChild(this->playButton);
 
   // Calculate size of the smaller buttons
   float smallButtonHeight = (sectionHeight - padding) / 2;
 
   // Make two smaller buttons for when the user already has a run going
-  this->restartButton = MenuButton::create("Restart", buttonFontSize, buttonWidth, smallButtonHeight, borderRadius, borderWidth);
+  this->restartButton = MenuButton::create("Restart", 
+                                           buttonFontSize, 
+                                           buttonWidth, 
+                                           smallButtonHeight, 
+                                           borderRadius, 
+                                           borderWidth);
   this->restartButton->setPositionX(cardWidth + padding);
   this->addChild(this->restartButton);
 
-  this->continueTopButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, smallButtonHeight, borderRadius, borderWidth);
+  this->continueTopButton = MenuButton::create("Continue", 
+                                               buttonFontSize, 
+                                               buttonWidth, 
+                                               smallButtonHeight, 
+                                               borderRadius, 
+                                               borderWidth);
   this->continueTopButton->setPositionX(cardWidth + padding);
   this->continueTopButton->setPositionY(smallButtonHeight + padding);
   this->addChild(this->continueTopButton);
