@@ -26,6 +26,8 @@ protected:
   void onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 
   bool containsNodePoint(cocos2d::Vec2* point);
+
+  bool isActuallyVisible();
 public:
   bool containsTouch(cocos2d::Touch* touch);
   bool containsPoint(cocos2d::Vec2* point);

@@ -74,10 +74,10 @@ void GameScene::generateBounds() {
 }
 
 void GameScene::menuCallback() {
-    if (this->GSC->state() == S_PuzzleSolver) {
+    if ((this->GSC->state() == S_PuzzleSolver) ||
+        (this->GSC->state() == S_TimedTransition)) {
         this->GSC->setState(S_MainMenu);
-    }
-    else if ((this->GSC->state() == S_MainMenu) ||
+    } else if ((this->GSC->state() == S_MainMenu) ||
              (this->GSC->state() == S_GameDefinitions)) {
         this->GSC->setState(S_PuzzleSolver);
     }

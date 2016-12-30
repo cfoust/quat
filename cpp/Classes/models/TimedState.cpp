@@ -22,6 +22,7 @@ void TimedState::setRunning(bool running) {
 void TimedState::reset() {
   this->subRank = 0;
   this->timePlayed = 0;
+  this->newPuzzle();
 }
 
 bool TimedState::isRunning() {

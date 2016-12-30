@@ -10,6 +10,10 @@ bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
         return false;
     }
 
+    if (!this->isActuallyVisible()) {
+      return false;
+    }
+
     if (this->containsTouch(touch)) {
         this->enterCallback();
     }
@@ -67,40 +71,51 @@ bool Clickable::containsTouch(cocos2d::Touch* touch) {
   return this->containsNodePoint(&nodeTouch);
 }
 
+bool Clickable::isActuallyVisible() {
+  // Recursively check for hidden parents
+  auto parent = this->getParent();
+  while (parent != NULL) {
+    if (!parent->isVisible()) return false;
+    parent = parent->getParent();
+  }
+
+  return true;
+}
+
 bool Clickable::containsPoint(cocos2d::Vec2* point) {
   auto nodePoint = this->convertToNodeSpace(*point);
   return this->containsNodePoint(&nodePoint);
 }
 bool Clickable::init() {
-    if ( !Layer::init() )
-    {
-        return false;
-    }
+  if ( !Layer::init() )
+  {
+      return false;
+  }
 
-    this->tracking = false;
-    this->inside = false;
-    this->enabled = true;
-    this->debug = false;
+  this->tracking = false;
+  this->inside = false;
+  this->enabled = true;
+  this->debug = false;
 
-    this->width = 0;
-    this->height = 0;
+  this->width = 0;
+  this->height = 0;
 
-    this->xOffset = 0;
-    this->yOffset = 0;
+  this->xOffset = 0;
+  this->yOffset = 0;
 
-    // Register for clicks
-    auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
-    // Means that other touch listeners can grab touches
-    touchListener->setSwallowTouches(false);
+  // Register for clicks
+  auto touchListener = cocos2d::EventListenerTouchOneByOne::create();
+  // Means that other touch listeners can grab touches
+  touchListener->setSwallowTouches(false);
 
-    touchListener->onTouchBegan = CC_CALLBACK_2(Clickable::onTouchBegan, this);
-    touchListener->onTouchMoved = CC_CALLBACK_2(Clickable::onTouchMoved, this);
-    touchListener->onTouchEnded = CC_CALLBACK_2(Clickable::onTouchEnded, this);
+  touchListener->onTouchBegan = CC_CALLBACK_2(Clickable::onTouchBegan, this);
+  touchListener->onTouchMoved = CC_CALLBACK_2(Clickable::onTouchMoved, this);
+  touchListener->onTouchEnded = CC_CALLBACK_2(Clickable::onTouchEnded, this);
 
-    // Registers the new listener with the global contexts
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
+  // Registers the new listener with the global contexts
+  _eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
-    return true;
+  return true;
 }
 
 Clickable::Clickable() {

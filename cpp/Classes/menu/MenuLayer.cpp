@@ -39,13 +39,27 @@ void MenuLayer::continueEndless() {
   this->GSC->setState(S_PuzzleSolver);
 }
 
-void MenuLayer::playTimed() {
-}
-
 void MenuLayer::continueTimed() {
+  auto user = this->game->getUser();
+  
+  // Switch to timed mode
+  user->setPlayingEndless(false);
+
+  // Move to the puzzle solver state
+  this->GSC->setState(S_TimedTransition);
 }
 
 void MenuLayer::restartTimed() {
+  auto user = this->game->getUser();
+  
+  // Reset the state of timed mode
+  user->getTimedState()->reset();
+
+  // Switch to timed mode
+  user->setPlayingEndless(false);
+
+  // Move to the puzzle solver state
+  this->GSC->setState(S_TimedTransition);
 }
 
 void MenuLayer::resetLayout() {
@@ -132,7 +146,7 @@ bool MenuLayer::init() {
 
   // Set up all the callbacks
   this->endlessLayer->continueButton->upCallback = CC_CALLBACK_0(MenuLayer::continueEndless, this);
-  this->timedLayer->playButton->upCallback = CC_CALLBACK_0(MenuLayer::playTimed, this);
+  this->timedLayer->playButton->upCallback = CC_CALLBACK_0(MenuLayer::restartTimed, this);
   this->timedLayer->continueTopButton->upCallback = CC_CALLBACK_0(MenuLayer::continueTimed, this);
   this->timedLayer->restartButton->upCallback = CC_CALLBACK_0(MenuLayer::restartTimed, this);
 

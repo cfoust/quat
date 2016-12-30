@@ -58,7 +58,6 @@ public:
   // Three callbacks for the game modes
   void continueEndless();
   void continueTimed();
-  void playTimed();
   void restartTimed();
 
 	/**
