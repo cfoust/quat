@@ -26,7 +26,13 @@ TimedCard * TimedCard::create(float fontSize,
     }
 }
 
+float TimedCard::getBorderRadius() {
+  return this->borderRadius;
+}
 
+float TimedCard::getBorderWidth() {
+  return this->borderWidth;
+}
 bool TimedCard::init() {
 	// Init the super class
     if ( !cocos2d::Layer::init() )
@@ -35,8 +41,9 @@ bool TimedCard::init() {
     }
 
 
-    float borderRadius = this->_width * 0.05,
-          borderWidth = this->_width *  0.008;
+    // Store the radius and the width
+    borderRadius = this->_width * 0.05;
+    borderWidth = this->_width *  0.008;
 
     // Set the default color
     this->defaultColor = new cocos2d::Color4B(255,255,255,64);

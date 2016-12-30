@@ -49,8 +49,15 @@ bool TimedLayer::init() {
   headerLabel->setPositionY(sectionHeight + (buttonFontSize / 2));
   this->addChild(headerLabel);
 
+  // Create the section
+  this->card = TimedCard::create(fontSize, cardWidth, cardHeight);
+  this->addChild(this->card);
+
+  float borderRadius = this->card->getBorderRadius(),
+        borderWidth  = this->card->getBorderWidth();
+
   // Full size continue button
-  this->continueButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, buttonHeight);
+  this->continueButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, buttonHeight, borderRadius, borderWidth);
   this->continueButton->setPositionX(cardWidth + padding);
   this->addChild(this->continueButton);
 
@@ -58,18 +65,14 @@ bool TimedLayer::init() {
   float smallButtonHeight = (sectionHeight - padding) / 2;
 
   // Make two smaller buttons for when the user already has a run going
-  this->restartButton = MenuButton::create("Restart", buttonFontSize, buttonWidth, smallButtonHeight);
+  this->restartButton = MenuButton::create("Restart", buttonFontSize, buttonWidth, smallButtonHeight, borderRadius, borderWidth);
   this->restartButton->setPositionX(cardWidth + padding);
   this->addChild(this->restartButton);
 
-  this->continueTopButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, smallButtonHeight);
+  this->continueTopButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, smallButtonHeight, borderRadius, borderWidth);
   this->continueTopButton->setPositionX(cardWidth + padding);
   this->continueTopButton->setPositionY(smallButtonHeight + padding);
   this->addChild(this->continueTopButton);
-  
-  // Create the section
-  this->card = TimedCard::create(fontSize, cardWidth, cardHeight);
-  this->addChild(this->card);
 
   this->setContentSize(cocos2d::Size(sectionWidth,
                                      sectionHeight + padding));

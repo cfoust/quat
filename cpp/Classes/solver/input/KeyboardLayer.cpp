@@ -88,12 +88,17 @@ bool KeyboardLayer::init() {
         static_cast<float>(keyboardWidth * 0.16)
     };
 
+    float borderRadius = keyFontSize * 0.3,
+          borderWidth = keyFontSize * 0.06;
+
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < rows[i].length(); j++) {
             auto button = MenuButton::create(std::string(1, rows[i].at(j)),
                                          keyFontSize,
                                          keyWidth,
-                                         keyHeight);
+                                         keyHeight,
+                                         borderRadius,
+                                         borderWidth);
             button->upCallback = CC_CALLBACK_0(KeyboardLayer::none, this);
             button->setPositionX((width / 2) 
                                  + offsets[i] 

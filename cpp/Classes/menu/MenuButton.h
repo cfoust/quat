@@ -14,7 +14,9 @@ class MenuButton : public Clickable
 private:
 	float fontSize,
         _width,
-        _height;
+        _height,
+        borderRadius,
+        borderWidth;
 
 	bool _enabled,
        _selected,
@@ -71,12 +73,16 @@ public:
 	MenuButton(std::string title, 
 			   float fontSize, 
 			   float width, 
-			   float height);
+			   float height,
+         float borderRadius,
+         float borderWidth);
 	
 	static MenuButton * create(std::string title, 
 							   float fontSize, 
 							   float width, 
-							   float height);
+							   float height,
+                 float borderRadius,
+                 float borderWidth);
 };
 
 }

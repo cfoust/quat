@@ -43,19 +43,29 @@ bool EndlessLayer::init() {
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;
 
+  // Create the section
+  this->card = RankCard::create(fontSize, cardWidth, cardHeight);
+  this->addChild(this->card);
+
+  float borderRadius = this->card->getBorderRadius(),
+        borderWidth  = this->card->getBorderWidth();
+
   // Add a nice header
   auto headerLabel = cocos2d::Label::createWithTTF("ENDLESS MODE", Q_FONT_PATH, buttonFontSize);
   headerLabel->setPositionX(sectionWidth * 0.15);
   headerLabel->setPositionY(sectionHeight + (buttonFontSize / 2));
   this->addChild(headerLabel);
 
-  this->continueButton = MenuButton::create("Continue", buttonFontSize, buttonWidth, buttonHeight);
+  this->continueButton = MenuButton::create("Continue", 
+                                            buttonFontSize, 
+                                            buttonWidth, 
+                                            buttonHeight, 
+                                            borderRadius,
+                                            borderWidth);
+
   this->continueButton->setPositionX(cardWidth + padding);
   this->addChild(this->continueButton);
   
-  // Create the section
-  this->card = RankCard::create(fontSize, cardWidth, cardHeight);
-  this->addChild(this->card);
 
   this->setContentSize(cocos2d::Size(sectionWidth,
                                      sectionHeight + padding));

@@ -15,7 +15,9 @@ class RankCard : public cocos2d::Layer
 private:
 	float fontSize,
 		  _width,
-		  _height;
+		  _height,
+      borderRadius,
+      borderWidth;
 
 	cocos2d::Label * leftLabel,
                  * rightLabel;
@@ -37,6 +39,9 @@ public:
 	RankCard(float fontSize,
 			   float width,
 			   float height);
+  
+  float getBorderRadius();
+  float getBorderWidth();
 
   void displayRank(int currentRank);
 

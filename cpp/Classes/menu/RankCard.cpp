@@ -44,6 +44,14 @@ void RankCard::setProgressPercent(float percent) {
   this->progress->setPercent(percent);
 }
 
+float RankCard::getBorderRadius() {
+  return this->borderRadius;
+}
+
+float RankCard::getBorderWidth() {
+  return this->borderWidth;
+}
+
 bool RankCard::init() {
 	// Init the super class
     if ( !cocos2d::Layer::init() )
@@ -52,8 +60,8 @@ bool RankCard::init() {
     }
 
 
-    float borderRadius = this->_width * 0.05,
-          borderWidth = this->_width *  0.008;
+    borderRadius = this->_width * 0.05;
+    borderWidth = this->_width *  0.008;
 
     // Set the default color
     this->defaultColor = new cocos2d::Color4B(255,255,255,64);

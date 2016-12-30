@@ -14,7 +14,9 @@ class TimedCard : public cocos2d::Layer
 private:
 	float fontSize,
 		  _width,
-		  _height;
+		  _height,
+      borderRadius,
+      borderWidth;
 
 	cocos2d::Color4B * defaultColor,
                   * fillInColor;
@@ -27,6 +29,9 @@ public:
 	TimedCard(float fontSize,
 			   float width,
 			   float height);
+
+  float getBorderRadius();
+  float getBorderWidth();
 
 	static TimedCard * create(float fontSize,
 							   float width,

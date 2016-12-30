@@ -74,12 +74,16 @@ const std::string MenuButton::getText() {
 MenuButton * MenuButton::create(std::string title,
                float fontSize,
                float width,
-               float height)
+               float height,
+               float borderRadius,
+               float borderWidth)
 {
     MenuButton *pRet = new(std::nothrow) MenuButton(title,
                                                     fontSize,
                                                     width,
-                                                    height);
+                                                    height,
+                                                    borderRadius,
+                                                    borderWidth);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -115,9 +119,6 @@ bool MenuButton::init() {
     this->defaultColor = cocos2d::Color4B(255,255,255,64);
     this->selectedColor = cocos2d::Color4B(255,255,255,153);
 
-    float borderRadius = this->fontSize * 0.3,
-          borderWidth = this->fontSize * 0.06;
-
     this->border = RectRadius::create(this->width, this->height, borderRadius, borderWidth, false);
     this->border->setPositionX(this->width / 2);
     this->border->setPositionY(this->height / 2);
@@ -141,12 +142,16 @@ bool MenuButton::init() {
 MenuButton::MenuButton(std::string title,
                float fontSize,
                float width,
-               float height) {
+               float height,
+               float borderRadius,
+               float borderWidth) {
     this->title = title;
   	this->fontSize = fontSize;
     this->_width = width;
     this->_height = height;
     this->_enabled = true;
+    this->borderRadius = borderRadius;
+    this->borderWidth = borderWidth;
 }
 
 }
