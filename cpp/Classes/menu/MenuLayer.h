@@ -5,6 +5,7 @@
 #include "ui/CocosGUI.h"
 
 #include "../models/Game.h"
+#include "../GameStateController.h"
 
 // For drawing the QUAT logo
 #include "../solver/input/BorderedWordNode.h"
@@ -30,16 +31,26 @@ private:
 	// built inside these bounds.
 	cocos2d::Rect * gameBounds;
 
+	// Controls the entire game so we can move to other screens
+	GameStateController * GSC;
+
+  // Pointer to the game model so we can take input and manipulate it
+  Game * game;
+
+  // Enables scrolling when menu content is too long for one
+  // screen to show
   ui::ScrollView * scrollView;
 
 	// Yeah, this element is a "live" element -- not a sprite
 	BorderedWordNode * quatLogo;
 
-  // Displayes information about the current user's rank
+  // Displays information about the user's progress in endless
+  // mode.
   EndlessLayer * endlessLayer;
+  // The same, but for timed mode. Shows the high score.
   TimedLayer * timedLayer;
 
-  // Callbacks for nav buttons
+  // Repositions everything and activates scrolling if necesary
   void resetLayout();
 
 public:
@@ -56,14 +67,20 @@ public:
 	 */
 	virtual bool init();
 
-	MenuLayer(cocos2d::Rect * gameBounds, float fontSize);
+	MenuLayer(cocos2d::Rect * gameBounds, 
+            float fontSize,
+            Game * game,
+            GameStateController * GSC);
 
   void updateFromModel(Game * game);
 
 	/**
 	 * Creates a MenuLayer object.
 	 */
-	static MenuLayer * create(cocos2d::Rect * gameBounds, float fontSize);
+	static MenuLayer * create(cocos2d::Rect * gameBounds,
+                            float fontSize,
+                            Game * game,
+                            GameStateController * GSC);
 };
 
 }

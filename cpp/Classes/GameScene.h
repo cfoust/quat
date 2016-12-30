@@ -10,6 +10,7 @@
 
 #include "BackgroundLayer.h"
 #include "menu/MenuLayer.h"
+#include "timed/TimedTransitionLayer.h"
 #include "solver/PuzzleLayer.h"
 #include "ads/AdLayer.h"
 
@@ -37,9 +38,14 @@ private:
     // Layer for actually playing the game
     PuzzleLayer * puzzleLayer;
 
-    // Layer for actually playing the game
+    // Layer for the main menu
     MenuLayer * menuLayer;
 
+    // Layer that animates the transition into playing
+    // the timed mode
+    TimedTransitionLayer * timedTransitionLayer;
+
+    // Layer for displaying ads
     AdLayer * adLayer;
 
     // Stores the boundaries of the game

@@ -29,7 +29,7 @@ void GameScene::enteredForeground() {
 
 void GameScene::showLayer(GAME_STATE state) {
   // Show or hide the background shade so other interfaces are clear
-  this->background->shadeVisible(state != S_PuzzleSolver);
+  this->background->shadeVisible(state == S_MainMenu);
 
   // The main menu layer
   this->menuLayer->setVisible(state == S_MainMenu);
@@ -40,27 +40,37 @@ void GameScene::showLayer(GAME_STATE state) {
   // The layer that controls the actual game
   this->puzzleLayer->setVisible(state == S_PuzzleSolver);
 
-  this->menuButton->setVisible(state == S_PuzzleSolver);
+  this->menuButton->setVisible((state == S_PuzzleSolver) ||
+                               (state == S_TimedTransition));
+
+  this->timedTransitionLayer->setVisible(state == S_TimedTransition);
+
   this->closeButton->setVisible((state == S_Ad) ||
                                 (state == S_GameDefinitions) ||
                                 (state == S_MainMenu));
-
 }
 
 void GameScene::toState(GAME_STATE state) {
-  this->showLayer(state);
-
+  // Start the timer for the ad screen since we're
+  // moving to it
   if (state == S_Ad) {
     this->adLayer->startTimer();
+  // Update the menu before we change to it
   } else if (state == S_MainMenu) {
     this->menuLayer->updateFromModel(this->game);
+  // Same for the puzzle layer
+  } else if (state == S_PuzzleSolver) {
+    this->puzzleLayer->updateFromModel();
   }
+
+  // Sets the layer to be visible
+  this->showLayer(state);
 }
 
 void GameScene::generateBounds() {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
+  Size visibleSize = Director::getInstance()->getVisibleSize();
 
-    gameBounds = new cocos2d::Rect(0, 0, visibleSize.width, visibleSize.height);
+  gameBounds = new cocos2d::Rect(0, 0, visibleSize.width, visibleSize.height);
 }
 
 void GameScene::menuCallback() {
@@ -126,9 +136,17 @@ bool GameScene::init()
     addChild(this->puzzleLayer, 1);
 
     // Create the menu layer
-    this->menuLayer = MenuLayer::create(gameBounds, fontSize);
+    this->menuLayer = MenuLayer::create(gameBounds, 
+                                        fontSize, 
+                                        this->game,
+                                        this->GSC);
     this->menuLayer->setVisible(false);
     addChild(this->menuLayer, 1);
+
+    // Create the timed transition layer
+    this->timedTransitionLayer = TimedTransitionLayer::create(gameBounds);
+    this->timedTransitionLayer->setVisible(false);
+    this->addChild(this->timedTransitionLayer, 1);
 
     // Initialize the ad layer
     this->adLayer = AdLayer::create(gameBounds, fontSize, this->closeButton);

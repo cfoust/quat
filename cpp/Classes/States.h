@@ -12,9 +12,11 @@ namespace QUAT {
  */
 
 typedef enum {
-  // The puzzle solver is the main screen of the game where the user
-  // manipulates puzzles to solve them and gain coins.
+  // Puzzle solver. Game starts here.
   S_PuzzleSolver,
+
+  // Counts down before transitioning to timed mode.
+  S_TimedTransition,
 
   // The main menu displays some basic information about the user's current
   // progress and lets the user navigate the game's other screens.
@@ -31,6 +33,7 @@ typedef enum {
   // The ad screen shows an ad to the user that they can close after a few
   // seconds.
   S_Ad
+
 } GAME_STATE;
 
 }

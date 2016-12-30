@@ -170,6 +170,7 @@ set(GAME_SRC
   Classes/solver/info/BlitzIndicatorLayer.cpp
   Classes/solver/info/StepsIndicatorLayer.cpp
   Classes/solver/info/StepsLayer.cpp
+  Classes/timed/TimedTransitionLayer.cpp
   Classes/solver/info/IndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/solver/info/banner/ExplodingCircle.cpp
@@ -224,6 +225,7 @@ set(GAME_HEADERS
   Classes/solver/info/BlitzIndicatorLayer.h
   Classes/solver/info/StepsIndicatorLayer.h
   Classes/solver/info/StepsLayer.h
+  Classes/timed/TimedTransitionLayer.h
   Classes/solver/info/IndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
   Classes/solver/info/banner/ExplodingCircle.h

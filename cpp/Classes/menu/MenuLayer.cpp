@@ -4,9 +4,12 @@
 namespace QUAT {
 
 
-MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds, float fontSize)
+MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds,
+                              float fontSize,
+                              Game * game,
+                              GameStateController * GSC)
 {
-    MenuLayer *pRet = new(std::nothrow) MenuLayer(gameBounds, fontSize);
+    MenuLayer *pRet = new(std::nothrow) MenuLayer(gameBounds, fontSize, game, GSC);
     if (pRet && pRet->init())
     {
         pRet->autorelease();
@@ -27,10 +30,18 @@ void MenuLayer::updateFromModel(Game * game) {
 }
 
 void MenuLayer::continueEndless() {
+  auto user = this->game->getUser();
+  
+  // Switch to endless mode
+  user->setPlayingEndless(true);
+
+  // Move to the puzzle solver state
+  this->GSC->setState(S_PuzzleSolver);
 }
 
 void MenuLayer::playTimed() {
 }
+
 void MenuLayer::continueTimed() {
 }
 
@@ -134,10 +145,15 @@ bool MenuLayer::init() {
   return true;
 }
 
-MenuLayer::MenuLayer(cocos2d::Rect * gameBounds, float fontSize) {
+MenuLayer::MenuLayer(cocos2d::Rect * gameBounds, 
+                     float fontSize,
+                     Game * game,
+                     GameStateController * GSC) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
+  this->GSC = GSC;
+  this->game = game;
 }
 
 
