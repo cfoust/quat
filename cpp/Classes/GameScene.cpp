@@ -61,6 +61,8 @@ void GameScene::toState(GAME_STATE state) {
   // Same for the puzzle layer
   } else if (state == S_PuzzleSolver) {
     this->puzzleLayer->updateFromModel();
+  } else if (state == S_TimedTransition) {
+    this->timedTransitionLayer->reset();
   }
 
   // Sets the layer to be visible
@@ -144,7 +146,7 @@ bool GameScene::init()
     addChild(this->menuLayer, 1);
 
     // Create the timed transition layer
-    this->timedTransitionLayer = TimedTransitionLayer::create(gameBounds);
+    this->timedTransitionLayer = TimedTransitionLayer::create(gameBounds, game, GSC);
     this->timedTransitionLayer->setVisible(false);
     this->addChild(this->timedTransitionLayer, 1);
 

@@ -4,9 +4,13 @@
 #include "cocos2d.h"
 #include "../Constants.h"
 #include "../nodes/CircleNode.h"
+#include "../models/Game.h"
+#include "../GameStateController.h"
 
 USING_NS_CC;
 namespace QUAT {
+
+#define TRANS_SECS 3
 
 class TimedTransitionLayer : public cocos2d::Layer
 {
@@ -16,6 +20,19 @@ private:
 
   // Animates a countdown to get the user ready
   CircleNode * circle;
+
+  // The text that sits in the middle of the circle
+	cocos2d::Label * topText,
+                 * bottomText;
+  
+  // The amount of time remaining on the countdown.
+  float timeLeft;
+
+	// Controls the entire game so we can move to other screens
+	GameStateController * GSC;
+
+  // Pointer to the game model so we can take input and manipulate it
+  Game * game;
 public:
 	/**
 	 * Initialize the background layer.
@@ -23,9 +40,17 @@ public:
 	 */
 	virtual bool init();
 
-	TimedTransitionLayer(cocos2d::Rect * gameBounds);
+  void reset();
 
-	static TimedTransitionLayer * create(cocos2d::Rect * gameBounds);
+	TimedTransitionLayer(cocos2d::Rect * gameBounds,
+                       Game * game,
+                       GameStateController * GSC);
+
+	static TimedTransitionLayer * create(cocos2d::Rect * gameBounds,
+                                       Game * game,
+                                       GameStateController * GSC);
+  
+  void update(float delta) override;
 };
 
 }

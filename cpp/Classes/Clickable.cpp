@@ -10,6 +10,7 @@ bool Clickable::onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event) {
         return false;
     }
 
+    // Check to ensure this node is visible
     if (!this->isActuallyVisible()) {
       return false;
     }
