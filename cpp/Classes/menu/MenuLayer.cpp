@@ -23,8 +23,8 @@ MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds, float fontSize)
 void MenuLayer::updateFromModel(Game * game) {
   auto user = game->getUser();
   this->endlessLayer->updateFromModel(game);
+  this->timedLayer->updateFromModel(game);
 }
-
 
 void MenuLayer::continueEndless() {
 }
@@ -51,7 +51,7 @@ void MenuLayer::resetLayout() {
   this->timedLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
-  totalHeight += padding * 4; // Some extra padding before the QUAT logo
+  totalHeight += padding; // Some extra padding before the QUAT logo
 
   // Add the layer for endless mode
   size = this->endlessLayer->getContentSize();

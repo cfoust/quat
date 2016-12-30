@@ -22,11 +22,15 @@ private:
         sectionHeight;
 
   // Timed Mode header
-	cocos2d::Label * headerLabel;
+	cocos2d::Label * headerLabel,
+                 * highScoreLabel;
 
 
   // Shows progress information
   TimedCard * card;
+
+  // Format milliseconds into a nice string
+  std::string formatTime(unsigned long ms);
 
 public:
   MenuButton * playButton,

@@ -39,9 +39,13 @@ public:
   // Whether or not the user reached rank 8.
   bool isDone();
 
+  // Whether the user can continue a previous state or not
+  bool canContinue();
+
   // Gets the amount of time that has passed
   // as milliseconds.
   unsigned long getTime();
+  unsigned long getHighScore();
 
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.

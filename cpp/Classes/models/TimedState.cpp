@@ -9,6 +9,7 @@ using namespace cocos2d;
 
 TimedState::TimedState(Dictionary * d) : GameState(d) {
   this->timePlayed = 0;
+  this->highScore = 0;
   this->timesComplete = 0;
   this->running = false;
   this->done = false;
@@ -31,8 +32,16 @@ bool TimedState::isDone() {
   return this->done;
 }
 
+bool TimedState::canContinue() {
+  return (this->subRank > 0) && (this->timePlayed > 0);
+}
+
 unsigned long TimedState::getTime() {
   return this->timePlayed;
+}
+
+unsigned long TimedState::getHighScore() {
+  return this->highScore;
 }
 
 bool TimedState::registerPuzzle(Puzzle * puzzle) {
