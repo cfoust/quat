@@ -74,7 +74,12 @@ private:
 public:
 
     // Transitions the user interface to a new state.
+    // Callback for hooks just before moving to new state.
     void toState(GAME_STATE state);
+
+    // Transitions the user interface from an old state.
+    // Callback for hooks just before moving from old state.
+    void fromState(GAME_STATE state);
     
     // Functions that get called when the app enters the background
     // and foreground.

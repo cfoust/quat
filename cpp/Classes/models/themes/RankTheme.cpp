@@ -8,7 +8,15 @@ RankTheme::RankTheme() : Theme::Theme() {
 }
 
 void RankTheme::update(Game * model) {
-  int rank = model->getUser()->getGameState()->getDisplayRank();
+  auto user = model->getUser();
+  auto state = user->getEndlessState();
+
+  // Check to see which theme we should look for
+  if (!user->isPlayingEndless()) {
+    state = user->getTimedState();
+  }
+
+  int rank = state->getDisplayRank();
 
   // Rank has not changed since the last time this was called
   this->colorSchemeChanged = this->currentRank != rank;
@@ -64,10 +72,7 @@ void RankTheme::update(Game * model) {
 			break;
 	}
 
-  // Initialize to the first number we get on call
-  if (this->currentRank == -1) {
-    this->currentRank = rank;
-  }
+  this->currentRank = rank;
 }
 
 };

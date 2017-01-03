@@ -93,6 +93,9 @@ void TimedTransitionLayer::update(float delta) {
     // Means the addition of the current delta pushed
     // us below zero; this will only run once in a reset
     if (this->timeLeft < 0) {
+      // Get the user state
+      auto state = this->game->getUser()->getTimedState();
+      state->setRunning(true);
       this->GSC->setState(S_PuzzleSolver);
     }
   }

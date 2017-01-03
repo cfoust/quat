@@ -104,17 +104,16 @@ void PuzzleLayer::updateFromModel() {
   this->progressIndicator->updateFromModel(this->game);
 
   // Update the theme with data from the game state
-  this->game->getTheme()->update(this->game);
+  this->game->updateTheme();
 
   // Check to see if we have to update the background's colors
   if (theme->getColorSchemeChanged()) {
-      this->background->animateScheme(theme->getColorScheme());
-      this->blitzIndicator->setScheme(theme->getColorScheme());
+    this->background->animateScheme(theme->getColorScheme());
   }
 
   // Transition to the ad screen if we need to
   if (user->shouldShowAd()) {
-      this->GSC->setState(S_Ad);
+    this->GSC->setState(S_Ad);
   }
 
   // Save the game state to a file

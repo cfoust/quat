@@ -50,18 +50,36 @@ void GameScene::showLayer(GAME_STATE state) {
                                 (state == S_MainMenu));
 }
 
+void GameScene::fromState(GAME_STATE state) {
+}
+
 void GameScene::toState(GAME_STATE state) {
   // Start the timer for the ad screen since we're
   // moving to it
   if (state == S_Ad) {
     this->adLayer->startTimer();
+
   // Update the menu before we change to it
   } else if (state == S_MainMenu) {
+    // Set the game state
+    this->game->getUser()->setPlayingEndless(true);
+    
+    // Update the puzzle layer (this also changes the theme)
+    this->puzzleLayer->updateFromModel();
+
     this->menuLayer->updateFromModel(this->game);
   // Same for the puzzle layer
   } else if (state == S_PuzzleSolver) {
     this->puzzleLayer->updateFromModel();
+  // Reset the time on the countdown before we transition
   } else if (state == S_TimedTransition) {
+    // Set the game state
+    this->game->getUser()->setPlayingEndless(false);
+    
+    // Update the puzzle layer (this also changes the theme)
+    this->puzzleLayer->updateFromModel();
+
+    // Reset the transition layer
     this->timedTransitionLayer->reset();
   }
 
