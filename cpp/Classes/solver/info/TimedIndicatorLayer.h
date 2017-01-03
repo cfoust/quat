@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "../../Constants.h"
+#include "../../models/Game.h"
 
 #include <string>
 
@@ -21,6 +22,8 @@ private:
 	float fontSize;
 
 public:
+
+  void updateFromModel(Game * game);
 
 	/**
 	 * Initialize the solution layer.

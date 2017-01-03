@@ -3,6 +3,13 @@
 namespace QUAT {
 
 
+void TimedIndicatorLayer::updateFromModel(Game * game) {
+  auto state = game->getUser()->getTimedState();
+
+  // Update the time string
+  this->timer->setString(std::to_string(state->getTime()));
+}
+
 bool TimedIndicatorLayer::init() {
 	// Init the super class
   if ( !Layer::init() )

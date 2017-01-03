@@ -487,7 +487,7 @@ void PuzzleLayer::update(float delta) {
 
     timedState->update(delta);
 
-    // todo: update the time indicator
+    this->timedIndicator->updateFromModel(this->game);
   }
 }
 
