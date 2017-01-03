@@ -49,7 +49,7 @@ bool TimedState::registerPuzzle(Puzzle * puzzle) {
   bool result = GameState::registerPuzzle(puzzle);
   
   // We're done if the user hit rank 8
-  if (this->getDisplayRank() == 8) {
+  if (this->getDisplayRank() == TIMED_WIN_RANK) {
     this->done = true;
   }
 

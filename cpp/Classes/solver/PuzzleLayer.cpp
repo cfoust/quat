@@ -451,7 +451,6 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
                          float fontSize, 
                          Game * game,
                          GameStateController * GSC) {
-	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
   this->background = background;
@@ -460,16 +459,32 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
 }
 
 void PuzzleLayer::update(float delta) {
-  auto blitz = this->game->getBlitzer();
-  auto puzzle = this->game->getPuzzle();
+  // Grab the current game state
+  auto user = this->game->getUser();
+  auto state = this->user->getGameState();
+
+  // For tracking the current puzzle and the combo counter
+  auto blitz = state->getBlitzer();
+  auto puzzle = state->getPuzzle();
 
   // Set the skip button to be visible if the user is struggling
   this->buttonsLayer->skipButtonLayer->setVisible(puzzle->isStruggling());
 
+  // Update the time on the combo counter if it's still going, otherwise
+  // hide it again.
   if (blitz->isBlitzing()) {
     this->blitzIndicator->updateFromModel(this->game);
   } else {
     this->blitzIndicator->setVisible(false);
+  }
+
+  // Update timed mode if this layer is visible and we're playing timed
+  if (this->isVisible() && !user->isPlayingEndless()) {
+    auto timedState = user->getTimedState();
+
+    timedState->update(delta);
+
+    // todo: update the time indicator
   }
 }
 

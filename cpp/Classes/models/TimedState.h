@@ -11,6 +11,8 @@ namespace QUAT {
 
 using namespace std;
 
+#define TIMED_WIN_RANK 8
+
 class TimedState : public GameState
 {
 protected:
@@ -36,7 +38,7 @@ public:
   // Whether or not this game state is recording time
   bool isRunning();
 
-  // Whether or not the user reached rank 8.
+  // Whether or not the user reached rank TIMED_WIN_RANK
   bool isDone();
 
   // Whether the user can continue a previous state or not
