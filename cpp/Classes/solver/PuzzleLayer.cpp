@@ -269,6 +269,9 @@ bool PuzzleLayer::init() {
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     this->addChild(this->indicatorLayer, 3);
 
+    this->timedIndicator = TimedIndicatorLayer::create(this->gameBounds, fontSize);
+    this->addChild(this->timedIndicator, 3);
+
     float progressY = height - ((height * Q_BANNER_HEIGHT) / 2);
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
@@ -461,7 +464,7 @@ PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
 void PuzzleLayer::update(float delta) {
   // Grab the current game state
   auto user = this->game->getUser();
-  auto state = this->user->getGameState();
+  auto state = user->getGameState();
 
   // For tracking the current puzzle and the combo counter
   auto blitz = state->getBlitzer();

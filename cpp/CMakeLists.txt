@@ -169,6 +169,7 @@ set(GAME_SRC
   Classes/solver/info/ProgressIndicatorLayer.cpp
   Classes/solver/info/BlitzIndicatorLayer.cpp
   Classes/solver/info/StepsIndicatorLayer.cpp
+  Classes/solver/info/TimedIndicatorLayer.cpp
   Classes/solver/info/StepsLayer.cpp
   Classes/timed/TimedTransitionLayer.cpp
   Classes/solver/info/IndicatorLayer.cpp
@@ -224,6 +225,7 @@ set(GAME_HEADERS
   Classes/solver/info/ProgressIndicatorLayer.h
   Classes/solver/info/BlitzIndicatorLayer.h
   Classes/solver/info/StepsIndicatorLayer.h
+  Classes/solver/info/TimedIndicatorLayer.h
   Classes/solver/info/StepsLayer.h
   Classes/timed/TimedTransitionLayer.h
   Classes/solver/info/IndicatorLayer.h

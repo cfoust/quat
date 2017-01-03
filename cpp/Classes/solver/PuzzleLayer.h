@@ -26,9 +26,10 @@
 // info/ is for anything that just displays information to the user but is
 // mostly non-interactive.
 #include "info/IndicatorLayer.h"
-#include "info/DefinitionButtonLayer.h"
+#include "info/TimedIndicatorLayer.h"
 #include "info/ProgressIndicatorLayer.h"
 #include "info/BlitzIndicatorLayer.h"
+#include "info/DefinitionButtonLayer.h"
 #include "info/StepsLayer.h"
 
 namespace QUAT {
@@ -108,11 +109,11 @@ private:
 	bool trackingTouch;
 
 	#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-    	// On desktop platforms, allows the user to manipulate the game using
-    	// context-sensitive key bindings. Useful for rapidly solving puzzles
-    	// and to test things.
-    	SolverKeyboardManager * solverKeyboardManager;
-    #endif
+    // On desktop platforms, allows the user to manipulate the game using
+    // context-sensitive key bindings. Useful for rapidly solving puzzles
+    // and to test things.
+    SolverKeyboardManager * solverKeyboardManager;
+  #endif
 
 	/*----------  Information Display  ----------*/
 
@@ -127,6 +128,8 @@ private:
 	ProgressIndicatorLayer * progressIndicator;
 
 	BlitzIndicatorLayer * blitzIndicator;
+
+	TimedIndicatorLayer * timedIndicator;
 
   ButtonsLayer * buttonsLayer;
 
