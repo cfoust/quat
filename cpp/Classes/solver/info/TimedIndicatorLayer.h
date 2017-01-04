@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "../../Constants.h"
 #include "../../models/Game.h"
+#include "../../models/TimeUtils.h"
 
 #include <string>
 

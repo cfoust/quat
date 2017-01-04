@@ -116,6 +116,9 @@ void PuzzleLayer::updateFromModel() {
     this->GSC->setState(S_Ad);
   }
 
+  // Show the timer if we're on timed
+  this->timedIndicator->setVisible(!user->isPlayingEndless());
+
   // Save the game state to a file
   this->game->saveToLocal();
 }
@@ -269,14 +272,16 @@ bool PuzzleLayer::init() {
     this->indicatorLayer->setPositionY(currentWord->getPositionY() + height * Q_TEXT_INDICATOR_Y);
     this->addChild(this->indicatorLayer, 3);
 
-    this->timedIndicator = TimedIndicatorLayer::create(this->gameBounds, fontSize);
-    this->addChild(this->timedIndicator, 3);
-
     float progressY = height - ((height * Q_BANNER_HEIGHT) / 2);
     this->progressIndicator = ProgressIndicatorLayer::create(fontSize, 200);
     this->progressIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->progressIndicator->setPositionY(progressY);
     this->addChild(this->progressIndicator);
+
+    this->timedIndicator = TimedIndicatorLayer::create(this->gameBounds, fontSize);
+    this->timedIndicator->setPositionX(gameBounds->origin.x + (width / 2));
+    this->timedIndicator->setPositionY(progressY - ((height * Q_BANNER_HEIGHT) / 2));
+    this->addChild(this->timedIndicator, 3);
 
     this->blitzIndicator = BlitzIndicatorLayer::create(fontSize);
     this->blitzIndicator->setPositionX(gameBounds->origin.x + (width / 2));

@@ -7,7 +7,7 @@ void TimedIndicatorLayer::updateFromModel(Game * game) {
   auto state = game->getUser()->getTimedState();
 
   // Update the time string
-  this->timer->setString(std::to_string(state->getTime()));
+  this->timer->setString(TimeUtils::formatMs(state->getTime()));
 }
 
 bool TimedIndicatorLayer::init() {
@@ -21,7 +21,6 @@ bool TimedIndicatorLayer::init() {
 
   float timerSize = this->fontSize * Q_TEXT_INDICATOR_FONT;
   this->timer = cocos2d::Label::createWithTTF("00:00.000", Q_FONT_PATH, timerSize);
-  this->timer->setPosition(gameBounds->size.width / 2, gameBounds->size.height / 2);
   this->addChild(this->timer);
 
 	return true;
