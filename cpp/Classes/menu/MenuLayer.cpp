@@ -46,7 +46,7 @@ void MenuLayer::continueTimed() {
   user->setPlayingEndless(false);
 
   // Move to the puzzle solver state
-  this->GSC->setState(S_TimedTransition);
+  this->GSC->setState(S_PuzzleSolver);
 }
 
 void MenuLayer::restartTimed() {

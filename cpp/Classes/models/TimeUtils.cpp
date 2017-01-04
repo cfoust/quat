@@ -21,19 +21,18 @@ unsigned long TimeUtils::epochMs() {
   unsigned long A = ((ms - (ms % B)) / B); \
   if (A > 0) {                             \
     if (A < 10) {                          \
-      out << "0";                       \
+      out << "0";                          \
     }                                      \
-    out << A;                           \
+    out << A;                              \
+  } else {                                 \
+    out << "00";                           \
   }                                        \
   ms -= A * B;                             \
-  if (A > 0) {                             \
-    out << C;                           \
-  }
+  out << C;                                
 
 string TimeUtils::formatMs(unsigned long ms) {
   std::ostringstream out;
 
-  tfmt(hours, MSHOUR, ":");
   tfmt(mins, MSMIN, ":");
   tfmt(sec, MSSEC, ".");
 
