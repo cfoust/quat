@@ -7,6 +7,7 @@
 #include "TimedCard.h"
 #include "MenuButton.h"
 #include "../models/Game.h"
+#include "../models/TimeUtils.h"
 
 namespace QUAT {
 
@@ -28,9 +29,6 @@ private:
 
   // Shows progress information
   TimedCard * card;
-
-  // Format milliseconds into a nice string
-  std::string formatTime(unsigned long ms);
 
 public:
   MenuButton * playButton,

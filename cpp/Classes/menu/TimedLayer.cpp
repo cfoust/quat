@@ -22,51 +22,6 @@ TimedLayer * TimedLayer::create(float fontSize,
     }
 }
 
-#define tfmt(A, B)                         \
-  unsigned long A = ((ms - (ms % B)) / B); \
-  if (A > 0) {                             \
-    if (A < 10) {                          \
-      stringStream << "0";                 \
-    }                                      \
-    stringStream << A;                     \
-  }                                        \
-  ms -= A * B;                             
-
-
-#define MSHOUR 3600000
-#define MSMIN 60000
-#define MSSEC 1000 
-std::string TimedLayer::formatTime(unsigned long ms) {
-  std::ostringstream stringStream;
-
-  // Output HMS
-  tfmt(hours, MSHOUR);
-  if (hours > 0) {
-    stringStream << ":";
-  }
-
-  tfmt(mins, MSMIN);
-  if (mins > 0) {
-    stringStream << ":";
-  }
-
-  tfmt(sec, MSSEC);
-  if (mins > 0) {
-    stringStream << ".";
-  }
-  
-  // Add zeroes if necessary
-  if (ms < 100) {
-    stringStream << "0";
-  }
-  if (ms < 10) {
-    stringStream << "0";
-  }
-  stringStream << ms;
-
-  return stringStream.str();
-}
-
 void TimedLayer::updateFromModel(Game * game) {
   auto state = game->getUser()->getTimedState();
 
@@ -78,7 +33,7 @@ void TimedLayer::updateFromModel(Game * game) {
 
   unsigned long score = state->getHighScore();
   if (score > 0) {
-    this->highScoreLabel->setString(this->formatTime(score));
+    this->highScoreLabel->setString(TimeUtils::formatMs(score));
   } else {
     this->highScoreLabel->setString("?:??:??.???");
   }

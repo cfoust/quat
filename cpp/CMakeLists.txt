@@ -143,6 +143,7 @@ set(GAME_SRC
   Classes/menu/TimedCard.cpp
   Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
+  Classes/models/TimeUtils.cpp
   Classes/models/GameState.cpp
   Classes/models/TimedState.cpp
   Classes/models/Puzzle.cpp
@@ -199,6 +200,7 @@ set(GAME_HEADERS
   Classes/menu/TimedCard.h
   Classes/models/Dictionary.h
   Classes/models/Game.h
+  Classes/models/TimeUtils.h
   Classes/models/GameState.h
   Classes/models/TimedState.h
   Classes/models/Puzzle.h

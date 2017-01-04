@@ -9,6 +9,9 @@ void GameStateController::setState(GAME_STATE newState) {
 	// Set the last state
 	this->_lastState = this->_state;
 
+  // Run the callback for the from state
+  this->gameScene->fromState(this->_state);
+
 	// Change the current state
 	this->_state = newState;
 

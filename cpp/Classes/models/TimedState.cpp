@@ -1,6 +1,7 @@
 #include "TimedState.h"
 
 #include <cmath>
+#include <chrono>
 #include <algorithm>
 
 namespace QUAT {
@@ -10,6 +11,7 @@ using namespace cocos2d;
 TimedState::TimedState(Dictionary * d) : GameState(d) {
   this->timePlayed = 0;
   this->highScore = 0;
+  this->lastTime = 0;
   this->timesComplete = 0;
   this->running = false;
   this->done = false;
@@ -17,6 +19,10 @@ TimedState::TimedState(Dictionary * d) : GameState(d) {
 
 void TimedState::setRunning(bool running) {
   this->running = running;
+  
+  if (!running) {
+    this->lastTime = 0;
+  }
 }
 
 void TimedState::reset() {
@@ -75,7 +81,17 @@ void TimedState::update(float secs) {
 
   // Increment the timer if we're running
   if (running) {
-    this->timePlayed += floor(secs * 1000);
+    // If lastTime is zero, just set it to epochMs
+    if (!this->lastTime) {
+      this->lastTime = TimeUtils::epochMs();
+      return;
+    }
+
+    // Calculate the difference since we last called, then reset
+    // lastTime
+    unsigned long nowEpoch = TimeUtils::epochMs();
+    this->timePlayed += nowEpoch - this->lastTime;
+    this->lastTime = nowEpoch;
   }
 }
 

@@ -6,6 +6,7 @@
 #include <cmath>
 
 #include "GameState.h"
+#include "TimeUtils.h"
 
 namespace QUAT {
 
@@ -21,7 +22,8 @@ protected:
   int timesComplete;
   
   unsigned long timePlayed, // Stores the time played
-                highScore;  // The user's high score
+                highScore,  // The user's high score
+                lastTime;   // The last time update() was called
 
   bool running, // Whether the timer is counting upwards
        done;    // Whether we've reached level 8

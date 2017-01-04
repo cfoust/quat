@@ -51,6 +51,15 @@ void GameScene::showLayer(GAME_STATE state) {
 }
 
 void GameScene::fromState(GAME_STATE state) {
+  // Freeze the timer if the user is playing timed
+  // and we move away from the solver
+  if (state == S_PuzzleSolver) {
+    auto user = this->game->getUser();
+    
+    if (!user->isPlayingEndless()) {
+      user->getTimedState()->setRunning(false);
+    }
+  }
 }
 
 void GameScene::toState(GAME_STATE state) {
