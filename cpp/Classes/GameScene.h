@@ -11,6 +11,7 @@
 #include "BackgroundLayer.h"
 #include "menu/MenuLayer.h"
 #include "timed/TimedTransitionLayer.h"
+#include "timed/HighScoreLayer.h"
 #include "solver/PuzzleLayer.h"
 #include "ads/AdLayer.h"
 
@@ -44,6 +45,9 @@ private:
     // Layer that animates the transition into playing
     // the timed mode
     TimedTransitionLayer * timedTransitionLayer;
+
+    // Layer displaying the finish time for timed mode
+    HighScoreLayer * highScoreLayer;
 
     // Layer for displaying ads
     AdLayer * adLayer;

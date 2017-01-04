@@ -41,24 +41,28 @@ void GameScene::showLayer(GAME_STATE state) {
   this->puzzleLayer->setVisible(state == S_PuzzleSolver);
 
   this->menuButton->setVisible((state == S_PuzzleSolver) ||
-                               (state == S_TimedTransition));
+                               (state == S_TimedTransition) ||
+                               (state == S_TimedHighScore));
+
 
   this->timedTransitionLayer->setVisible(state == S_TimedTransition);
 
-  this->closeButton->setVisible((state == S_Ad) ||
-                                (state == S_GameDefinitions) ||
-                                (state == S_MainMenu));
+  this->highScoreLayer->setVisible(state == S_TimedHighScore);
+
+  this->closeButton->setVisible(state == S_Ad);
 }
 
 void GameScene::fromState(GAME_STATE state) {
+  auto user = this->game->getUser();
+
   // Freeze the timer if the user is playing timed
   // and we move away from the solver
   if (state == S_PuzzleSolver) {
-    auto user = this->game->getUser();
-    
     if (!user->isPlayingEndless()) {
       user->getTimedState()->setRunning(false);
     }
+  } else if (state == S_TimedHighScore) {
+    user->getTimedState()->reset();
   }
 }
 
@@ -97,6 +101,8 @@ void GameScene::toState(GAME_STATE state) {
 
     // Reset the transition layer
     this->timedTransitionLayer->reset();
+  } else if (state == S_TimedHighScore) {
+    this->highScoreLayer->updateFromModel(this->game);
   }
 
   // Sets the layer to be visible
@@ -111,7 +117,8 @@ void GameScene::generateBounds() {
 
 void GameScene::menuCallback() {
     if ((this->GSC->state() == S_PuzzleSolver) ||
-        (this->GSC->state() == S_TimedTransition)) {
+        (this->GSC->state() == S_TimedTransition) ||
+        (this->GSC->state() == S_TimedHighScore)) {
         this->GSC->setState(S_MainMenu);
     } else if ((this->GSC->state() == S_MainMenu) ||
              (this->GSC->state() == S_GameDefinitions)) {
@@ -183,6 +190,10 @@ bool GameScene::init()
     this->timedTransitionLayer = TimedTransitionLayer::create(gameBounds, game, GSC);
     this->timedTransitionLayer->setVisible(false);
     this->addChild(this->timedTransitionLayer, 1);
+
+    this->highScoreLayer = HighScoreLayer::create(gameBounds, GSC);
+    this->highScoreLayer->setVisible(false);
+    this->addChild(this->highScoreLayer, 1);
 
     // Initialize the ad layer
     this->adLayer = AdLayer::create(gameBounds, fontSize, this->closeButton);

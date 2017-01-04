@@ -396,7 +396,13 @@ void PuzzleLayer::finishWord() {
     // Checks to see if the puzzle has been completed because of this new word
     if (puzzle->atGoal()) {
         // This returns true if the puzzle was finished with par steps
-        result = this->game->getUser()->registerPuzzle(puzzle);
+        result = user->registerPuzzle(puzzle);
+
+        // Check whether the user has completed a timed mode run
+        if (!user->isPlayingEndless() && user->getTimedState()->isDone()) {
+          this->GSC->setState(S_TimedHighScore);
+          return;
+        }
 
         this->game->getState()->newPuzzle();
 

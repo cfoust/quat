@@ -172,10 +172,11 @@ set(GAME_SRC
   Classes/solver/info/StepsIndicatorLayer.cpp
   Classes/solver/info/TimedIndicatorLayer.cpp
   Classes/solver/info/StepsLayer.cpp
-  Classes/timed/TimedTransitionLayer.cpp
   Classes/solver/info/IndicatorLayer.cpp
   Classes/solver/info/banner/BannerButtonLayer.cpp
   Classes/solver/info/banner/ExplodingCircle.cpp
+  Classes/timed/HighScoreLayer.cpp
+  Classes/timed/TimedTransitionLayer.cpp
   ${PLATFORM_SPECIFIC_SRC}
 )
 
@@ -229,10 +230,11 @@ set(GAME_HEADERS
   Classes/solver/info/StepsIndicatorLayer.h
   Classes/solver/info/TimedIndicatorLayer.h
   Classes/solver/info/StepsLayer.h
-  Classes/timed/TimedTransitionLayer.h
   Classes/solver/info/IndicatorLayer.h
   Classes/solver/info/banner/BannerButtonLayer.h
   Classes/solver/info/banner/ExplodingCircle.h
+  Classes/timed/HighScoreLayer.h
+  Classes/timed/TimedTransitionLayer.h
   ${PLATFORM_SPECIFIC_HEADERS}
 )
 

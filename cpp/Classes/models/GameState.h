@@ -94,7 +94,7 @@ public:
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.
 	 */
-	bool registerPuzzle(Puzzle * puzzle);
+	virtual bool registerPuzzle(Puzzle * puzzle);
 
   // Stores or retrieves data on this object. Used for save files.
   void serialize(QuatStream & qs);

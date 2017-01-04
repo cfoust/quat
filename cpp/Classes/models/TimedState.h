@@ -12,7 +12,7 @@ namespace QUAT {
 
 using namespace std;
 
-#define TIMED_WIN_RANK 8
+#define TIMED_WIN_RANK 2
 
 class TimedState : public GameState
 {
@@ -54,7 +54,7 @@ public:
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.
 	 */
-	bool registerPuzzle(Puzzle * puzzle);
+	bool registerPuzzle(Puzzle * puzzle) override;
 
   // Stores or retrieves data on this object. Used for save files.
   void serialize(QuatStream & qs);

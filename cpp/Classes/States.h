@@ -18,6 +18,9 @@ typedef enum {
   // Counts down before transitioning to timed mode.
   S_TimedTransition,
 
+  // Displays the score upon completion of a timed game.
+  S_TimedHighScore,
+
   // The main menu displays some basic information about the user's current
   // progress and lets the user navigate the game's other screens.
   S_MainMenu,
