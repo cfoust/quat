@@ -55,9 +55,6 @@ void MenuLayer::restartTimed() {
   // Reset the state of timed mode
   user->getTimedState()->reset();
 
-  // Switch to timed mode
-  user->setPlayingEndless(false);
-
   // Move to the puzzle solver state
   this->GSC->setState(S_TimedTransition);
 }
