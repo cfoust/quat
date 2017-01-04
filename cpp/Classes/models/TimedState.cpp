@@ -29,6 +29,7 @@ void TimedState::reset() {
   this->subRank = 0;
   this->timePlayed = 0;
   this->done = false;
+  this->blitzer->clear();
   this->newPuzzle();
 }
 
@@ -59,6 +60,8 @@ bool TimedState::registerPuzzle(Puzzle * puzzle) {
   if (this->getDisplayRank() == TIMED_WIN_RANK) {
     this->done = true;
   }
+
+  cocos2d::log("subRank %d", this->subRank);
 
   return result;
 }

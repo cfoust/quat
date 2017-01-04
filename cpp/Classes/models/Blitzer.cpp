@@ -37,9 +37,11 @@ int Blitzer::getMultiplier() {
 bool Blitzer::isBlitzing() {
   return this->blitzing;
 }
+
 float Blitzer::percentRemaining() {
   return this->remaining / BLITZER_PUZZLE_SECS;
 }
+
 void Blitzer::reset() {
   // Clean the array
   for (int i = 0; i < BLITZER_PUZZLE_MAX; i++) {
@@ -50,6 +52,14 @@ void Blitzer::reset() {
   this->occupied = 0;
   this->index = 0;
 }
+
+void Blitzer::clear() {
+  this->reset();
+  this->multiplier = 1;
+  this->blitzing = false;
+  this->comboCount = 0;
+}
+
 void Blitzer::clean() {
   int position,
       oldIndex = this->index;

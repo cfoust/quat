@@ -46,6 +46,10 @@ private:
   int offset(int current, int delta);
 
 public:
+
+  // Stops any currently running blitzes
+  void clear();
+
   Blitzer();
 
   // Marks that a puzzle was just completed
