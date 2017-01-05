@@ -80,24 +80,25 @@ bool TimedTransitionLayer::init() {
 
   float width          = gameBounds->size.width,
         height         = gameBounds->size.height,
-        circleSize     = height / 6,
-        circleFontSize = circleSize * 1.6;
+        circleSize     = height * 0.1,
+        circleFontSize = circleSize * 1.6,
+        circleY        = height * 0.6;
   
   // The circle that animates the time remaining in the combo
   this->circle = CircleNode::create(circleSize);
   this->circle->setColor(cocos2d::Color4B(255, 255, 255, 40));
-  this->circle->setPosition(width / 2, height / 2);
+  this->circle->setPosition(width / 2, circleY);
   this->addChild(this->circle, 2);
 
   this->topText = cocos2d::Label::createWithTTF("3", Q_FONT_PATH, circleFontSize);
   this->topText->setOpacity(40);
-  this->topText->setPosition(width / 2, height / 2);
+  this->topText->setPosition(width / 2, circleY);
   this->topText->setColor(cocos2d::Color3B::WHITE);
 
   this->bottomText = cocos2d::Label::createWithTTF("3", Q_FONT_PATH, circleFontSize);
   this->bottomText->setColor(cocos2d::Color3B::WHITE);
   this->bottomText->setOpacity(40);
-  this->bottomText->setPosition(width / 2, height / 2);
+  this->bottomText->setPosition(width / 2, circleY);
   this->addChild(bottomText, 1);
 
   // Sets up the clipping for the main multiplier text
@@ -105,16 +106,23 @@ bool TimedTransitionLayer::init() {
   clip->setStencil(this->circle->getNode());
   clip->setInverted(false);
   clip->addChild(this->topText);
-  clip->setPosition(width / 2, height / 2);
+  clip->setPosition(width / 2, circleY);
   this->addChild(clip, 3);
+
+  float raceTextSize = height * 0.03,
+        raceTextY = circleY - (circleSize * 2);
+  this->raceText = cocos2d::Label::createWithTTF("RACE TO RANK", Q_FONT_PATH, raceTextSize);
+  this->raceText->setPosition(width / 2, raceTextY);
+  this->addChild(raceText, 1);
 
   // Initialize all of the buttons
   float buttonWidth = width * 0.2,
         buttonHeight = buttonWidth  * 0.6,
         buttonFontSize = buttonHeight * 0.8,
         buttonBorderRadius = buttonWidth * 0.1,
-        buttonBorderWidth = buttonWidth * 0.05,
-        buttonY = height * 0.1;
+        buttonBorderWidth = buttonWidth * 0.02,
+        buttonY = raceTextY - buttonHeight - raceTextSize;
+
   this->rank2Button = initializeRankButton(buttonFontSize,
                                            buttonWidth,
                                            buttonHeight,
@@ -150,6 +158,7 @@ bool TimedTransitionLayer::init() {
   this->rank2Button->setText("2");
   this->rank4Button->setText("4");
   this->rank8Button->setText("8");
+
   
   // Get updates
   this->scheduleUpdate();

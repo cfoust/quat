@@ -31,6 +31,8 @@ void TimedLayer::updateFromModel(Game * game) {
   this->continueTopButton->setVisible(canContinue);
   this->restartButton->setVisible(canContinue);
 
+  // Update the scores
+
   // Score for rank 2
   if (state->getHighScore(2) > 0) {
     this->time2Label->setString(TimeUtils::formatMs(state->getHighScore(2)));

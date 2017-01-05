@@ -24,7 +24,8 @@ private:
 
   // The text that sits in the middle of the circle
 	cocos2d::Label * topText,
-                 * bottomText;
+                 * bottomText,
+                 * raceText;
   
   // The amount of time remaining on the countdown.
   float timeLeft;
@@ -41,6 +42,7 @@ private:
                                     float borderRadius,
                                     float borderWidth);
 
+  // Buttons that let the user control the rank they want to go to
   MenuButton * rank2Button,
              * rank4Button,
              * rank8Button;
