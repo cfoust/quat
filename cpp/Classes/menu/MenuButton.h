@@ -11,7 +11,7 @@ namespace QUAT {
 
 class MenuButton : public Clickable
 {
-private:
+protected:
 	float fontSize,
         _width,
         _height,

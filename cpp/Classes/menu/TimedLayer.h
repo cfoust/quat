@@ -5,7 +5,7 @@
 #include "../Constants.h"
 
 #include "TimedCard.h"
-#include "MenuButton.h"
+#include "IconMenuButton.h"
 #include "../models/Game.h"
 #include "../models/TimeUtils.h"
 
@@ -31,9 +31,9 @@ private:
   TimedCard * card;
 
 public:
-  MenuButton * playButton,
-             * continueTopButton,
-             * restartButton;
+  IconMenuButton * playButton,
+                 * continueTopButton,
+                 * restartButton;
 
 	virtual bool init();
 

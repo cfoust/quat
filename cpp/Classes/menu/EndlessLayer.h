@@ -5,7 +5,7 @@
 #include "../Constants.h"
 
 #include "RankCard.h"
-#include "MenuButton.h"
+#include "IconMenuButton.h"
 #include "../models/Game.h"
 
 namespace QUAT {
@@ -28,7 +28,7 @@ private:
   RankCard * card;
 
 public:
-  MenuButton * continueButton;
+  IconMenuButton * continueButton;
 
 	virtual bool init();
 

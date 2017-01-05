@@ -39,6 +39,7 @@ bool EndlessLayer::init() {
         padding        = sectionWidth * 0.05,
         buttonWidth    = sectionWidth * 0.2,
         buttonHeight   = sectionHeight,
+        buttonIconHeight = (sectionHeight - (sectionWidth * 0.05)) / 4,
         buttonFontSize = fontSize * 0.3,
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;
@@ -56,12 +57,12 @@ bool EndlessLayer::init() {
   headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
   this->addChild(headerLabel);
 
-  this->continueButton = MenuButton::create("Continue", 
-                                            buttonFontSize, 
-                                            buttonWidth, 
-                                            buttonHeight, 
-                                            borderRadius,
-                                            borderWidth);
+  this->continueButton = IconMenuButton::create("skip.png", 
+                                                buttonIconHeight,
+                                                buttonWidth,
+                                                buttonHeight, 
+                                                borderRadius,
+                                                borderWidth);
 
   this->continueButton->setPositionX(cardWidth + padding);
   this->addChild(this->continueButton);

@@ -135,6 +135,7 @@ set(GAME_SRC
   Classes/defs/Definition.cpp
   Classes/menu/DrawnBanner.cpp
   Classes/menu/EndlessLayer.cpp
+  Classes/menu/IconMenuButton.cpp
   Classes/menu/TimedLayer.cpp
   Classes/menu/MenuButton.cpp
   Classes/menu/MenuLayer.cpp
@@ -193,6 +194,7 @@ set(GAME_HEADERS
   Classes/defs/Definition.h
   Classes/menu/DrawnBanner.h
   Classes/menu/EndlessLayer.h
+  Classes/menu/IconMenuButton.h
   Classes/menu/TimedLayer.h
   Classes/menu/MenuButton.h
   Classes/menu/NavButtonLayer.h

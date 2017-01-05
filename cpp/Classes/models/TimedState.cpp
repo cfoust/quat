@@ -61,8 +61,6 @@ bool TimedState::registerPuzzle(Puzzle * puzzle) {
     this->done = true;
   }
 
-  cocos2d::log("subRank %d", this->subRank);
-
   return result;
 }
 

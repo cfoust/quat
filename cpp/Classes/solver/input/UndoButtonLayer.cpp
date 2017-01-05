@@ -13,28 +13,27 @@ void UndoButtonLayer::left() {
 
 bool UndoButtonLayer::init() {
 	// Init the super class
-    if ( !Clickable::init() )
-    {
-        return false;
-    }
+  if ( !Clickable::init() )
+  {
+      return false;
+  }
 
-    // Initialize the background
-    this->background = cocos2d::Sprite::create(Q_UNDO_SPRITEFILE);
+  // Initialize the background
+  this->background = cocos2d::Sprite::create(Q_UNDO_SPRITEFILE);
+  this->enterCallback = CC_CALLBACK_0(UndoButtonLayer::entered, this);
+  this->leaveCallback = CC_CALLBACK_0(UndoButtonLayer::left, this);
 
-    this->enterCallback = CC_CALLBACK_0(UndoButtonLayer::entered, this);
-    this->leaveCallback = CC_CALLBACK_0(UndoButtonLayer::left, this);
+  // Rescale it to the proper size
+  float scale = this->size / this->background->getBoundingBox().size.height;
+  this->background->setScale(scale,scale);
+  this->background->setPositionX(this->size / 2);
+  this->background->setPositionY(this->size / 2);
+  this->addChild(this->background, 1);
 
-    // Rescale it to the proper size
-    float scale = this->size / this->background->getBoundingBox().size.height;
-    this->background->setScale(scale,scale);
-    this->background->setPositionX(this->size / 2);
-    this->background->setPositionY(this->size / 2);
-    this->addChild(this->background, 1);
-
-    // Set up the bounds
-    this->setHeight(this->size);
-    this->setWidth(this->size);
-    this->setOffset(this->size / -2, this->size / -2);
+  // Set up the bounds
+  this->setHeight(this->size);
+  this->setWidth(this->size);
+  this->setOffset(this->size / -2, this->size / -2);
 
 	return true;
 }

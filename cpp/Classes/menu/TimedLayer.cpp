@@ -77,8 +77,8 @@ bool TimedLayer::init() {
         borderWidth  = this->card->getBorderWidth();
 
   // Full size continue button
-  this->playButton = MenuButton::create("Play",
-                                        buttonFontSize,
+  this->playButton = IconMenuButton::create("skip.png",
+                                        1,
                                         buttonWidth,
                                         buttonHeight,
                                         borderRadius,
@@ -87,11 +87,12 @@ bool TimedLayer::init() {
   this->addChild(this->playButton);
 
   // Calculate size of the smaller buttons
-  float smallButtonHeight = (sectionHeight - padding) / 2;
+  float smallButtonHeight     = (sectionHeight - padding) / 2,
+        smallButtonIconHeight = smallButtonHeight * 0.5;
 
   // Make two smaller buttons for when the user already has a run going
-  this->restartButton = MenuButton::create("Restart",
-                                           buttonFontSize,
+  this->restartButton = IconMenuButton::create("undo.png",
+                                           smallButtonIconHeight,
                                            buttonWidth,
                                            smallButtonHeight,
                                            borderRadius,
@@ -99,8 +100,8 @@ bool TimedLayer::init() {
   this->restartButton->setPositionX(cardWidth + padding);
   this->addChild(this->restartButton);
 
-  this->continueTopButton = MenuButton::create("Continue",
-                                               buttonFontSize,
+  this->continueTopButton = IconMenuButton::create("skip.png",
+                                               smallButtonIconHeight,
                                                buttonWidth,
                                                smallButtonHeight,
                                                borderRadius,
