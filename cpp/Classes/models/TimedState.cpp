@@ -74,7 +74,8 @@ bool TimedState::registerPuzzle(Puzzle * puzzle) {
     this->setRunning(false);
 
     // Manage high score
-    if (this->highScore[winRank] >= this->timePlayed) {
+    if ((this->highScore[winRank] >= this->timePlayed) ||
+        (this->highScore[winRank] == 0)){
       this->highScore[winRank] = this->timePlayed;
     }
 

@@ -31,11 +31,25 @@ void TimedLayer::updateFromModel(Game * game) {
   this->continueTopButton->setVisible(canContinue);
   this->restartButton->setVisible(canContinue);
 
-  unsigned long score = state->getHighScore(state->getWinRank());
-  if (score > 0) {
-    this->highScoreLabel->setString(TimeUtils::formatMs(score));
+  // Score for rank 2
+  if (state->getHighScore(2) > 0) {
+    this->time2Label->setString(TimeUtils::formatMs(state->getHighScore(2)));
   } else {
-    this->highScoreLabel->setString("?:??:??.???");
+    this->time2Label->setString(TIME_DEFAULT);
+  }
+
+  // Score for rank 4
+  if (state->getHighScore(4) > 0) {
+    this->time4Label->setString(TimeUtils::formatMs(state->getHighScore(4)));
+  } else {
+    this->time4Label->setString(TIME_DEFAULT);
+  }
+
+  // Score for rank 8
+  if (state->getHighScore(8) > 0) {
+    this->time8Label->setString(TimeUtils::formatMs(state->getHighScore(8)));
+  } else {
+    this->time8Label->setString(TIME_DEFAULT);
   }
 }
 
@@ -53,7 +67,6 @@ bool TimedLayer::init() {
         buttonWidth    = sectionWidth * 0.2,
         buttonHeight   = sectionHeight,
         buttonFontSize = fontSize * 0.3,
-        bestFontSize   = fontSize,
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;
 
@@ -62,12 +75,6 @@ bool TimedLayer::init() {
   headerLabel->setPositionX(cardWidth / 2);
   headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
   this->addChild(headerLabel);
-
-  // Add the high score label
-  this->highScoreLabel = cocos2d::Label::createWithTTF("?:??:??.???", Q_FONT_PATH, bestFontSize);
-  highScoreLabel->setPositionX(cardWidth / 2);
-  highScoreLabel->setPositionY(sectionHeight * 0.3);
-  this->addChild(highScoreLabel);
 
   // Create the section
   this->card = TimedCard::create(fontSize, cardWidth, cardHeight);
@@ -109,6 +116,45 @@ bool TimedLayer::init() {
   this->continueTopButton->setPositionX(cardWidth + padding);
   this->continueTopButton->setPositionY(smallButtonHeight + padding);
   this->addChild(this->continueTopButton);
+
+  // Add all of the high score text labels
+  float bestFontSize   = fontSize * 0.5,
+        bestFontPadding = bestFontSize * 1.4,
+        rankLeftPos = sectionWidth * 0.2,
+        timeLeftPos = sectionWidth * 0.45,
+        halfSection = sectionHeight / 2;
+
+  this->rank2Label = cocos2d::Label::createWithTTF("2", Q_FONT_PATH, bestFontSize);
+  this->rank2Label->setPositionX(rankLeftPos);
+  this->addChild(rank2Label);
+
+  this->rank4Label = cocos2d::Label::createWithTTF("4", Q_FONT_PATH, bestFontSize);
+  this->rank4Label->setPositionX(rankLeftPos);
+  this->addChild(rank4Label);
+
+  this->rank8Label = cocos2d::Label::createWithTTF("8", Q_FONT_PATH, bestFontSize);
+  this->rank8Label->setPositionX(rankLeftPos);
+  this->addChild(rank8Label);
+
+  this->time2Label = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, bestFontSize);
+  this->time2Label->setPositionX(timeLeftPos);
+  this->addChild(time2Label);
+
+  this->time4Label = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, bestFontSize);
+  this->time4Label->setPositionX(timeLeftPos);
+  this->addChild(time4Label);
+
+  this->time8Label = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, bestFontSize);
+  this->time8Label->setPositionX(timeLeftPos);
+  this->addChild(time8Label);
+
+  this->rank2Label->setPositionY(halfSection + bestFontPadding);
+  this->rank4Label->setPositionY(halfSection);
+  this->rank8Label->setPositionY(halfSection - bestFontPadding);
+
+  this->time2Label->setPositionY(halfSection + bestFontPadding);
+  this->time4Label->setPositionY(halfSection);
+  this->time8Label->setPositionY(halfSection - bestFontPadding);
 
   this->setContentSize(cocos2d::Size(sectionWidth,
                                      sectionHeight + padding));
