@@ -41,10 +41,10 @@ bool HighScoreLayer::init() {
 
   float width          = gameBounds->size.width,
         height         = gameBounds->size.height,
-        fontSize       = height * 0.08;
+        fontSize       = height * 0.10;
 
-  this->scoreText = cocos2d::Label::createWithTTF(TimeUtils::formatMs(65123), Q_FONT_PATH, fontSize);
-  this->scoreText->setPosition(width / 2, height * 0.6);
+  this->scoreText = cocos2d::Label::createWithTTF(TimeUtils::formatMs(1000 * 60 * 61), Q_FONT_PATH, fontSize);
+  this->scoreText->setPosition(width / 2, height * 0.75);
   this->scoreText->setColor(cocos2d::Color3B::WHITE);
   this->addChild(this->scoreText);
 

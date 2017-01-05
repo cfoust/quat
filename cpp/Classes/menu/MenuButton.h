@@ -71,18 +71,18 @@ public:
 	const std::string getText();
 	
 	MenuButton(std::string title, 
-			   float fontSize, 
-			   float width, 
-			   float height,
-         float borderRadius,
-         float borderWidth);
+             float fontSize, 
+             float width, 
+             float height,
+             float borderRadius,
+             float borderWidth);
 	
 	static MenuButton * create(std::string title, 
-							   float fontSize, 
-							   float width, 
-							   float height,
-                 float borderRadius,
-                 float borderWidth);
+                             float fontSize, 
+                             float width, 
+                             float height,
+                             float borderRadius,
+                             float borderWidth);
 };
 
 }

@@ -52,7 +52,7 @@ bool EndlessLayer::init() {
         borderWidth  = this->card->getBorderWidth();
 
   // Add a nice header
-  auto headerLabel = cocos2d::Label::createWithTTF("ENDLESS MODE", Q_FONT_PATH, buttonFontSize);
+  auto headerLabel = cocos2d::Label::createWithTTF("ENDLESS", Q_FONT_PATH, buttonFontSize);
   headerLabel->setPositionX(cardWidth / 2);
   headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
   this->addChild(headerLabel);

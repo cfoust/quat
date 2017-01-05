@@ -5,6 +5,7 @@
 #include "../Constants.h"
 #include "../nodes/CircleNode.h"
 #include "../models/Game.h"
+#include "../menu/MenuButton.h"
 #include "../GameStateController.h"
 
 USING_NS_CC;
@@ -33,7 +34,28 @@ private:
 
   // Pointer to the game model so we can take input and manipulate it
   Game * game;
+
+  MenuButton * initializeRankButton(float fontSize, 
+                                    float width, 
+                                    float height,
+                                    float borderRadius,
+                                    float borderWidth);
+
+  MenuButton * rank2Button,
+             * rank4Button,
+             * rank8Button;
+  
+  void handleRankClick(int button);
+
 public:
+  // Callbacks for each rank button
+  void rankButtonCallback2();
+  void rankButtonCallback4();
+  void rankButtonCallback8();
+
+  // Updates the layer from the game model
+  void updateFromModel();
+
 	/**
 	 * Initialize the background layer.
 	 * @return Whether or not the layer was initialized successfully.

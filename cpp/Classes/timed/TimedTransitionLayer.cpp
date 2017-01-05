@@ -33,6 +33,44 @@ void TimedTransitionLayer::reset() {
   this->timeLeft = 3;
 }
 
+MenuButton * TimedTransitionLayer::initializeRankButton(float fontSize, 
+                                                        float width, 
+                                                        float height,
+                                                        float borderRadius,
+                                                        float borderWidth) {
+  auto button = MenuButton::create("", fontSize, width, height, borderRadius, borderWidth);
+  this->addChild(button);
+
+  return button;
+}
+
+void TimedTransitionLayer::handleRankClick(int button) {
+  this->game->getUser()->getTimedState()->setWinRank(button);
+  this->updateFromModel();
+}
+
+void TimedTransitionLayer::rankButtonCallback2() {
+  handleRankClick(2);
+}
+
+void TimedTransitionLayer::rankButtonCallback4() {
+  handleRankClick(4);
+}
+
+void TimedTransitionLayer::rankButtonCallback8() {
+  handleRankClick(8);
+}
+
+void TimedTransitionLayer::updateFromModel() {
+  auto state = this->game->getUser()->getTimedState();
+  int winRank = state->getWinRank();
+
+  // Enable the buttons
+  this->rank2Button->setEnabled(winRank != 2);
+  this->rank4Button->setEnabled(winRank != 4);
+  this->rank8Button->setEnabled(winRank != 8);
+}
+
 bool TimedTransitionLayer::init() {
 	// Init the super class
   if ( !Layer::init() )
@@ -69,6 +107,49 @@ bool TimedTransitionLayer::init() {
   clip->addChild(this->topText);
   clip->setPosition(width / 2, height / 2);
   this->addChild(clip, 3);
+
+  // Initialize all of the buttons
+  float buttonWidth = width * 0.2,
+        buttonHeight = buttonWidth  * 0.6,
+        buttonFontSize = buttonHeight * 0.8,
+        buttonBorderRadius = buttonWidth * 0.1,
+        buttonBorderWidth = buttonWidth * 0.05,
+        buttonY = height * 0.1;
+  this->rank2Button = initializeRankButton(buttonFontSize,
+                                           buttonWidth,
+                                           buttonHeight,
+                                           buttonBorderRadius,
+                                           buttonBorderWidth);
+  this->rank4Button = initializeRankButton(buttonFontSize,
+                                           buttonWidth,
+                                           buttonHeight,
+                                           buttonBorderRadius,
+                                           buttonBorderWidth);
+  this->rank8Button = initializeRankButton(buttonFontSize,
+                                           buttonWidth,
+                                           buttonHeight,
+                                           buttonBorderRadius,
+                                           buttonBorderWidth);
+  float buttonIncrement = width / 4,
+        buttonWidthHalf = buttonWidth / 2;
+
+  // Set the buttons at thirds to each other
+  this->rank2Button->setPositionX(buttonIncrement - buttonWidthHalf);
+  this->rank4Button->setPositionX(buttonIncrement * 2 - buttonWidthHalf);
+  this->rank8Button->setPositionX(buttonIncrement * 3 - buttonWidthHalf);
+
+  this->rank2Button->setPositionY(buttonY);
+  this->rank4Button->setPositionY(buttonY);
+  this->rank8Button->setPositionY(buttonY);
+
+  this->rank2Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback2, this);
+  this->rank4Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback4, this);
+  this->rank8Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback8, this);
+
+  // Change their strings
+  this->rank2Button->setText("2");
+  this->rank4Button->setText("4");
+  this->rank8Button->setText("8");
   
   // Get updates
   this->scheduleUpdate();

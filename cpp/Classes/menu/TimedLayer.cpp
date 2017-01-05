@@ -31,7 +31,7 @@ void TimedLayer::updateFromModel(Game * game) {
   this->continueTopButton->setVisible(canContinue);
   this->restartButton->setVisible(canContinue);
 
-  unsigned long score = state->getHighScore();
+  unsigned long score = state->getHighScore(state->getWinRank());
   if (score > 0) {
     this->highScoreLabel->setString(TimeUtils::formatMs(score));
   } else {
@@ -58,7 +58,7 @@ bool TimedLayer::init() {
         cardHeight     = sectionHeight;
 
   // Add a nice header
-  this->headerLabel = cocos2d::Label::createWithTTF("TIMED MODE", Q_FONT_PATH, buttonFontSize);
+  this->headerLabel = cocos2d::Label::createWithTTF("TIMED", Q_FONT_PATH, buttonFontSize);
   headerLabel->setPositionX(cardWidth / 2);
   headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
   this->addChild(headerLabel);
@@ -76,19 +76,19 @@ bool TimedLayer::init() {
   float borderRadius = this->card->getBorderRadius(),
         borderWidth  = this->card->getBorderWidth();
 
+  // Calculate size of the smaller buttons
+  float smallButtonHeight     = (sectionHeight - padding) / 2,
+        smallButtonIconHeight = smallButtonHeight * 0.5;
+
   // Full size continue button
   this->playButton = IconMenuButton::create("skip.png",
-                                        1,
+                                        smallButtonIconHeight,
                                         buttonWidth,
                                         buttonHeight,
                                         borderRadius,
                                         borderWidth);
   this->playButton->setPositionX(cardWidth + padding);
   this->addChild(this->playButton);
-
-  // Calculate size of the smaller buttons
-  float smallButtonHeight     = (sectionHeight - padding) / 2,
-        smallButtonIconHeight = smallButtonHeight * 0.5;
 
   // Make two smaller buttons for when the user already has a run going
   this->restartButton = IconMenuButton::create("undo.png",

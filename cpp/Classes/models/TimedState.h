@@ -12,21 +12,25 @@ namespace QUAT {
 
 using namespace std;
 
-#define TIMED_WIN_RANK 2
+#define TIMED_RANKS 12
 
 class TimedState : public GameState
 {
 protected:
-  // The number of times the user has completed the
-  // timed mode
-  int timesComplete;
+  int winRank;
   
   unsigned long timePlayed, // Stores the time played
-                highScore,  // The user's high score
                 lastTime;   // The last time update() was called
+  
+  // Stores the high scores for each mode
+  unsigned long highScore[TIMED_RANKS];
+
+  // The number of times the user has completed the
+  // timed mode
+  int timesComplete[TIMED_RANKS];
 
   bool running, // Whether the timer is counting upwards
-       done;    // Whether we've reached level 8
+       done;    // Whether we've reached the win rank
 
 public:
 	TimedState(Dictionary * d);
@@ -46,10 +50,17 @@ public:
   // Whether the user can continue a previous state or not
   bool canContinue();
 
+  // Sets the rank the user will win at.
+  void setWinRank(int rank);
+
+  // Gets the win rank the user will win at.
+  int getWinRank();
+
   // Gets the amount of time that has passed
   // as milliseconds.
   unsigned long getTime();
-  unsigned long getHighScore();
+
+  unsigned long getHighScore(int rank);
 
 	/**
 	 * Adjusts the user's rank and incorporates statistics from a puzzle.

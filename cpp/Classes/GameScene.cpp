@@ -99,6 +99,8 @@ void GameScene::toState(GAME_STATE state) {
     // Update the puzzle layer (this also changes the theme)
     this->puzzleLayer->updateFromModel();
 
+    this->timedTransitionLayer->updateFromModel();
+
     // Reset the transition layer
     this->timedTransitionLayer->reset();
   } else if (state == S_TimedHighScore) {
@@ -201,7 +203,7 @@ bool GameScene::init()
     addChild(this->adLayer, 1);
 
     // Transition to the main game screen
-    this->GSC->setState(S_PuzzleSolver);
+    this->GSC->setState(S_MainMenu);
 
     // Schedule the update loop
     this->scheduleUpdate();
