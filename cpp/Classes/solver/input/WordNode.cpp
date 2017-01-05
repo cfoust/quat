@@ -40,7 +40,7 @@ bool WordNode::init() {
         return false;
     }
 	
-	float offset = -1 * (this->fontGap * 1.5);
+	float offset = -1 * (this->fontGap * 1.505);
 
 	// Initialize the whole bounds
 	whole = new cocos2d::Rect(0,0,0,0);
