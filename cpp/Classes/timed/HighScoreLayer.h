@@ -2,7 +2,8 @@
 #define __HIGH_SCORE_LAYER_H__
 
 #include "cocos2d.h"
-#include "../menu/MenuButton.h"
+#include "../menu/IconMenuButton.h"
+#include "../menu/DrawnBanner.h"
 #include "../Constants.h"
 #include "../models/Game.h"
 #include "../models/TimeUtils.h"
@@ -10,8 +11,6 @@
 
 USING_NS_CC;
 namespace QUAT {
-
-#define TRANS_SECS 3
 
 class HighScoreLayer : public cocos2d::Layer
 {
@@ -24,17 +23,28 @@ private:
 
 	// Controls the entire game so we can move to other screens
 	GameStateController * GSC;
+
+  // Banner representing the goal rank
+  DrawnBanner * banner;
+
+  // Game state
+  Game * game;
+
 public:
-  MenuButton * restartButton;
+  void restartCallback();
+
+  IconMenuButton * restartButton;
 
 	virtual bool init();
 
-	HighScoreLayer(cocos2d::Rect * gameBounds,
+	HighScoreLayer(Game * game,
+                 cocos2d::Rect * gameBounds,
                  GameStateController * GSC);
 
-  void updateFromModel(Game * game);
+  void updateFromModel();
 
-	static HighScoreLayer * create(cocos2d::Rect * gameBounds,
+	static HighScoreLayer * create(Game * game,
+                                 cocos2d::Rect * gameBounds,
                                  GameStateController * GSC);
 };
 

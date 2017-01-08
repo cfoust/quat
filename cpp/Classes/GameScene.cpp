@@ -104,7 +104,7 @@ void GameScene::toState(GAME_STATE state) {
     // Reset the transition layer
     this->timedTransitionLayer->reset();
   } else if (state == S_TimedHighScore) {
-    this->highScoreLayer->updateFromModel(this->game);
+    this->highScoreLayer->updateFromModel();
   }
 
   // Sets the layer to be visible
@@ -193,7 +193,7 @@ bool GameScene::init()
     this->timedTransitionLayer->setVisible(false);
     this->addChild(this->timedTransitionLayer, 1);
 
-    this->highScoreLayer = HighScoreLayer::create(gameBounds, GSC);
+    this->highScoreLayer = HighScoreLayer::create(game, gameBounds, GSC);
     this->highScoreLayer->setVisible(false);
     this->addChild(this->highScoreLayer, 1);
 
@@ -203,7 +203,7 @@ bool GameScene::init()
     addChild(this->adLayer, 1);
 
     // Transition to the main game screen
-    this->GSC->setState(S_MainMenu);
+    this->GSC->setState(S_TimedHighScore);
 
     // Schedule the update loop
     this->scheduleUpdate();
