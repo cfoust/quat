@@ -12,7 +12,7 @@
 
 #include "EndlessLayer.h"
 #include "TimedLayer.h"
-#include "NavButtonLayer.h"
+#include "CreditsLayer.h"
 
 namespace QUAT {
 
@@ -49,6 +49,8 @@ private:
   EndlessLayer * endlessLayer;
   // The same, but for timed mode. Shows the high score.
   TimedLayer * timedLayer;
+
+  CreditsLayer * creditsLayer;
 
   // Repositions everything and activates scrolling if necesary
   void resetLayout();

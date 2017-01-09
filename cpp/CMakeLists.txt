@@ -139,6 +139,7 @@ set(GAME_SRC
   Classes/menu/TimedLayer.cpp
   Classes/menu/MenuButton.cpp
   Classes/menu/MenuLayer.cpp
+  Classes/menu/CreditsLayer.cpp
   Classes/menu/NavButtonLayer.cpp
   Classes/menu/RankCard.cpp
   Classes/menu/TimedCard.cpp
@@ -199,6 +200,7 @@ set(GAME_HEADERS
   Classes/menu/MenuButton.h
   Classes/menu/NavButtonLayer.h
   Classes/menu/MenuLayer.h
+  Classes/menu/CreditsLayer.h
   Classes/menu/RankCard.h
   Classes/menu/TimedCard.h
   Classes/models/Dictionary.h

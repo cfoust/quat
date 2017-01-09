@@ -63,13 +63,19 @@ void MenuLayer::resetLayout() {
   float width = gameBounds->size.width,
         height = gameBounds->size.height,
         totalHeight = 0,
-        padding     = 20;
+        padding     = height * 0.02;
 
   // A bit of padding on top
   totalHeight += padding;
 
   // Add the card for timed mode
-  auto size = this->timedLayer->getContentSize();
+  auto size = this->creditsLayer->getContentSize();
+  this->creditsLayer->setPosition((width / 2) - (size.width / 2),
+                              totalHeight);
+  totalHeight += size.height;
+  totalHeight += padding * 4; 
+
+  size = this->timedLayer->getContentSize();
   this->timedLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
@@ -141,6 +147,9 @@ bool MenuLayer::init() {
   this->timedLayer = TimedLayer::create(wordSize, cardWidth, cardHeight);
   sv->addChild(this->timedLayer);
 
+  this->creditsLayer = CreditsLayer::create(cardWidth, cardHeight * 2);
+  sv->addChild(this->creditsLayer);
+
   // Set up all the callbacks
   this->endlessLayer->continueButton->upCallback = CC_CALLBACK_0(MenuLayer::continueEndless, this);
   this->timedLayer->playButton->upCallback = CC_CALLBACK_0(MenuLayer::restartTimed, this);
@@ -149,6 +158,7 @@ bool MenuLayer::init() {
 
   // Add the scroll view to the layer
   this->addChild(sv);
+    
 
   this->resetLayout();
 

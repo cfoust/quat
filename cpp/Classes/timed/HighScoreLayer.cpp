@@ -90,6 +90,7 @@ bool HighScoreLayer::init() {
                                            buttonHeight,
                                            borderRadius,
                                            borderWidth);
+
   this->restartButton->setPositionX((width / 2) - (buttonWidth / 2));
   this->restartButton->setPositionY(height * 0.1);
   this->addChild(this->restartButton);
