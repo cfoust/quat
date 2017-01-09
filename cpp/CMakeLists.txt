@@ -128,6 +128,7 @@ set(GAME_SRC
   Classes/Clickable.cpp
   Classes/CloseButton.cpp
   Classes/GameScene.cpp
+  Classes/Utils.cpp
   Classes/GameStateController.cpp
   Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
@@ -188,6 +189,7 @@ set(GAME_HEADERS
   Classes/Clickable.h
   Classes/CloseButton.h
   Classes/GameScene.h
+  Classes/Utils.h
   Classes/GameStateController.h
   Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h

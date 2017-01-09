@@ -29,7 +29,11 @@ void ProgressIndicatorLayer::animate() {
 
 void ProgressIndicatorLayer::displayRank(int currentRank) {
    this->leftText->setString(std::to_string(currentRank));
-   this->rightText->setString(std::to_string(currentRank + 1));
+
+   int upper = currentRank + 1;
+   this->rightStar->setVisible(upper == 13);
+   this->rightText->setVisible(upper != 13);
+   this->rightText->setString(std::to_string(upper));
 }
 
 void ProgressIndicatorLayer::setProgressPercent(float percent) {
@@ -56,13 +60,24 @@ bool ProgressIndicatorLayer::init() {
   this->progress->setPercent(0.6);
   this->addChild(this->progress, 1);
 
+  float yOffset = textSize * 0.05;
+
   this->leftText = cocos2d::Label::createWithTTF("1", Q_FONT_PATH, textSize);
   this->leftText->setPositionX(-1 * (barWidth / 2) - xOffset);
+  this->leftText->setPositionY(yOffset);
   this->addChild(this->leftText, 2);
 
+  float rightPosition = (barWidth / 2) + (xOffset * 0.8);
   this->rightText = cocos2d::Label::createWithTTF("2", Q_FONT_PATH, textSize);
-  this->rightText->setPositionX((barWidth / 2) + xOffset);
+  this->rightText->setPositionX(rightPosition);
+  this->rightText->setPositionY(yOffset);
   this->addChild(this->rightText, 2);
+
+  // Creates a string for the star
+  this->rightStar = cocos2d::Label::createWithTTF(fa_icon(u"\uf005"), Q_ICON_PATH, textSize);
+  this->rightStar->setPositionX(rightPosition);
+  this->rightStar->setPositionY(yOffset);
+  this->addChild(this->rightStar, 2);
 
 	return true;
 }

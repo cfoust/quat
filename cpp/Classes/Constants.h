@@ -93,6 +93,7 @@
 #define Q_FONT_SIZE 0.10
 
 #define Q_FONT_PATH "fonts/Arimo-Regular.ttf"
+#define Q_ICON_PATH "fonts/font-awesome.ttf"
 
 /*----------  Main gameplay adjustments  ----------*/
 /**

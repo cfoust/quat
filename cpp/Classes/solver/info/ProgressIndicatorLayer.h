@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "../../Constants.h"
+#include "../../Utils.h"
 #include "../../nodes/ProgressBar.h"
 #include "../../models/Game.h"
 
@@ -12,7 +13,8 @@ class ProgressIndicatorLayer : public cocos2d::Layer
 {
 private:
 	cocos2d::Label * leftText,
-	      			   * rightText;
+	      			   * rightText,
+                 * rightStar;
 
   ProgressBar * progress;
 
