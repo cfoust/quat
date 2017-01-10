@@ -4,6 +4,7 @@
 #include "cocos2d.h"
 #include "../Constants.h"
 #include "../nodes/CircleNode.h"
+#include "../nodes/IconNode.h"
 #include "../models/Game.h"
 #include "../models/TimeUtils.h"
 #include "../menu/BannerButton.h"
@@ -27,6 +28,8 @@ private:
 	cocos2d::Label * topText,
                  * bottomText,
                  * scoreText;
+
+  IconNode * star;
   
   // The amount of time remaining on the countdown.
   float timeLeft;

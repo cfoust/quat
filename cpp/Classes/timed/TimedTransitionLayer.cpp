@@ -76,7 +76,7 @@ bool TimedTransitionLayer::init() {
         height         = gameBounds->size.height,
         circleSize     = height * 0.15,
         circleFontSize = circleSize * 1.6,
-        circleY        = height * 0.7;
+        circleY        = height * 0.6;
   
   // The circle that animates the time remaining in the combo
   this->circle = CircleNode::create(circleSize);
@@ -103,13 +103,22 @@ bool TimedTransitionLayer::init() {
   clip->setPosition(width / 2, circleY);
   this->addChild(clip, 3);
 
+  // Sets up the score text, which shows the current high score
   float scoreTextSize = height * 0.08,
-        scoreY        = height * 0.3;
+        scoreY        = height * 0.3,
+        scoreX        = width * 0.57,
+        starX         = width * 0.17;
   this->scoreText = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, scoreTextSize);
-  this->scoreText->setOpacity(200);
-  this->scoreText->setPosition(width / 2, scoreY);
+  this->scoreText->setOpacity(180);
+  this->scoreText->setPosition(scoreX, scoreY);
   this->scoreText->setColor(cocos2d::Color3B::WHITE);
   this->addChild(this->scoreText);
+
+  // Sets up the star icon to show that the score is the best
+  float starTextSize = scoreTextSize * 0.8;
+  this->star = IconNode::create(ICON_STAR, starTextSize);
+  this->star->setPosition(starX, scoreY);
+  this->addChild(this->star, 2);
 
   // Initialize all of the buttons
   float buttonWidth = width * 0.2,
