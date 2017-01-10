@@ -3,9 +3,25 @@
 namespace QUAT {
 
 void ProgressIndicatorLayer::updateFromModel(Game * game) {
+  auto user  = game->getUser();
   auto state = game->getState();
-  this->displayRank(state->getDisplayRank());
-  this->setProgressPercent(state->getRankProgress());
+
+  // Update the percentage of the current rank
+  this->setProgressPercent(state->getRankProgress()); 
+
+  // Update the rank
+  int rank = state->getDisplayRank();
+  this->displayRank(rank);
+
+  // If we're in timed mode, show the star on the finish rank
+  if (!user->isPlayingEndless()) {
+    int upper = rank + 1,
+        goal  = user->getTimedState()->getWinRank();
+
+    this->rightStar->setVisible(upper == goal);
+    this->rightText->setVisible(upper != goal);
+    this->rightText->setString(std::to_string(upper));
+  }
 }
 
 void ProgressIndicatorLayer::animate() {
