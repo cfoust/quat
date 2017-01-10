@@ -33,17 +33,6 @@ void TimedTransitionLayer::reset() {
   this->timeLeft = 3;
 }
 
-MenuButton * TimedTransitionLayer::initializeRankButton(float fontSize, 
-                                                        float width, 
-                                                        float height,
-                                                        float borderRadius,
-                                                        float borderWidth) {
-  auto button = MenuButton::create("", fontSize, width, height, borderRadius, borderWidth);
-  this->addChild(button);
-
-  return button;
-}
-
 void TimedTransitionLayer::handleRankClick(int button) {
   this->game->getUser()->getTimedState()->setWinRank(button);
   this->updateFromModel();
@@ -69,6 +58,11 @@ void TimedTransitionLayer::updateFromModel() {
   this->rank2Button->setEnabled(winRank != 2);
   this->rank4Button->setEnabled(winRank != 4);
   this->rank8Button->setEnabled(winRank != 8);
+
+  auto score = state->getHighScore(winRank);
+  this->scoreText->setString((score == 0) ? 
+                              TIME_DEFAULT : 
+                              TimeUtils::formatMs(score));
 }
 
 bool TimedTransitionLayer::init() {
@@ -80,9 +74,9 @@ bool TimedTransitionLayer::init() {
 
   float width          = gameBounds->size.width,
         height         = gameBounds->size.height,
-        circleSize     = height * 0.1,
+        circleSize     = height * 0.15,
         circleFontSize = circleSize * 1.6,
-        circleY        = height * 0.6;
+        circleY        = height * 0.7;
   
   // The circle that animates the time remaining in the combo
   this->circle = CircleNode::create(circleSize);
@@ -109,35 +103,42 @@ bool TimedTransitionLayer::init() {
   clip->setPosition(width / 2, circleY);
   this->addChild(clip, 3);
 
-  float raceTextSize = height * 0.03,
-        raceTextY = circleY - (circleSize * 2);
-  this->raceText = cocos2d::Label::createWithTTF("RACE TO RANK", Q_FONT_PATH, raceTextSize);
-  this->raceText->setPosition(width / 2, raceTextY);
-  this->addChild(raceText, 1);
+  float scoreTextSize = height * 0.08,
+        scoreY        = height * 0.4;
+  this->scoreText = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, scoreTextSize);
+  this->scoreText->setOpacity(200);
+  this->scoreText->setPosition(width / 2, scoreY);
+  this->scoreText->setColor(cocos2d::Color3B::WHITE);
+  this->addChild(this->scoreText);
 
   // Initialize all of the buttons
   float buttonWidth = width * 0.2,
-        buttonHeight = buttonWidth  * 0.6,
-        buttonFontSize = buttonHeight * 0.8,
+        buttonHeight = buttonWidth  * 1.2,
         buttonBorderRadius = buttonWidth * 0.1,
         buttonBorderWidth = buttonWidth * 0.02,
-        buttonY = raceTextY - buttonHeight - raceTextSize;
+        buttonY = height * 0.2;
 
-  this->rank2Button = initializeRankButton(buttonFontSize,
-                                           buttonWidth,
+  this->rank2Button = BannerButton::create(buttonWidth,
                                            buttonHeight,
                                            buttonBorderRadius,
                                            buttonBorderWidth);
-  this->rank4Button = initializeRankButton(buttonFontSize,
-                                           buttonWidth,
+  this->rank2Button->updateBanner(2);
+  this->addChild(this->rank2Button);
+
+  this->rank4Button = BannerButton::create(buttonWidth,
                                            buttonHeight,
                                            buttonBorderRadius,
                                            buttonBorderWidth);
-  this->rank8Button = initializeRankButton(buttonFontSize,
-                                           buttonWidth,
+  this->rank4Button->updateBanner(4);
+  this->addChild(this->rank4Button);
+
+  this->rank8Button = BannerButton::create(buttonWidth,
                                            buttonHeight,
                                            buttonBorderRadius,
                                            buttonBorderWidth);
+  this->rank8Button->updateBanner(8);
+  this->addChild(this->rank8Button);
+
   float buttonIncrement = width / 4,
         buttonWidthHalf = buttonWidth / 2;
 
@@ -153,12 +154,6 @@ bool TimedTransitionLayer::init() {
   this->rank2Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback2, this);
   this->rank4Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback4, this);
   this->rank8Button->upCallback = CC_CALLBACK_0(TimedTransitionLayer::rankButtonCallback8, this);
-
-  // Change their strings
-  this->rank2Button->setText("2");
-  this->rank4Button->setText("4");
-  this->rank8Button->setText("8");
-
   
   // Get updates
   this->scheduleUpdate();

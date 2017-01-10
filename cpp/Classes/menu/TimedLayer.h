@@ -15,8 +15,6 @@ namespace QUAT {
 
 USING_NS_CC;
 
-#define TIME_DEFAULT "??:??.???"
-
 class TimedLayer : public cocos2d::Layer
 {
 private:

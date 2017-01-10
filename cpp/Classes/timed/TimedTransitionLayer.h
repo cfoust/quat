@@ -5,7 +5,8 @@
 #include "../Constants.h"
 #include "../nodes/CircleNode.h"
 #include "../models/Game.h"
-#include "../menu/MenuButton.h"
+#include "../models/TimeUtils.h"
+#include "../menu/BannerButton.h"
 #include "../GameStateController.h"
 
 USING_NS_CC;
@@ -25,7 +26,7 @@ private:
   // The text that sits in the middle of the circle
 	cocos2d::Label * topText,
                  * bottomText,
-                 * raceText;
+                 * scoreText;
   
   // The amount of time remaining on the countdown.
   float timeLeft;
@@ -36,16 +37,10 @@ private:
   // Pointer to the game model so we can take input and manipulate it
   Game * game;
 
-  MenuButton * initializeRankButton(float fontSize, 
-                                    float width, 
-                                    float height,
-                                    float borderRadius,
-                                    float borderWidth);
-
   // Buttons that let the user control the rank they want to go to
-  MenuButton * rank2Button,
-             * rank4Button,
-             * rank8Button;
+  BannerButton * rank2Button,
+               * rank4Button,
+               * rank8Button;
   
   void handleRankClick(int button);
 

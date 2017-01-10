@@ -133,6 +133,7 @@ set(GAME_SRC
   Classes/MenuButtonLayer.cpp
   Classes/TouchInputManager.cpp
   Classes/ads/AdLayer.cpp
+  Classes/menu/BannerButton.cpp
   Classes/defs/Definition.cpp
   Classes/menu/DrawnBanner.cpp
   Classes/menu/EndlessLayer.cpp
@@ -194,6 +195,7 @@ set(GAME_HEADERS
   Classes/MenuButtonLayer.h
   Classes/TouchInputManager.h
   Classes/ads/AdLayer.h
+  Classes/menu/BannerButton.h
   Classes/defs/Definition.h
   Classes/menu/DrawnBanner.h
   Classes/menu/EndlessLayer.h

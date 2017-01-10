@@ -376,6 +376,7 @@
  */
 #define Q_KEYBOARD_X_Y_RATIO 2.265
 
+#define TIME_DEFAULT "??:??.???"
 /*=====  End of Ratios and Scaling  ======*/
 
 /*=========================================
