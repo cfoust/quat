@@ -90,7 +90,7 @@ bool ProgressIndicatorLayer::init() {
   this->addChild(this->rightText, 2);
 
   // Creates a string for the star
-  this->rightStar = cocos2d::Label::createWithTTF(fa_icon(u"\uf005"), Q_ICON_PATH, textSize);
+  this->rightStar = IconNode::create(ICON_STAR, textSize);
   this->rightStar->setPositionX(rightPosition);
   this->rightStar->setPositionY(yOffset);
   this->addChild(this->rightStar, 2);

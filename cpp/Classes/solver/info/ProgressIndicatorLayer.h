@@ -5,6 +5,7 @@
 #include "../../Constants.h"
 #include "../../Utils.h"
 #include "../../nodes/ProgressBar.h"
+#include "../../nodes/IconNode.h"
 #include "../../models/Game.h"
 
 namespace QUAT {
@@ -13,8 +14,9 @@ class ProgressIndicatorLayer : public cocos2d::Layer
 {
 private:
 	cocos2d::Label * leftText,
-	      			   * rightText,
-                 * rightStar;
+	      			   * rightText;
+
+  IconNode * rightStar;
 
   ProgressBar * progress;
 

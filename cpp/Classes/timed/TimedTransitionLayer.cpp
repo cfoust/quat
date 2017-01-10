@@ -162,7 +162,6 @@ bool TimedTransitionLayer::init() {
 }
 
 void TimedTransitionLayer::update(float delta) {
-  return;
   // Don't do anything if the user is playing endless
   if (this->game->getUser()->isPlayingEndless()) return;
 

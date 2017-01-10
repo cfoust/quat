@@ -159,6 +159,7 @@ set(GAME_SRC
   Classes/models/User.cpp
   Classes/nodes/RectRadius.cpp
   Classes/nodes/CircleNode.cpp
+  Classes/nodes/IconNode.cpp
   Classes/nodes/ProgressBar.cpp
   Classes/solver/PuzzleLayer.cpp
   Classes/solver/SolverStateController.cpp
@@ -221,6 +222,7 @@ set(GAME_HEADERS
   Classes/models/User.h
   Classes/nodes/RectRadius.h
   Classes/nodes/CircleNode.h
+  Classes/nodes/IconNode.h
   Classes/nodes/ProgressBar.h
   Classes/solver/PuzzleLayer.h
   Classes/solver/SolverStateController.h

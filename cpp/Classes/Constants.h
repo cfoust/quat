@@ -376,7 +376,21 @@
  */
 #define Q_KEYBOARD_X_Y_RATIO 2.265
 
+
+/**
+ * The default string for all labels that show a default time.
+ *
+ * Value is a constant string.
+ */
 #define TIME_DEFAULT "??:??.???"
+
+/**
+ * The default string for all labels that show a default time.
+ *
+ * Value is a constant string.
+ */
+#define ICON_STAR u"\uf005" 
+
 /*=====  End of Ratios and Scaling  ======*/
 
 /*=========================================
