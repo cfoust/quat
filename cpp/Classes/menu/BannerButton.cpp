@@ -28,6 +28,11 @@ BannerButton * BannerButton::create(float width,
     }
 }
 
+void BannerButton::setEnabled(bool enabled) {
+  MenuButton::setEnabled(enabled);
+  this->showBorder(enabled);
+}
+
 void BannerButton::updateBanner(int rank) {
   this->banner->update(rank);
 }

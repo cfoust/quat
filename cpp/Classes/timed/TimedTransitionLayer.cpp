@@ -104,7 +104,7 @@ bool TimedTransitionLayer::init() {
   this->addChild(clip, 3);
 
   float scoreTextSize = height * 0.08,
-        scoreY        = height * 0.4;
+        scoreY        = height * 0.3;
   this->scoreText = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, scoreTextSize);
   this->scoreText->setOpacity(200);
   this->scoreText->setPosition(width / 2, scoreY);
@@ -116,7 +116,7 @@ bool TimedTransitionLayer::init() {
         buttonHeight = buttonWidth  * 1.2,
         buttonBorderRadius = buttonWidth * 0.1,
         buttonBorderWidth = buttonWidth * 0.02,
-        buttonY = height * 0.2;
+        buttonY = height * 0.1;
 
   this->rank2Button = BannerButton::create(buttonWidth,
                                            buttonHeight,
@@ -162,6 +162,7 @@ bool TimedTransitionLayer::init() {
 }
 
 void TimedTransitionLayer::update(float delta) {
+  return;
   // Don't do anything if the user is playing endless
   if (this->game->getUser()->isPlayingEndless()) return;
 

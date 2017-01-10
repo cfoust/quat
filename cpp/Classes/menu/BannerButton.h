@@ -18,6 +18,8 @@ public:
   void updateBanner(int rank);
 
 	virtual bool init();
+
+	void setEnabled(bool enabled) override;
 	
 	BannerButton(float width, 
                float height,

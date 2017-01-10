@@ -56,7 +56,7 @@ public:
 
   /** Controls whether the button is accepting input.
    */
-	void setEnabled(bool enabled);
+	virtual void setEnabled(bool enabled);
 
 	void showBorder(bool showBorder);
 
