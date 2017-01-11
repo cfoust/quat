@@ -25,8 +25,12 @@ MenuLayer * MenuLayer::create(cocos2d::Rect * gameBounds,
 
 void MenuLayer::updateFromModel(Game * game) {
   auto user = game->getUser();
+
   this->endlessLayer->updateFromModel(game);
+
   this->timedLayer->updateFromModel(game);
+
+  this->buyLayer->setVisible(!user->isPaid());
 }
 
 void MenuLayer::continueEndless() {
@@ -66,20 +70,29 @@ void MenuLayer::resetLayout() {
         padding     = height * 0.03;
 
   // A bit of padding on top
-  totalHeight += padding;
+  //totalHeight += padding;
 
   // Add the card for timed mode
   auto size = this->creditsLayer->getContentSize();
   this->creditsLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
-  totalHeight += padding * 4; 
+  totalHeight += padding * 3; 
+
+  if (this->buyLayer->isVisible()) {
+    size = this->buyLayer->getContentSize();
+    this->buyLayer->setPosition((width / 2) - (size.width / 2),
+                                totalHeight);
+    totalHeight += size.height;
+    totalHeight += padding * 2.5; // Some extra padding before the QUAT logo
+  }
 
   size = this->timedLayer->getContentSize();
   this->timedLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
   totalHeight += padding * 3; // Some extra padding before the QUAT logo
+
 
   // Add the layer for endless mode
   size = this->endlessLayer->getContentSize();
@@ -108,6 +121,7 @@ void MenuLayer::resetLayout() {
   if (difference < 0) {
     difference = 0;
   } 
+
   
   // Move the scrollView up if necessary
   scrollView->setPositionY(difference);
@@ -150,8 +164,11 @@ bool MenuLayer::init() {
   this->timedLayer = TimedLayer::create(wordSize, cardWidth, timedHeight);
   sv->addChild(this->timedLayer);
 
-  this->creditsLayer = CreditsLayer::create(cardWidth, cardHeight * 2);
+  this->creditsLayer = CreditsLayer::create(cardWidth, cardHeight);
   sv->addChild(this->creditsLayer);
+
+  this->buyLayer = BuyLayer::create(cardWidth, cardHeight);
+  sv->addChild(this->buyLayer);
 
   // Set up all the callbacks
   this->endlessLayer->continueButton->upCallback = CC_CALLBACK_0(MenuLayer::continueEndless, this);

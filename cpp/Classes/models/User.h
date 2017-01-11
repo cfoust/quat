@@ -13,7 +13,7 @@
 #include "QuatStream.h"
 #include "cocos2d.h"
 
-#define AD_MS (30 * 1000)
+#define AD_MS (300 * 1000)
 
 namespace QUAT {
 
@@ -24,7 +24,7 @@ class User
 private:
 	int puzzlesPlayed;    // The number of puzzles the user has completed
 
-	bool isPaid,  		    // Whether or not the user has paid to remove ads
+	bool paid,  		    // Whether or not the user has paid to remove ads
        showAd;	        // Whether the UI should show the user an ad
 
 	unsigned long timePlayed,  // The total time (in milliseconds) the user has played
@@ -56,6 +56,8 @@ public:
 	 * Get the number of puzzles the user has completed.
 	 */
 	int getPuzzlesPlayed();
+
+  bool isPaid();
 
 	/**
 	 * Returns the result of adding the puzzle to the current game state.

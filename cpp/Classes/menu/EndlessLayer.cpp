@@ -42,7 +42,7 @@ bool EndlessLayer::init() {
         headerGap      = Q_LETTER_GAP * headerSize,
         buttonWidth    = sectionWidth * 0.2,
         buttonHeight   = sectionHeight,
-        buttonIconHeight = (sectionHeight - (sectionWidth * 0.05)) / 4,
+      buttonIconHeight = (sectionHeight - (sectionWidth * 0.05)) / 4,
         buttonFontSize = fontSize * 0.8,
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;

@@ -11,6 +11,7 @@
 #include "../solver/input/BorderedWordNode.h"
 
 #include "EndlessLayer.h"
+#include "BuyLayer.h"
 #include "TimedLayer.h"
 #include "CreditsLayer.h"
 
@@ -50,12 +51,13 @@ private:
   // The same, but for timed mode. Shows the high score.
   TimedLayer * timedLayer;
 
+  BuyLayer * buyLayer;
+
   CreditsLayer * creditsLayer;
 
+public:
   // Repositions everything and activates scrolling if necesary
   void resetLayout();
-
-public:
 
   // Three callbacks for the game modes
   void continueEndless();

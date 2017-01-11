@@ -83,14 +83,13 @@ void GameScene::toState(GAME_STATE state) {
     this->puzzleLayer->updateFromModel();
 
     this->menuLayer->updateFromModel(this->game);
+
+    this->menuLayer->resetLayout();
   // Same for the puzzle layer
   } else if (state == S_PuzzleSolver) {
     this->puzzleLayer->updateFromModel();
 
-    // Unfreeze the timer on timed mode if we're moving to it
-    if (!user->isPlayingEndless()) {
-      user->getTimedState()->setRunning(true);
-    }
+    user->getGameState()->setRunning(true);
   // Reset the time on the countdown before we transition
   } else if (state == S_TimedTransition) {
     // Set the game state

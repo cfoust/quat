@@ -13,7 +13,7 @@ User::User() {
 	this->timePlayed = 0;
 	this->lastShownAd = 0;
 	this->showAd = false;
-  this->isPaid = false;
+  this->paid = true;
   this->playingEndless = true;
 	
   // Load the dictionary
@@ -25,6 +25,10 @@ User::User() {
   // Initialize the game states
   this->endlessState = new GameState(this->dictionary);
   this->timedState = new TimedState(this->dictionary);
+}
+
+bool User::isPaid() {
+	return this->paid;
 }
 
 int User::getPuzzlesPlayed() {
@@ -97,7 +101,7 @@ void User::update(float secs) {
 
 	// Show an ad every 5 minutes
   // We do this here because it only happens after a puzzle is done
-	if (((this->timePlayed - this->lastShownAd) > AD_MS) && !this->isPaid) {
+	if (((this->timePlayed - this->lastShownAd) > AD_MS) && !this->paid) {
 		this->showAd = true;
 	}
 

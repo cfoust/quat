@@ -35,30 +35,30 @@ float TimedCard::getBorderWidth() {
 }
 bool TimedCard::init() {
 	// Init the super class
-    if ( !cocos2d::Layer::init() )
-    {
-        return false;
-    }
+  if ( !cocos2d::Layer::init() )
+  {
+      return false;
+  }
 
 
-    // Store the radius and the width
-    borderRadius = this->_width * 0.05;
-    borderWidth = this->_width *  0.008;
+  // Store the radius and the width
+  borderRadius = this->_width * 0.05;
+  borderWidth = this->_width *  0.008;
 
-    // Set the default color
-    this->defaultColor = new cocos2d::Color4B(255,255,255,64);
-    this->fillInColor = new cocos2d::Color4B(255,255,255,120);
+  // Set the default color
+  this->defaultColor = new cocos2d::Color4B(255,255,255,64);
+  this->fillInColor = new cocos2d::Color4B(255,255,255,120);
 
-    // Creates the white border around the edges
-    this->border = RectRadius::create(this->_width, this->_height, borderRadius, borderWidth, false);
-    this->border->setPositionX(this->_width / 2);
-    this->border->setPositionY(this->_height / 2);
-    this->border->setColor(cocos2d::Color4B::WHITE);
-    this->addChild(this->border, 1);
+  // Creates the white border around the edges
+  this->border = RectRadius::create(this->_width, this->_height, borderRadius, borderWidth, false);
+  this->border->setPositionX(this->_width / 2);
+  this->border->setPositionY(this->_height / 2);
+  this->border->setColor(cocos2d::Color4B::WHITE);
+  this->addChild(this->border, 1);
 
-    this->setContentSize(cocos2d::Size(this->_width, this->_height));
+  this->setContentSize(cocos2d::Size(this->_width, this->_height));
 
-    return true;
+  return true;
 }
 
 TimedCard::TimedCard(float fontSize,

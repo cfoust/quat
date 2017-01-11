@@ -91,15 +91,15 @@ bool TimedLayer::init() {
 
   // Calculate size of the smaller buttons
   float smallButtonHeight     = (sectionHeight - padding) / 2,
-        smallButtonIconHeight = smallButtonHeight * 0.5;
+        smallButtonIconHeight = smallButtonHeight * 0.5 * 0.77;
 
   // Full size continue button
   this->playButton = IconMenuButton::create("skip.png",
-                                        smallButtonIconHeight,
-                                        buttonWidth,
-                                        buttonHeight,
-                                        borderRadius,
-                                        borderWidth);
+                                            smallButtonIconHeight,
+                                            buttonWidth,
+                                            buttonHeight,
+                                            borderRadius,
+                                            borderWidth);
   this->playButton->setPositionX(cardWidth + padding);
   this->addChild(this->playButton);
 
