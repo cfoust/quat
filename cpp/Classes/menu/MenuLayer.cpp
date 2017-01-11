@@ -144,7 +144,8 @@ bool MenuLayer::init() {
   this->endlessLayer = EndlessLayer::create(wordSize, cardWidth, cardHeight);
   sv->addChild(this->endlessLayer);
 
-  this->timedLayer = TimedLayer::create(wordSize, cardWidth, cardHeight);
+  float timedHeight= cardHeight * 1.3;
+  this->timedLayer = TimedLayer::create(wordSize, cardWidth, timedHeight);
   sv->addChild(this->timedLayer);
 
   this->creditsLayer = CreditsLayer::create(cardWidth, cardHeight * 2);

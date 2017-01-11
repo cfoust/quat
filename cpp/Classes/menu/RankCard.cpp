@@ -100,7 +100,7 @@ bool RankCard::init() {
 
     float bannerWidth = this->_width * 0.12,
           bannerHeight = this->_height * 0.5;
-    this->drawnBanner = DrawnBanner::create(bannerWidth, bannerHeight, this->fillInColor);
+    this->drawnBanner = DrawnBanner::create(bannerWidth, bannerHeight);
     this->drawnBanner->setPositionX((this->_width / 2) - bannerWidth / 2);
     this->drawnBanner->setPositionY(this->_height - bannerHeight);
     this->addChild(this->drawnBanner, 1);

@@ -69,10 +69,9 @@ bool HighScoreLayer::init() {
 
   float bannerWidth  = width * 0.2,
         bannerHeight = height * 0.15;
-  auto fillIn  = new cocos2d::Color4B(255,255,255,120);
 
   // The banner that shows the goal rank
-  this->banner = DrawnBanner::create(bannerWidth, bannerHeight, fillIn);
+  this->banner = DrawnBanner::create(bannerWidth, bannerHeight);
   this->banner->setPositionX((width / 2) - bannerWidth / 2);
   this->banner->setPositionY(height - bannerHeight);
   this->addChild(this->banner, 1);

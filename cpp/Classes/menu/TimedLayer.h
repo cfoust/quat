@@ -7,6 +7,7 @@
 #include "../Constants.h"
 
 #include "TimedCard.h"
+#include "DrawnBanner.h"
 #include "IconMenuButton.h"
 #include "../models/Game.h"
 #include "../models/TimeUtils.h"
@@ -26,12 +27,14 @@ private:
 
   // Timed Mode header
 	cocos2d::Label * headerLabel,
-                 * rank2Label,
-                 * rank4Label,
-                 * rank8Label,
                  * time2Label,
                  * time4Label,
                  * time8Label;
+
+  // The banners to display the ranks
+  DrawnBanner * rank2Banner,
+              * rank4Banner,
+              * rank8Banner;
 
 
   // Shows progress information

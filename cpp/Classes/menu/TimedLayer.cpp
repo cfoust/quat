@@ -119,24 +119,34 @@ bool TimedLayer::init() {
   this->continueTopButton->setPositionY(smallButtonHeight + padding);
   this->addChild(this->continueTopButton);
 
+
   // Add all of the high score text labels
-  float bestFontSize   = fontSize * 0.5,
-        bestFontPadding = bestFontSize * 1.4,
-        rankLeftPos = sectionWidth * 0.2,
-        timeLeftPos = sectionWidth * 0.45,
-        halfSection = sectionHeight / 2;
+  float bestFontSize    = fontSize * 0.7,
+        bannerHeight    = bestFontSize * 1.2,
+        bannerWidth     = bannerHeight * 0.7,
+        bannerFontSize  = bannerHeight * 0.7,
+        halfBannerWidth = bannerWidth / 2,
+        halfBannerHeight= bannerHeight / 2,
+        rankLeftPos     = sectionWidth * 0.15,
+        timeLeftPos     = sectionWidth * 0.45,
+        bestFontPadding = bannerHeight * 1.2,
+        halfSection     = sectionHeight / 2;
 
-  this->rank2Label = cocos2d::Label::createWithTTF("2", Q_FONT_PATH, bestFontSize);
-  this->rank2Label->setPositionX(rankLeftPos);
-  this->addChild(rank2Label);
+  // Create all of the rank banners
+  this->rank2Banner = DrawnBanner::create(bannerWidth, bannerHeight, bannerFontSize);
+  this->rank2Banner->setPositionX(rankLeftPos - halfBannerWidth);
+  this->rank2Banner->update(2);
+  this->addChild(this->rank2Banner, 1);
 
-  this->rank4Label = cocos2d::Label::createWithTTF("4", Q_FONT_PATH, bestFontSize);
-  this->rank4Label->setPositionX(rankLeftPos);
-  this->addChild(rank4Label);
+  this->rank4Banner = DrawnBanner::create(bannerWidth, bannerHeight, bannerFontSize);
+  this->rank4Banner->setPositionX(rankLeftPos - halfBannerWidth);
+  this->rank4Banner->update(4);
+  this->addChild(this->rank4Banner, 1);
 
-  this->rank8Label = cocos2d::Label::createWithTTF("8", Q_FONT_PATH, bestFontSize);
-  this->rank8Label->setPositionX(rankLeftPos);
-  this->addChild(rank8Label);
+  this->rank8Banner = DrawnBanner::create(bannerWidth, bannerHeight, bannerFontSize);
+  this->rank8Banner->setPositionX(rankLeftPos - halfBannerWidth);
+  this->rank8Banner->update(8);
+  this->addChild(this->rank8Banner, 1);
 
   this->time2Label = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, bestFontSize);
   this->time2Label->setPositionX(timeLeftPos);
@@ -150,9 +160,9 @@ bool TimedLayer::init() {
   this->time8Label->setPositionX(timeLeftPos);
   this->addChild(time8Label);
 
-  this->rank2Label->setPositionY(halfSection + bestFontPadding);
-  this->rank4Label->setPositionY(halfSection);
-  this->rank8Label->setPositionY(halfSection - bestFontPadding);
+  this->rank2Banner->setPositionY(halfSection + bestFontPadding - halfBannerHeight);
+  this->rank4Banner->setPositionY(halfSection - halfBannerHeight);
+  this->rank8Banner->setPositionY(halfSection - bestFontPadding - halfBannerHeight);
 
   this->time2Label->setPositionY(halfSection + bestFontPadding);
   this->time4Label->setPositionY(halfSection);

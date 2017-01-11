@@ -11,8 +11,8 @@ class DrawnBanner : public cocos2d::Layer
 {
 private:
 	float width, // Width of the rect
-		  height; // Height of the rect
-
+		    height, // Height of the rect
+        fontSize;
 
 	/**
 	 * Redraws the rectangle from stored vertices.
@@ -28,12 +28,16 @@ private:
 	cocos2d::Label * rankText;
 
 	cocos2d::Color4F * fillColor;
+
 public:
-	static DrawnBanner * create(float width, float height, cocos2d::Color4B * fillColor);
+	static DrawnBanner * create(float width, float height);
+
+  // Two creation methods, one for changing the font size
+	static DrawnBanner * create(float width, float height, float fontSize);
 
 	bool init();
 
-	DrawnBanner(float width, float height, cocos2d::Color4B * fillColor);
+	DrawnBanner(float width, float height, float fontSize);
 
   void update(int rank);
 

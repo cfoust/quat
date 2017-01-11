@@ -6,20 +6,36 @@
 
 namespace QUAT {
 
-DrawnBanner * DrawnBanner::create(float width, float height, cocos2d::Color4B * fillColor) {
-	DrawnBanner *pRet = new(std::nothrow) DrawnBanner(width, height, fillColor);
+DrawnBanner * DrawnBanner::create(float width, float height) {
+	DrawnBanner *pRet = new(std::nothrow) DrawnBanner(width, height, 0);
 
-    if (pRet && pRet->init())
-    {
-        pRet->autorelease();
-        return pRet;
-    }
-    else
-    {
-        delete pRet;
-        pRet = NULL;
-        return NULL;
-    }
+  if (pRet && pRet->init())
+  {
+      pRet->autorelease();
+      return pRet;
+  }
+  else
+  {
+      delete pRet;
+      pRet = NULL;
+      return NULL;
+  }
+}
+
+DrawnBanner * DrawnBanner::create(float width, float height, float fontSize) {
+	DrawnBanner *pRet = new(std::nothrow) DrawnBanner(width, height, fontSize);
+
+  if (pRet && pRet->init())
+  {
+      pRet->autorelease();
+      return pRet;
+  }
+  else
+  {
+      delete pRet;
+      pRet = NULL;
+      return NULL;
+  }
 }
 
 void DrawnBanner::drawBanner() {
@@ -63,25 +79,34 @@ void DrawnBanner::generateVertices() {
 }
 bool DrawnBanner::init() {
 	// Init the super class
-    if ( !Layer::init() )
-    {
-        return false;
-    }
+  if ( !Layer::init() )
+  {
+      return false;
+  }
 
-    // Create the node
-    this->node = cocos2d::DrawNode::create();
-    this->addChild(this->node);
+  if (this->fontSize == 0) {
+    fontSize = 0.5 * this->height;
+  }
 
-    float fontSize = 0.5 * this->height;
-    this->rankText = cocos2d::Label::createWithTTF("1", Q_FONT_PATH, fontSize);
-    this->rankText->setPositionX(this->width / 2);
-    this->rankText->setPositionY(this->height * 0.6);
-    this->addChild(this->rankText, 2);
+  // Use the same color all the time for filling in the node
+  this->fillColor  = new cocos2d::Color4F(1,1,1,0.46);
 
-    this->generateVertices();
-    this->drawBanner();
+  // Create the node
+  this->node = cocos2d::DrawNode::create();
+  this->addChild(this->node);
 
-    return true;
+  // Adjusts for odd font offset
+  float xOffset = fontSize * 0.045;
+
+  this->rankText = cocos2d::Label::createWithTTF("1", Q_FONT_PATH, fontSize);
+  this->rankText->setPositionX((this->width / 2) - xOffset);
+  this->rankText->setPositionY(this->height * 0.6);
+  this->addChild(this->rankText, 2);
+
+  this->generateVertices();
+  this->drawBanner();
+
+  return true;
 }
 
 void DrawnBanner::setWidth(float width) {
@@ -89,17 +114,19 @@ void DrawnBanner::setWidth(float width) {
   this->generateVertices();
   this->drawBanner();
 }
+
 void DrawnBanner::setHeight(float height) {
   this->height = height;
   this->generateVertices();
   this->drawBanner();
 }
 
-DrawnBanner::DrawnBanner(float width, float height, cocos2d::Color4B * fillColor) {
+DrawnBanner::DrawnBanner(float width, float height, float fontSize) {
 	this->width = width;
 	this->height = height;
-	this->fillColor = new cocos2d::Color4F(*fillColor);
+  this->fontSize = fontSize;
 }
+
 void DrawnBanner::setOpacity(GLubyte opacity) {
 	this->node->setOpacity(opacity);
 }

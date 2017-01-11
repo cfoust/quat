@@ -44,11 +44,10 @@ bool BannerButton::init() {
       return false;
   }
   
-  auto fillInColor = new cocos2d::Color4B(255,255,255,120);
 
   float bannerHeight = this->_height * 0.8,
         bannerWidth = bannerHeight * 0.8;
-  this->banner = DrawnBanner::create(bannerWidth, bannerHeight, fillInColor);
+  this->banner = DrawnBanner::create(bannerWidth, bannerHeight);
   this->banner->setPositionX((this->_width / 2) - bannerWidth / 2);
   this->banner->setPositionY((this->_height / 2) - bannerHeight / 2);
   this->addChild(this->banner, 1);
