@@ -29,8 +29,7 @@ protected:
   // timed mode
   int timesComplete[TIMED_RANKS];
 
-  bool running, // Whether the timer is counting upwards
-       done;    // Whether we've reached the win rank
+  bool done;    // Whether we've reached the win rank
 
 public:
 	TimedState(Dictionary * d);
@@ -38,8 +37,6 @@ public:
   // Resets the rank and time to zero
   void reset();
 
-  // Sets whether or not this game state should be recording time
-  void setRunning(bool running);
 
   // Whether or not this game state is recording time
   bool isRunning();
@@ -52,6 +49,8 @@ public:
 
   // Sets the rank the user will win at.
   void setWinRank(int rank);
+
+  void setRunning(bool running) override;
 
   // Gets the win rank the user will win at.
   int getWinRank();

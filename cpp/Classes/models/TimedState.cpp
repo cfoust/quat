@@ -19,14 +19,6 @@ TimedState::TimedState(Dictionary * d) : GameState(d) {
   for (int i = 0; i < TIMED_RANKS; i++) this->highScore[i] = 0; 
 }
 
-void TimedState::setRunning(bool running) {
-  this->running = running;
-  
-  if (!running) {
-    this->lastTime = 0;
-  }
-}
-
 void TimedState::setWinRank(int rank) {
   this->winRank = rank;
 }
@@ -61,6 +53,14 @@ unsigned long TimedState::getTime() {
 
 unsigned long TimedState::getHighScore(int rank) {
   return this->highScore[rank];
+}
+
+void TimedState::setRunning(bool running) {
+  GameState::setRunning(running);
+  
+  if (!running) {
+    this->lastTime = 0;
+  }
 }
 
 bool TimedState::registerPuzzle(Puzzle * puzzle) {
@@ -110,21 +110,20 @@ void TimedState::serialize(QuatStream & qs) {
 
 void TimedState::update(float secs) {
   GameState::update(secs);
+  
+  if (!running) return;
 
-  // Increment the timer if we're running
-  if (running) {
-    // If lastTime is zero, just set it to epochMs
-    if (!this->lastTime) {
-      this->lastTime = TimeUtils::epochMs();
-      return;
-    }
-
-    // Calculate the difference since we last called, then reset
-    // lastTime
-    unsigned long nowEpoch = TimeUtils::epochMs();
-    this->timePlayed += nowEpoch - this->lastTime;
-    this->lastTime = nowEpoch;
+  // If lastTime is zero, just set it to epochMs
+  if (!this->lastTime) {
+    this->lastTime = TimeUtils::epochMs();
+    return;
   }
+
+  // Calculate the difference since we last called, then reset
+  // lastTime
+  unsigned long nowEpoch = TimeUtils::epochMs();
+  this->timePlayed += nowEpoch - this->lastTime;
+  this->lastTime = nowEpoch;
 }
 
 }

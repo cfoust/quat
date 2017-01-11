@@ -13,6 +13,8 @@
 #include "QuatStream.h"
 #include "cocos2d.h"
 
+#define AD_MS (30 * 1000)
+
 namespace QUAT {
 
 using namespace std;

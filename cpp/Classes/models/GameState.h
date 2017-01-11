@@ -27,6 +27,8 @@ protected:
   // Manages all of the multiplier/combo logic
   Blitzer * blitzer;
 
+  bool running; // Whether the timer is counting upwards
+
 	int subRank; // The user's sub-rank between 0 and 16834
 
   // The lower bound (in terms of real rank) for the display rank
@@ -52,6 +54,9 @@ public:
 
   // Returns a pointer to the combo/multiplier logic.
   Blitzer * getBlitzer();
+
+  // Sets whether or not this game state should be recording time
+  virtual void setRunning(bool running);
 
   bool isTimed();
 

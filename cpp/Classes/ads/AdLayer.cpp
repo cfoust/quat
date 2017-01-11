@@ -35,8 +35,9 @@ bool AdLayer::init() {
 
     // Initializes the current word, which is the word the user is currently
     // operating on
-    float proportion = 0.6;
+    float proportion = 0.8;
     this->quatLogo = BorderedWordNode::create(wordSize * proportion, gap * proportion);
+    this->quatLogo->setShowFills(false);
     this->quatLogo->changeWord(new std::string("QUAT"));
     this->quatLogo->setPosition(gameBounds->origin.x + (width / 2),
                                 height * 0.9);
@@ -49,11 +50,16 @@ bool AdLayer::init() {
                                height - menuButtonOffset);
     this->addChild(this->skipText);
 
+    this->timeText = cocos2d::Label::createWithTTF(TIME_DEFAULT, Q_FONT_PATH, wordSize * 1.2);
+    this->timeText->setPosition(gameBounds->origin.x + width / 2,
+                               height * 0.6);
+    this->addChild(this->timeText);
+
     float cardWidth = width * 0.8,
           cardHeight = cardWidth * 0.32;
     this->rankCard = RankCard::create(wordSize, cardWidth, cardHeight);
     this->rankCard->setPosition(gameBounds->origin.x + (width / 2) - (cardWidth / 2),
-                                height * 0.7);
+                                height * 0.65);
     this->addChild(this->rankCard);
 
     this->adPlaceholder = RectRadius::create(300,
@@ -92,12 +98,23 @@ void AdLayer::updateTime(float dt) {
 
 void AdLayer::updateFromModel(Game * game) {
   this->rankCard->updateFromModel(game);
+
+  auto user = game->getUser();
+  bool endless = user->isPlayingEndless();
+
+  this->timeText->setVisible(!endless);
+
+  if (!endless) {
+    auto state = user->getTimedState();
+    this->timeText->setString(TimeUtils::formatMs(state->getTime()));
+  }
 }
+
 AdLayer::AdLayer(cocos2d::Rect * gameBounds, float fontSize, CloseButton * closeButton) {
 	// Copy the gamebounds into the local object
 	this->gameBounds = gameBounds;
 	this->fontSize = fontSize;
-    this->closeButton = closeButton;
+  this->closeButton = closeButton;
 }
 
 

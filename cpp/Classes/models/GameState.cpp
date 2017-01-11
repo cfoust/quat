@@ -28,6 +28,10 @@ int GameState::displayRankStart(int displayRank) {
   return this->displayRankStart(displayRank - 1) + ((displayRank - 1) * 3);
 }
 
+void GameState::setRunning(bool running) {
+  this->running = running;
+}
+
 int GameState::displayToSubRank(int displayRank) {
   return this->realToSubRank(this->displayRankStart(displayRank));
 }
@@ -140,6 +144,8 @@ void GameState::serialize(QuatStream & qs) {
 }
 
 void GameState::update(float secs) {
+  if (!running) return;
+
   this->blitzer->update(secs);
 }
 

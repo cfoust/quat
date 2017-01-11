@@ -14,9 +14,9 @@
 namespace QUAT {
 
 
-PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds, 
+PuzzleLayer * PuzzleLayer::create(cocos2d::Rect * gameBounds,
                                     BackgroundLayer * background,
-                                    float fontSize, 
+                                    float fontSize,
                                     Game * game,
                                     GameStateController * GSC)
 {
@@ -55,7 +55,7 @@ void PuzzleLayer::chooseLetter(int column) {
 
     // Make the game interactable
     this->setEnabled(true);
-    
+
     // Enable the keyboard
     this->keyboardLayer->setEnabled(true);
     this->keyboardLayer->setLetterEnabled(*word->getLetter(column), false);
@@ -92,14 +92,14 @@ void PuzzleLayer::updateFromModel() {
 
   // Shows the undo button only if the user has added more than one word
   this->undo->setVisible(stepCount > 0);
-  
+
   // Update the buttons layer
   this->buttonsLayer->updateFromModel(this->game);
-  
+
   // Updates the current words
   this->currentWord->changeWord(puzzle->getCurrent());
   this->goalWord->changeWord(puzzle->getGoal());
-  
+
   // Update the rank progress bar
   this->progressIndicator->updateFromModel(this->game);
 
@@ -109,11 +109,6 @@ void PuzzleLayer::updateFromModel() {
   // Check to see if we have to update the background's colors
   if (theme->getColorSchemeChanged()) {
     this->background->animateScheme(theme->getColorScheme());
-  }
-
-  // Transition to the ad screen if we need to
-  if (user->shouldShowAd()) {
-    this->GSC->setState(S_Ad);
   }
 
   // Show the timer if we're on timed
@@ -142,7 +137,7 @@ void PuzzleLayer::skipClick() {
 
   // Register it with the game
   user->registerPuzzle(puzzle);
-  
+
   // Grab a new puzzle
   state->newPuzzle();
 
@@ -174,10 +169,10 @@ void PuzzleLayer::raiseKeyboard() {
     // Set up the steps to move
     auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->buttonsLayer->getPositionX(), this->buttonsFinish));
     this->buttonsLayer->setPositionY(this->buttonsStart);
-    
+
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), 0));
-    
+
     // Move the keyboard underground
     this->keyboardLayer->setPositionY(this->keyboardDownPos);
 
@@ -196,11 +191,11 @@ void PuzzleLayer::lowerKeyboard() {
     // Set up the steps to move
     auto stepsTextAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->buttonsLayer->getPositionX(), this->buttonsStart));
     this->buttonsLayer->setPositionY(this->buttonsFinish);
-    
+
     // Set up the keyboard to move
     auto keyboardAction = cocos2d::MoveTo::create(Q_KEYBOARD_SLIDE, cocos2d::Vec2(this->keyboardLayer->getPositionX(), this->keyboardDownPos));
     this->keyboardLayer->setPositionY(0);
-    
+
     this->buttonsLayer->runAction(stepsTextAction);
     this->keyboardLayer->runAction(keyboardAction);
     this->keyboardUp = false;
@@ -222,13 +217,13 @@ bool PuzzleLayer::init() {
           height = gameBounds->size.height,
           wordSize = fontSize,
           gap = wordSize * Q_LETTER_GAP;
-    
+
     // Initializes the goal word, which is the word the user is trying to change
     // the start word into.
     this->goalWord = WordNode::create(wordSize, gap);
     goalWord->changeWord(new std::string("GOAL"));
     // Set its position to be horizontally centered
-    goalWord->setPosition(gameBounds->origin.x + (width / 2), 
+    goalWord->setPosition(gameBounds->origin.x + (width / 2),
                           height * Q_GOAL_Y);
     this->addChild(goalWord);
 
@@ -236,7 +231,7 @@ bool PuzzleLayer::init() {
     // operating on
     this->currentWord = BorderedWordNode::create(wordSize, gap);
     currentWord->changeWord(new std::string("WORD"));
-    currentWord->setPosition(gameBounds->origin.x + (width / 2), 
+    currentWord->setPosition(gameBounds->origin.x + (width / 2),
                              goalWord->getPositionY() + wordSize * Q_WORDS_GAP);
     // Since this word is interactable, we have to recalculate the bounds
     // in which we track touches
@@ -245,7 +240,7 @@ bool PuzzleLayer::init() {
 
     this->stepsLayer = StepsLayer::create(fontSize);
     this->stepsLayer->setPositionX(gameBounds->origin.x + (width / 2));
-    this->stepsLayer->setPositionY(currentWord->getPositionY() 
+    this->stepsLayer->setPositionY(currentWord->getPositionY()
                                    + wordSize * Q_WORDS_GAP);
     this->stepsLayer->setVisible(false);
     this->addChild(this->stepsLayer);
@@ -287,7 +282,7 @@ bool PuzzleLayer::init() {
     this->blitzIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->blitzIndicator->setPositionY((progressY + this->currentWord->getPositionY()) / 2);
     this->addChild(this->blitzIndicator, 2);
-    
+
     // Initializes the keyboard layer, the means by which users can select
     // new letters in the solution
     this->keyboardLayer = QUAT::KeyboardLayer::create(gameBounds, fontSize);
@@ -308,7 +303,7 @@ bool PuzzleLayer::init() {
     this->buttonsLayer->setPositionX(gameBounds->origin.x);
     this->buttonsLayer->setPositionY(this->buttonsStart);
     this->addChild(this->buttonsLayer);
-    
+
     // Set up the callbacks for the bottom buttons
     this->buttonsLayer->skipButtonLayer->upCallback = CC_CALLBACK_0(PuzzleLayer::skipClick, this);
 
@@ -317,7 +312,7 @@ bool PuzzleLayer::init() {
     /*========================================
     =            Input management            =
     ========================================*/
-    
+
     // Initializes the game's model here (should probably be more global)
     this->solverStateController = new SolverStateController(this);
     this->solverTouchInputManager = new SolverTouchInputManager(this->solverStateController, this->game, this);
@@ -349,14 +344,14 @@ bool PuzzleLayer::init() {
         _eventDispatcher->addEventListenerWithSceneGraphPriority(keyboardEventListener, this);
     #endif
 
-    
+
     /*=====  End of Input management  ======*/
-    
+
 
     /*=========================================================
     =            Model Handling and Initialization            =
     =========================================================*/
-    
+
 
     // Clean up this layer and set it to its default (IDLE) state
     this->goIdle();
@@ -367,12 +362,12 @@ bool PuzzleLayer::init() {
     auto scheme = this->game->getTheme()->getColorScheme();
     this->background->setScheme(scheme);
     this->blitzIndicator->setScheme(scheme);
-    
+
     /*=====  End of Model Handling and Initialization  ======*/
 
     // Schedule the update() call
     this->scheduleUpdate();
-    
+
     // Indicates we initialized successfully
     return true;
 }
@@ -413,10 +408,15 @@ void PuzzleLayer::finishWord() {
         }
 
         this->progressIndicator->updateFromModel(this->game);
-        
+
         auto blitz = this->game->getBlitzer();
         if (blitz->isBlitzing()) {
           this->blitzIndicator->setVisible(true);
+        }
+
+        // Transition to the ad screen if we need to
+        if (user->shouldShowAd()) {
+          this->GSC->setState(S_Ad);
         }
     }
 
@@ -460,9 +460,9 @@ void PuzzleLayer::onTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event) {
     this->trackingTouch = false;
 }
 
-PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds, 
+PuzzleLayer::PuzzleLayer(cocos2d::Rect * gameBounds,
                          BackgroundLayer * background,
-                         float fontSize, 
+                         float fontSize,
                          Game * game,
                          GameStateController * GSC) {
 	this->gameBounds = gameBounds;

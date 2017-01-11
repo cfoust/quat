@@ -3,10 +3,12 @@
 
 #include "cocos2d.h"
 #include "../CloseButton.h"
+#include "../Constants.h"
 #include "../solver/input/BorderedWordNode.h"
 #include "../nodes/RectRadius.h"
 #include "../menu/RankCard.h"
 #include "../models/Game.h"
+#include "../models/TimeUtils.h"
 
 namespace QUAT {
 
@@ -28,7 +30,8 @@ private:
 	// Yeah, this element is a "live" element -- not a sprite
 	BorderedWordNode * quatLogo;
 
-	cocos2d::Label * skipText;
+	cocos2d::Label * skipText,
+                 * timeText;
 	 
 	RectRadius * adPlaceholder; // Placeholder for the ad rectangle
 

@@ -29,7 +29,8 @@ void GameScene::enteredForeground() {
 
 void GameScene::showLayer(GAME_STATE state) {
   // Show or hide the background shade so other interfaces are clear
-  this->background->shadeVisible(state == S_MainMenu);
+  this->background->shadeVisible((state == S_MainMenu) ||
+                                 (state == S_Ad));
 
   // The main menu layer
   this->menuLayer->setVisible(state == S_MainMenu);
@@ -48,8 +49,8 @@ void GameScene::showLayer(GAME_STATE state) {
   this->timedTransitionLayer->setVisible(state == S_TimedTransition);
 
   this->highScoreLayer->setVisible(state == S_TimedHighScore);
-
-  this->closeButton->setVisible(state == S_Ad);
+  
+  this->closeButton->setVisible(false);
 }
 
 void GameScene::fromState(GAME_STATE state) {
@@ -58,9 +59,7 @@ void GameScene::fromState(GAME_STATE state) {
   // Freeze the timer if the user is playing timed
   // and we move away from the solver
   if (state == S_PuzzleSolver) {
-    if (!user->isPlayingEndless()) {
-      user->getTimedState()->setRunning(false);
-    }
+    user->getGameState()->setRunning(false);
   } else if (state == S_TimedHighScore) {
     user->getTimedState()->reset();
   }
@@ -72,8 +71,9 @@ void GameScene::toState(GAME_STATE state) {
   // Start the timer for the ad screen since we're
   // moving to it
   if (state == S_Ad) {
-    this->adLayer->startTimer();
+    this->adLayer->updateFromModel(this->game);
 
+    this->adLayer->startTimer();
   // Update the menu before we change to it
   } else if (state == S_MainMenu) {
     // Set the game state
@@ -123,7 +123,7 @@ void GameScene::menuCallback() {
         (this->GSC->state() == S_TimedHighScore)) {
         this->GSC->setState(S_MainMenu);
     } else if ((this->GSC->state() == S_MainMenu) ||
-             (this->GSC->state() == S_GameDefinitions)) {
+               (this->GSC->state() == S_Ad)) {
         this->GSC->setState(S_PuzzleSolver);
     }
 }
