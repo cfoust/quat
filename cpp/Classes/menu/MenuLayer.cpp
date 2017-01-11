@@ -79,6 +79,7 @@ void MenuLayer::resetLayout() {
   totalHeight += size.height;
   totalHeight += padding * 3; 
 
+  // Hide the buy layer when the user has already purchased the game
   if (this->buyLayer->isVisible()) {
     size = this->buyLayer->getContentSize();
     this->buyLayer->setPosition((width / 2) - (size.width / 2),

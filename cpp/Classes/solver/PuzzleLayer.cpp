@@ -278,7 +278,8 @@ bool PuzzleLayer::init() {
     this->timedIndicator->setPositionY(progressY - ((height * Q_BANNER_HEIGHT) / 2));
     this->addChild(this->timedIndicator, 3);
 
-    this->blitzIndicator = BlitzIndicatorLayer::create(fontSize);
+    float blitzSize = fontSize * 1.5;
+    this->blitzIndicator = BlitzIndicatorLayer::create(blitzSize);
     this->blitzIndicator->setPositionX(gameBounds->origin.x + (width / 2));
     this->blitzIndicator->setPositionY((progressY + this->currentWord->getPositionY()) / 2);
     this->addChild(this->blitzIndicator, 2);

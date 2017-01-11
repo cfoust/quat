@@ -29,7 +29,7 @@ bool CreditsLayer::init() {
   }
 
   float fontSize = height * 0.15;
-  auto headerLabel = cocos2d::Label::createWithTTF("", Q_FONT_PATH, fontSize);
+  auto headerLabel = Label::createWithTTF("", Q_FONT_PATH, fontSize);
 
   headerLabel->setString("QUAT was crafted with love by Caleb Foust (@calebfoust) and David Seitz (@davidsights). This one is for those golden afternoons in St. Germaine.");
 

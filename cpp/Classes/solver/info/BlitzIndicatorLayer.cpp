@@ -32,17 +32,17 @@ bool BlitzIndicatorLayer::init() {
   // The bottom and top text are used to clip and show the multiplier
   // as it animates down
   this->topText = cocos2d::Label::createWithTTF("1X", Q_FONT_PATH, fontSize);
-  this->topText->setOpacity(40);
+  this->topText->setOpacity(20);
   this->topText->setColor(cocos2d::Color3B::WHITE);
 
   this->bottomText = cocos2d::Label::createWithTTF("1X", Q_FONT_PATH, fontSize);
   this->bottomText->setColor(cocos2d::Color3B::WHITE);
-  this->bottomText->setOpacity(40);
+  this->bottomText->setOpacity(20);
   this->addChild(bottomText, 1);
 
   // The circle that animates the time remaining in the combo
-  this->circle = CircleNode::create(50);
-  this->circle->setColor(cocos2d::Color4B(255, 255, 255, 40));
+  this->circle = CircleNode::create(fontSize * 0.9);
+  this->circle->setColor(cocos2d::Color4B(255, 255, 255, 20));
   this->addChild(this->circle, 2);
 
   // Sets up the clipping for the main multiplier text
