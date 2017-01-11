@@ -31,6 +31,8 @@ public:
 
 	void unselect();
 
+  void setShowFills(bool show);
+
 	void recalculateBounds();
 	
 	BorderedWordNode(float fontSize, float fontGap);

@@ -11,6 +11,7 @@
 #include "IconMenuButton.h"
 #include "../models/Game.h"
 #include "../models/TimeUtils.h"
+#include "../solver/input/BorderedWordNode.h"
 
 namespace QUAT {
 
@@ -25,9 +26,10 @@ private:
         sectionWidth,
         sectionHeight;
 
+  BorderedWordNode * raceText;
+
   // Timed Mode header
-	cocos2d::Label * headerLabel,
-                 * time2Label,
+	cocos2d::Label * time2Label,
                  * time4Label,
                  * time8Label;
 

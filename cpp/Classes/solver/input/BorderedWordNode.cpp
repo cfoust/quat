@@ -2,6 +2,12 @@
 
 namespace QUAT {
 
+void BorderedWordNode::setShowFills(bool show) {
+    for (int i = 0; i < 4; i++) {
+    	this->fills[i]->setVisible(show);
+    }
+}
+
 bool BorderedWordNode::init() {
 	// Init the super class
     if ( !WordNode::init() )

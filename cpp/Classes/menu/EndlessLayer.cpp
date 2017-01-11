@@ -37,10 +37,13 @@ bool EndlessLayer::init() {
   // Records the total height of the layer
   float totalHeight    = 0,
         padding        = sectionWidth * 0.05,
+        vPadding       = padding / 2,
+        headerSize     = sectionHeight * 0.15 * 1.3,
+        headerGap      = Q_LETTER_GAP * headerSize,
         buttonWidth    = sectionWidth * 0.2,
         buttonHeight   = sectionHeight,
         buttonIconHeight = (sectionHeight - (sectionWidth * 0.05)) / 4,
-        buttonFontSize = fontSize * 0.3,
+        buttonFontSize = fontSize * 0.8,
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;
 
@@ -52,10 +55,12 @@ bool EndlessLayer::init() {
         borderWidth  = this->card->getBorderWidth();
 
   // Add a nice header
-  auto headerLabel = cocos2d::Label::createWithTTF("ENDLESS", Q_FONT_PATH, buttonFontSize);
-  headerLabel->setPositionX(cardWidth / 2);
-  headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
-  this->addChild(headerLabel);
+  this->freeText = BorderedWordNode::create(headerSize, headerGap);
+  freeText->setPositionX(sectionWidth / 2);
+  freeText->setPositionY(sectionHeight + headerSize + vPadding);
+  this->freeText->changeWord(new std::string("FREE"));
+  this->freeText->setShowFills(false);
+  this->addChild(this->freeText);
 
   this->continueButton = IconMenuButton::create("skip.png", 
                                                 buttonIconHeight,
@@ -69,7 +74,7 @@ bool EndlessLayer::init() {
   
 
   this->setContentSize(cocos2d::Size(sectionWidth,
-                                     sectionHeight + padding));
+                                     sectionHeight + vPadding + headerSize));
 
   // Indicates we initialized successfully
   return true;

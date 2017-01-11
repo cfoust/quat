@@ -66,17 +66,21 @@ bool TimedLayer::init() {
 
   // Records the total height of the layer
   float padding        = sectionWidth * 0.05,
+        vPadding       = padding / 2,
+        headerSize     = sectionHeight * 0.15,
+        headerGap      = Q_LETTER_GAP * headerSize,
         buttonWidth    = sectionWidth * 0.2,
         buttonHeight   = sectionHeight,
-        buttonFontSize = fontSize * 0.3,
         cardWidth      = (sectionWidth - buttonWidth - padding),
         cardHeight     = sectionHeight;
 
   // Add a nice header
-  this->headerLabel = cocos2d::Label::createWithTTF("TIMED", Q_FONT_PATH, buttonFontSize);
-  headerLabel->setPositionX(cardWidth / 2);
-  headerLabel->setPositionY(sectionHeight + (buttonFontSize * 0.75));
-  this->addChild(headerLabel);
+  this->raceText = BorderedWordNode::create(headerSize, headerGap);
+  raceText->setPositionX(sectionWidth / 2);
+  raceText->setPositionY(sectionHeight + headerSize + vPadding);
+  this->raceText->changeWord(new std::string("RACE"));
+  this->raceText->setShowFills(false);
+  this->addChild(this->raceText);
 
   // Create the section
   this->card = TimedCard::create(fontSize, cardWidth, cardHeight);
@@ -169,7 +173,7 @@ bool TimedLayer::init() {
   this->time8Label->setPositionY(halfSection - bestFontPadding);
 
   this->setContentSize(cocos2d::Size(sectionWidth,
-                                     sectionHeight + padding));
+                                     sectionHeight + vPadding + headerSize));
 
   // Indicates we initialized successfully
   return true;

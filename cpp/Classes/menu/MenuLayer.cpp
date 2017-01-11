@@ -63,7 +63,7 @@ void MenuLayer::resetLayout() {
   float width = gameBounds->size.width,
         height = gameBounds->size.height,
         totalHeight = 0,
-        padding     = height * 0.02;
+        padding     = height * 0.03;
 
   // A bit of padding on top
   totalHeight += padding;
@@ -79,14 +79,14 @@ void MenuLayer::resetLayout() {
   this->timedLayer->setPosition((width / 2) - (size.width / 2),
                               totalHeight);
   totalHeight += size.height;
-  totalHeight += padding; // Some extra padding before the QUAT logo
+  totalHeight += padding * 3; // Some extra padding before the QUAT logo
 
   // Add the layer for endless mode
   size = this->endlessLayer->getContentSize();
   this->endlessLayer->setPosition((width / 2) - (size.width / 2),
                                   totalHeight);
   totalHeight += size.height;
-  totalHeight += padding * 2;
+  totalHeight += padding * 4;
   
   // Add the QUAT logo
   size = this->quatLogo->getContentSize();
@@ -96,7 +96,7 @@ void MenuLayer::resetLayout() {
   this->quatLogo->setPosition((width / 2),
                               totalHeight);
   totalHeight += size.height / 2;
-  totalHeight += padding * 2;
+  totalHeight += padding * 3;
   
   scrollView->setInnerContainerSize( Size( width, totalHeight ) );
 
@@ -129,14 +129,16 @@ bool MenuLayer::init() {
   // Sets up the scroll view
   auto sv = ui::ScrollView::create();
   this->scrollView = sv;
+  sv->setBounceEnabled(true);
   sv->setContentSize( Size( width, height ) );
   sv->setInnerContainerSize( Size( width, height * 2 ) );
 
   // Initializes the current word, which is the word the user is currently
   // operating on
-  float proportion = 0.6;
+  float proportion = 0.8;
   this->quatLogo = BorderedWordNode::create(wordSize * proportion, gap * proportion);
   this->quatLogo->changeWord(new std::string("QUAT"));
+  this->quatLogo->setShowFills(false);
   sv->addChild(this->quatLogo);
   
   float cardWidth = width * 0.8,

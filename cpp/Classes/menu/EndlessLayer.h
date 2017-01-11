@@ -8,6 +8,8 @@
 #include "IconMenuButton.h"
 #include "../models/Game.h"
 
+#include "../solver/input/BorderedWordNode.h"
+
 namespace QUAT {
 
 USING_NS_CC;
@@ -24,6 +26,8 @@ private:
   // Endless Mode header
 	cocos2d::Label * headerLabel;
 
+  BorderedWordNode * freeText;
+  
   // Shows progress information
   RankCard * card;
 
