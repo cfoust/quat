@@ -149,6 +149,7 @@ set(GAME_SRC
   Classes/menu/TimedCard.cpp
   Classes/models/Dictionary.cpp
   Classes/models/Game.cpp
+  Classes/models/keys/key.cpp
   Classes/models/TimeUtils.cpp
   Classes/models/GameState.cpp
   Classes/models/TimedState.cpp

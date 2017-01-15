@@ -9,11 +9,25 @@ bool QuatStream::isWriting() {
 QuatStream::QuatStream(ofstream * out) {
   this->out = out;
   this->mode = WRITE;
+  this->index = 0;
 }
 
 QuatStream::QuatStream(ifstream * in) {
   this->in = in;
   this->mode = READ;
+  this->index = 0;
+}
+
+// LOLOL can't believe I'm doing the exact "encryption" I broke
+// before.
+#include "keys/key.cpp"
+
+void QuatStream::shuffle(char * bytes, int n) {
+  for (int i = 0; i < n; i++) {
+    bytes[i] ^= key[index];
+    index++;
+    index %= key_len;
+  }
 }
 
 void QuatStream::read(char * bytes, int n) {
@@ -22,14 +36,24 @@ void QuatStream::read(char * bytes, int n) {
 
   // Perform the read
   this->in->read(bytes, n); 
+  this->shuffle(bytes, n);
 }
 
 void QuatStream::write(char * bytes, int n) {
   // ignore call if we're in read mode
   if (this->mode == READ) return;
+
+  // Make a quick buffer
+  char buffer[n];
+
+  // Copy the data into it
+  memcpy(buffer, bytes, n);
   
+  // Encrypt it
+  this->shuffle(buffer, n);
+
   // Perform the write
-  this->out->write(bytes, n);
+  this->out->write(buffer, n);
 }
 
 // Simple, reusable code for doing primitive types

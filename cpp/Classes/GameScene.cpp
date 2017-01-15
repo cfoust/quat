@@ -141,7 +141,7 @@ bool GameScene::init()
     // Load our game file if we can
     if (this->game->canLoadFromLocal()) {
       // Load the local game save
-      //this->game->loadFromLocal();
+      this->game->loadFromLocal();
     }
 
     this->GSC = new GameStateController(this);

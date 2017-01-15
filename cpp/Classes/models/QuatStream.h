@@ -5,6 +5,7 @@
 #include <fstream>
 #include "cocos2d.h"
 
+
 namespace QUAT {
 
 using namespace std;
@@ -27,6 +28,16 @@ private:
   // This doesn't change the behavior of functions,
   // it's just a marker of sorts.
   MODE mode;
+
+  // Holds the index we're at in the key
+  int index;
+
+  // Runs each byte through an xor cipher. Can be used
+  // for encryption and decryption.
+  //
+  // This is insecure AS FUCK. 
+  // @me_irl
+  void shuffle(char * bytes, int n);
 
   // Read n bytes from the in stream and store them in
   // the memory pointed to by bytes.
