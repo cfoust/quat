@@ -20,6 +20,8 @@ private:
 
 	Label * text;
 
+  RenderTexture * render;
+
 public:
 	/**
 	 * Creates and returns a IconNode.
@@ -31,6 +33,8 @@ public:
 	IconNode(const char16_t * icon, float size);
 
   Label * getLabel();
+
+  Texture2D * toTexture();
 };
 
 }

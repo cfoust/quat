@@ -6,6 +6,7 @@
 #include "../menu/DrawnBanner.h"
 #include "../Constants.h"
 #include "../models/Game.h"
+#include "../nodes/IconNode.h"
 #include "../models/TimeUtils.h"
 #include "../GameStateController.h"
 
@@ -19,7 +20,10 @@ private:
   cocos2d::Rect * gameBounds;
 
   // The text that sits in the middle of the circle
-	cocos2d::Label * scoreText;
+	Label * scoreText,
+        * highScoreText;
+
+  ParticleSystemQuad * winParticles;
 
 	// Controls the entire game so we can move to other screens
 	GameStateController * GSC;

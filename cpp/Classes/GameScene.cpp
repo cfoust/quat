@@ -202,7 +202,7 @@ bool GameScene::init()
     addChild(this->adLayer, 1);
 
     // Transition to the main game screen
-    this->GSC->setState(S_PuzzleSolver);
+    this->GSC->setState(S_TimedHighScore);
 
     // Schedule the update loop
     this->scheduleUpdate();
