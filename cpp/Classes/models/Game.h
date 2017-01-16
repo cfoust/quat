@@ -52,14 +52,6 @@ public:
   Blitzer * getBlitzer();
 
 	/**
-	 * @brief      Gets a pointer to the dictionary used by the game to 
-	 *             check the validity of words and get their definitions.
-	 *
-	 * @return     The dictionary.
-	 */
-	Dictionary * getDictionary();
-
-	/**
 	 * @brief      Gets the current activated theme.
 	 *
 	 * @return     The theme.

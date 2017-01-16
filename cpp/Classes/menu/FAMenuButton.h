@@ -21,14 +21,14 @@ private:
 public:
 	virtual bool init();
 	
-	FAMenuButton(char16_t * icon,
+	FAMenuButton(const char16_t * icon,
                float iconHeight,
                float width,
                float height,
                float borderRadius,
                float borderWidth);
 	
-	static FAMenuButton * create(char16_t * icon,
+	static FAMenuButton * create(const char16_t * icon,
                                float iconHeight,
                                float width,
                                float height,

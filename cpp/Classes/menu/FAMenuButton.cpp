@@ -6,7 +6,7 @@ USING_NS_CC;
 
 namespace QUAT {
 
-FAMenuButton * FAMenuButton::create(char16_t * icon,
+FAMenuButton * FAMenuButton::create(const char16_t * icon,
                                     float iconHeight,
                                     float width,
                                     float height,
@@ -49,7 +49,7 @@ bool FAMenuButton::init() {
   return true;
 }
 
-FAMenuButton::FAMenuButton(char16_t * icon,
+FAMenuButton::FAMenuButton(const char16_t * icon,
                            float iconHeight,
                            float width,
                            float height,
