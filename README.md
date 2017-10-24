@@ -40,7 +40,10 @@ run the C++ version, if anything.
 To do so, you need to [install
 Cocos2DX](http://www.cocos2d-x.org/wiki/Linux_Installation_and_Setup).
 
-When that's done, you can do the following: ``` $ cd cpp $ cocos run -p linux
+When that's done, you can do the following:
+```
+$ cd cpp
+$ cocos run -p linux
 ```
 
 Your mileage may vary on other platforms.
